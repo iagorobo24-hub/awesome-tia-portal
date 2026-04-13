@@ -1,0 +1,28 @@
+# TIA Portal — archivos de proyecto completos (no van en este repo)
+*.ap1
+*.ap15
+*.ap15_1
+*.ap16
+*.ap17
+*.ap18
+*.ap19
+*.ap20
+*.zap1
+*.zap15
+*.zap15_1
+*.zap16
+*.zap17
+*.zap18
+*.zap19
+*.zap20
+
+# Archivos temporales de Windows
+Thumbs.db
+desktop.ini
+*.tmp
+
+# macOS
+.DS_Store
+
+# Carpetas de backup automático de TIA
+UserFiles/
