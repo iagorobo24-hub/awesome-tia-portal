@@ -42,7 +42,7 @@ En el mundo de la automatización, a menudo reinventamos la rueda. Cada programa
 
 **¿Tienes un bloque que usas en todos tus proyectos?** ¡Compártelo!
 
-No hace falta ser un experto en GitHub. Hemos preparado una [guía de contribución paso a paso](./CONTRIBUTING.md) pensada para gente que viene del mundo del PLC. Si prefieres no usar comandos, puedes abrir un [Issue](issues) y subir tu archivo ahí.
+No hace falta ser un experto en GitHub. Hemos preparado una [guía de contribución paso a paso](./CONTRIBUTING.md) pensada para gente que viene del mundo del PLC. Si prefieres no usar comandos, puedes abrir un [Issue](../../issues) y subir tu archivo ahí.
 
 ---
 
