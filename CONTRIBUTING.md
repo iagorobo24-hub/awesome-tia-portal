@@ -49,7 +49,7 @@ En tu copia, crea una rama con un nombre corto, por ejemplo: `feat/mi-nuevo-bloq
 Entra en la carpeta correspondiente (`bloques-de-funcion/`, `tipos-de-datos/`, etc.):
 1. Crea una subcarpeta para tu recurso (usa nombres en minúsculas y con guiones).
 2. Sube el `.xml`.
-3. Crea un archivo `README.md` usando la [plantilla de recursos](../_plantillas/README-recurso.md).
+3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md).
 
 ### 5. Abre la Pull Request
 Vuelve a la página principal de tu repo y verás un botón que dice **"Compare & pull request"**. Pulsa, escribe un pequeño resumen de lo que aportas y listo.
