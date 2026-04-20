@@ -1,0 +1,48 @@
+name: 🚀 Nueva Aportación
+description: Comparte un bloque, UDT o recurso con la comunidad.
+title: "[APORTE]: "
+labels: ["nuevo-recurso"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¡Gracias por querer contribuir! Si no sabes usar Git, puedes adjuntar los archivos aquí mismo y nosotros los integraremos.
+  - type: input
+    id: nombre
+    attributes:
+      label: Nombre del recurso
+      description: ¿Cómo se llama el bloque o función?
+      placeholder: Ej: Escalado de señal 4-20mA
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de recurso
+      options:
+        - Bloque de función (FB/FC)
+        - Tipo de dato (UDT)
+        - Pantalla HMI
+        - Plantilla de proyecto
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: ¿Qué hace este recurso?
+      description: Explica brevemente para qué sirve y qué problema resuelve.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versión de TIA Portal
+      placeholder: Ej: V19, V20...
+  - type: textarea
+    id: archivos
+    attributes:
+      label: Archivos
+      description: Arrastra aquí el archivo .xml (o pega el código si es SCL corto).
+    validations:
+      required: false

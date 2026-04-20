@@ -1,120 +1,66 @@
-# Cómo contribuir
+# Cómo contribuir a TIA Portal Library
 
-Gracias por querer aportar algo. Este documento explica el proceso paso a paso, incluyendo la parte de GitHub — pensado para gente que igual no lo ha usado antes.
-
----
-
-## Antes de empezar — ¿qué tipo de aportación quieres hacer?
-
-- **Añadir un recurso nuevo** (un bloque, un UDT, una pantalla HMI...) → sigue la guía completa de abajo
-- **Corregir un error en algo que ya existe** → puedes abrir un [Issue](../../issues) explicando el problema, o proponer el cambio directamente
-- **Mejorar documentación** → mismo proceso que añadir un recurso, pero solo tocas el README
+Gracias por querer compartir tu conocimiento. Esta guía está diseñada para que cualquier programador de PLC pueda aportar, aunque nunca haya usado GitHub.
 
 ---
 
-## Guía completa para añadir un recurso nuevo
+## 📖 Diccionario GitHub para Programadores de PLC
 
-### Paso 1 — Crea tu cuenta en GitHub (si no tienes)
+Si no vienes del mundo del software, GitHub puede sonar raro. Aquí tienes una traducción:
 
-Ve a [github.com](https://github.com) y regístrate. Es gratis.
-
----
-
-### Paso 2 — Haz un Fork del repositorio
-
-Un Fork es una copia del repositorio en tu cuenta personal, donde puedes trabajar sin afectar al original.
-
-1. Arriba a la derecha de esta página, pulsa el botón **Fork**
-2. GitHub crea una copia en tu cuenta — algo como `tu-usuario/tia-portal-library`
+| Término GitHub | Traducción al mundo PLC | ¿Qué significa? |
+|---|---|---|
+| **Repository (Repo)** | Proyecto / Librería | Es la carpeta principal que contiene todos los archivos. |
+| **Fork** | "Guardar como..." | Creas una copia exacta del proyecto en tu propia cuenta para hacer pruebas. |
+| **Branch (Rama)** | Variante de proyecto | Una línea de trabajo separada (como cuando haces una copia de un proyecto para probar una modificación sin romper el original). |
+| **Commit** | Guardar cambios | Es como darle al botón de guardar, pero con un comentario de qué has cambiado. |
+| **Pull Request (PR)** | Propuesta de cambios | Nos pides que revisemos tus cambios para "unirlos" a la librería principal. |
+| **Issue** | Aviso / Ticket | Un mensaje para avisar de un error, hacer una pregunta o proponer una idea. |
 
 ---
 
-### Paso 3 — Clona tu Fork en tu ordenador
+## 🛤️ El camino fácil: ¿Qué quieres hacer?
 
-```bash
-git clone https://github.com/TU-USUARIO/tia-portal-library.git
-cd tia-portal-library
-```
+### A. Tengo un recurso (Bloque, UDT...) y quiero compartirlo
+Sigue los pasos de la **Guía Completa** más abajo.
 
-Si no tienes Git instalado: [descárgalo aquí](https://git-scm.com/downloads). En Windows el instalador configura todo solo.
+### B. He visto un error o tengo una duda
+Abre un [Issue](issues/new). Es como escribir un post en un foro. No necesitas instalar nada.
 
----
-
-### Paso 4 — Crea una rama para tu aportación
-
-Nunca trabajes directamente en `main`. Crea una rama con un nombre descriptivo:
-
-```bash
-git checkout -b feat/nombre-de-tu-recurso
-```
-
-Ejemplos de nombres de rama:
-- `feat/fb-escalado-analogico`
-- `feat/udt-motor-asincrono`
-- `docs/correccion-readme-temporizador`
+### C. Quiero mejorar una explicación (README)
+Puedes hacerlo directamente desde la web de GitHub pulsando el icono del lápiz ✏️ en el archivo que quieras cambiar.
 
 ---
 
-### Paso 5 — Añade tu recurso en la carpeta correcta
+## 🚀 Guía Completa para añadir un recurso nuevo
 
-```
-bloques-de-funcion/     → FBs, FCs
-tipos-de-datos/         → UDTs
-bloques-de-organizacion/→ OBs
-hmi/                    → Pantallas y recursos HMI
-plantillas-de-proyecto/ → Estructuras base
-```
+### 1. Prepara tu recurso en TIA Portal
+1. Asegúrate de que el bloque está limpio y comentado.
+2. Haz clic derecho sobre el bloque (FB, FC, UDT...) y selecciona **Exportar**.
+3. Guárdalo como un archivo `.xml`.
 
-Dentro de la carpeta que corresponda, crea una subcarpeta con el nombre de tu recurso:
+### 2. Haz un Fork
+Pulsa el botón **Fork** arriba a la derecha. Ahora tienes una copia del repo en tu cuenta.
 
-```
-bloques-de-funcion/
-└── escalado-analogico/
-    ├── README.md          ← obligatorio
-    └── escalado-analogico.xml
-```
+### 3. Crea una Rama (Branch)
+En tu copia, crea una rama con un nombre corto, por ejemplo: `feat/mi-nuevo-bloque`.
 
----
+### 4. Sube tus archivos
+Entra en la carpeta correspondiente (`bloques-de-funcion/`, `tipos-de-datos/`, etc.):
+1. Crea una subcarpeta para tu recurso (usa nombres en minúsculas y con guiones).
+2. Sube el `.xml`.
+3. Crea un archivo `README.md` usando la [plantilla de recursos](../_plantillas/README-recurso.md).
 
-### Paso 6 — Rellena el README de tu recurso
-
-Usa la plantilla que está en [`/_plantillas/README-recurso.md`](./_plantillas/README-recurso.md).
-
-**Esto es lo más importante.** Un recurso sin documentación clara no se va a usar.
+### 5. Abre la Pull Request
+Vuelve a la página principal de tu repo y verás un botón que dice **"Compare & pull request"**. Pulsa, escribe un pequeño resumen de lo que aportas y listo.
 
 ---
 
-### Paso 7 — Commit y push
-
-```bash
-git add .
-git commit -m "feat: añadir bloque de escalado de señal analógica"
-git push origin feat/nombre-de-tu-recurso
-```
+## 📏 Reglas de Oro para que aceptemos tu aporte
+- **Documentación**: El `README.md` del bloque debe explicar qué hace y qué variables usa.
+- **Limpieza**: No subas proyectos de 200MB. Solo el `.xml` del bloque específico.
+- **Formato**: Usa nombres de carpeta claros (ej: `escalado-analogico` en vez de `Bloque_1`).
 
 ---
 
-### Paso 8 — Abre una Pull Request
-
-1. Ve a tu Fork en GitHub
-2. Verás un botón **"Compare & pull request"** — púlsalo
-3. Rellena el título y la descripción usando la plantilla que aparece automáticamente
-4. Pulsa **"Create pull request"**
-
-A partir de ahí alguien del proyecto revisa tu aportación. Si hay algo que ajustar, se comenta en la propia PR. Si todo está bien, se hace merge y ya forma parte del repo.
-
----
-
-## Criterios para que una PR sea aceptada
-
-- ✅ Tiene README completo con la plantilla
-- ✅ El archivo exportado es `.xml` (exportado desde TIA Portal)
-- ✅ El nombre de la carpeta y del archivo es descriptivo y en minúsculas con guiones
-- ✅ No incluye proyectos completos, solo el bloque o recurso concreto
-- ✅ Compatible con TIA Portal V20 (si funciona en versiones anteriores, se indica)
-
----
-
-## ¿Tienes dudas?
-
-Abre un [Issue](../../issues/new) con la etiqueta `pregunta` y te respondemos.
+¿Aún tienes dudas? Abre un **Issue** y te ayudaremos paso a paso. ¡No hay aportación pequeña!

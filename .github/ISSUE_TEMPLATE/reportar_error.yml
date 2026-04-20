@@ -1,0 +1,26 @@
+name: 🐛 Reportar un Error
+description: Avisa si algo no funciona o tiene un fallo.
+title: "[ERROR]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Descripción del problema
+      description: ¿Qué está fallando exactamente?
+    validations:
+      required: true
+  - type: input
+    id: recurso_afectado
+    attributes:
+      label: Recurso afectado
+      placeholder: Ej: FB_Escalado_Analogico
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Cómo reproducirlo
+      description: ¿Qué pasos has seguido para que falle?
+  - type: input
+    id: version_tia
+    attributes:
+      label: Tu versión de TIA Portal
