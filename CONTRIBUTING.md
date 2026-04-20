@@ -25,7 +25,7 @@ Si no vienes del mundo del software, GitHub puede sonar raro. Aquí tienes una t
 Sigue los pasos de la **Guía Completa** más abajo.
 
 ### B. He visto un error o tengo una duda
-Abre un [Issue](issues/new). Es como escribir un post en un foro. No necesitas instalar nada.
+Abre un [Issue](../../issues/new/choose). Es como escribir un post en un foro. No necesitas instalar nada.
 
 ### C. Quiero mejorar una explicación (README)
 Puedes hacerlo directamente desde la web de GitHub pulsando el icono del lápiz ✏️ en el archivo que quieras cambiar.
