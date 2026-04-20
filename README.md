@@ -1,54 +1,58 @@
-# 📦 TIA Portal Library — Recursos abiertos para la comunidad
+# 📦 TIA Portal Library — El "Awesome" de la Automatización con Siemens
 
 Colección organizada de bloques, tipos de datos, plantillas y recursos reutilizables para **Siemens TIA Portal V20**, mantenida por la comunidad.
 
-> Sin programas completos. Sin proyectos enteros. Solo piezas útiles, bien documentadas y listas para usar.
+> **Sin programas completos. Sin proyectos enteros.** Solo piezas útiles, bien documentadas y listas para usar (Plug & Play).
 
 ---
 
-## ¿Para qué sirve esto?
+## 🚀 ¿Por qué este repositorio?
 
-Cuando llevas tiempo trabajando con TIA Portal acabas acumulando pequeños bloques que resuelven problemas concretos — un temporizador con reset, un escalado de señal analógica, un control de marcha/paro con enclavamiento... Cosas que cualquiera vuelve a necesitar. El problema es que suelen quedarse en el disco duro de cada uno.
+En el mundo de la automatización, a menudo reinventamos la rueda. Cada programador tiene su propia librería de "bloques útiles" guardada en su disco duro.
 
-Este repo existe para cambiar eso: un sitio común donde esas piezas estén organizadas, explicadas y disponibles para cualquiera.
-
----
-
-## Contenido
-
-| Carpeta | Qué contiene |
-|---|---|
-| [`/bloques-de-funcion`](./bloques-de-funcion/) | FBs y FCs listos para importar |
-| [`/tipos-de-datos`](./tipos-de-datos/) | UDTs reutilizables |
-| [`/bloques-de-organizacion`](./bloques-de-organizacion/) | OBs con estructuras base |
-| [`/hmi`](./hmi/) | Pantallas y recursos para Siemens HMI |
-| [`/plantillas-de-proyecto`](./plantillas-de-proyecto/) | Estructuras base de proyecto |
+**TIA Portal Library** nace para:
+- **Centralizar el conocimiento**: Un lugar común para encontrar ese bloque de escalado o ese UDT de motor que todos necesitamos.
+- **Estandarizar**: Facilitar que otros técnicos entiendan tu código usando piezas comunes y bien documentadas.
+- **Aprender**: Ver cómo otros resuelven problemas comunes en SCL o Ladder.
 
 ---
 
-## ¿Cómo usar un recurso?
+## 📂 Contenido del Recurso
 
-1. Entra en la carpeta que te interesa
-2. Lee el `README.md` del recurso — ahí está todo: qué hace, qué necesita y cómo importarlo
-3. Descarga el archivo `.xml` correspondiente
-4. En TIA Portal: `clic derecho en el árbol del proyecto → Importar`
-
----
-
-## ¿Cómo contribuir?
-
-**¿Tienes algo útil que quieras aportar?** Perfecto — lee la [guía de contribución](./CONTRIBUTING.md). Está escrita pensando en gente que igual no tiene mucha experiencia con GitHub, así que no hace falta ser experto.
-
-Lo que buscamos: **piezas que resuelvan un problema concreto**, bien explicadas, sin código innecesario.
+| Carpeta | Recurso | Qué contiene |
+|---|---|---|
+| 🧩 | [`/bloques-de-funcion`](./bloques-de-funcion/) | FBs y FCs (Escalados, control de motores, alarmas...) |
+| 🏷️ | [`/tipos-de-datos`](./tipos-de-datos/) | UDTs reutilizables para estructuras de datos limpias |
+| 🏗️ | [`/bloques-de-organizacion`](./bloques-de-organizacion/) | OBs con arquitecturas base y gestión de ciclos |
+| 🖥️ | [`/hmi`](./hmi/) | Pantallas, faceplates y recursos visuales |
+| 📋 | [`/plantillas-de-proyecto`](./plantillas-de-proyecto/) | Estructuras base para empezar proyectos desde cero |
 
 ---
 
-## Versión de TIA Portal
+## 🛠️ Cómo usar un recurso
 
-Este repo está orientado a **TIA Portal V20**. Si un recurso funciona también en versiones anteriores, se indica en su README.
+1. **Explora**: Entra en la carpeta que te interesa.
+2. **Lee**: Revisa el `README.md` del recurso — ahí verás qué hace, sus entradas/salidas y cómo usarlo.
+3. **Descarga**: Bájate el archivo `.xml`.
+4. **Importa**: En TIA Portal: `Clic derecho en "Bloques de programa" → Importar`.
 
 ---
 
-## Licencia
+## 🤝 ¿Quieres aportar? (Es más fácil de lo que parece)
 
-MIT — puedes usar, modificar y distribuir libremente. Ver [LICENSE](./LICENSE).
+**¿Tienes un bloque que usas en todos tus proyectos?** ¡Compártelo!
+
+No hace falta ser un experto en GitHub. Hemos preparado una [guía de contribución paso a paso](./CONTRIBUTING.md) pensada para gente que viene del mundo del PLC. Si prefieres no usar comandos, puedes abrir un [Issue](../../issues) y subir tu archivo ahí.
+
+---
+
+## ⚠️ Versión de TIA Portal
+
+Este repo está optimizado para **TIA Portal V20**.
+*Nota: Muchos recursos funcionan en V18/V19, revisa la descripción individual de cada bloque.*
+
+---
+
+## 📜 Licencia
+
+MIT — Puedes usar, modificar y distribuir libremente en tus proyectos industriales. Ver [LICENSE](./LICENSE).

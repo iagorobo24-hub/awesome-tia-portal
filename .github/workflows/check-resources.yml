@@ -1,0 +1,51 @@
+name: Validar Recursos
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'bloques-de-funcion/**'
+      - 'tipos-de-datos/**'
+      - 'bloques-de-organizacion/**'
+      - 'hmi/**'
+      - 'plantillas-de-proyecto/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificar estructura de subcarpetas
+        run: |
+          ERROR=0
+          # Carpetas a revisar
+          DIRS="bloques-de-funcion tipos-de-datos bloques-de-organizacion hmi plantillas-de-proyecto"
+
+          for d in $DIRS; do
+            if [ -d "$d" ]; then
+              # Buscar subcarpetas de primer nivel (cada recurso)
+              for sub in $(find "$d" -maxdepth 1 -mindepth 1 -type d); do
+                echo "Revisando recurso: $sub"
+
+                # Verificar README.md
+                if [ ! -f "$sub/README.md" ]; then
+                  echo "❌ Error: Falta README.md en $sub"
+                  ERROR=1
+                fi
+
+                # Verificar archivo .xml
+                if ! ls "$sub"/*.xml >/dev/null 2>&1; then
+                  echo "❌ Error: Falta archivo .xml en $sub"
+                  ERROR=1
+                fi
+              done
+            fi
+          done
+
+          if [ $ERROR -eq 1 ]; then
+            echo "La validación ha fallado. Asegúrate de incluir un README.md y un archivo .xml en la carpeta de tu recurso."
+            exit 1
+          else
+            echo "✅ ¡Estructura correcta!"
+          fi
