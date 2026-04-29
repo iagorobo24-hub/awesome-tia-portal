@@ -1,3 +1,15 @@
+---
+name: FB_EdgeCounter
+type: fb
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: []
+tags: [contador, flancos, fb]
+status: documented
+---
+
 # FB_EdgeCounter
 
 > Contador de flancos de subida con reset y configuración de límite — útil para contar ciclos de máquina, piezas producidas, paradas…
