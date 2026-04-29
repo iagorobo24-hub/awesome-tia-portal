@@ -29,17 +29,19 @@ jobs:
               for sub in $(find "$d" -maxdepth 1 -mindepth 1 -type d); do
                 echo "Revisando recurso: $sub"
 
-                # README.md es OBLIGATORIO
+                # README.md es OBLIGATORIO. Si falta, error duro y no se evalúa
+                # el resto del recurso (no tiene sentido avisar sobre el .xml
+                # de algo que ni siquiera tiene documentación).
                 if [ ! -f "$sub/README.md" ]; then
                   echo "❌ Error: Falta README.md en $sub"
                   ERROR=1
-                fi
-
-                # XML es opcional mientras el recurso está en estado "documentado"
-                # (pendiente de exportar desde TIA Portal). Genera aviso, no error.
-                if ! ls "$sub"/*.xml >/dev/null 2>&1; then
-                  echo "⚠️  Aviso: $sub tiene README pero todavía no .xml (estado 'documentado')"
-                  MISSING_XML=$((MISSING_XML + 1))
+                else
+                  # XML es opcional mientras el recurso está en estado "documentado"
+                  # (pendiente de exportar desde TIA Portal). Genera aviso, no error.
+                  if ! ls "$sub"/*.xml >/dev/null 2>&1; then
+                    echo "⚠️  Aviso: $sub tiene README pero todavía no .xml (estado 'documentado')"
+                    MISSING_XML=$((MISSING_XML + 1))
+                  fi
                 fi
               done
             fi
