@@ -1,3 +1,15 @@
+---
+name: FB_AnalogInput
+type: fb
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: [tipos-de-datos/udt-analog-input]
+used_by: []
+tags: [analogica, escalado, alarmas, fb]
+status: documented
+---
+
 # FB_AnalogInput
 
 > Bloque de procesado de entrada analógica — escalado, filtrado pasa-baja, alarmas HH/H/L/LL con histéresis, y simulación.

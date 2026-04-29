@@ -1,3 +1,15 @@
+---
+name: FB_PulseGen
+type: fb
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: []
+tags: [pulsos, generador, fb]
+status: documented
+---
+
 # FB_PulseGen
 
 > Generador de pulsos parametrizable — produce un tren de pulsos con periodo y duty cycle configurables. Útil para parpadeos, refresco, tests, etc.

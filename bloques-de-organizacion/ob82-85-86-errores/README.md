@@ -1,3 +1,15 @@
+---
+name: OB82_OB85_OB86
+type: ob
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1500]
+depends_on: []
+used_by: []
+tags: [ob, errores, diagnostico]
+status: documented
+---
+
 # OBs de errores — OB82 / OB85 / OB86
 
 > Plantillas de los OBs de **diagnóstico, fallo de programa y fallo de rack** con gestión básica de eventos: registro, alarma y modo seguro.
