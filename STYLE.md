@@ -29,8 +29,8 @@ El repo se organiza por **categoría** en la raíz, y dentro de cada categoría 
 awesome-tia-portal/
 ├── tipos-de-datos/              # UDTs
 │   ├── udt-motor/               # 1 carpeta = 1 recurso
-│   │   ├── README.md            # obligatorio
-│   │   └── udt-motor.xml        # obligatorio
+│   │   ├── README.md            # obligatorio (siempre)
+│   │   └── udt-motor.xml        # requerido cuando status: available · opcional con status: documented
 │   └── udt-analog-input/
 ├── bloques-de-funcion/          # FBs y FCs
 ├── bloques-de-organizacion/     # OBs
@@ -42,7 +42,11 @@ awesome-tia-portal/
 **Reglas:**
 
 - Cada recurso vive en **su propia subcarpeta**, nunca sueltos en la raíz de una categoría.
-- Cada subcarpeta tiene **exactamente un `README.md` y un `.xml`** (lo valida el workflow `check-resources.yml`).
+- **`README.md` es obligatorio en toda subcarpeta** (lo verifica el workflow `check-resources.yml` y falla si falta).
+- **El `.xml`** se exige según el `status` declarado en el frontmatter del README:
+  - `status: documented` — hay descripción pero el XML aún no se ha exportado desde TIA. CI emite aviso pero pasa.
+  - `status: available` — recurso completo. CI exige el `.xml` (pendiente: validación estricta en #10 del análisis).
+  - `status: wip` — trabajo en curso, no se considera estable.
 - **No** crees carpetas nuevas en la raíz sin discutirlo en un Issue primero.
 - Las carpetas que empiezan con `_` (como `_plantillas`) son **internas del repo**, no recursos publicables. El guion bajo las ordena al principio de la lista.
 
@@ -304,11 +308,11 @@ Mini-checklist antes de abrir la PR:
 
 - [ ] El nombre de la subcarpeta es kebab-case y coincide con el nombre TIA (ej: `udt-motor` → `UDT_Motor`).
 - [ ] El `README.md` sigue la plantilla y tiene todas las secciones obligatorias.
-- [ ] El frontmatter YAML al inicio del README está completo.
+- [ ] El frontmatter YAML al inicio del README está completo, incluyendo el campo `status` correcto.
 - [ ] Los nombres de variables usan los prefijos correctos (sección 3).
 - [ ] Los tipos de datos están en MAYÚSCULAS y `STRING[N]` con corchetes.
-- [ ] El `.xml` está en UTF-8 sin BOM y no contiene IPs / usernames / rutas internas.
-- [ ] He probado importar el `.xml` en TIA Portal V20 desde cero y compila.
+- [ ] Si `status: available`: el `.xml` está presente, en UTF-8 sin BOM y no contiene IPs / usernames / rutas internas.
+- [ ] Si `status: available`: he probado importar el `.xml` en TIA Portal V20 desde cero y compila.
 - [ ] He actualizado el [CATALOG.md](./CATALOG.md) con el estado del recurso.
 - [ ] CI pasa en verde.
 
