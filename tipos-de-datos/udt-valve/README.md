@@ -88,8 +88,8 @@ Desde el `FB_Valve`:
 
 ```
 "FB_Valve"(
-    iFeedbackAbierta := %I1.0,
-    iFeedbackCerrada := %I1.1,
+    xFeedbackAbierta := %I1.0,
+    xFeedbackCerrada := %I1.1,
     Valve := "DB_Equipos".V01_AguaEntrada,
     qSolenoideAbrir => %Q1.0,
     qSolenoideCerrar => %Q1.1

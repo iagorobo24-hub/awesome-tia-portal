@@ -24,10 +24,10 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 
 | Variable | Tipo | Descripción |
 |---|---|---|
-| `iEntradaTermico` | BOOL | Entrada física del relé térmico (lógica positiva = activo bajo en NC) |
-| `iEntradaGuardamotor` | BOOL | Entrada física del guardamotor |
-| `iEntradaFeedback` | BOOL | Entrada física del contacto KM (confirmación marcha) |
-| `iParoEmergencia` | BOOL | `TRUE` cuando la cadena de seguridad está OK |
+| `xEntradaTermico` | BOOL | Entrada física del relé térmico (lógica positiva = activo bajo en NC) |
+| `xEntradaGuardamotor` | BOOL | Entrada física del guardamotor |
+| `xEntradaFeedback` | BOOL | Entrada física del contacto KM (confirmación marcha) |
+| `xParoEmergencia` | BOOL | `TRUE` cuando la cadena de seguridad está OK |
 | `xPermisoArranque` | BOOL | Permiso externo de arranque (enclavamientos de proceso) |
 
 ### InOut
@@ -50,8 +50,8 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 |---|---|---|
 | `tonTimeoutArranque` | TON | Temporizador de timeout de arranque |
 | `tonTimeoutParo` | TON | Temporizador de timeout de paro |
-| `rEdgeTermico` | R_TRIG | Detección de flanco de fallo térmico |
-| `rEdgeArranque` | R_TRIG | Flanco para incrementar `diArranques` |
+| `rtrigTermico` | R_TRIG | Detección de flanco de fallo térmico |
+| `rtrigArranque` | R_TRIG | Flanco para incrementar `diArranques` |
 | `tInternalCounter` | TIME | Acumulador interno para horas de funcionamiento |
 
 ---
@@ -70,10 +70,10 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 ```scl
 // Bomba principal, KM en %Q0.0, térmico en %I0.0, feedback en %I0.1
 "FB_Motor"(
-    iEntradaTermico     := %I0.0,
-    iEntradaGuardamotor := FALSE,                  // sin guardamotor
-    iEntradaFeedback    := %I0.1,
-    iParoEmergencia     := "DB_Seguridad".xCadenaOK,
+    xEntradaTermico     := %I0.0,
+    xEntradaGuardamotor := FALSE,                  // sin guardamotor
+    xEntradaFeedback    := %I0.1,
+    xParoEmergencia     := "DB_Seguridad".xCadenaOK,
     xPermisoArranque    := "DB_Proceso".xPermisoBomba,
     Motor               := "DB_Equipos".M01_BombaPrincipal,
     qSalidaContactor    => %Q0.0,
@@ -89,7 +89,7 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 1. **Modo manual** → `Motor.Comando.xMarcha`/`xParo` vienen del HMI.
 2. **Modo automático** → `Motor.Comando.xMarcha`/`xParo` vienen de la receta/secuencia.
 3. **Comando de marcha** → cierra `qSalidaContactor`. Arranca `tonTimeoutArranque`.
-4. Si llega `iEntradaFeedback` antes de `Config.tTimeoutArranque` → `Estado.xEnMarcha := TRUE`.
+4. Si llega `xEntradaFeedback` antes de `Config.tTimeoutArranque` → `Estado.xEnMarcha := TRUE`.
 5. Si NO llega → `Fallos.xTimeoutArranque := TRUE` y se desenclava la salida.
 6. Cualquier fallo (`Fallos.*`) abre el contactor y enclava el fallo hasta `Comando.xReset`.
 7. Mientras `Estado.xEnMarcha = TRUE` se incrementa `Diagnostico.rHorasFuncionamiento`.
@@ -99,7 +99,7 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 ## Notas / Limitaciones conocidas
 
 - El campo `Diagnostico.rHorasFuncionamiento` debe ser **retentivo** en el DB que aloje la instancia.
-- `iEntradaTermico` se asume con la lógica del repo: `TRUE` = térmico activo (térmico disparado). Si tu cableado es al revés, niégalo en la llamada.
+- `xEntradaTermico` se asume con la lógica del repo: `TRUE` = térmico activo (térmico disparado). Si tu cableado es al revés, niégalo en la llamada.
 - Si tu motor no tiene feedback físico, configura `Motor.Config.tTimeoutArranque := T#0ms` y el FB no exigirá el feedback.
 - Para arranques estrella-triángulo, este FB no basta — necesitas un FB específico (no incluido).
 

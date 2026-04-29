@@ -22,9 +22,9 @@ Las válvulas digitales se gestionan en cualquier proceso y siempre con la misma
 
 | Variable | Tipo | Descripción |
 |---|---|---|
-| `iFeedbackAbierta` | BOOL | Final de carrera de abierta |
-| `iFeedbackCerrada` | BOOL | Final de carrera de cerrada |
-| `iParoEmergencia` | BOOL | `TRUE` si la cadena de seguridad está OK |
+| `xFeedbackAbierta` | BOOL | Final de carrera de abierta |
+| `xFeedbackCerrada` | BOOL | Final de carrera de cerrada |
+| `xParoEmergencia` | BOOL | `TRUE` si la cadena de seguridad está OK |
 | `xPermisoOperacion` | BOOL | Permiso externo (enclavamientos de proceso) |
 
 ### InOut
@@ -49,7 +49,7 @@ Las válvulas digitales se gestionan en cualquier proceso y siempre con la misma
 | `tonTimeoutAbrir` | TON | Temporizador de vigilancia de apertura |
 | `tonTimeoutCerrar` | TON | Temporizador de vigilancia de cierre |
 | `tonPosInvalida` | TON | Filtro anti-rebote para posición inválida (1s) |
-| `rEdgeAbrir` | R_TRIG | Detección de flanco para contar ciclos |
+| `rtrigAbrir` | R_TRIG | Detección de flanco para contar ciclos |
 | `tInicioMovimiento` | TIME | Marca de tiempo del último movimiento |
 
 ---
@@ -72,9 +72,9 @@ Las válvulas digitales se gestionan en cualquier proceso y siempre con la misma
 
 // En OB1:
 "FB_Valve"(
-    iFeedbackAbierta := %I1.0,
-    iFeedbackCerrada := %I1.1,
-    iParoEmergencia  := "DB_Seguridad".xCadenaOK,
+    xFeedbackAbierta := %I1.0,
+    xFeedbackCerrada := %I1.1,
+    xParoEmergencia  := "DB_Seguridad".xCadenaOK,
     xPermisoOperacion:= TRUE,
     Valve            := "DB_Equipos".V01_AguaEntrada,
     qSolenoideAbrir  => %Q1.0,
@@ -88,9 +88,9 @@ Las válvulas digitales se gestionan en cualquier proceso y siempre con la misma
 
 ## Lógica resumida
 
-1. Si `iFeedbackAbierta` y `iFeedbackCerrada` se activan a la vez durante más de 1s → `Fallos.xPosicionInvalida`.
+1. Si `xFeedbackAbierta` y `xFeedbackCerrada` se activan a la vez durante más de 1s → `Fallos.xPosicionInvalida`.
 2. Comando de abrir → `qSolenoideAbrir := TRUE`. `tonTimeoutAbrir` empieza a contar.
-3. Llega `iFeedbackAbierta` antes del timeout → `Estado.xAbierta := TRUE`, se desactiva `xEnMovimiento`.
+3. Llega `xFeedbackAbierta` antes del timeout → `Estado.xAbierta := TRUE`, se desactiva `xEnMovimiento`.
 4. No llega → `Fallos.xTimeoutAbrir := TRUE`, se cierra el solenoide.
 5. Cualquier fallo enclava la válvula y obliga a `Comando.xReset` para volver a operar.
 6. En cada apertura completada se incrementa `Diagnostico.diCiclos`.
