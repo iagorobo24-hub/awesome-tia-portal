@@ -19,6 +19,7 @@ jobs:
       - name: Verificar estructura de subcarpetas
         run: |
           ERROR=0
+          MISSING_XML=0
           # Carpetas a revisar
           DIRS="bloques-de-funcion tipos-de-datos bloques-de-organizacion hmi plantillas-de-proyecto"
 
@@ -28,24 +29,32 @@ jobs:
               for sub in $(find "$d" -maxdepth 1 -mindepth 1 -type d); do
                 echo "Revisando recurso: $sub"
 
-                # Verificar README.md
+                # README.md es OBLIGATORIO
                 if [ ! -f "$sub/README.md" ]; then
                   echo "❌ Error: Falta README.md en $sub"
                   ERROR=1
                 fi
 
-                # Verificar archivo .xml
+                # XML es opcional mientras el recurso está en estado "documentado"
+                # (pendiente de exportar desde TIA Portal). Genera aviso, no error.
                 if ! ls "$sub"/*.xml >/dev/null 2>&1; then
-                  echo "❌ Error: Falta archivo .xml en $sub"
-                  ERROR=1
+                  echo "⚠️  Aviso: $sub tiene README pero todavía no .xml (estado 'documentado')"
+                  MISSING_XML=$((MISSING_XML + 1))
                 fi
               done
             fi
           done
 
           if [ $ERROR -eq 1 ]; then
-            echo "La validación ha fallado. Asegúrate de incluir un README.md y un archivo .xml en la carpeta de tu recurso."
+            echo ""
+            echo "La validación ha fallado. Asegúrate de incluir un README.md en la carpeta de tu recurso."
             exit 1
           else
-            echo "✅ ¡Estructura correcta!"
+            if [ $MISSING_XML -gt 0 ]; then
+              echo ""
+              echo "✅ Estructura correcta. $MISSING_XML recurso(s) sin .xml todavía (estado 'documentado')."
+            else
+              echo ""
+              echo "✅ ¡Estructura correcta y todos los recursos tienen .xml!"
+            fi
           fi

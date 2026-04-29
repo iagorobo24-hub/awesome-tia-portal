@@ -99,8 +99,8 @@ Y desde un `FB_Motor` (que próximamente subiremos al repo) le pasas la instanci
 ```
 "FB_Motor"(
     Motor := "DB_Equipos".M01_BombaPrincipal,
-    iEntradaTermico := %I0.0,
-    iEntradaFeedback := %I0.1,
+    xEntradaTermico := %I0.0,
+    xEntradaFeedback := %I0.1,
     qSalidaContactor => %Q0.0
 );
 ```

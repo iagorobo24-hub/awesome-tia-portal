@@ -99,7 +99,7 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 ## Notas / Limitaciones conocidas
 
 - El campo `Diagnostico.rHorasFuncionamiento` debe ser **retentivo** en el DB que aloje la instancia.
-- `iEntradaTermico` se asume con la lógica del repo: `TRUE` = térmico activo (térmico disparado). Si tu cableado es al revés, niégalo en la llamada.
+- `xEntradaTermico` se asume con la lógica del repo: `TRUE` = térmico activo (térmico disparado). Si tu cableado es al revés, niégalo en la llamada.
 - Si tu motor no tiene feedback físico, configura `Motor.Config.tTimeoutArranque := T#0ms` y el FB no exigirá el feedback.
 - Para arranques estrella-triángulo, este FB no basta — necesitas un FB específico (no incluido).
 
