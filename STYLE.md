@@ -233,8 +233,8 @@ Cada recurso tiene un `README.md` que sigue la plantilla [`_plantillas/README-re
 
 **Secciones obligatorias** (en este orden):
 
-1. **Título + descripción de 1 línea** (el "tagline").
-2. **Frontmatter YAML** con metadatos (tipo, versión TIA, familia PLC, dependencias).
+1. **Frontmatter YAML** con metadatos (`name`, `type`, `tia_version`, `plc_family`, `depends_on`, `tags`, `status`...). **Debe ocupar las primeras líneas del archivo** (delimitadas por `---`) para que los parsers lo reconozcan; nada — ni comentarios HTML — puede ir antes.
+2. **Título + descripción de 1 línea** (el "tagline"), inmediatamente después del cierre `---` del frontmatter.
 3. **¿Qué problema resuelve?** — 2-4 frases sin tecnicismos innecesarios.
 4. **Variables / Interfaz** — tablas separadas para Input / Output / InOut / Static.
 5. **Cómo importarlo en TIA Portal** — pasos numerados.

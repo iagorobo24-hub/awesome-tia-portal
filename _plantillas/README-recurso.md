@@ -1,12 +1,12 @@
-<!--
-Plantilla de README para un recurso del repo.
-Copia este archivo en tu carpeta nueva (ej: tipos-de-datos/udt-mi-recurso/README.md)
-y rellena cada sección. Borra las explicaciones en cursiva cuando termines.
-
-Lee primero la guía de estilo: ../STYLE.md
--->
-
 ---
+# Plantilla de README para un recurso del repo.
+# Copia este archivo en tu carpeta nueva (ej: tipos-de-datos/udt-mi-recurso/README.md)
+# y rellena cada sección. Borra estos comentarios y las explicaciones en cursiva cuando termines.
+# Lee primero la guía de estilo: ../STYLE.md
+#
+# IMPORTANTE: este bloque YAML (entre las dos líneas de tres guiones) debe
+# quedar SIEMPRE en la primera línea del archivo, para que GitHub y los
+# scripts del repo lo parseen correctamente.
 name: NombreDelBloqueEnTIA          # Ej: UDT_Motor, FB_Motor, FC_Escalado, Faceplate_Motor
 type: udt                            # udt | fb | fc | ob | hmi-faceplate | hmi-pantalla | plantilla
 tia_version: V20                     # Versión principal de desarrollo
