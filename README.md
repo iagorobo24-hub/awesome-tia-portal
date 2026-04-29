@@ -27,6 +27,8 @@ En el mundo de la automatización, a menudo reinventamos la rueda. Cada programa
 | 🖥️ | [`/hmi`](./hmi/) | Pantallas, faceplates y recursos visuales |
 | 📋 | [`/plantillas-de-proyecto`](./plantillas-de-proyecto/) | Estructuras base para empezar proyectos desde cero |
 
+> 👉 **Para ver todos los recursos disponibles de un vistazo, consulta el [📚 catálogo completo](./CATALOG.md).**
+
 ---
 
 ## 🛠️ Cómo usar un recurso
