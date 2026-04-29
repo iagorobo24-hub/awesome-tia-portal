@@ -2,7 +2,7 @@
 # Plantilla de README para un recurso del repo.
 # Copia este archivo en tu carpeta nueva (ej: tipos-de-datos/udt-mi-recurso/README.md)
 # y rellena cada sección. Borra estos comentarios y las explicaciones en cursiva cuando termines.
-# Lee primero la guía de estilo: ../STYLE.md
+# Lee primero la guía de estilo: ../../STYLE.md (rutas relativas desde un recurso, p.ej. tipos-de-datos/udt-mi-recurso/)
 #
 # IMPORTANTE: este bloque YAML (entre las dos líneas de tres guiones) debe
 # quedar SIEMPRE en la primera línea del archivo, para que GitHub y los
@@ -40,7 +40,7 @@ Ejemplo:
 
 ## Variables / Interfaz
 
-> **Naming**: usa los prefijos definidos en [`STYLE.md` § 3](../STYLE.md#3-naming-de-variables-prefijos-húngaros). En resumen: `x` BOOL, `i` INT, `di` DINT, `r` REAL, `s` STRING, `t` TIME, `dt` DTL, `q` (BOOL outputs), `ton`/`tof`/`rtrig`/`ftrig` para instancias de FB estándar.
+> **Naming**: usa los prefijos definidos en [`STYLE.md` § 3](../../STYLE.md#3-naming-de-variables-prefijos-húngaros). En resumen: `x` BOOL, `i` INT, `di` DINT, `r` REAL, `s` STRING, `t` TIME, `dt` DTL, `q` (BOOL outputs), `ton`/`tof`/`rtrig`/`ftrig` para instancias de FB estándar.
 
 ### Entradas (Input)
 
