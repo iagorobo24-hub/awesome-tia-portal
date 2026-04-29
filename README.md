@@ -1,8 +1,28 @@
 # 📦 TIA Portal Library — El "Awesome" de la Automatización con Siemens
 
+[![License: MIT](https://img.shields.io/github/license/iagorobo24-hub/awesome-tia-portal?color=blue)](./LICENSE)
+[![TIA Portal](https://img.shields.io/badge/TIA%20Portal-V20-009999?logo=siemens&logoColor=white)](#-versión-de-tia-portal)
+[![PLC](https://img.shields.io/badge/PLC-S7--1200%20%2F%20S7--1500-orange)](#-versión-de-tia-portal)
+[![Last commit](https://img.shields.io/github/last-commit/iagorobo24-hub/awesome-tia-portal)](https://github.com/iagorobo24-hub/awesome-tia-portal/commits/main)
+[![Issues](https://img.shields.io/github/issues/iagorobo24-hub/awesome-tia-portal)](https://github.com/iagorobo24-hub/awesome-tia-portal/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![Awesome](https://awesome.re/badge.svg)](https://github.com/topics/awesome)
+
 Colección organizada de bloques, tipos de datos, plantillas y recursos reutilizables para **Siemens TIA Portal V20**, mantenida por la comunidad.
 
 > **Sin programas completos. Sin proyectos enteros.** Solo piezas útiles, bien documentadas y listas para usar (Plug & Play).
+
+---
+
+## 📑 Tabla de contenido
+
+- [¿Por qué este repositorio?](#-por-qué-este-repositorio)
+- [Recursos destacados](#-recursos-destacados-empieza-por-aquí)
+- [Contenido del repositorio](#-contenido-del-repositorio)
+- [Cómo usar un recurso](#-cómo-usar-un-recurso)
+- [¿Quieres aportar?](#-quieres-aportar-es-más-fácil-de-lo-que-parece)
+- [Versión de TIA Portal](#-versión-de-tia-portal)
+- [Licencia](#-licencia)
 
 ---
 
@@ -17,7 +37,24 @@ En el mundo de la automatización, a menudo reinventamos la rueda. Cada programa
 
 ---
 
-## 📂 Contenido del Recurso
+## ⭐ Recursos destacados — empieza por aquí
+
+Si vas a usar el repo por primera vez, estos son los recursos fundacionales sobre los que se construye todo lo demás. Empieza por los UDTs, sigue por el FC de escalado, y luego añade los FBs y faceplates que necesites:
+
+| | Recurso | Qué hace |
+|:---:|---|---|
+| 🏷️ | [`UDT_Motor`](./tipos-de-datos/udt-motor/) | Estructura estándar para control y diagnóstico de motor digital |
+| 🏷️ | [`UDT_AnalogInput`](./tipos-de-datos/udt-analog-input/) | Entrada analógica con escalado, alarmas HH/H/L/LL y simulación |
+| 🧩 | [`FC_Escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal genérico INT (0-27648) → REAL en unidades de ingeniería |
+| 🧩 | [`FB_Motor`](./bloques-de-funcion/fb-motor/) | Control digital de motor — consume `UDT_Motor`, gestiona manual/auto, timeouts y horas |
+| 🖥️ | [`Faceplate_Motor`](./hmi/faceplate-motor/) | Faceplate HMI vinculado a `UDT_Motor` con un único *binding* |
+| 🏗️ | [`OB1_Plantilla`](./bloques-de-organizacion/ob1-plantilla/) | Esqueleto de OB1 con secciones estándar (lectura → seguridad → lógica → diagnóstico → escritura) |
+
+> 👉 **Para ver todos los recursos disponibles, planificados y su estado, consulta el [📚 catálogo completo](./CATALOG.md).**
+
+---
+
+## 📂 Contenido del repositorio
 
 | Carpeta | Recurso | Qué contiene |
 |---|---|---|
@@ -26,8 +63,6 @@ En el mundo de la automatización, a menudo reinventamos la rueda. Cada programa
 | 🏗️ | [`/bloques-de-organizacion`](./bloques-de-organizacion/) | OBs con arquitecturas base y gestión de ciclos |
 | 🖥️ | [`/hmi`](./hmi/) | Pantallas, faceplates y recursos visuales |
 | 📋 | [`/plantillas-de-proyecto`](./plantillas-de-proyecto/) | Estructuras base para empezar proyectos desde cero |
-
-> 👉 **Para ver todos los recursos disponibles de un vistazo, consulta el [📚 catálogo completo](./CATALOG.md).**
 
 ---
 
