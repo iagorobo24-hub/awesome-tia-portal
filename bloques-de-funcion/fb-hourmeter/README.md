@@ -44,7 +44,7 @@ Cualquier proyecto industrial necesita contar horas de funcionamiento de equipos
 |---|---|---|
 | `tCiclo` | TIME | Tiempo del último ciclo (calculado por TIA Portal) |
 | `rAcumuladorMs` | REAL | Acumulador interno en milisegundos hasta llegar a 1h |
-| `rEdgeReset` | R_TRIG | Flanco para reset |
+| `rtrigReset` | R_TRIG | Flanco para reset |
 
 ---
 

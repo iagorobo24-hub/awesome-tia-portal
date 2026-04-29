@@ -41,8 +41,8 @@ Contar pulsos parece trivial, pero hay 3 errores típicos: olvidar el flanco (cu
 
 | Variable | Tipo | Descripción |
 |---|---|---|
-| `rEdgeSignal` | R_TRIG | Detector de flanco de subida |
-| `rEdgeReset` | R_TRIG | Detector de flanco para reset |
+| `rtrigSignal` | R_TRIG | Detector de flanco de subida |
+| `rtrigReset` | R_TRIG | Detector de flanco para reset |
 
 ---
 
