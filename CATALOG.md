@@ -96,6 +96,16 @@
 | 📝 | [`totally-integrated-claude`](./ia-tia-portal/totally-integrated-claude/) | Plugin para Claude Code con 15+ skills (⭐ 8) | V17+ | Python + C# |
 | 📝 | [`tia-portal-openness-mcpserver`](./ia-tia-portal/tia-portal-openness-mcpserver/) | MCP Server con CLI TypeScript (⭐ 11) | V20 | C# / .NET 4.8 |
 | 📝 | [`tia-openness-agent-platform`](./ia-tia-portal/tia-openness-agent-platform/) | Plataforma web full-stack (.NET 8 + React 19) (⭐ 5) | V17+ | .NET 8 + React |
+| 📝 | [`tutoriales`](./ia-tia-portal/tutoriales/) | Tutoriales paso a paso (primeros pasos, generación de bloques, documentación, migración, testing, refactorización) | V17+ | Markdown |
+| 📝 | [`casos-de-uso`](./ia-tia-portal/casos-de-uso/) | Casos de uso reales (tratamiento de agua, transporte, manufactura, energía, alimentación) | V17+ | Markdown |
+| 📝 | [`prompts`](./ia-tia-portal/prompts/) | Guía de prompts efectivos (principios, ejemplos, plantillas) | V17+ | Markdown |
+| 📝 | [`comparativas`](./ia-tia-portal/comparativas/) | Comparativas de herramientas (MCP Servers, herramientas de IA) | V17+ | Markdown |
+| 📝 | [`integraciones`](./ia-tia-portal/integraciones/) | Integración con otras herramientas (Git, Jira, Confluence, Teams, Power BI) | V17+ | Markdown |
+| 📝 | [`best-practices`](./ia-tia-portal/best-practices/) | Mejores prácticas y patrones (seguridad, prompts, validación, workflow, anti-patterns) | V17+ | Markdown |
+| 📝 | [`galeria`](./ia-tia-portal/galeria/) | Galería de demos y screenshots (generación de bloque, análisis de proyecto, compilación, PLCSIM) | V17+ | Markdown |
+| 📝 | [`plantillas`](./ia-tia-portal/plantillas/) | Plantillas y snippets (prompts, configuración MCP, snippets SCL, documentación) | V17+ | Markdown |
+| 📝 | [`troubleshooting`](./ia-tia-portal/troubleshooting/) | Solución de problemas y FAQ (errores comunes, permisos, conexión, compilación) | V17+ | Markdown |
+| 📝 | [`roadmap`](./ia-tia-portal/roadmap/) | Roadmap de aprendizaje (niveles 1-4: principiante, intermedio, avanzado, experto) | V17+ | Markdown |
 
 > 📄 **Ver análisis completo**: [`ia-tia-portal/README.md`](./ia-tia-portal/README.md) — Guía de todos los proyectos IA + TIA Portal
 
