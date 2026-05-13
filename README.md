@@ -63,6 +63,7 @@ Si vas a usar el repo por primera vez, estos son los recursos fundacionales sobr
 | 🏗️ | [`/bloques-de-organizacion`](./bloques-de-organizacion/) | OBs con arquitecturas base y gestión de ciclos |
 | 🖥️ | [`/hmi`](./hmi/) | Pantallas, faceplates y recursos visuales |
 | 📋 | [`/plantillas-de-proyecto`](./plantillas-de-proyecto/) | Estructuras base para empezar proyectos desde cero |
+| 🤖 | [`/ia-tia-portal`](./ia-tia-portal/) | Proyectos que conectan Inteligencia Artificial con TIA Portal |
 
 ---
 

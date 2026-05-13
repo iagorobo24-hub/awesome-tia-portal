@@ -83,6 +83,24 @@
 
 ---
 
+## 🤖 IA + TIA Portal
+
+> Carpeta: [`ia-tia-portal/`](./ia-tia-portal/)
+
+> **Nota**: Estos NO son bloques .xml para importar en TIA Portal. Son **herramientas de software** que conectan modelos de IA (Claude, GPT, etc.) con TIA Portal a través de su API de Openness.
+
+| Estado | Recurso | Descripción | TIA Portal | Tecnología |
+|:---:|---|---|:---:|---|
+| 📝 | [`tia-portal-mcp-server`](./ia-tia-portal/tia-portal-mcp-server/) | MCP Server para VS Code + GitHub Copilot (⭐ 56) | V17–V20+ | C# / .NET 4.8 |
+| 📝 | [`t-ia-connect`](./ia-tia-portal/t-ia-connect/) | Motor profesional con 126+ herramientas MCP (trial 14d) | V17–V21 | C# / REST / SignalR |
+| 📝 | [`totally-integrated-claude`](./ia-tia-portal/totally-integrated-claude/) | Plugin para Claude Code con 15+ skills (⭐ 8) | V17+ | Python + C# |
+| 📝 | [`tia-portal-openness-mcpserver`](./ia-tia-portal/tia-portal-openness-mcpserver/) | MCP Server con CLI TypeScript (⭐ 11) | V20 | C# / .NET 4.8 |
+| 📝 | [`tia-openness-agent-platform`](./ia-tia-portal/tia-openness-agent-platform/) | Plataforma web full-stack (.NET 8 + React 19) (⭐ 5) | V17+ | .NET 8 + React |
+
+> 📄 **Ver análisis completo**: [`ia-tia-portal/README.md`](./ia-tia-portal/README.md) — Guía de todos los proyectos IA + TIA Portal
+
+---
+
 ## 🛣️ Roadmap por orden recomendado
 
 El orden sugerido para ir rellenando el repo (cada pieza apoya a la siguiente):
