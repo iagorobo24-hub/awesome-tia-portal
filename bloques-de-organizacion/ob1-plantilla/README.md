@@ -1,3 +1,15 @@
+---
+name: OB1
+type: ob
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: []
+tags: [ob, main, plantilla]
+status: documented
+---
+
 # OB1 — Plantilla
 
 > Esqueleto de OB1 (`Main`) con secciones comentadas y orden de ejecución estándar — para no empezar de cero en cada proyecto.

@@ -1,3 +1,16 @@
+---
+name: Pantalla_Alarmas
+type: hmi-pantalla
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+hmi_panel: [comfort, unified]
+depends_on: [tipos-de-datos/udt-alarm]
+used_by: []
+tags: [alarmas, pantalla, hmi]
+status: documented
+---
+
 # Pantalla de Alarmas
 
 > Pantalla HMI base de gestión de alarmas — listado activo, histórico, filtros por prioridad/fuente y reconocimiento individual o masivo.

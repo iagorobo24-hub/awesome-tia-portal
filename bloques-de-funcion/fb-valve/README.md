@@ -1,3 +1,15 @@
+---
+name: FB_Valve
+type: fb
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: [tipos-de-datos/udt-valve]
+used_by: []
+tags: [valvula, control, fb]
+status: documented
+---
+
 # FB_Valve
 
 > Bloque de control de válvula digital — gestiona apertura/cierre, modo manual/auto, vigilancia de feedback con timeout, detección de posición inválida.

@@ -1,3 +1,16 @@
+---
+name: Plantilla_Navegacion
+type: hmi-pantalla
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+hmi_panel: [comfort, unified]
+depends_on: []
+used_by: []
+tags: [navegacion, header, footer, hmi]
+status: documented
+---
+
 # Plantilla de Navegación HMI
 
 > Plantilla maestra (header + footer + área de contenido) reutilizable en todas las pantallas del proyecto — con barra de alarmas, login de usuario, navegación principal y indicadores de estado.

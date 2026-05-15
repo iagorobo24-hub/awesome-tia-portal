@@ -1,3 +1,15 @@
+---
+name: FB_Motor
+type: fb
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: [tipos-de-datos/udt-motor]
+used_by: []
+tags: [motor, control, fb]
+status: documented
+---
+
 # FB_Motor
 
 > Bloque de control digital de motor — gestiona marcha/paro, modo manual/auto, vigilancia de feedback con timeout, contador de horas y arranques.

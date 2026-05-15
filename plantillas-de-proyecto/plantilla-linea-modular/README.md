@@ -1,3 +1,15 @@
+---
+name: Plantilla_LineaModular
+type: plantilla
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1500]
+depends_on: []
+used_by: []
+tags: [plantilla, linea, modular]
+status: documented
+---
+
 # Plantilla — Línea modular (varios PLCs + HMI central)
 
 > Estructura base para una línea industrial con **varios PLCs S7-1500 comunicados** entre sí y un HMI Unified central. Pensada para escalar y compartir librerías entre PLCs.

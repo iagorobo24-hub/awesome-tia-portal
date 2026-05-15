@@ -313,7 +313,7 @@ Mini-checklist antes de abrir la PR:
 - [ ] Los tipos de datos están en MAYÚSCULAS y `STRING[N]` con corchetes.
 - [ ] Si `status: available`: el `.xml` está presente, en UTF-8 sin BOM y no contiene IPs / usernames / rutas internas.
 - [ ] Si `status: available`: he probado importar el `.xml` en TIA Portal V20 desde cero y compila.
-- [ ] He actualizado el [CATALOG.md](./CATALOG.md) con el estado del recurso.
+- [ ] He regenerado [`CATALOG.md`](./CATALOG.md) con `python3 scripts/generate_catalog.py` y commiteado el resultado.
 - [ ] CI pasa en verde.
 
 ---
@@ -322,7 +322,8 @@ Mini-checklist antes de abrir la PR:
 
 - [`CONTRIBUTING.md`](./CONTRIBUTING.md) — guía para contribuidores no técnicos en GitHub.
 - [`_plantillas/README-recurso.md`](./_plantillas/README-recurso.md) — plantilla de README por recurso.
-- [`CATALOG.md`](./CATALOG.md) — índice de todos los recursos del repo.
+- [`CATALOG.md`](./CATALOG.md) — índice de todos los recursos del repo (auto-generado).
+- [`scripts/generate_catalog.py`](./scripts/generate_catalog.py) — script que produce el `CATALOG.md` a partir del frontmatter de cada recurso.
 
 ---
 

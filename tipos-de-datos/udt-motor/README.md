@@ -1,3 +1,15 @@
+---
+name: UDT_Motor
+type: udt
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: [bloques-de-funcion/fb-motor, hmi/faceplate-motor]
+tags: [motor, control, udt]
+status: documented
+---
+
 # UDT_Motor
 
 > Estructura unificada para el control y diagnóstico de un motor digital (marcha/paro con confirmación física).
