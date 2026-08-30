@@ -49,9 +49,18 @@ En tu copia, crea una rama con un nombre corto, por ejemplo: `feat/mi-nuevo-bloq
 Entra en la carpeta correspondiente (`bloques-de-funcion/`, `tipos-de-datos/`, etc.):
 1. Crea una subcarpeta para tu recurso (usa nombres en minúsculas y con guiones).
 2. Sube el `.xml`.
-3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md).
+3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md). **Rellena el frontmatter YAML** del inicio (entre las dos líneas `---`): `name`, `type`, `tia_version`, `plc_family`, `depends_on`, `tags`, `status`. Es lo que alimenta el catálogo automático.
 
-### 5. Abre la Pull Request
+### 5. Regenera el catálogo
+El [`CATALOG.md`](./CATALOG.md) se genera automáticamente a partir del frontmatter de cada recurso. Después de añadir o modificar un recurso, ejecuta desde la raíz del repo:
+
+```bash
+python3 scripts/generate_catalog.py
+```
+
+Eso actualiza `CATALOG.md`. Commitea ese archivo en la misma PR junto con tu recurso. Si te lo saltas, CI fallará con instrucciones para arreglarlo.
+
+### 6. Abre la Pull Request
 Vuelve a la página principal de tu repo y verás un botón que dice **"Compare & pull request"**. Pulsa, escribe un pequeño resumen de lo que aportas y listo.
 
 ---

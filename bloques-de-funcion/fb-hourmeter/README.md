@@ -1,3 +1,15 @@
+---
+name: FB_Hourmeter
+type: fb
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: []
+tags: [horas, contador, persistencia, fb]
+status: documented
+---
+
 # FB_Hourmeter
 
 > Contador de horas de funcionamiento — acumula el tiempo en el que su entrada está activa, con persistencia entre cortes de tensión.

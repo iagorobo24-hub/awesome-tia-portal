@@ -1,3 +1,15 @@
+---
+name: UDT_AnalogInput
+type: udt
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: [bloques-de-funcion/fb-analog-input, hmi/faceplate-analog]
+tags: [analogica, escalado, alarmas, udt]
+status: documented
+---
+
 # UDT_AnalogInput
 
 > Estructura unificada para el procesamiento de una entrada analógica: valor raw, escalado a unidades de ingeniería, alarmas HH/H/L/LL y diagnóstico.

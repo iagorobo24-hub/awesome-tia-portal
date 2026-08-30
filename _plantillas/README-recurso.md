@@ -6,7 +6,9 @@
 #
 # IMPORTANTE: este bloque YAML (entre las dos líneas de tres guiones) debe
 # quedar SIEMPRE en la primera línea del archivo, para que GitHub y los
-# scripts del repo lo parseen correctamente.
+# scripts del repo lo parseen correctamente. Después de rellenarlo, ejecuta
+#   python3 scripts/generate_catalog.py
+# desde la raíz del repo para regenerar CATALOG.md.
 name: NombreDelBloqueEnTIA          # Ej: UDT_Motor, FB_Motor, FC_Escalado, Faceplate_Motor
 type: udt                            # udt | fb | fc | ob | hmi-faceplate | hmi-pantalla | plantilla
 tia_version: V20                     # Versión principal de desarrollo

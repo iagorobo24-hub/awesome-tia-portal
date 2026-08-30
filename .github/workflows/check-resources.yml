@@ -9,6 +9,9 @@ on:
       - 'bloques-de-organizacion/**'
       - 'hmi/**'
       - 'plantillas-de-proyecto/**'
+      - 'CATALOG.md'
+      - 'scripts/**'
+      - '.github/workflows/check-resources.yml'
 
 jobs:
   validate:
@@ -60,3 +63,7 @@ jobs:
               echo "✅ ¡Estructura correcta y todos los recursos tienen .xml!"
             fi
           fi
+
+      - name: Verificar que CATALOG.md está sincronizado
+        run: |
+          python3 scripts/generate_catalog.py --check

@@ -1,3 +1,15 @@
+---
+name: UDT_Drive
+type: udt
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: []
+tags: [variador, drive, udt]
+status: documented
+---
+
 # UDT_Drive
 
 > Estructura unificada para variadores de frecuencia (VFD) — comando, lectura, fallos comunes y configuración base.
