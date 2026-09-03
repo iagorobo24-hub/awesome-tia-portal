@@ -106,6 +106,7 @@
 | 📝 | [`plantillas`](./ia-tia-portal/plantillas/) | Plantillas y snippets (prompts, configuración MCP, snippets SCL, documentación) | V17+ | Markdown |
 | 📝 | [`troubleshooting`](./ia-tia-portal/troubleshooting/) | Solución de problemas y FAQ (errores comunes, permisos, conexión, compilación) | V17+ | Markdown |
 | 📝 | [`roadmap`](./ia-tia-portal/roadmap/) | Roadmap de aprendizaje (niveles 1-4: principiante, intermedio, avanzado, experto) | V17+ | Markdown |
+| 📝 | [`entorno-cloud`](./ia-tia-portal/entorno-cloud/) | Entorno cloud (Cursor Cloud Agents) para desarrollar el repo + arquitectura para conectar con TIA Portal (worker self-hosted / puente MCP-REST) | V17+ | Markdown |
 
 > 📄 **Ver análisis completo**: [`ia-tia-portal/README.md`](./ia-tia-portal/README.md) — Guía de todos los proyectos IA + TIA Portal
 
