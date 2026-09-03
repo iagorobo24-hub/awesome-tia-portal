@@ -67,9 +67,37 @@ bash scripts/validate-resources.sh
 
 ## 4. Capa B — Conectar el flujo con TIA Portal (tu Windows)
 
-Elige **una** de estas dos arquitecturas según lo que quieras.
+Elige **una** de estas arquitecturas según lo que quieras. Si tu objetivo principal es *usar TIA Portal desde la IA*, la **Opción 0 (Cursor en local)** es la más sencilla.
 
-### Opción 1 (recomendada): Worker self-hosted de Cursor sobre Windows
+### Opción 0 (la más simple): Cursor en local en tu propio Windows
+
+Instalas **Cursor Desktop en el mismo Windows** donde tienes TIA Portal. El agente de Cursor corre en tu máquina, así que se conecta **directamente** a TIA Portal vía un servidor MCP local. No hace falta nube, ni worker self-hosted, ni túnel, ni allowlist de egress.
+
+1. En tu Windows: TIA Portal V17–V21 **con licencia** y tu usuario en el grupo `Siemens TIA Openness`.
+2. Instala Cursor Desktop (versión Windows nativa) y clona este repo en local.
+3. Instala un servidor MCP de TIA Portal (open-source o comercial):
+   - [`tiaportal-mcp`](../tia-portal-mcp-server/) → ejecutable `TiaMcpServer.exe` (open-source, ⭐ 56)
+   - [`T-IA Connect`](../t-ia-connect/) → `TiaPortalApi.App.exe --mcp` (126+ herramientas, trial 14 días)
+4. Regístralo como MCP en Cursor. Crea `~/.cursor/mcp.json` (global) o `.cursor/mcp.json` (por proyecto):
+   ```json
+   {
+     "mcpServers": {
+       "tiaportal": {
+         "command": "C:\\ruta\\a\\TiaMcpServer.exe",
+         "args": [],
+         "env": {}
+       }
+     }
+   }
+   ```
+   (Con T-IA Connect: `"command": "C:\\Program Files\\T-IA Connect\\TiaPortalApi.App.exe"`, `"args": ["--mcp"]`.)
+5. Abre TIA Portal con tu proyecto, abre el chat del agente en Cursor y verifica en **Settings → MCP** que las herramientas del servidor aparecen activas. Pide, p. ej.: *"Lista los bloques FB del proyecto"* o *"Genera un FC de escalado lineal"*.
+
+> **Ventaja**: es la vía más directa y sin fricción para desarrollo asistido. **Contrapartida**: solo funciona mientras tú tienes Cursor abierto en ese Windows (no es automatización desatendida 24/7). Si quieres que trabaje "solo" aunque no estés delante, usa la Opción 1.
+
+> **Compatibilidad**: el propio catálogo lista Cursor como cliente MCP compatible (ver [`../t-ia-connect/README.md`](../t-ia-connect/README.md)).
+
+### Opción 1 (desatendida): Worker self-hosted de Cursor sobre Windows
 
 Ejecutas el proceso de worker de Cursor **en tu máquina Windows con TIA Portal instalado**. Así, un Cursor Cloud Agent puede ejecutarse *sobre esa máquina* y usar las herramientas MCP de TIA Portal localmente.
 
@@ -118,7 +146,8 @@ Cloud Agent (Linux)          Puente en Windows            TIA Portal
 - [x] Entorno cloud del repo configurado y guardado ([`.cursor/environment.json`](../../.cursor/environment.json)).
 - [ ] Máquina Windows con TIA Portal V17–V21 + licencia y usuario en `Siemens TIA Openness`.
 - [ ] Puente MCP/REST instalado en Windows ([`tiaportal-mcp`](../tia-portal-mcp-server/) o [`T-IA Connect`](../t-ia-connect/)).
-- [ ] Opción 1: worker self-hosted de Cursor encendido en ese Windows, **o** Opción 2: endpoint del puente expuesto de forma segura + dominio en el allowlist de egress.
+- [ ] **Opción 0 (local)**: Cursor Desktop en ese Windows + `mcp.json` apuntando al servidor MCP — la vía más simple para desarrollo asistido interactivo.
+- [ ] Opción 1: worker self-hosted de Cursor encendido en ese Windows (automatización desatendida), **o** Opción 2: endpoint del puente expuesto de forma segura + dominio en el allowlist de egress.
 - [ ] (Opción 2) AgentGateway como proxy Zero-Trust para políticas y auditoría.
 
 ---
