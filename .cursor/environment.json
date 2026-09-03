@@ -1,0 +1,4 @@
+{
+  "name": "awesome-tia-portal",
+  "install": "bash scripts/validate-resources.sh"
+}
