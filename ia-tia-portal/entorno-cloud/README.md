@@ -91,6 +91,8 @@ Instalas **Cursor Desktop en el mismo Windows** donde tienes TIA Portal. El agen
    }
    ```
    (Con T-IA Connect: `"command": "C:\\Program Files\\T-IA Connect\\TiaPortalApi.App.exe"`, `"args": ["--mcp"]`.)
+
+   > 💡 **Atajo**: el repo incluye una plantilla lista en [`.cursor/mcp.json.example`](../../.cursor/mcp.json.example). Cópiala a `.cursor/mcp.json`, ajusta la ruta al ejecutable y borra la entrada del servidor que no uses. `.cursor/mcp.json` está en `.gitignore` para no commitear rutas de tu máquina.
 5. Abre TIA Portal con tu proyecto, abre el chat del agente en Cursor y verifica en **Settings → MCP** que las herramientas del servidor aparecen activas. Pide, p. ej.: *"Lista los bloques FB del proyecto"* o *"Genera un FC de escalado lineal"*.
 
 > **Ventaja**: es la vía más directa y sin fricción para desarrollo asistido. **Contrapartida**: solo funciona mientras tú tienes Cursor abierto en ese Windows (no es automatización desatendida 24/7). Si quieres que trabaje "solo" aunque no estés delante, usa la Opción 1.

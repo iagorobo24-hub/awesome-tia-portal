@@ -26,3 +26,6 @@ desktop.ini
 
 # Carpetas de backup automático de TIA
 UserFiles/
+
+# Config MCP local de Cursor (rutas de tu máquina). Usa .cursor/mcp.json.example como plantilla.
+.cursor/mcp.json

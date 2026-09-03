@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "tiaportal-mcp": {
+      "command": "C:\\RUTA\\A\\TiaMcpServer.exe",
+      "args": [],
+      "env": {}
+    },
+    "t-ia-connect": {
+      "command": "C:\\Program Files\\T-IA Connect\\TiaPortalApi.App.exe",
+      "args": ["--mcp"],
+      "env": {}
+    }
+  }
+}
