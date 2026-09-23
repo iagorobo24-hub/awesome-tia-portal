@@ -6,4 +6,4 @@ No son programas completos. Son esqueletos de OB ya organizados para no empezar 
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Las subcarpetas actuales son **fichas de diseño**: aún no incluyen OB importables ni pruebas de compilación. Consulta el [catálogo](../CATALOG.md) o [contribuye](../CONTRIBUTING.md).

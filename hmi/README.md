@@ -6,4 +6,4 @@ Aquí no van proyectos HMI completos — van piezas: una pantalla de alarmas bas
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Las subcarpetas actuales son **fichas de diseño**: aún no incluyen pantallas o faceplates importables ni pruebas en Runtime. Consulta el [catálogo](../CATALOG.md) o [contribuye](../CONTRIBUTING.md).

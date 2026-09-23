@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Faceplate_Valve
 
 > Faceplate HMI vinculado a `UDT_Valve` — pop-up con comandos abrir/cerrar manual, indicadores de posición, lista de fallos y diagnóstico.

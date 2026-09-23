@@ -6,4 +6,4 @@ El objetivo es tener un punto de partida limpio para cada tipo de proyecto (pequ
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Las subcarpetas actuales son **fichas de diseño**: aún no incluyen proyectos plantilla descargables. Consulta el [catálogo](../CATALOG.md) o [contribuye](../CONTRIBUTING.md).

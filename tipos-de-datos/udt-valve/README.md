@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # UDT_Valve
 
 > Estructura unificada para válvulas digitales (todo/nada) con feedback de posición y vigilancia de timeout.

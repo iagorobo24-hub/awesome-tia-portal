@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Plantilla de Navegación HMI
 
 > Plantilla maestra (header + footer + área de contenido) reutilizable en todas las pantallas del proyecto — con barra de alarmas, login de usuario, navegación principal y indicadores de estado.

@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # OB1 — Plantilla
 
 > Esqueleto de OB1 (`Main`) con secciones comentadas y orden de ejecución estándar — para no empezar de cero en cada proyecto.

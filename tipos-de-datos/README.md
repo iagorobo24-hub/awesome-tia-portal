@@ -6,4 +6,4 @@ Ejemplos típicos: estructura de un motor, de un sensor analógico, de una válv
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Las subcarpetas actuales son **fichas de diseño**: aún no incluyen UDT importables ni pruebas de compilación. Consulta el [catálogo](../CATALOG.md) o [contribuye](../CONTRIBUTING.md).

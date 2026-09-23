@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # OBs de errores — OB82 / OB85 / OB86
 
 > Plantillas de los OBs de **diagnóstico, fallo de programa y fallo de rack** con gestión básica de eventos: registro, alarma y modo seguro.

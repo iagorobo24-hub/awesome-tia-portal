@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FB_Valve
 
 > Bloque de control de válvula digital — gestiona apertura/cierre, modo manual/auto, vigilancia de feedback con timeout, detección de posición inválida.

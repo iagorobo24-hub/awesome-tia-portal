@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FC_Escalado
 
 > Escalado lineal genérico de un INT raw (0-27648) a un REAL en unidades de ingeniería.

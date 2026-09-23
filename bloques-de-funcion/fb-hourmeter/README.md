@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FB_Hourmeter
 
 > Contador de horas de funcionamiento — acumula el tiempo en el que su entrada está activa, con persistencia entre cortes de tensión.

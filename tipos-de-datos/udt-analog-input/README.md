@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # UDT_AnalogInput
 
 > Estructura unificada para el procesamiento de una entrada analógica: valor raw, escalado a unidades de ingeniería, alarmas HH/H/L/LL y diagnóstico.

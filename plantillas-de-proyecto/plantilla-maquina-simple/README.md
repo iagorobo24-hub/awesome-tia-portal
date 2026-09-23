@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Plantilla — Máquina simple (1 PLC + 1 HMI)
 
 > Estructura base de proyecto TIA Portal para una máquina sencilla: **un PLC S7-1200 + un HMI Basic/Comfort pequeño**. Carpetas, convenciones de nombres y bloques vacíos listos para rellenar.

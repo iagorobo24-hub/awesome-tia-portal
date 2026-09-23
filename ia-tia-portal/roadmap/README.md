@@ -35,7 +35,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 
 **Recursos:**
 - [Introducción](../README.md)
-- [Proyectos analizados](../proyectos/)
+- [Herramientas analizadas](../README.md)
 
 #### 2. Configuración de MCP
 
@@ -331,7 +331,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 - ¿Cómo compartir conocimiento?
 
 **Recursos:**
-- [Proyectos analizados](../proyectos/)
+- [Herramientas analizadas](../README.md)
 
 ### Proyecto práctico
 

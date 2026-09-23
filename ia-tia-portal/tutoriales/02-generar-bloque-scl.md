@@ -326,8 +326,8 @@ Ahora que ya has generado un FB complejo, puedes:
 
 ## 📖 Recursos adicionales
 
-- [Guía de prompts para bloques complejos](../prompts/prompts-generacion-bloques.md)
-- [Best practices para FBs](../best-practices/prompts-efectivos.md)
+- [Guía de prompts](../prompts/README.md)
+- [Buenas prácticas](../best-practices/README.md)
 - [Casos de uso de control de motores](../casos-de-uso/)
 
 ---

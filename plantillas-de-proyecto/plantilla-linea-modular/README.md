@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Plantilla — Línea modular (varios PLCs + HMI central)
 
 > Estructura base para una línea industrial con **varios PLCs S7-1500 comunicados** entre sí y un HMI Unified central. Pensada para escalar y compartir librerías entre PLCs.
