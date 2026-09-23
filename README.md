@@ -14,7 +14,7 @@ Contenido en español. *A curated, evidence-led collection for TIA Portal engine
 
 | Si buscas… | Ve a… | Qué encontrarás hoy |
 |---|---|---|
-| Un bloque con código fuente | [FB_AlarmLatch](bloques-de-funcion/fb-alarm-latch/) | Fuente SCL y ejemplo de uso; compilación V20 registrada, comportamiento en PLCSIM pendiente. |
+| Un bloque con código fuente | [FB_AlarmLatch](bloques-de-funcion/fb-alarm-latch/) | Fuente SCL compilada en V20 (0 errores, 0 advertencias), lectura posterior independiente y plan de prueba PLCSIM; comportamiento pendiente. |
 | Conectar un agente de IA a TIA | [Guía de conexión profesional V20](ia-tia-portal/guias/conexion-profesional-v20.md) | Openness, MCP, interfaz gráfica y una secuencia segura de comprobación. |
 | Explorar herramientas de IA | [IA + TIA Portal](ia-tia-portal/) | Puertas de entrada a herramientas y tutoriales; comprobar versión y alcance de cada una. |
 | Buscar una idea de bloque | [Catálogo](CATALOG.md) | Fichas documentadas, recursos con fuente y trabajo previsto, separados por estado. |

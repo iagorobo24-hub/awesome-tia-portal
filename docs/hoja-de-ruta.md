@@ -6,7 +6,7 @@ El repositorio crece por recursos **comprobables**, no por cantidad de fichas.
 
 - Portada navegable, ilustración conceptual, catálogo con estados y criterios de contribución.
 - Guía de conexión IA ↔ TIA Portal V20 con límites de Openness, MCP, Computer Use y simulación.
-- Primer FB con fuente SCL: `FB_AlarmLatch`, compilado en el workspace de origen; prueba funcional pendiente.
+- Primer FB con fuente SCL: `FB_AlarmLatch`, compilado también desde esta copia en un proyecto V20 desechable (0 errores, 0 advertencias) y leído de nuevo; prueba funcional pendiente.
 
 ## Próximos hitos
 

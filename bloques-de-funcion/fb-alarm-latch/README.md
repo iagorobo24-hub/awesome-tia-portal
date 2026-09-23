@@ -7,8 +7,9 @@ Enclava una alarma de proceso, conserva una alarma que ya desapareció sin recon
 ## Estado comprobado
 
 - **Fuente disponible:** el archivo SCL se incluye aquí. Procede de la librería propia MIT de [TIA-Claude](https://github.com/iagorobo24-hub/T-IA-Portal-RocaRoibas/tree/master/60-library/blocks).
-- **Compilación:** el bloque de origen fue importado y compilado en TIA Portal V20 con **0 errores y 0 advertencias** el 14/09/2026, según el [registro de la librería](https://github.com/iagorobo24-hub/T-IA-Portal-RocaRoibas/blob/master/60-library/blocks/README.md). Esta copia conserva la lógica; solo se ha retirado una referencia a una ruta interna del comentario.
-- **Pendiente:** no hay prueba de comportamiento en PLCSIM, exportación XML de esta copia, ni matriz de CPU/HSP. No se declara listo para producción.
+- **Compilación de esta copia:** importada en un proyecto desechable con CPU S7-1500 `6ES7513-1AM03-0AB0` y compilada en TIA Portal V20 el 23/09/2026 con **0 errores y 0 advertencias**. Tras guardar, un proceso MCP independiente volvió a abrir el proyecto y leyó `FB_AlarmLatch [FB1, SCL]`. [Evidencia estructurada](evidencia-tia-v20-2026-09-23.json).
+- **PLCSIM:** se encendió y apagó una CPU 1513 virtual temporal, pero **no se descargó este programa**. La [prueba de transiciones](prueba-plcsim.md) está preparada y pendiente de ejecución.
+- **Pendiente:** comportamiento en PLCSIM, exportación XML de esta copia, capturas del bloque y matriz de CPU/HSP. No se declara listo para producción.
 
 ## Interfaz
 
@@ -33,7 +34,7 @@ Enclava una alarma de proceso, conserva una alarma que ya desapareció sin recon
 | Desaparecida | No | Sigue visible como `GoneUnacked`; sirena solicitada. |
 | Desaparecida | Sí | Se borra el enclavamiento. |
 
-La tabla describe la intención del código. **Todavía necesita una prueba de transiciones en PLCSIM.**
+La tabla describe la intención del código. **Todavía necesita una prueba de transiciones en PLCSIM.** El reconocimiento se evalúa como nivel: si `CmdAck` permanece a `TRUE` al aparecer una alarma nueva, esta puede quedar reconocida en ese mismo ciclo.
 
 ## Uso en un proyecto de prueba
 
