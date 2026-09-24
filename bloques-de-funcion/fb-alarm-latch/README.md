@@ -9,7 +9,12 @@ Enclava una alarma de proceso, conserva una alarma que ya desapareció sin recon
 - **Fuente disponible:** el archivo SCL se incluye aquí. Procede de la librería propia MIT de [TIA-Claude](https://github.com/iagorobo24-hub/T-IA-Portal-RocaRoibas/tree/master/60-library/blocks).
 - **Compilación de esta copia:** importada en un proyecto desechable con CPU S7-1500 `6ES7513-1AM03-0AB0` y compilada en TIA Portal V20 el 23/09/2026 con **0 errores y 0 advertencias**. Tras guardar, un proceso MCP independiente volvió a abrir el proyecto y leyó `FB_AlarmLatch [FB1, SCL]`. [Evidencia estructurada](evidencia-tia-v20-2026-09-23.json).
 - **PLCSIM:** se encendió y apagó una CPU 1513 virtual temporal, pero **no se descargó este programa**. La [prueba de transiciones](prueba-plcsim.md) está preparada y pendiente de ejecución.
-- **Pendiente:** comportamiento en PLCSIM, exportación XML de esta copia, capturas del bloque y matriz de CPU/HSP. No se declara listo para producción.
+- **Inspección del 24/09/2026:** TIA V20 abrió el fixture; `Main [OB1, LAD]` tiene un network vacío, sin llamada al FB. La compilación siguió en **0 errores y 0 advertencias**; la ruta PG/PC virtual de Siemens apareció en la comprobación de descarga, junto a una interfaz física. Eso **no acredita una descarga ni una ejecución**. [Registro del preflight](evidencia-preflight-2026-09-24.json).
+- **Pendiente:** arnés cíclico y comportamiento en PLCSIM, exportación XML de esta copia y matriz de CPU/HSP. No se declara listo para producción.
+
+![Editor SCL de FB_AlarmLatch en TIA Portal V20, proyecto de demostración](assets/tia-v20-fb-alarm-latch-2026-09-24.jpg)
+
+*Captura directa de TIA Portal V20 sobre el fixture desechable, 24/09/2026. Muestra el código y la interfaz, no una prueba online.*
 
 ## Interfaz
 
