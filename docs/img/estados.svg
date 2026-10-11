@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" role="img" aria-labelledby="t d">
+  <title id="t">Ciclo de vida de un recurso</title>
+  <desc id="d">Un recurso pasa de planificado a documentado (solo README) y a disponible (README y XML exportado e importado en TIA Portal V20). Hoy los 22 recursos industriales están en estado documentado y ninguno disponible.</desc>
+  <defs>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M1 1 L10 6 L1 11 Z" fill="#8f98c8"/>
+    </marker>
+    <linearGradient id="hd" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#19d3c5"/><stop offset="1" stop-color="#ffb21e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="420" rx="20" fill="#0d1020"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="48" y="58" font-size="26" font-weight="800" fill="#f4f6ff">Ciclo de vida de un recurso</text>
+    <rect x="48" y="68" width="64" height="4" rx="2" fill="url(#hd)"/>
+
+    <rect x="40" y="100" width="352" height="250" rx="16" fill="#181d38" stroke="#2c3363"/>
+    <circle cx="70" cy="132" r="14" fill="#8f98c8"/><text x="70" y="138" text-anchor="middle" font-size="16" font-weight="800" fill="#0d1020">1</text>
+    <text x="96" y="139" font-size="21" font-weight="700" fill="#f4f6ff">Planificado</text>
+    <g font-size="15" fill="#b9c1e6">
+      <text x="64" y="184">Se sabe que hace falta,</text><text x="64" y="206">pero aún no hay nada escrito.</text>
+      <text x="64" y="244">Se anota en CATALOG.md.</text>
+    </g>
+    <text x="64" y="320" font-size="34" font-weight="800" fill="#8f98c8">0</text>
+    <text x="104" y="320" font-size="15" fill="#8f98c8">recursos hoy</text>
+
+    <rect x="464" y="100" width="352" height="250" rx="16" fill="#181d38" stroke="#ffb21e" stroke-width="2"/>
+    <circle cx="494" cy="132" r="14" fill="#ffb21e"/><text x="494" y="138" text-anchor="middle" font-size="16" font-weight="800" fill="#0d1020">2</text>
+    <text x="520" y="139" font-size="21" font-weight="700" fill="#f4f6ff">Documentado</text>
+    <g font-size="15" fill="#b9c1e6">
+      <text x="488" y="184">README con interfaz, uso y</text><text x="488" y="206">limitaciones. Falta exportar</text>
+      <text x="488" y="228">el .xml desde TIA Portal.</text>
+      <text x="488" y="266" fill="#8f98c8" font-size="13">CI avisa, pero no falla.</text>
+    </g>
+    <text x="488" y="320" font-size="34" font-weight="800" fill="#ffb21e">22</text>
+    <text x="540" y="320" font-size="15" fill="#ffb21e">recursos hoy</text>
+
+    <rect x="888" y="100" width="352" height="250" rx="16" fill="#181d38" stroke="#19d3c5" stroke-width="2"/>
+    <circle cx="918" cy="132" r="14" fill="#19d3c5"/><text x="918" y="138" text-anchor="middle" font-size="16" font-weight="800" fill="#0d1020">3</text>
+    <text x="944" y="139" font-size="21" font-weight="700" fill="#f4f6ff">Disponible</text>
+    <g font-size="15" fill="#b9c1e6">
+      <text x="912" y="184">README + .xml exportado e</text><text x="912" y="206">importado en TIA Portal V20.</text>
+      <text x="912" y="244">Versiones probadas anotadas</text><text x="912" y="266">en el catálogo.</text>
+    </g>
+    <text x="912" y="320" font-size="34" font-weight="800" fill="#19d3c5">0</text>
+    <text x="952" y="320" font-size="15" fill="#19d3c5">recursos hoy</text>
+
+    <line x1="394" y1="225" x2="460" y2="225" stroke="#8f98c8" stroke-width="2" marker-end="url(#ar)"/>
+    <line x1="818" y1="225" x2="884" y2="225" stroke="#8f98c8" stroke-width="2" marker-end="url(#ar)"/>
+
+    <text x="48" y="392" font-size="14" fill="#8f98c8">Estados de CATALOG.md. Recuento sobre los 22 recursos industriales (UDT, FB/FC, OB, HMI y plantillas).</text>
+  </g>
+</svg>

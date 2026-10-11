@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-labelledby="t d">
+  <title id="t">awesome-tia-portal</title>
+  <desc id="d">Biblioteca awesome de bloques, UDTs, HMI y plantillas reutilizables para Siemens TIA Portal V20: 22 recursos documentados en cinco categorías y 16 fichas de IA con TIA Portal.</desc>
+  <defs>
+    <linearGradient id="hd" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#19d3c5"/><stop offset="1" stop-color="#ffb21e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="360" rx="20" fill="#0d1020"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="56" y="92" font-size="20" font-weight="700" fill="#19d3c5" letter-spacing="3">SIEMENS TIA PORTAL V20</text>
+    <text x="56" y="168" font-size="62" font-weight="800" fill="#f4f6ff">awesome-tia-portal</text>
+    <rect x="58" y="188" width="120" height="5" rx="2.5" fill="url(#hd)"/>
+    <text x="56" y="236" font-size="23" fill="#b9c1e6">Bloques, UDTs, HMI y plantillas reutilizables</text>
+    <text x="56" y="266" font-size="23" fill="#b9c1e6">para programar PLC con una interfaz común.</text>
+    <text x="56" y="316" font-size="16" fill="#ffb21e">Biblioteca documental · los .xml exportados están pendientes</text>
+
+    <g>
+      <rect x="720" y="56" width="164" height="104" rx="14" fill="#181d38" stroke="#2c3363"/>
+      <text x="740" y="102" font-size="40" font-weight="800" fill="#19d3c5">5</text>
+      <text x="740" y="132" font-size="17" font-weight="700" fill="#f4f6ff">UDT</text>
+      <text x="740" y="150" font-size="13" fill="#8f98c8">tipos de datos</text>
+
+      <rect x="898" y="56" width="164" height="104" rx="14" fill="#181d38" stroke="#2c3363"/>
+      <text x="918" y="102" font-size="40" font-weight="800" fill="#19d3c5">7</text>
+      <text x="918" y="132" font-size="17" font-weight="700" fill="#f4f6ff">FB / FC</text>
+      <text x="918" y="150" font-size="13" fill="#8f98c8">bloques de función</text>
+
+      <rect x="1076" y="56" width="148" height="104" rx="14" fill="#181d38" stroke="#2c3363"/>
+      <text x="1096" y="102" font-size="40" font-weight="800" fill="#19d3c5">3</text>
+      <text x="1096" y="132" font-size="17" font-weight="700" fill="#f4f6ff">OB</text>
+      <text x="1096" y="150" font-size="13" fill="#8f98c8">organización</text>
+
+      <rect x="720" y="174" width="164" height="104" rx="14" fill="#181d38" stroke="#2c3363"/>
+      <text x="740" y="220" font-size="40" font-weight="800" fill="#19d3c5">5</text>
+      <text x="740" y="250" font-size="17" font-weight="700" fill="#f4f6ff">HMI</text>
+      <text x="740" y="268" font-size="13" fill="#8f98c8">faceplates y pantallas</text>
+
+      <rect x="898" y="174" width="164" height="104" rx="14" fill="#181d38" stroke="#2c3363"/>
+      <text x="918" y="220" font-size="40" font-weight="800" fill="#19d3c5">2</text>
+      <text x="918" y="250" font-size="17" font-weight="700" fill="#f4f6ff">Plantillas</text>
+      <text x="918" y="268" font-size="13" fill="#8f98c8">de proyecto</text>
+
+      <rect x="1076" y="174" width="148" height="104" rx="14" fill="#181d38" stroke="#ffb21e"/>
+      <text x="1096" y="220" font-size="40" font-weight="800" fill="#ffb21e">16</text>
+      <text x="1096" y="250" font-size="17" font-weight="700" fill="#f4f6ff">IA + TIA</text>
+      <text x="1096" y="268" font-size="13" fill="#8f98c8">fichas y guías</text>
+    </g>
+    <text x="720" y="316" font-size="14" fill="#8f98c8">22 recursos industriales documentados · 0 con .xml en el repositorio</text>
+  </g>
+</svg>

@@ -1,96 +1,216 @@
-# 📦 TIA Portal Library — El "Awesome" de la Automatización con Siemens
+<div align="center">
 
-[![License: MIT](https://img.shields.io/github/license/iagorobo24-hub/awesome-tia-portal?color=blue)](./LICENSE)
-[![TIA Portal](https://img.shields.io/badge/TIA%20Portal-V20-009999?logo=siemens&logoColor=white)](#-versión-de-tia-portal)
-[![PLC](https://img.shields.io/badge/PLC-S7--1200%20%2F%20S7--1500-orange)](#-versión-de-tia-portal)
-[![Last commit](https://img.shields.io/github/last-commit/iagorobo24-hub/awesome-tia-portal)](https://github.com/iagorobo24-hub/awesome-tia-portal/commits/main)
-[![Issues](https://img.shields.io/github/issues/iagorobo24-hub/awesome-tia-portal)](https://github.com/iagorobo24-hub/awesome-tia-portal/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
-[![Awesome](https://awesome.re/badge.svg)](https://github.com/topics/awesome)
+<img src="docs/img/banner.svg" alt="awesome-tia-portal: bloques, UDTs, HMI y plantillas reutilizables para Siemens TIA Portal V20" width="100%">
 
-Colección organizada de bloques, tipos de datos, plantillas y recursos reutilizables para **Siemens TIA Portal V20**, mantenida por la comunidad.
+<br>
 
-> **Sin programas completos. Sin proyectos enteros.** Solo piezas útiles, bien documentadas y listas para usar (Plug & Play).
+[![Licencia: MIT](https://img.shields.io/github/license/iagorobo24-hub/awesome-tia-portal?color=blue)](./LICENSE)
+![TIA Portal](https://img.shields.io/badge/TIA%20Portal-V20-009999)
+![PLC](https://img.shields.io/badge/PLC-S7--1200%20%2F%20S7--1500-orange)
+![Estado](https://img.shields.io/badge/estado-documentado%2C%20XML%20pendiente-F5A623)
+[![PRs](https://img.shields.io/badge/PRs-bienvenidas-brightgreen)](./CONTRIBUTING.md)
 
----
+**Biblioteca "awesome" de piezas reutilizables para Siemens TIA Portal V20:**
+UDTs, bloques de función, OB, faceplates HMI y plantillas de proyecto que comparten una misma interfaz de datos.
+Solo piezas sueltas, no proyectos completos. Pensada para programadores de PLC que quieren estandarizar su código.
 
-## 📑 Tabla de contenido
+[Cómo encaja todo](#cómo-encajan-las-piezas) ·
+[Estado](#estado-del-proyecto) ·
+[Índice](#índice-de-recursos) ·
+[Cómo usar un recurso](#cómo-usar-un-recurso) ·
+[Contribuir](#contribuir) ·
+[Límites](#límites-conocidos)
 
-- [¿Por qué este repositorio?](#-por-qué-este-repositorio)
-- [Recursos destacados](#-recursos-destacados-empieza-por-aquí)
-- [Contenido del repositorio](#-contenido-del-repositorio)
-- [Cómo usar un recurso](#-cómo-usar-un-recurso)
-- [¿Quieres aportar?](#-quieres-aportar-es-más-fácil-de-lo-que-parece)
-- [Versión de TIA Portal](#-versión-de-tia-portal)
-- [Licencia](#-licencia)
-
----
-
-## 🚀 ¿Por qué este repositorio?
-
-En el mundo de la automatización, a menudo reinventamos la rueda. Cada programador tiene su propia librería de "bloques útiles" guardada en su disco duro.
-
-**TIA Portal Library** nace para:
-- **Centralizar el conocimiento**: Un lugar común para encontrar ese bloque de escalado o ese UDT de motor que todos necesitamos.
-- **Estandarizar**: Facilitar que otros técnicos entiendan tu código usando piezas comunes y bien documentadas.
-- **Aprender**: Ver cómo otros resuelven problemas comunes en SCL o Ladder.
+</div>
 
 ---
 
-## ⭐ Recursos destacados — empieza por aquí
+## Qué ofrece
 
-Si vas a usar el repo por primera vez, estos son los recursos fundacionales sobre los que se construye todo lo demás. Empieza por los UDTs, sigue por el FC de escalado, y luego añade los FBs y faceplates que necesites:
+| | |
+|---|---|
+| 🏷️ **UDTs** | Estructuras estándar (motor, válvula, entrada analógica, variador, alarma) organizadas, en general, en comando, estado, fallos, diagnóstico y configuración. |
+| 🧩 **FB / FC** | Bloques que consumen esos UDTs: control de motor y válvula, procesado analógico, escalado, contador de horas, de flancos y generador de pulsos. |
+| 🏗️ **OB** | Esqueletos de OB1, arranque (OB100) y gestión básica de errores de hardware (OB82/85/86). |
+| 🖥️ **HMI** | Faceplates enlazados a los UDTs, pantalla de alarmas y plantilla de navegación. |
+| 📋 **Plantillas de proyecto** | Estructura mínima de máquina simple y de línea modular. |
+| 🤖 **IA + TIA Portal** | Guías, comparativas y fichas de herramientas de terceros que conectan modelos de IA con TIA Portal mediante Openness/MCP. No son bloques importables. |
 
-| | Recurso | Qué hace |
-|:---:|---|---|
-| 🏷️ | [`UDT_Motor`](./tipos-de-datos/udt-motor/) | Estructura estándar para control y diagnóstico de motor digital |
-| 🏷️ | [`UDT_AnalogInput`](./tipos-de-datos/udt-analog-input/) | Entrada analógica con escalado, alarmas HH/H/L/LL y simulación |
-| 🧩 | [`FC_Escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal genérico INT (0-27648) → REAL en unidades de ingeniería |
-| 🧩 | [`FB_Motor`](./bloques-de-funcion/fb-motor/) | Control digital de motor — consume `UDT_Motor`, gestiona manual/auto, timeouts y horas |
-| 🖥️ | [`Faceplate_Motor`](./hmi/faceplate-motor/) | Faceplate HMI vinculado a `UDT_Motor` con un único *binding* |
-| 🏗️ | [`OB1_Plantilla`](./bloques-de-organizacion/ob1-plantilla/) | Esqueleto de OB1 con secciones estándar (lectura → seguridad → lógica → diagnóstico → escritura) |
+Cada recurso vive en su carpeta con un `README.md` que explica el problema que resuelve, su interfaz, un ejemplo de uso y sus limitaciones.
 
-> 👉 **Para ver todos los recursos disponibles, planificados y su estado, consulta el [📚 catálogo completo](./CATALOG.md).**
+## Cómo encajan las piezas
+
+La idea de la librería es que el **UDT sea el contrato**: el bloque de función lo recibe como parámetro `InOut` y el HMI se enlaza a él con un único *binding*, en lugar de a decenas de variables sueltas.
+
+<img src="docs/img/arquitectura.svg" alt="Cadenas UDT, FB y faceplate para motor, válvula y entrada analógica, y UDT de alarma con pantalla de alarmas" width="100%">
+
+Las dependencias salen del campo "Depende de" de cada README. `Pantalla de Alarmas` y `UDT_Alarm` necesitan un gestor de alarmas (`FB_AlarmManager`) que **no forma parte** de la librería.
+
+## Estado del proyecto
+
+Un resumen honesto de lo que hay.
+
+| Pieza | Estado | Nota |
+|---|:---:|---|
+| 5 UDTs, 7 FB/FC, 3 OB, 5 HMI y 2 plantillas | 🟡 | Documentados (README con interfaz, uso y limitaciones). **No hay ningún `.xml` en el repositorio**: nada se ha publicado todavía exportado desde TIA Portal. |
+| Importación y compilación en TIA Portal V20 | 🚧 | No demostradas. Los README indican compatibilidad con V18/V19 como anotación de la autoría, sin verificar. |
+| Validación de estructura (`scripts/validate-resources.sh`) | ✅ | Comprueba que cada recurso tiene `README.md` y avisa si falta el `.xml`. No analiza SCL, XML ni compatibilidad. |
+| Ejemplos SCL dentro de los README | 🟡 | Son ilustrativos: no se han compilado ni probado en un PLC ni en PLCSIM. |
+| Fichas y guías de IA + TIA Portal | 🟡 | Texto de consulta. Cifras, estrellas, precios y compatibilidades de herramientas de terceros no están verificadas y pueden haber cambiado. |
+
+✅ comprobado · 🟡 documentado, pendiente de validar · 🚧 por hacer.
+
+<img src="docs/img/estados.svg" alt="Ciclo de vida de un recurso: planificado, documentado y disponible; hoy 22 documentados y 0 disponibles" width="100%">
+
+> El estado de cada recurso se mantiene en [`CATALOG.md`](./CATALOG.md): ✅ disponible (README + `.xml`), 📝 solo documentado, ⏳ planificado.
+
+## Índice de recursos
+
+Todos están hoy en estado 📝 (documentados). La tabla completa, con versión y familia de PLC, está en el [catálogo](./CATALOG.md).
+
+<details open>
+<summary><b>🏷️ Tipos de datos (UDT)</b></summary>
+
+Carpeta: [`tipos-de-datos/`](./tipos-de-datos/)
+
+| Recurso | Qué es |
+|---|---|
+| [`UDT_Motor`](./tipos-de-datos/udt-motor/) | Control y diagnóstico de motor digital (comando, estado, fallos, diagnóstico, configuración). |
+| [`UDT_AnalogInput`](./tipos-de-datos/udt-analog-input/) | Entrada analógica con raw, escalado, alarmas HH/H/L/LL, calidad y unidades. |
+| [`UDT_Valve`](./tipos-de-datos/udt-valve/) | Válvula digital (abrir/cerrar) con feedback y timeout. |
+| [`UDT_Drive`](./tipos-de-datos/udt-drive/) | Variador de frecuencia: consigna, realimentación y fallos típicos. |
+| [`UDT_Alarm`](./tipos-de-datos/udt-alarm/) | Alarma con activación, reconocimiento, marca de tiempo y prioridad. |
+
+</details>
+
+<details open>
+<summary><b>🧩 Bloques de función (FB / FC)</b></summary>
+
+Carpeta: [`bloques-de-funcion/`](./bloques-de-funcion/)
+
+| Recurso | Qué es |
+|---|---|
+| [`FC_Escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal INT (0-27648) a REAL en unidades de ingeniería. |
+| [`FB_Motor`](./bloques-de-funcion/fb-motor/) | Control de motor: manual/auto, vigilancia de feedback con timeout, horas y arranques. Usa `UDT_Motor`. |
+| [`FB_AnalogInput`](./bloques-de-funcion/fb-analog-input/) | Procesado de entrada analógica: escalado, alarmas, filtrado y simulación. Usa `UDT_AnalogInput`. |
+| [`FB_Valve`](./bloques-de-funcion/fb-valve/) | Control de válvula con feedback y timeout. Usa `UDT_Valve`. |
+| [`FB_Hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas con persistencia. |
+| [`FB_EdgeCounter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos con reset. |
+| [`FB_PulseGen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable (Hz o periodo). |
+
+</details>
+
+<details>
+<summary><b>🏗️ Bloques de organización (OB)</b></summary>
+
+Carpeta: [`bloques-de-organizacion/`](./bloques-de-organizacion/)
+
+| Recurso | Qué es |
+|---|---|
+| [`OB1 — Plantilla`](./bloques-de-organizacion/ob1-plantilla/) | OB1 con secciones: lectura, seguridad, lógica, diagnóstico y escritura. |
+| [`OB100 — Startup`](./bloques-de-organizacion/ob100-startup/) | Arranque con inicialización típica. |
+| [`OB82 / OB85 / OB86`](./bloques-de-organizacion/ob82-85-86-errores/) | Gestión básica de errores de hardware (esqueletos). |
+
+</details>
+
+<details>
+<summary><b>🖥️ HMI</b></summary>
+
+Carpeta: [`hmi/`](./hmi/)
+
+| Recurso | Qué es |
+|---|---|
+| [`Faceplate_Motor`](./hmi/faceplate-motor/) | Faceplate enlazado a `UDT_Motor`. |
+| [`Faceplate_Valve`](./hmi/faceplate-valve/) | Faceplate enlazado a `UDT_Valve`. |
+| [`Faceplate_Analog`](./hmi/faceplate-analog/) | Faceplate enlazado a `UDT_AnalogInput`, con alarmas. |
+| [`Pantalla de Alarmas`](./hmi/pantalla-alarmas/) | Pantalla base de alarmas con filtros y reconocimiento. |
+| [`Plantilla de Navegación`](./hmi/plantilla-navegacion/) | Cabecera, pie y área de contenido reutilizables. |
+
+</details>
+
+<details>
+<summary><b>📋 Plantillas de proyecto</b></summary>
+
+Carpeta: [`plantillas-de-proyecto/`](./plantillas-de-proyecto/)
+
+| Recurso | Qué es |
+|---|---|
+| [`plantilla-maquina-simple`](./plantillas-de-proyecto/plantilla-maquina-simple/) | 1 PLC + 1 HMI Basic, estructura mínima. |
+| [`plantilla-linea-modular`](./plantillas-de-proyecto/plantilla-linea-modular/) | Varios PLC comunicados con librerías compartidas. |
+
+</details>
+
+<details>
+<summary><b>🤖 IA + TIA Portal</b></summary>
+
+Carpeta: [`ia-tia-portal/`](./ia-tia-portal/). Material de consulta, no bloques importables. Empieza por la [guía general](./ia-tia-portal/README.md).
+
+| Tema | Enlaces |
+|---|---|
+| Herramientas de terceros (fichas) | [`tia-portal-mcp-server`](./ia-tia-portal/tia-portal-mcp-server/) · [`t-ia-connect`](./ia-tia-portal/t-ia-connect/) · [`totally-integrated-claude`](./ia-tia-portal/totally-integrated-claude/) · [`tia-portal-openness-mcpserver`](./ia-tia-portal/tia-portal-openness-mcpserver/) · [`tia-openness-agent-platform`](./ia-tia-portal/tia-openness-agent-platform/) |
+| Aprender | [`tutoriales`](./ia-tia-portal/tutoriales/) · [`prompts`](./ia-tia-portal/prompts/) · [`roadmap`](./ia-tia-portal/roadmap/) · [`best-practices`](./ia-tia-portal/best-practices/) |
+| Referencia | [`comparativas`](./ia-tia-portal/comparativas/) · [`integraciones`](./ia-tia-portal/integraciones/) · [`plantillas`](./ia-tia-portal/plantillas/) · [`troubleshooting`](./ia-tia-portal/troubleshooting/) · [`galeria`](./ia-tia-portal/galeria/) · [`casos-de-uso`](./ia-tia-portal/casos-de-uso/) · [`entorno-cloud`](./ia-tia-portal/entorno-cloud/) |
+
+Las herramientas de terceros pertenecen a sus autores; consulta su repositorio para el estado, la licencia y la compatibilidad actuales. Los ejemplos y las cifras de estos documentos no están verificados de forma independiente.
+
+</details>
+
+## Cómo usar un recurso
+
+1. **Elige** el recurso en el [índice](#índice-de-recursos) y lee su `README.md`: interfaz, ejemplo y limitaciones.
+2. **Respeta las dependencias**: por ejemplo, `FB_Motor` necesita `UDT_Motor` importado antes.
+3. **Importa el `.xml`** cuando exista: en TIA Portal, clic derecho en *Bloques de programa* (o *Tipos de datos PLC*) y *Importar*.
+4. **Prueba en simulación** (PLCSIM o un equipo de pruebas) antes de acercarlo a una instalación real.
+
+> Hoy el paso 3 aún no es posible para ningún recurso, porque los `.xml` no están publicados. Mientras tanto, los README sirven como especificación de la interfaz y del comportamiento esperado.
+
+## Contribuir
+
+Una aportación es una carpeta con su `README.md` y, cuando esté exportado, el `.xml`.
+
+- Pasos detallados, pensados para quien viene del mundo PLC: [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+- Convenciones de nombres, prefijos, README y compatibilidad: [`STYLE.md`](./STYLE.md).
+- Plantilla del README de cada recurso: [`_plantillas/README-recurso.md`](./_plantillas/README-recurso.md).
+- Al subir un recurso, actualiza su fila en [`CATALOG.md`](./CATALOG.md) con el estado y las versiones realmente probadas.
+- Si prefieres no usar Git, abre un [issue](../../issues/new/choose) con tu propuesta.
+
+Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`udt-motor/`, `fb-analog-input/`); dentro de TIA Portal, nombres con prefijo (`UDT_`, `FB_`, `FC_`, `Faceplate_`, `Pantalla_`).
+
+## Límites conocidos
+
+- **Sin artefactos importables todavía**: cero `.xml` en el repositorio. No hay evidencia de que los bloques se importen ni compilen en V20.
+- Los **ejemplos SCL** de los README son ilustrativos y no se han ejecutado; revisa casos límite (parada, fallo, reset, rangos nulos) antes de copiarlos.
+- Algunas piezas tienen **dependencias o requisitos sin resolver**: `UDT_Alarm` y `Pantalla de Alarmas` necesitan un gestor de alarmas que no se incluye; `plantilla-maquina-simple` indica un panel Basic mientras otros faceplates declaran limitaciones en Basic.
+- Las **plantillas de proyecto** hablan de un archivo de proyecto comprimido, pero el repositorio excluye archivos de proyecto completos (`.gitignore`).
+- La validación automática (`scripts/validate-resources.sh`, ejecutada por el workflow de GitHub Actions en los pull requests) solo comprueba la existencia de README y XML.
+- La compatibilidad con otras versiones (V18/V19) y con S7-1200 frente a S7-1500 está anotada por la autoría y **no verificada**.
+- Esto es material de apoyo, no un sistema certificado: validar cualquier bloque antes de usarlo en una instalación es responsabilidad de quien lo usa.
+
+## Estructura del proyecto
+
+```
+tipos-de-datos/            UDTs (una carpeta por recurso, con README.md)
+bloques-de-funcion/        FB y FC
+bloques-de-organizacion/   OB
+hmi/                       faceplates, pantallas y plantilla de navegación
+plantillas-de-proyecto/    estructuras base de proyecto
+ia-tia-portal/             guías y fichas de IA + TIA Portal
+_plantillas/               plantilla de README para nuevos recursos
+scripts/                   validate-resources.sh
+.github/                   workflow de validación y plantillas de issues/PR
+docs/img/                  gráficos de este README
+CATALOG.md                 índice y estado de cada recurso
+CONTRIBUTING.md  STYLE.md  guía de contribución y de estilo
+```
+
+## Licencia
+
+[MIT](./LICENSE). Las herramientas de terceros descritas en `ia-tia-portal/` tienen sus propias licencias.
 
 ---
 
-## 📂 Contenido del repositorio
+<div align="center">
 
-| Carpeta | Recurso | Qué contiene |
-|---|---|---|
-| 🧩 | [`/bloques-de-funcion`](./bloques-de-funcion/) | FBs y FCs (Escalados, control de motores, alarmas...) |
-| 🏷️ | [`/tipos-de-datos`](./tipos-de-datos/) | UDTs reutilizables para estructuras de datos limpias |
-| 🏗️ | [`/bloques-de-organizacion`](./bloques-de-organizacion/) | OBs con arquitecturas base y gestión de ciclos |
-| 🖥️ | [`/hmi`](./hmi/) | Pantallas, faceplates y recursos visuales |
-| 📋 | [`/plantillas-de-proyecto`](./plantillas-de-proyecto/) | Estructuras base para empezar proyectos desde cero |
-| 🤖 | [`/ia-tia-portal`](./ia-tia-portal/) | Proyectos que conectan Inteligencia Artificial con TIA Portal (tutoriales, casos de uso, prompts, comparativas, integraciones, best practices, galería, plantillas, troubleshooting, roadmap) |
+<sub>Proyecto personal de la comunidad, no afiliado a Siemens. Siemens, SIMATIC y TIA Portal son marcas de sus propietarios.</sub>
 
----
-
-## 🛠️ Cómo usar un recurso
-
-1. **Explora**: Entra en la carpeta que te interesa.
-2. **Lee**: Revisa el `README.md` del recurso — ahí verás qué hace, sus entradas/salidas y cómo usarlo.
-3. **Descarga**: Bájate el archivo `.xml`.
-4. **Importa**: En TIA Portal: `Clic derecho en "Bloques de programa" → Importar`.
-
----
-
-## 🤝 ¿Quieres aportar? (Es más fácil de lo que parece)
-
-**¿Tienes un bloque que usas en todos tus proyectos?** ¡Compártelo!
-
-No hace falta ser un experto en GitHub. Hemos preparado una [guía de contribución paso a paso](./CONTRIBUTING.md) pensada para gente que viene del mundo del PLC. Si prefieres no usar comandos, puedes abrir un [Issue](../../issues) y subir tu archivo ahí.
-
----
-
-## ⚠️ Versión de TIA Portal
-
-Este repo está optimizado para **TIA Portal V20**.
-*Nota: Muchos recursos funcionan en V18/V19, revisa la descripción individual de cada bloque.*
-
----
-
-## 📜 Licencia
-
-MIT — Puedes usar, modificar y distribuir libremente en tus proyectos industriales. Ver [LICENSE](./LICENSE).
+</div>
