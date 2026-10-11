@@ -1,5 +1,8 @@
 # 📚 Casos de uso reales
 
+> ⚠️ **Casos ilustrativos, no datos reales.** Los escenarios, porcentajes de ahorro, métricas de calidad, cobertura de tests y resultados de seguridad (incluidos SIL y número de incidentes) de este documento son ejemplos hipotéticos sin respaldo en proyectos medidos. No los cites como evidencia. Los bloques SCL no se han compilado ni probado.
+
+
 Casos de uso reales de proyectos donde se ha utilizado IA + TIA Portal para acelerar el desarrollo, mejorar la calidad y reducir tiempos.
 
 ---

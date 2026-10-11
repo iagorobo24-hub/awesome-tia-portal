@@ -392,7 +392,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 
 ## 🎯 Certificación
 
-Al completar todos los niveles, recibirás una certificación de "Experto en IA + TIA Portal".
+No existe ninguna certificación oficial asociada a este roadmap: es solo una guía de aprendizaje orientativa.
 
 ### Requisitos
 
