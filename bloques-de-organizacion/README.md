@@ -6,4 +6,10 @@ No son programas completos. Son esqueletos de OB ya organizados para no empezar 
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+
+- [`ob1-plantilla`](ob1-plantilla/)
+- [`ob100-startup`](ob100-startup/)
+- [`ob82-85-86-errores`](ob82-85-86-errores/)
+
+¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

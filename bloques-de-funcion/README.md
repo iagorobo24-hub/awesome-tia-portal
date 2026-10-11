@@ -9,4 +9,14 @@ Cada recurso tiene su propia subcarpeta con el `.xml` exportado y un `README.md`
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+
+- [`fb-analog-input`](fb-analog-input/)
+- [`fb-edge-counter`](fb-edge-counter/)
+- [`fb-hourmeter`](fb-hourmeter/)
+- [`fb-motor`](fb-motor/)
+- [`fb-pulse-gen`](fb-pulse-gen/)
+- [`fb-valve`](fb-valve/)
+- [`fc-escalado`](fc-escalado/)
+
+¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

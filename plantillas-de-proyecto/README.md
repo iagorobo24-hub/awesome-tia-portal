@@ -6,4 +6,9 @@ El objetivo es tener un punto de partida limpio para cada tipo de proyecto (pequ
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+
+- [`plantilla-linea-modular`](plantilla-linea-modular/)
+- [`plantilla-maquina-simple`](plantilla-maquina-simple/)
+
+¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

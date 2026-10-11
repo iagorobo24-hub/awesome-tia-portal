@@ -6,4 +6,12 @@ Ejemplos típicos: estructura de un motor, de un sensor analógico, de una válv
 
 ---
 
-*Carpeta vacía de momento — sé el primero en aportar algo. Lee [cómo contribuir](../CONTRIBUTING.md).*
+Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+
+- [`udt-alarm`](udt-alarm/)
+- [`udt-analog-input`](udt-analog-input/)
+- [`udt-drive`](udt-drive/)
+- [`udt-motor`](udt-motor/)
+- [`udt-valve`](udt-valve/)
+
+¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).
