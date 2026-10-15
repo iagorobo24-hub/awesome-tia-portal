@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # UDT_Motor
 
 > Estructura unificada para el control y diagnóstico de un motor digital (marcha/paro con confirmación física).

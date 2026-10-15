@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # UDT_Drive
 
 > Estructura unificada para variadores de frecuencia (VFD) — comando, lectura, fallos comunes y configuración base.

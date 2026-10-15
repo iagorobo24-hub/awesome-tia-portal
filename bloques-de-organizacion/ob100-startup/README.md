@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # OB100 — Startup
 
 > OB de arranque (`Startup`) con inicialización típica: textos de alarmas, configuración de equipos, valores por defecto.

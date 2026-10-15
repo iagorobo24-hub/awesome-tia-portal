@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FB_AnalogInput
 
 > Bloque de procesado de entrada analógica — escalado, filtrado pasa-baja, alarmas HH/H/L/LL con histéresis, y simulación.

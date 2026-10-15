@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "project": "AlarmLatchDemo_V20 (fixture desechable)",
+  "tiaPortal": "V20",
+  "tiaCreate": "2.7.2.0, perfil lite",
+  "plc": "PLC_1, CPU 1513-1 PN",
+  "verified": {
+    "opennessGroup": true,
+    "backupSha256MatchesAfterClosing": true,
+    "projectSha256": "7A3FFE19CB07595282987C1990625286E4D68B7CBC0F30E52BF14B12650AF153",
+    "softwareTree": [
+      "Main [OB1, LAD]",
+      "FB_AlarmLatch [FB1, SCL]"
+    ],
+    "compileErrors": 0,
+    "compileWarnings": 0,
+    "compileNote": "No block was compiled. All blocks are up-to-date.",
+    "cpuX1IpAddress": "192.168.0.1",
+    "downloadReadiness": {
+      "ready": true,
+      "hasDownloadProvider": true,
+      "hasConfiguration": true,
+      "isConsistent": true,
+      "virtualPgPcInterfaceDiscovered": "Siemens PLCSIM Virtual Ethernet Adapter",
+      "physicalPgPcInterfaceAlsoDiscovered": true
+    },
+    "visualInspection": "OB1 contiene un network vacío sin llamada a FB_AlarmLatch",
+    "plcsimAdvancedVersion": "6.0.0.1",
+    "plcsimModeRestored": "PLCSIM Softbus",
+    "activeSimulatedCpuAtEnd": false
+  },
+  "notVerified": [
+    "Descarga a una CPU virtual",
+    "Ejecución cíclica de FB_AlarmLatch",
+    "Transiciones y valores de salida en PLCSIM"
+  ],
+  "evidence": [
+    "assets/tia-v20-fb-alarm-latch-2026-09-24.jpg",
+    "assets/tia-v20-ob1-sin-llamada-2026-09-24.jpg"
+  ]
+}

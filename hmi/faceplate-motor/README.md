@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Faceplate_Motor
 
 > Faceplate HMI vinculado a `UDT_Motor` — pop-up con comandos manuales, indicadores de estado, lista de fallos y métricas.

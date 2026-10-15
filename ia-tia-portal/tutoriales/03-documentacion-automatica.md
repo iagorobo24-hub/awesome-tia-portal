@@ -373,9 +373,9 @@ Ahora que ya has documentado tu proyecto, puedes:
 
 ## 📖 Recursos adicionales
 
-- [Guía de prompts para documentación](../prompts/prompts-documentacion.md)
-- [Best practices para documentación](../best-practices/workflow-ia-tia-portal.md)
-- [Plantillas de documentación](../plantillas/plantilla-documentacion-bloque.md)
+- [Guía de prompts](../prompts/README.md)
+- [Buenas prácticas](../best-practices/README.md)
+- [Plantillas](../plantillas/README.md)
 
 ---
 

@@ -30,7 +30,7 @@ awesome-tia-portal/
 ├── tipos-de-datos/              # UDTs
 │   ├── udt-motor/               # 1 carpeta = 1 recurso
 │   │   ├── README.md            # obligatorio (siempre)
-│   │   └── udt-motor.xml        # requerido cuando status: available · opcional con status: documented
+│   │   └── udt-motor.xml        # solo cuando exista una exportación real
 │   └── udt-analog-input/
 ├── bloques-de-funcion/          # FBs y FCs
 ├── bloques-de-organizacion/     # OBs
@@ -43,10 +43,8 @@ awesome-tia-portal/
 
 - Cada recurso vive en **su propia subcarpeta**, nunca sueltos en la raíz de una categoría.
 - **`README.md` es obligatorio en toda subcarpeta** (lo verifica el workflow `check-resources.yml` y falla si falta).
-- **El `.xml`** se exige según el `status` declarado en el frontmatter del README:
-  - `status: documented` — hay descripción pero el XML aún no se ha exportado desde TIA. CI emite aviso pero pasa.
-  - `status: available` — recurso completo. CI exige el `.xml` (pendiente: validación estricta en #10 del análisis).
-  - `status: wip` — trabajo en curso, no se considera estable.
+- El README declara en lenguaje claro si el recurso es una ficha de diseño, una fuente disponible, una exportación o una pieza probada en simulación. El validador comprueba la presencia de archivos, **no** la corrección de la lógica.
+- Un `.xml` o `.scl` se incluye solo si existe de verdad. La compilación, importación y prueba funcional se acreditan por separado en la ficha.
 - **No** crees carpetas nuevas en la raíz sin discutirlo en un Issue primero.
 - Las carpetas que empiezan con `_` (como `_plantillas`) son **internas del repo**, no recursos publicables. El guion bajo las ordena al principio de la lista.
 
@@ -231,21 +229,15 @@ Para valores tipo enum (motor: 0=manual, 1=auto, 2=remoto), usa el prefijo `e` y
 
 Cada recurso tiene un `README.md` que sigue la plantilla [`_plantillas/README-recurso.md`](./_plantillas/README-recurso.md).
 
-**Secciones obligatorias** (en este orden):
+**Mínimos para una ficha nueva:**
 
-1. **Frontmatter YAML** con metadatos (`name`, `type`, `tia_version`, `plc_family`, `depends_on`, `tags`, `status`...). **Debe ocupar las primeras líneas del archivo** (delimitadas por `---`) para que los parsers lo reconozcan; nada — ni comentarios HTML — puede ir antes.
-2. **Título + descripción de 1 línea** (el "tagline"), inmediatamente después del cierre `---` del frontmatter.
-3. **¿Qué problema resuelve?** — 2-4 frases sin tecnicismos innecesarios.
-4. **Variables / Interfaz** — tablas separadas para Input / Output / InOut / Static.
-5. **Cómo importarlo en TIA Portal** — pasos numerados.
-6. **Ejemplo de uso** — código SCL real, no pseudocódigo.
-7. **Cómo validarlo** — caso de prueba mínimo para verificar que funciona.
-8. **Notas / Limitaciones conocidas** — qué NO hace, en qué versiones falla, etc.
-9. **Dependencias** — qué otros recursos del repo necesita (si aplica).
-10. **Compatibilidad** — matriz V18/V19/V20.
-11. **Capturas / GIF** — opcional pero recomendado para HMI.
-12. **Historial de cambios** — opcional al principio, útil cuando el recurso evolucione.
-13. **Autor** — opcional.
+1. Título y problema que resuelve.
+2. Archivo presente y estado comprobado, con versión de TIA y familia de CPU/HMI **solo cuando se hayan probado**.
+3. Interfaz, dependencias y ejemplo de uso si existe código.
+4. Pasos de importación y validación ajustados al archivo incluido; no indiques “descarga el XML” si aún no existe.
+5. Límites: compilación, PLCSIM, Runtime y uso físico, cada uno con su estado real.
+
+El frontmatter es opcional y el validador actual no lo exige. Las capturas/GIF son bienvenidas para HMI siempre que sean de un proyecto de demostración y tengan contexto.
 
 **Reglas de redacción:**
 
@@ -307,14 +299,12 @@ Si tu recurso solo se ha probado en V20, sé honesto: pon ⚠️ o ➖ en V18/V1
 Mini-checklist antes de abrir la PR:
 
 - [ ] El nombre de la subcarpeta es kebab-case y coincide con el nombre TIA (ej: `udt-motor` → `UDT_Motor`).
-- [ ] El `README.md` sigue la plantilla y tiene todas las secciones obligatorias.
-- [ ] El frontmatter YAML al inicio del README está completo, incluyendo el campo `status` correcto.
+- [ ] El `README.md` identifica archivo, versión y estado de prueba reales.
 - [ ] Los nombres de variables usan los prefijos correctos (sección 3).
 - [ ] Los tipos de datos están en MAYÚSCULAS y `STRING[N]` con corchetes.
-- [ ] Si `status: available`: el `.xml` está presente, en UTF-8 sin BOM y no contiene IPs / usernames / rutas internas.
-- [ ] Si `status: available`: he probado importar el `.xml` en TIA Portal V20 desde cero y compila.
+- [ ] Si se ofrece un `.xml`: existe, no contiene IPs, usuarios o rutas internas y su importación/compilación está documentada.
 - [ ] He actualizado el [CATALOG.md](./CATALOG.md) con el estado del recurso.
-- [ ] CI pasa en verde.
+- [ ] `bash scripts/validate-resources.sh` y `python scripts/check-local-links.py` pasan localmente.
 
 ---
 

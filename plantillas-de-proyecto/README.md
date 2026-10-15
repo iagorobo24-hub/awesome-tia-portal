@@ -6,9 +6,11 @@ El objetivo es tener un punto de partida limpio para cada tipo de proyecto (pequ
 
 ---
 
-Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+Recursos incluidos (estado 📝: fichas de diseño, sin proyectos plantilla descargables — ver el README raíz):
 
 - [`plantilla-linea-modular`](plantilla-linea-modular/)
 - [`plantilla-maquina-simple`](plantilla-maquina-simple/)
+
+Consulta el [catálogo](../CATALOG.md).
 
 ¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FB_PulseGen
 
 > Generador de pulsos parametrizable — produce un tren de pulsos con periodo y duty cycle configurables. Útil para parpadeos, refresco, tests, etc.

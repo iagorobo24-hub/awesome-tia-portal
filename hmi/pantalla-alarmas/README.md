@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Pantalla de Alarmas
 
 > Pantalla HMI base de gestión de alarmas — listado activo, histórico, filtros por prioridad/fuente y reconocimiento individual o masivo.

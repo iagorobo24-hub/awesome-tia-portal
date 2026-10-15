@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FB_EdgeCounter
 
 > Contador de flancos de subida con reset y configuración de límite — útil para contar ciclos de máquina, piezas producidas, paradas…

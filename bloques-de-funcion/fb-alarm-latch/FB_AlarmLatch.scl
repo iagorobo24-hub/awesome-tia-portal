@@ -1,0 +1,91 @@
+FUNCTION_BLOCK "FB_AlarmLatch"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+AUTHOR : JMellid
+FAMILY : Diag
+//==============================================================================
+// Una alarma: enclava, exige reconocimiento y distingue los cuatro estados.
+//
+// La alarma tiene DOS dimensiones independientes, y confundirlas es el error
+// clasico de las listas de alarmas caseras:
+//
+//                    | sin reconocer      | reconocida
+//   -----------------+--------------------+-------------------
+//   condicion activa | ACTIVA NO ACK      | ACTIVA ACK
+//   condicion ida    | IDA NO ACK  <- ojo | (se borra)
+//
+// El cuadrante de abajo a la izquierda es el que se olvida: la causa ya no esta
+// pero nadie se entero de que paso. Esa alarma NO debe desaparecer sola.
+//
+// Consulta README.md de este recurso para estados, limites y prueba pendiente.
+//==============================================================================
+   VAR_INPUT
+      Condition   : Bool;                 // Condicion de alarma, ya evaluada
+      CmdAck      : Bool;                 // Reconocimiento del operador
+      Enable      : Bool := TRUE;         // FALSE: alarma inhibida (bypass)
+      OnDelay     : Time := T#0S;         // Filtro antirrebote de la condicion
+   END_VAR
+
+   VAR_OUTPUT
+      Active      : Bool;                 // La condicion esta presente ahora
+      Latched     : Bool;                 // Enclavada: hubo alarma y falta ack
+      Unacked     : Bool;                 // Pendiente de reconocer
+      GoneUnacked : Bool;                 // La causa se fue y nadie la reconocio
+      Horn        : Bool;                 // Debe sonar la sirena
+   END_VAR
+
+   VAR
+      statLatched   : Bool;               // Memoria de la alarma
+      statAcked     : Bool;               // Ya fue reconocida
+      tonFilter : TON_TIME;               // Antirrebote
+   END_VAR
+
+   VAR_TEMP
+      tempActive : Bool;                  // Condicion ya filtrada
+   END_VAR
+
+BEGIN
+
+   REGION 1 - Filtrado de la condicion
+      // Sin filtro, un contacto que rebota genera diez alarmas. OnDelay = 0
+      // desactiva el filtro y el comportamiento es inmediato.
+      #tonFilter(IN := #Condition AND #Enable, PT := #OnDelay);
+      #tempActive := #tonFilter.Q OR (#Condition AND #Enable AND #OnDelay = T#0S);
+   END_REGION
+
+   REGION 2 - Enclavamiento y reconocimiento
+      // Al aparecer la alarma se enclava y se marca como no reconocida. Un ack
+      // anterior no vale para una alarma nueva.
+      IF #tempActive AND NOT #statLatched THEN
+         #statLatched := TRUE;
+         #statAcked   := FALSE;
+      END_IF;
+
+      IF #CmdAck AND #statLatched THEN
+         #statAcked := TRUE;
+      END_IF;
+
+      // Solo se borra cuando se dan las DOS cosas: la causa se ha ido Y alguien
+      // la ha reconocido. Si falta una, la alarma sigue visible.
+      IF #statLatched AND #statAcked AND NOT #tempActive THEN
+         #statLatched := FALSE;
+         #statAcked   := FALSE;
+      END_IF;
+
+      // Una alarma inhibida se borra: no tiene sentido dejarla enclavada.
+      IF NOT #Enable THEN
+         #statLatched := FALSE;
+         #statAcked   := FALSE;
+      END_IF;
+   END_REGION
+
+   REGION 3 - Salidas
+      #Active      := #tempActive;
+      #Latched     := #statLatched;
+      #Unacked     := #statLatched AND NOT #statAcked;
+      #GoneUnacked := #statLatched AND NOT #statAcked AND NOT #tempActive;
+      // La sirena suena mientras no se reconozca, este o no la causa presente.
+      #Horn        := #statLatched AND NOT #statAcked;
+   END_REGION
+
+END_FUNCTION_BLOCK

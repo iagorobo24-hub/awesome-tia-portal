@@ -10,8 +10,9 @@
 
 | Símbolo | Significado |
 |:---:|---|
-| ✅ | **Disponible** — README + `.xml` exportados, listo para importar |
-| 📝 | **Solo documentado** — el diseño/README está, falta el `.xml` |
+| ✅ | **Importable** — archivo exportado e importación/compilación verificadas para la versión declarada |
+| 🔧 | **Fuente SCL** — código incluido y nivel de prueba explicado en su ficha; no implica XML ni prueba de runtime |
+| 📝 | **Solo documentado** — el diseño/README está, pero no hay un archivo de bloque utilizable |
 | ⏳ | **Planificado** — recurso identificado como necesario, sin empezar |
 
 ---
@@ -43,6 +44,7 @@
 | 📝 | [`fb-hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas con persistencia | V20 | 1200 / 1500 |
 | 📝 | [`fb-edge-counter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos con reset | V20 | 1200 / 1500 |
 | 📝 | [`fb-pulse-gen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable (Hz o periodo) | V20 | 1200 / 1500 |
+| 🔧 | [`fb-alarm-latch`](./bloques-de-funcion/fb-alarm-latch/) | Fuente SCL de alarma enclavada y reconocimiento; compilada en V20, PLCSIM pendiente | V20 | Familia no verificada aquí |
 
 ---
 
@@ -96,7 +98,7 @@
 | 📝 | [`totally-integrated-claude`](./ia-tia-portal/totally-integrated-claude/) | Plugin para Claude Code con 15+ skills (⭐ 8) | V17+ | Python + C# |
 | 📝 | [`tia-portal-openness-mcpserver`](./ia-tia-portal/tia-portal-openness-mcpserver/) | MCP Server con CLI TypeScript (⭐ 11) | V20 | C# / .NET 4.8 |
 | 📝 | [`tia-openness-agent-platform`](./ia-tia-portal/tia-openness-agent-platform/) | Plataforma web full-stack (.NET 8 + React 19) (⭐ 5) | V17+ | .NET 8 + React |
-| 📝 | [`tutoriales`](./ia-tia-portal/tutoriales/) | Tutoriales paso a paso (primeros pasos, generación de bloques, documentación, migración, testing, refactorización) | V17+ | Markdown |
+| 📝 | [`tutoriales`](./ia-tia-portal/tutoriales/) | Tutoriales históricos en revisión; usa primero la guía profesional V20 | Según cada guía | Markdown |
 | 📝 | [`casos-de-uso`](./ia-tia-portal/casos-de-uso/) | Casos de uso reales (tratamiento de agua, transporte, manufactura, energía, alimentación) | V17+ | Markdown |
 | 📝 | [`prompts`](./ia-tia-portal/prompts/) | Guía de prompts efectivos (principios, ejemplos, plantillas) | V17+ | Markdown |
 | 📝 | [`comparativas`](./ia-tia-portal/comparativas/) | Comparativas de herramientas (MCP Servers, herramientas de IA) | V17+ | Markdown |
@@ -130,7 +132,7 @@ El orden sugerido para ir rellenando el repo (cada pieza apoya a la siguiente):
 Cuando subas un recurso nuevo:
 
 1. En la PR, edita este `CATALOG.md` y añade/actualiza la fila correspondiente.
-2. Cambia el estado a ✅ si subes README + `.xml`, o a 📝 si solo subes README.
+2. Marca 📝 si solo hay diseño, 🔧 si aportas fuente y ✅ solo si la importación y compilación están acreditadas.
 3. Rellena las columnas TIA Portal y PLC con las versiones que has probado.
 
-Si tu recurso encaja en una nueva sub-categoría que no existe, abre un [Issue](../../issues/new/choose) antes para discutirlo.
+Si tu recurso encaja en una nueva subcategoría que no existe, abre una [issue](https://github.com/iagorobo24-hub/awesome-tia-portal/issues/new) antes para discutirlo.

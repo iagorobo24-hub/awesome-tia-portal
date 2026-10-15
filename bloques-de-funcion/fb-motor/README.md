@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # FB_Motor
 
 > Bloque de control digital de motor — gestiona marcha/paro, modo manual/auto, vigilancia de feedback con timeout, contador de horas y arranques.

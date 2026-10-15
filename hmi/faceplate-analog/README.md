@@ -1,3 +1,5 @@
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Faceplate_Analog
 
 > Faceplate HMI vinculado a `UDT_AnalogInput` — muestra valor con unidad, alarmas HH/H/L/LL, mín/máx y permite forzado/simulación.
