@@ -2,7 +2,9 @@
 
 Índice unificado de todo el contenido del repositorio. Para encontrar rápido lo que necesitas sin tener que abrir cada carpeta.
 
-> **¿Buscas el flujo de cómo aportar un recurso?** Está en [`CONTRIBUTING.md`](./CONTRIBUTING.md). Este fichero es solo el índice.
+> **Este archivo se genera automáticamente** a partir del frontmatter YAML de cada README de recurso.
+> No lo edites a mano: ejecuta `python3 scripts/generate_catalog.py` después de añadir o modificar un recurso.
+> El flujo de cómo aportar un recurso está en [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ---
 
@@ -11,10 +13,13 @@
 | Símbolo | Significado |
 |:---:|---|
 | ✅ | **Disponible** — README + `.xml` exportados, listo para importar |
+| 🔧 | **Fuente compilada** — código incluido y compilado en la versión declarada, con evidencia en su ficha; no implica `.xml` ni prueba de runtime |
 | 📝 | **Solo documentado** — el diseño/README está, falta el `.xml` |
+| ⚙️ | **En curso** — recurso identificado y en desarrollo |
 | ⏳ | **Planificado** — recurso identificado como necesario, sin empezar |
 
 ---
+
 
 ## 🏷️ Tipos de datos (UDT)
 
@@ -22,11 +27,11 @@
 
 | Estado | Recurso | Descripción | TIA Portal | Familia PLC |
 |:---:|---|---|:---:|:---:|
-| 📝 | [`udt-motor`](./tipos-de-datos/udt-motor/) | Estructura estándar para control y diagnóstico de motor digital (Comando / Estado / Fallos / Diagnóstico / Config) | V20 | 1200 / 1500 |
-| 📝 | [`udt-analog-input`](./tipos-de-datos/udt-analog-input/) | Entrada analógica con raw, escalado, alarmas HH/H/L/LL, calidad y unidades | V20 | 1200 / 1500 |
-| 📝 | [`udt-valve`](./tipos-de-datos/udt-valve/) | Válvula digital (abrir/cerrar) con feedback y timeout | V20 | 1200 / 1500 |
-| 📝 | [`udt-drive`](./tipos-de-datos/udt-drive/) | Variador de frecuencia (consigna, realimentación, fallos típicos) | V20 | 1200 / 1500 |
-| 📝 | [`udt-alarm`](./tipos-de-datos/udt-alarm/) | Alarma con activación, ack, timestamp y prioridad | V20 | 1200 / 1500 |
+| 📝 | [`udt-alarm`](./tipos-de-datos/udt-alarm/) | Estructura unificada para una alarma — activación, reconocimiento, timestamp, prioridad y texto descriptivo. | V20 | 1200 / 1500 |
+| 📝 | [`udt-analog-input`](./tipos-de-datos/udt-analog-input/) | Estructura unificada para el procesamiento de una entrada analógica: valor raw, escalado a unidades de ingeniería, alarmas HH/H/L/LL y diagnóstico. | V20 | 1200 / 1500 |
+| 📝 | [`udt-drive`](./tipos-de-datos/udt-drive/) | Estructura unificada para variadores de frecuencia (VFD) — comando, lectura, fallos comunes y configuración base. | V20 | 1200 / 1500 |
+| 📝 | [`udt-motor`](./tipos-de-datos/udt-motor/) | Estructura unificada para el control y diagnóstico de un motor digital (marcha/paro con confirmación física). | V20 | 1200 / 1500 |
+| 📝 | [`udt-valve`](./tipos-de-datos/udt-valve/) | Estructura unificada para válvulas digitales (todo/nada) con feedback de posición y vigilancia de timeout. | V20 | 1200 / 1500 |
 
 ---
 
@@ -36,13 +41,14 @@
 
 | Estado | Recurso | Descripción | TIA Portal | Familia PLC |
 |:---:|---|---|:---:|:---:|
-| 📝 | [`fc-escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal genérico INT (0-27648) → REAL (min-max ingeniería) | V20 | 1200 / 1500 |
-| 📝 | [`fb-motor`](./bloques-de-funcion/fb-motor/) | Control digital de motor — consume `UDT_Motor`, gestiona manual/auto, timeouts, contador horas | V20 | 1200 / 1500 |
-| 📝 | [`fb-analog-input`](./bloques-de-funcion/fb-analog-input/) | Procesado de entrada analógica — consume `UDT_AnalogInput`, escalado + alarmas + filtrado + simulación | V20 | 1200 / 1500 |
-| 📝 | [`fb-valve`](./bloques-de-funcion/fb-valve/) | Control de válvula con feedback y timeout | V20 | 1200 / 1500 |
-| 📝 | [`fb-hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas con persistencia | V20 | 1200 / 1500 |
-| 📝 | [`fb-edge-counter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos con reset | V20 | 1200 / 1500 |
-| 📝 | [`fb-pulse-gen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable (Hz o periodo) | V20 | 1200 / 1500 |
+| 🔧 | [`fb-alarm-latch`](./bloques-de-funcion/fb-alarm-latch/) | Enclavamiento de alarma con reconocimiento y petición de sirena; fuente SCL compilada en V20, PLCSIM pendiente. | V20 | 1500 |
+| 📝 | [`fb-analog-input`](./bloques-de-funcion/fb-analog-input/) | Bloque de procesado de entrada analógica — escalado, filtrado pasa-baja, alarmas HH/H/L/LL con histéresis, y simulación. | V20 | 1200 / 1500 |
+| 📝 | [`fb-edge-counter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos de subida con reset y configuración de límite — útil para contar ciclos de máquina, piezas producidas, paradas… | V20 | 1200 / 1500 |
+| 📝 | [`fb-hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas de funcionamiento — acumula el tiempo en el que su entrada está activa, con persistencia entre cortes de tensión. | V20 | 1200 / 1500 |
+| 📝 | [`fb-motor`](./bloques-de-funcion/fb-motor/) | Bloque de control digital de motor — gestiona marcha/paro, modo manual/auto, vigilancia de feedback con timeout, contador de horas y arranques. | V20 | 1200 / 1500 |
+| 📝 | [`fb-pulse-gen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable — produce un tren de pulsos con periodo y duty cycle configurables. Útil para parpadeos, refresco, tests, etc. | V20 | 1200 / 1500 |
+| 📝 | [`fb-valve`](./bloques-de-funcion/fb-valve/) | Bloque de control de válvula digital — gestiona apertura/cierre, modo manual/auto, vigilancia de feedback con timeout, detección de posición inválida. | V20 | 1200 / 1500 |
+| 📝 | [`fc-escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal genérico de un INT raw (0-27648) a un REAL en unidades de ingeniería. | V20 | 1200 / 1500 |
 
 ---
 
@@ -52,9 +58,9 @@
 
 | Estado | Recurso | Descripción | TIA Portal | Familia PLC |
 |:---:|---|---|:---:|:---:|
-| 📝 | [`ob1-plantilla`](./bloques-de-organizacion/ob1-plantilla/) | OB1 con secciones comentadas (entradas, lógica, salidas, diagnóstico) | V20 | 1200 / 1500 |
-| 📝 | [`ob100-startup`](./bloques-de-organizacion/ob100-startup/) | OB de arranque con inicialización típica | V20 | 1200 / 1500 |
-| 📝 | [`ob82-85-86-errores`](./bloques-de-organizacion/ob82-85-86-errores/) | Gestión básica de errores de hardware (diagnóstico, fallo módulo, fallo rack) | V20 | 1500 (parcial 1200) |
+| 📝 | [`ob1-plantilla`](./bloques-de-organizacion/ob1-plantilla/) | Esqueleto de OB1 (`Main`) con secciones comentadas y orden de ejecución estándar — para no empezar de cero en cada proyecto. | V20 | 1200 / 1500 |
+| 📝 | [`ob100-startup`](./bloques-de-organizacion/ob100-startup/) | OB de arranque (`Startup`) con inicialización típica: textos de alarmas, configuración de equipos, valores por defecto. | V20 | 1200 / 1500 |
+| 📝 | [`ob82-85-86-errores`](./bloques-de-organizacion/ob82-85-86-errores/) | Plantillas de los OBs de **diagnóstico, fallo de programa y fallo de rack** con gestión básica de eventos: registro, alarma y modo seguro. | V20 | 1500 |
 
 ---
 
@@ -64,11 +70,11 @@
 
 | Estado | Recurso | Descripción | TIA Portal | Panel |
 |:---:|---|---|:---:|:---:|
-| 📝 | [`faceplate-motor`](./hmi/faceplate-motor/) | Faceplate vinculado a `UDT_Motor` | V20 | Comfort / Unified |
-| 📝 | [`faceplate-valve`](./hmi/faceplate-valve/) | Faceplate de válvula | V20 | Comfort / Unified |
-| 📝 | [`faceplate-analog`](./hmi/faceplate-analog/) | Faceplate de variable analógica con alarmas | V20 | Comfort / Unified |
-| 📝 | [`pantalla-alarmas`](./hmi/pantalla-alarmas/) | Pantalla base de alarmas con filtros | V20 | Comfort / Unified |
-| 📝 | [`plantilla-navegacion`](./hmi/plantilla-navegacion/) | Header + footer + área de contenido reutilizable | V20 | Comfort / Unified |
+| 📝 | [`faceplate-analog`](./hmi/faceplate-analog/) | Faceplate HMI vinculado a `UDT_AnalogInput` — muestra valor con unidad, alarmas HH/H/L/LL, mín/máx y permite forzado/simulación. | V20 | Comfort / Unified |
+| 📝 | [`faceplate-motor`](./hmi/faceplate-motor/) | Faceplate HMI vinculado a `UDT_Motor` — pop-up con comandos manuales, indicadores de estado, lista de fallos y métricas. | V20 | Comfort / Unified |
+| 📝 | [`faceplate-valve`](./hmi/faceplate-valve/) | Faceplate HMI vinculado a `UDT_Valve` — pop-up con comandos abrir/cerrar manual, indicadores de posición, lista de fallos y diagnóstico. | V20 | Comfort / Unified |
+| 📝 | [`pantalla-alarmas`](./hmi/pantalla-alarmas/) | Pantalla HMI base de gestión de alarmas — listado activo, histórico, filtros por prioridad/fuente y reconocimiento individual o masivo. | V20 | Comfort / Unified |
+| 📝 | [`plantilla-navegacion`](./hmi/plantilla-navegacion/) | Plantilla maestra (header + footer + área de contenido) reutilizable en todas las pantallas del proyecto — con barra de alarmas, login de usuario, navegación principal y indicadores de estado. | V20 | Comfort / Unified |
 
 ---
 
@@ -78,37 +84,8 @@
 
 | Estado | Recurso | Descripción | TIA Portal | Familia PLC |
 |:---:|---|---|:---:|:---:|
-| 📝 | [`plantilla-maquina-simple`](./plantillas-de-proyecto/plantilla-maquina-simple/) | 1 PLC + 1 HMI Basic, estructura mínima | V20 | 1200 |
-| 📝 | [`plantilla-linea-modular`](./plantillas-de-proyecto/plantilla-linea-modular/) | Varios PLCs comunicados, librerías compartidas | V20 | 1500 |
-
----
-
-## 🤖 IA + TIA Portal
-
-> Carpeta: [`ia-tia-portal/`](./ia-tia-portal/)
-
-> **Nota**: Estos NO son bloques .xml para importar en TIA Portal. Son **herramientas de software** que conectan modelos de IA (Claude, GPT, etc.) con TIA Portal a través de su API de Openness.
-
-| Estado | Recurso | Descripción | TIA Portal | Tecnología |
-|:---:|---|---|:---:|---|
-| 📝 | [`tia-portal-mcp-server`](./ia-tia-portal/tia-portal-mcp-server/) | MCP Server para VS Code + GitHub Copilot (⭐ 56) | V17–V20+ | C# / .NET 4.8 |
-| 📝 | [`t-ia-connect`](./ia-tia-portal/t-ia-connect/) | Motor profesional con 126+ herramientas MCP (trial 14d) | V17–V21 | C# / REST / SignalR |
-| 📝 | [`totally-integrated-claude`](./ia-tia-portal/totally-integrated-claude/) | Plugin para Claude Code con 15+ skills (⭐ 8) | V17+ | Python + C# |
-| 📝 | [`tia-portal-openness-mcpserver`](./ia-tia-portal/tia-portal-openness-mcpserver/) | MCP Server con CLI TypeScript (⭐ 11) | V20 | C# / .NET 4.8 |
-| 📝 | [`tia-openness-agent-platform`](./ia-tia-portal/tia-openness-agent-platform/) | Plataforma web full-stack (.NET 8 + React 19) (⭐ 5) | V17+ | .NET 8 + React |
-| 📝 | [`tutoriales`](./ia-tia-portal/tutoriales/) | Tutoriales paso a paso (primeros pasos, generación de bloques, documentación, migración, testing, refactorización) | V17+ | Markdown |
-| 📝 | [`casos-de-uso`](./ia-tia-portal/casos-de-uso/) | Casos de uso reales (tratamiento de agua, transporte, manufactura, energía, alimentación) | V17+ | Markdown |
-| 📝 | [`prompts`](./ia-tia-portal/prompts/) | Guía de prompts efectivos (principios, ejemplos, plantillas) | V17+ | Markdown |
-| 📝 | [`comparativas`](./ia-tia-portal/comparativas/) | Comparativas de herramientas (MCP Servers, herramientas de IA) | V17+ | Markdown |
-| 📝 | [`integraciones`](./ia-tia-portal/integraciones/) | Integración con otras herramientas (Git, Jira, Confluence, Teams, Power BI) | V17+ | Markdown |
-| 📝 | [`best-practices`](./ia-tia-portal/best-practices/) | Mejores prácticas y patrones (seguridad, prompts, validación, workflow, anti-patterns) | V17+ | Markdown |
-| 📝 | [`galeria`](./ia-tia-portal/galeria/) | Galería de demos y screenshots (generación de bloque, análisis de proyecto, compilación, PLCSIM) | V17+ | Markdown |
-| 📝 | [`plantillas`](./ia-tia-portal/plantillas/) | Plantillas y snippets (prompts, configuración MCP, snippets SCL, documentación) | V17+ | Markdown |
-| 📝 | [`troubleshooting`](./ia-tia-portal/troubleshooting/) | Solución de problemas y FAQ (errores comunes, permisos, conexión, compilación) | V17+ | Markdown |
-| 📝 | [`roadmap`](./ia-tia-portal/roadmap/) | Roadmap de aprendizaje (niveles 1-4: principiante, intermedio, avanzado, experto) | V17+ | Markdown |
-| 📝 | [`entorno-cloud`](./ia-tia-portal/entorno-cloud/) | Entorno cloud (Cursor Cloud Agents) para desarrollar el repo + arquitectura para conectar con TIA Portal (worker self-hosted / puente MCP-REST) | V17+ | Markdown |
-
-> 📄 **Ver análisis completo**: [`ia-tia-portal/README.md`](./ia-tia-portal/README.md) — Guía de todos los proyectos IA + TIA Portal
+| 📝 | [`plantilla-linea-modular`](./plantillas-de-proyecto/plantilla-linea-modular/) | Estructura base para una línea industrial con **varios PLCs S7-1500 comunicados** entre sí y un HMI Unified central. Pensada para escalar y compartir librerías entre PLCs. | V20 | 1500 |
+| 📝 | [`plantilla-maquina-simple`](./plantillas-de-proyecto/plantilla-maquina-simple/) | Estructura base de proyecto TIA Portal para una máquina sencilla: **un PLC S7-1200 + un HMI Basic/Comfort pequeño**. Carpetas, convenciones de nombres y bloques vacíos listos para rellenar. | V20 | 1200 |
 
 ---
 
@@ -127,10 +104,7 @@ El orden sugerido para ir rellenando el repo (cada pieza apoya a la siguiente):
 
 ## ➕ ¿Cómo añadir tu recurso a este catálogo?
 
-Cuando subas un recurso nuevo:
-
-1. En la PR, edita este `CATALOG.md` y añade/actualiza la fila correspondiente.
-2. Cambia el estado a ✅ si subes README + `.xml`, o a 📝 si solo subes README.
-3. Rellena las columnas TIA Portal y PLC con las versiones que has probado.
-
-Si tu recurso encaja en una nueva sub-categoría que no existe, abre un [Issue](../../issues/new/choose) antes para discutirlo.
+1. Crea tu carpeta de recurso copiando [`_plantillas/README-recurso.md`](./_plantillas/README-recurso.md) y rellena el frontmatter YAML.
+2. Ejecuta `python3 scripts/generate_catalog.py` desde la raíz del repo. Esto regenera **este** archivo automáticamente.
+3. Commitea los dos cambios (tu recurso + el `CATALOG.md` actualizado) en la misma PR.
+4. CI verificará que `CATALOG.md` esté sincronizado: si no lo está, fallará con instrucciones.

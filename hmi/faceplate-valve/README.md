@@ -1,3 +1,18 @@
+---
+name: Faceplate_Valve
+type: hmi-faceplate
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+hmi_panel: [comfort, unified]
+depends_on: [tipos-de-datos/udt-valve, bloques-de-funcion/fb-valve]
+used_by: []
+tags: [valvula, faceplate, hmi]
+status: documented
+---
+
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Faceplate_Valve
 
 > Faceplate HMI vinculado a `UDT_Valve` — pop-up con comandos abrir/cerrar manual, indicadores de posición, lista de fallos y diagnóstico.

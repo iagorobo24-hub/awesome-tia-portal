@@ -1,4 +1,4 @@
-# Cómo contribuir a TIA Portal Library
+# Cómo contribuir a Awesome TIA Portal
 
 Gracias por querer compartir tu conocimiento. Esta guía está diseñada para que cualquier programador de PLC pueda aportar, aunque nunca haya usado GitHub.
 
@@ -25,7 +25,7 @@ Si no vienes del mundo del software, GitHub puede sonar raro. Aquí tienes una t
 Sigue los pasos de la **Guía Completa** más abajo.
 
 ### B. He visto un error o tengo una duda
-Abre un [Issue](../../issues/new/choose). Es como escribir un post en un foro. No necesitas instalar nada.
+Abre una [issue](https://github.com/iagorobo24-hub/awesome-tia-portal/issues/new). Es como escribir un post en un foro. No necesitas instalar nada.
 
 ### C. Quiero mejorar una explicación (README)
 Puedes hacerlo directamente desde la web de GitHub pulsando el icono del lápiz ✏️ en el archivo que quieras cambiar.
@@ -34,10 +34,10 @@ Puedes hacerlo directamente desde la web de GitHub pulsando el icono del lápiz 
 
 ## 🚀 Guía Completa para añadir un recurso nuevo
 
-### 1. Prepara tu recurso en TIA Portal
-1. Asegúrate de que el bloque está limpio y comentado.
-2. Haz clic derecho sobre el bloque (FB, FC, UDT...) y selecciona **Exportar**.
-3. Guárdalo como un archivo `.xml`.
+### 1. Prepara tu recurso
+1. Asegúrate de que el código es tuyo o tienes autorización para publicarlo. Elimina nombres de cliente, máquina, producto, direcciones IP, rutas locales y secretos.
+2. Incluye un archivo fuente `.scl` o una exportación del objeto individual cuando exista. No subas un `.ap20` de cliente ni un paquete Siemens propietario.
+3. Indica versión de TIA, tipo de CPU/HMI, dependencias, estado de compilación y si existe una prueba de comportamiento en PLCSIM o Runtime. Si no lo has probado, dilo.
 
 ### 2. Haz un Fork
 Pulsa el botón **Fork** arriba a la derecha. Ahora tienes una copia del repo en tu cuenta.
@@ -48,19 +48,32 @@ En tu copia, crea una rama con un nombre corto, por ejemplo: `feat/mi-nuevo-bloq
 ### 4. Sube tus archivos
 Entra en la carpeta correspondiente (`bloques-de-funcion/`, `tipos-de-datos/`, etc.):
 1. Crea una subcarpeta para tu recurso (usa nombres en minúsculas y con guiones).
-2. Sube el `.xml`.
-3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md).
+2. Sube la fuente o exportación que realmente hayas probado; si solo aportas un diseño, indica que todavía no hay bloque importable.
+3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md). **Rellena el frontmatter YAML** del inicio (entre las dos líneas `---`): `name`, `type`, `tia_version`, `plc_family`, `depends_on`, `tags`, `status`. Es lo que alimenta el catálogo automático.
 
-### 5. Abre la Pull Request
+### 5. Regenera el catálogo
+El [`CATALOG.md`](./CATALOG.md) se genera automáticamente a partir del frontmatter de cada recurso. Después de añadir o modificar un recurso, ejecuta desde la raíz del repo:
+
+```bash
+python3 scripts/generate_catalog.py
+```
+
+Eso actualiza `CATALOG.md`. Commitea ese archivo en la misma PR junto con tu recurso. Si te lo saltas, CI fallará con instrucciones para arreglarlo.
+
+### 6. Abre la Pull Request
 Vuelve a la página principal de tu repo y verás un botón que dice **"Compare & pull request"**. Pulsa, escribe un pequeño resumen de lo que aportas y listo.
 
 ---
 
 ## 📏 Reglas de Oro para que aceptemos tu aporte
-- **Documentación**: El `README.md` del bloque debe explicar qué hace y qué variables usa.
-- **Limpieza**: No subas proyectos de 200MB. Solo el `.xml` del bloque específico.
+- **Documentación**: el `README.md` debe explicar el problema, la interfaz, el uso, las dependencias, la versión probada y los límites.
+- **Evidencia**: distingue claramente fuente disponible, compilación, guardado y prueba funcional. Una captura sin contexto no demuestra funcionamiento.
+- **Limpieza**: no subas proyectos de cliente ni archivos masivos; comparte solo los archivos necesarios para el recurso.
+- **Seguridad**: no incluyas bloques F/Safety, contraseñas ni instrucciones de descarga a hardware sin una revisión específica.
 - **Formato**: Usa nombres de carpeta claros (ej: `escalado-analogico` en vez de `Bloque_1`).
 
 ---
 
 ¿Aún tienes dudas? Abre un **Issue** y te ayudaremos paso a paso. ¡No hay aportación pequeña!
+
+Las imágenes generadas deben identificarse como ilustraciones. Las capturas reales necesitan indicar proyecto de demostración, versión de TIA y qué acción muestran.

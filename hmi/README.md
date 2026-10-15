@@ -6,12 +6,14 @@ Aquí no van proyectos HMI completos — van piezas: una pantalla de alarmas bas
 
 ---
 
-Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+Recursos incluidos (estado 📝: fichas de diseño, sin pantallas ni faceplates importables ni pruebas en Runtime — ver el README raíz):
 
 - [`faceplate-analog`](faceplate-analog/)
 - [`faceplate-motor`](faceplate-motor/)
 - [`faceplate-valve`](faceplate-valve/)
 - [`pantalla-alarmas`](pantalla-alarmas/)
 - [`plantilla-navegacion`](plantilla-navegacion/)
+
+Consulta el [catálogo](../CATALOG.md).
 
 ¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

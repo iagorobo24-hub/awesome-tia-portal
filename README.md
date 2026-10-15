@@ -23,7 +23,7 @@ Solo piezas sueltas, no proyectos completos. Pensada para programadores de PLC q
 
 </div>
 
----
+> **Estado del repositorio:** estamos convirtiendo un catálogo de ideas en recursos comprobables. La mayoría de las fichas actuales son diseños documentados; **no contienen todavía un bloque importable**. Cada recurso indica exactamente qué archivo existe y qué prueba se ha realizado.
 
 ## Qué ofrece
 
@@ -52,8 +52,8 @@ Un resumen honesto de lo que hay.
 
 | Pieza | Estado | Nota |
 |---|:---:|---|
-| 5 UDTs, 7 FB/FC, 3 OB, 5 HMI y 2 plantillas | 🟡 | Documentados (README con interfaz, uso y limitaciones). **No hay ningún `.xml` en el repositorio**: nada se ha publicado todavía exportado desde TIA Portal. |
-| Importación y compilación en TIA Portal V20 | 🚧 | No demostradas. Los README indican compatibilidad con V18/V19 como anotación de la autoría, sin verificar. |
+| 5 UDTs, 8 FB/FC, 3 OB, 5 HMI y 2 plantillas | 🟡 | Documentados (README con interfaz, uso y limitaciones). **Un recurso (`FB_AlarmLatch` 🔧) incluye además fuente SCL compilada en V20 con evidencia; sigue sin haber ningún `.xml` publicado**. |
+| Importación y compilación en TIA Portal V20 | 🚧 | No demostradas en general. Excepción: `FB_AlarmLatch` se compiló como fuente SCL en V20 (CPU S7-1500 de demostración, 0 errores y 0 advertencias). Importación desde `.xml` y prueba en PLCSIM, pendientes. Los README indican compatibilidad con V18/V19 como anotación de la autoría, sin verificar. |
 | Validación de estructura (`scripts/validate-resources.sh`) | ✅ | Comprueba que cada recurso tiene `README.md` y avisa si falta el `.xml`. No analiza SCL, XML ni compatibilidad. |
 | Ejemplos SCL dentro de los README | 🟡 | Son ilustrativos: no se han compilado ni probado en un PLC ni en PLCSIM. |
 | Fichas y guías de IA + TIA Portal | 🟡 | Texto de consulta. Cifras, estrellas, precios y compatibilidades de herramientas de terceros no están verificadas y pueden haber cambiado. |
@@ -97,6 +97,7 @@ Carpeta: [`bloques-de-funcion/`](./bloques-de-funcion/)
 | [`FB_Hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas con persistencia. |
 | [`FB_EdgeCounter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos con reset. |
 | [`FB_PulseGen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable (Hz o periodo). |
+| [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) 🔧 | Enclavamiento de alarma con reconocimiento; fuente SCL compilada en V20 (0 errores, 0 advertencias, evidencia en su ficha), PLCSIM pendiente. |
 
 </details>
 
@@ -148,7 +149,7 @@ Carpeta: [`ia-tia-portal/`](./ia-tia-portal/). Material de consulta, no bloques 
 | Tema | Enlaces |
 |---|---|
 | Herramientas de terceros (fichas) | [`tia-portal-mcp-server`](./ia-tia-portal/tia-portal-mcp-server/) · [`t-ia-connect`](./ia-tia-portal/t-ia-connect/) · [`totally-integrated-claude`](./ia-tia-portal/totally-integrated-claude/) · [`tia-portal-openness-mcpserver`](./ia-tia-portal/tia-portal-openness-mcpserver/) · [`tia-openness-agent-platform`](./ia-tia-portal/tia-openness-agent-platform/) |
-| Aprender | [`tutoriales`](./ia-tia-portal/tutoriales/) · [`prompts`](./ia-tia-portal/prompts/) · [`roadmap`](./ia-tia-portal/roadmap/) · [`best-practices`](./ia-tia-portal/best-practices/) |
+| Aprender | [`guía de conexión profesional V20`](./ia-tia-portal/guias/conexion-profesional-v20.md) · [`tutoriales`](./ia-tia-portal/tutoriales/) · [`prompts`](./ia-tia-portal/prompts/) · [`roadmap`](./ia-tia-portal/roadmap/) · [`best-practices`](./ia-tia-portal/best-practices/) |
 | Referencia | [`comparativas`](./ia-tia-portal/comparativas/) · [`integraciones`](./ia-tia-portal/integraciones/) · [`plantillas`](./ia-tia-portal/plantillas/) · [`troubleshooting`](./ia-tia-portal/troubleshooting/) · [`galeria`](./ia-tia-portal/galeria/) · [`casos-de-uso`](./ia-tia-portal/casos-de-uso/) · [`entorno-cloud`](./ia-tia-portal/entorno-cloud/) |
 
 Las herramientas de terceros pertenecen a sus autores; consulta su repositorio para el estado, la licencia y la compatibilidad actuales. Los ejemplos y las cifras de estos documentos no están verificados de forma independiente.
@@ -164,6 +165,8 @@ Las herramientas de terceros pertenecen a sus autores; consulta su repositorio p
 
 > Hoy el paso 3 aún no es posible para ningún recurso, porque los `.xml` no están publicados. Mientras tanto, los README sirven como especificación de la interfaz y del comportamiento esperado.
 
+> 🔧 **Recurso con fuente real:** [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) incluye su `.scl`, compilado en V20 con evidencia y capturas del fixture; la prueba de comportamiento en PLCSIM está preparada y pendiente. Para conectar un agente de IA a TIA Portal, empieza por la [guía de conexión profesional V20](./ia-tia-portal/guias/conexion-profesional-v20.md).
+
 ## Contribuir
 
 Una aportación es una carpeta con su `README.md` y, cuando esté exportado, el `.xml`.
@@ -172,7 +175,7 @@ Una aportación es una carpeta con su `README.md` y, cuando esté exportado, el 
 - Convenciones de nombres, prefijos, README y compatibilidad: [`STYLE.md`](./STYLE.md).
 - Plantilla del README de cada recurso: [`_plantillas/README-recurso.md`](./_plantillas/README-recurso.md).
 - Al subir un recurso, actualiza su fila en [`CATALOG.md`](./CATALOG.md) con el estado y las versiones realmente probadas.
-- Si prefieres no usar Git, abre un [issue](../../issues/new/choose) con tu propuesta.
+- Si prefieres no usar Git, abre un [issue](https://github.com/iagorobo24-hub/awesome-tia-portal/issues/new/choose) con tu propuesta.
 
 Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`udt-motor/`, `fb-analog-input/`); dentro de TIA Portal, nombres con prefijo (`UDT_`, `FB_`, `FC_`, `Faceplate_`, `Pantalla_`).
 
@@ -190,15 +193,16 @@ Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`ud
 
 ```
 tipos-de-datos/            UDTs (una carpeta por recurso, con README.md)
-bloques-de-funcion/        FB y FC
+bloques-de-funcion/        FB y FC (fb-alarm-latch incluye fuente SCL + evidencia)
 bloques-de-organizacion/   OB
 hmi/                       faceplates, pantallas y plantilla de navegación
 plantillas-de-proyecto/    estructuras base de proyecto
-ia-tia-portal/             guías y fichas de IA + TIA Portal
+ia-tia-portal/             guías (incluye conexión profesional V20) y fichas de IA + TIA Portal
 _plantillas/               plantilla de README para nuevos recursos
-scripts/                   validate-resources.sh
+assets/                    ilustración de portada (generada, no es captura de TIA)
+scripts/                   validate-resources.sh y check-local-links.py
 .github/                   workflow de validación y plantillas de issues/PR
-docs/img/                  gráficos de este README
+docs/                      gráficos de este README, hoja de ruta y referencias
 CATALOG.md                 índice y estado de cada recurso
 CONTRIBUTING.md  STYLE.md  guía de contribución y de estilo
 ```
@@ -214,3 +218,4 @@ CONTRIBUTING.md  STYLE.md  guía de contribución y de estilo
 <sub>Proyecto personal de la comunidad, no afiliado a Siemens. Siemens, SIMATIC y TIA Portal son marcas de sus propietarios.</sub>
 
 </div>
+

@@ -9,6 +9,9 @@ on:
       - 'bloques-de-organizacion/**'
       - 'hmi/**'
       - 'plantillas-de-proyecto/**'
+      - 'CATALOG.md'
+      - 'scripts/**'
+      - '.github/workflows/check-resources.yml'
 
 jobs:
   validate:
@@ -18,3 +21,7 @@ jobs:
 
       - name: Verificar estructura de subcarpetas
         run: bash scripts/validate-resources.sh
+
+      - name: Verificar que CATALOG.md está sincronizado
+        run: |
+          python3 scripts/generate_catalog.py --check

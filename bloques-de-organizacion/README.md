@@ -6,10 +6,12 @@ No son programas completos. Son esqueletos de OB ya organizados para no empezar 
 
 ---
 
-Recursos incluidos (estado 📝: sin importar ni compilar en TIA Portal, ver el README raíz):
+Recursos incluidos (estado 📝: fichas de diseño, sin OB importables ni pruebas de compilación — ver el README raíz):
 
 - [`ob1-plantilla`](ob1-plantilla/)
 - [`ob100-startup`](ob100-startup/)
 - [`ob82-85-86-errores`](ob82-85-86-errores/)
+
+Consulta el [catálogo](../CATALOG.md).
 
 ¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

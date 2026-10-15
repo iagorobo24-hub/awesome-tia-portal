@@ -1,3 +1,18 @@
+---
+name: Faceplate_Motor
+type: hmi-faceplate
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+hmi_panel: [comfort, unified]
+depends_on: [tipos-de-datos/udt-motor, bloques-de-funcion/fb-motor]
+used_by: []
+tags: [motor, faceplate, hmi]
+status: documented
+---
+
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Faceplate_Motor
 
 > Faceplate HMI vinculado a `UDT_Motor` — pop-up con comandos manuales, indicadores de estado, lista de fallos y métricas.

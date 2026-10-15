@@ -1,3 +1,17 @@
+---
+name: Plantilla_MaquinaSimple
+type: plantilla
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200]
+depends_on: []
+used_by: []
+tags: [plantilla, maquina, basic]
+status: documented
+---
+
+> **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
+
 # Plantilla — Máquina simple (1 PLC + 1 HMI)
 
 > Estructura base de proyecto TIA Portal para una máquina sencilla: **un PLC S7-1200 + un HMI Basic/Comfort pequeño**. Carpetas, convenciones de nombres y bloques vacíos listos para rellenar.

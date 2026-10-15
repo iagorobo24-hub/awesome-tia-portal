@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "resource": "FB_AlarmLatch.scl",
+  "sourceSha256": "ef477c0e4a289581d8a4959d473962410233ab90622aae47edded0badb41c8a",
+  "environment": {
+    "engineering": "TIA Portal V20",
+    "plcFamily": "S7-1500",
+    "cpuOrderNumber": "6ES7513-1AM03-0AB0",
+    "projectKind": "new disposable demo project"
+  },
+  "checks": {
+    "scaffoldDryRun": "passed",
+    "sclImport": "passed",
+    "softwareCompile": {
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    "projectSave": "passed",
+    "independentProjectReadback": {
+      "state": "passed",
+      "server": "tia-create, fresh process",
+      "softwareTreeEntry": "FB_AlarmLatch [FB1, SCL]"
+    },
+    "plcsimVirtualCpuPowerOn": "passed, temporary CPU 1513 over local Softbus; powered off and unregistered",
+    "programDownload": "not performed",
+    "behaviorTransitions": "not verified",
+    "tiaScreenshotOfBlock": "not captured"
+  },
+  "scope": "Offline engineering evidence. A virtual CPU boot without this program does not validate block behavior."
+}
