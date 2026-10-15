@@ -1,6 +1,17 @@
 name: Validar Recursos
 
 on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'bloques-de-funcion/**'
+      - 'tipos-de-datos/**'
+      - 'bloques-de-organizacion/**'
+      - 'hmi/**'
+      - 'plantillas-de-proyecto/**'
+      - 'CATALOG.md'
+      - 'scripts/**'
+      - '.github/workflows/check-resources.yml'
   pull_request:
     branches: [ main ]
     paths:
@@ -12,16 +23,29 @@ on:
       - 'CATALOG.md'
       - 'scripts/**'
       - '.github/workflows/check-resources.yml'
+  schedule:
+    # Domingos 03:00 UTC: revision semanal completa (detecta podredumbre externa)
+    - cron: '0 3 * * 0'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Fijado por SHA (v4): evita que un cambio en el tag rompa o comprometa el CI
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Verificar estructura de subcarpetas
         run: bash scripts/validate-resources.sh
 
+      - name: Verificar enlaces locales
+        run: python3 scripts/check-local-links.py
+
       - name: Verificar que CATALOG.md está sincronizado
-        run: |
-          python3 scripts/generate_catalog.py --check
+        run: python3 scripts/generate_catalog.py --check
