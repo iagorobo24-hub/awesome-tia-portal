@@ -1,3 +1,15 @@
+---
+name: UDT_Valve
+type: udt
+tia_version: V20
+tia_compat: [V18, V19, V20]
+plc_family: [s7-1200, s7-1500]
+depends_on: []
+used_by: [bloques-de-funcion/fb-valve, hmi/faceplate-valve]
+tags: [valvula, control, udt]
+status: documented
+---
+
 > **Estado: ficha de diseño.** Esta carpeta no incluye todavía un bloque, XML ni fuente importable. Las interfaces y ejemplos siguientes son propuestas sin compilación ni prueba funcional verificadas.
 
 # UDT_Valve

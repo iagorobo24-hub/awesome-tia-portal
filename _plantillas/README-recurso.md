@@ -6,7 +6,9 @@
 #
 # IMPORTANTE: este bloque YAML (entre las dos líneas de tres guiones) debe
 # quedar SIEMPRE en la primera línea del archivo, para que GitHub y los
-# scripts del repo lo parseen correctamente.
+# scripts del repo lo parseen correctamente. Después de rellenarlo, ejecuta
+#   python3 scripts/generate_catalog.py
+# desde la raíz del repo para regenerar CATALOG.md.
 name: NombreDelBloqueEnTIA          # Ej: UDT_Motor, FB_Motor, FC_Escalado, Faceplate_Motor
 type: udt                            # udt | fb | fc | ob | hmi-faceplate | hmi-pantalla | plantilla
 tia_version: V20                     # Versión principal de desarrollo
@@ -16,7 +18,7 @@ hmi_panel: []                        # Solo si type es hmi-*: comfort | unified 
 depends_on: []                       # Otras carpetas del repo que necesita: ["tipos-de-datos/udt-motor"]
 used_by: []                          # Otros recursos que lo consumen: ["bloques-de-funcion/fb-motor"]
 tags: [motor, control]               # Etiquetas libres para búsqueda
-status: documented                   # documented | available | wip
+status: documented                   # documented | compiled | available | wip | planned
 ---
 
 # [Nombre del recurso]
