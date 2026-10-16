@@ -44,8 +44,30 @@ jobs:
       - name: Verificar estructura de subcarpetas
         run: bash scripts/validate-resources.sh
 
+      - name: Verificar artefactos TIA (XML bien formado, sin BOM ni datos sensibles)
+        run: python3 scripts/validate-xml.py
+
       - name: Verificar enlaces locales
         run: python3 scripts/check-local-links.py
 
       - name: Verificar que CATALOG.md está sincronizado
         run: python3 scripts/generate_catalog.py --check
+
+      - name: Vigilar peso de binarios (max 5 MB por archivo)
+        run: |
+          oversized=$(find . -path ./.git -prune -o -type f -size +5M -print)
+          if [ -n "$oversized" ]; then
+            echo "❌ Archivos demasiado pesados (usar capturas comprimidas):"
+            echo "$oversized"
+            exit 1
+          fi
+          echo "✅ Sin binarios pesados"
+
+  secretos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+        with:
+          fetch-depth: 0
+      # Fijado por SHA (v2): detector de secretos en el historial y el arbol
+      - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7  # v2

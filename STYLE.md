@@ -305,7 +305,7 @@ Mini-checklist antes de abrir la PR:
 - [ ] Si se ofrece un `.xml`: existe, no contiene IPs, usuarios o rutas internas y su importación/compilación está documentada.
 - [ ] Si `status: available`: el `.xml` está en UTF-8 sin BOM y se ha probado importarlo en TIA Portal V20 desde cero.
 - [ ] He regenerado [`CATALOG.md`](./CATALOG.md) con `python3 scripts/generate_catalog.py` y commiteado el resultado.
-- [ ] `bash scripts/validate-resources.sh` y `python scripts/check-local-links.py` pasan localmente.
+- [ ] `bash scripts/validate-resources.sh`, `python3 scripts/validate-xml.py` y `python scripts/check-local-links.py` pasan localmente.
 - [ ] CI pasa en verde.
 
 ---
