@@ -33,7 +33,7 @@ Antes de empezar, asegúrate de haber completado:
 
 En Claude Desktop, escribe:
 
-```
+```text
 
 Analiza mi proyecto de TIA Portal y genera un resumen estructurado.
 
@@ -69,7 +69,7 @@ Claude generará un análisis completo. Revisa:
 
 Si falta información, pide más detalles:
 
-```
+```text
 
 El análisis está bien, pero:
 1. Añade más detalles sobre los bloques FB
@@ -86,7 +86,7 @@ El análisis está bien, pero:
 
 Elige un bloque de tu proyecto (por ejemplo, `FB_MotorControl`) y pide:
 
-```
+```text
 
 Genera documentación completa del bloque FB_MotorControl.
 
@@ -151,7 +151,7 @@ Claude generará documentación detallada. Revisa:
 
 Si algo falta, pide mejoras:
 
-```
+```text
 
 La documentación está bien, pero:
 1. Añade más detalles en la sección de lógica
@@ -168,7 +168,7 @@ La documentación está bien, pero:
 
 En Claude Desktop, escribe:
 
-```
+```text
 
 Genera documentación completa de TODO mi proyecto de TIA Portal.
 
@@ -251,7 +251,7 @@ Por favor, genera el documento completo en formato Markdown.
 
 Pide a Claude que genere diagramas ASCII:
 
-```
+```text
 
 Añade diagramas ASCII a la documentación:
 
@@ -267,7 +267,7 @@ Usa caracteres ASCII para crear diagramas claros y comprensibles.
 
 Pide ejemplos de uso:
 
-```
+```text
 
 Añade ejemplos de código SCL para cada bloque:
 
@@ -283,7 +283,7 @@ Incluye comentarios explicativos en cada ejemplo.
 
 Pide tablas de referencia:
 
-```
+```text
 
 Añade tablas de referencia a la documentación:
 
@@ -319,7 +319,7 @@ Revisa la documentación generada:
 
 Si falta información, pide a Claude que la añada:
 
-```
+```text
 
 La documentación está casi completa, pero falta:
 1. [indicar qué falta]

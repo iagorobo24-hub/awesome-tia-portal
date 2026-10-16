@@ -34,7 +34,7 @@ Igual que con motores, cada válvula del proyecto necesita botones de mando, ind
 
 ## Estructura visual
 
-```
+```text
 
 ┌─────────────────────────────────────────┐
 │ V01_AguaEntrada           [ Modo Auto ▼]│
@@ -98,7 +98,7 @@ Una única propiedad `Valve` de tipo `UDT_Valve`.
 
 ## Ejemplo de uso
 
-```
+```scl
 
 Variable enlazada: "DB_Equipos".V01_AguaEntrada
 ```

@@ -108,7 +108,7 @@ El UDT está organizado en 6 sub-estructuras para separar claramente raw, escala
 
 Declara una variable del tipo `UDT_AnalogInput` por cada canal de la instalación dentro de un DB de "Analógicas":
 
-```
+```text
 
 DB_Analogicas.AI01_TempReactor : UDT_AnalogInput
 DB_Analogicas.AI02_PresionLinea : UDT_AnalogInput
@@ -116,7 +116,7 @@ DB_Analogicas.AI02_PresionLinea : UDT_AnalogInput
 
 Pásala al `FB_AnalogInput` (próximamente en el repo) que se encarga del escalado, filtrado y alarmas:
 
-```
+```scl
 
 "FB_AnalogInput"(
     iValorCrudo := %IW64,

@@ -76,7 +76,7 @@ Guarda el UDT en tu proyecto. Lo usaremos como estructura de E/S del FB.
 
 En Claude Desktop, escribe:
 
-```
+```text
 
 Genera un FB de control de motor digital con las siguientes especificaciones:
 
@@ -149,7 +149,7 @@ Claude generará un FB completo. Revisa:
 
 Si algo no te gusta, pide mejoras:
 
-```
+```text
 
 El código está bien, pero:
 1. Añade más comentarios en la sección de timeouts
@@ -200,7 +200,7 @@ El código está bien, pero:
 
 Si hay errores, pide a Claude que los corrija:
 
-```
+```text
 
 El bloque tiene errores de compilación:
 [pegar errores aquí]

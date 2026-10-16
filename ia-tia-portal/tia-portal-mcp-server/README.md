@@ -31,7 +31,7 @@ Expone las capacidades de TIA Portal como herramientas MCP que un modelo de IA p
 
 ## 🏗 Arquitectura
 
-```
+```text
 
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   AI Agent      │   │   TIA Portal     │   │   TIA Portal  │
@@ -67,7 +67,7 @@ Expone las capacidades de TIA Portal como herramientas MCP que un modelo de IA p
 - Usuario debe estar en el grupo **`Siemens TIA Openness`**
 - Variable de entorno `TiaPortalLocation` configurada:
 
-  ```
+  ```text
 
   TiaPortalLocation = C:\Program Files\Siemens\Automation\Portal V20
   ```
@@ -137,28 +137,28 @@ Edita `C:\Users\<user>\AppData\Roaming\Claude\claude_desktop_config.json`:
 
 **Explorar proyecto:**
 
-```
+```text
 
 ¿Qué bloques FB tiene mi proyecto TIA Portal?
 ```
 
 **Leer un bloque:**
 
-```
+```text
 
 Muéstrame el código del bloque FB_Motor
 ```
 
 **Exportar bloque:**
 
-```
+```text
 
 Exporta el bloque FC_Escalado como XML
 ```
 
 **Compilar:**
 
-```
+```text
 
 Compila el proyecto actual
 ```
@@ -257,7 +257,7 @@ dotnet test --filter "Category=Integration"
 
 ### 1. Documentación automática
 
-```
+```text
 
 Genera documentación de todos los bloques FB del proyecto
 ```
@@ -266,7 +266,7 @@ Genera documentación de todos los bloques FB del proyecto
 
 ### 2. Revisión de código
 
-```
+```text
 
 Busca bloques con código duplicado o patrones sospechosos
 ```
@@ -275,7 +275,7 @@ Busca bloques con código duplicado o patrones sospechosos
 
 ### 3. Migración de proyectos
 
-```
+```text
 
 Exporta todos los bloques del proyecto como XML
 ```
@@ -284,7 +284,7 @@ Exporta todos los bloques del proyecto como XML
 
 ### 4. Aprendizaje
 
-```
+```text
 
 Explícame cómo funciona el bloque FB_PumpControl
 ```

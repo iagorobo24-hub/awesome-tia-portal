@@ -34,7 +34,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 
 ## Arquitectura incluida
 
-```
+```text
 
                           ┌────────────────────┐
                           │  HMI_Central       │
@@ -66,7 +66,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 
 ### PLC_Maestro
 
-```
+```text
 
 ├── OB1, OB100, OB82, OB85, OB86
 ├── DB_Linea            ← estado global de línea (modo, fase, receta activa)
@@ -79,7 +79,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 
 ### PLC_Estacion1 / PLC_Estacion2
 
-```
+```text
 
 ├── OB1, OB100, OB82
 ├── DB_Equipos      ← motores y válvulas locales
@@ -90,7 +90,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 
 ### HMI_Central
 
-```
+```text
 
 Plantilla_Navegacion (header con nombre línea, footer con alarmas globales)
 ├── 00_Inicio

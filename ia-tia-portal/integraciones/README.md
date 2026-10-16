@@ -22,7 +22,7 @@ Integrar TIA Portal con Git para control de versiones de bloques PLC, tags y con
 
 ### Flujo de trabajo
 
-```
+```text
 
 1. Exportar bloques como XML (SimaticML)
 2. Commit en Git con mensaje descriptivo
@@ -139,7 +139,7 @@ tia-portal import-hardware -project $ProjectPath -input $GitPath\hardware
 
 #### Generar commits descriptivos
 
-```
+```text
 
 Genera un mensaje de commit descriptivo para estos cambios.
 
@@ -158,7 +158,7 @@ Por favor, genera un mensaje de commit siguiendo el formato Conventional Commits
 
 #### Generar diff de bloques
 
-```
+```text
 
 Genera un diff legible entre dos versiones de este bloque.
 
@@ -190,7 +190,7 @@ Integrar TIA Portal con Jira para seguimiento de tareas, bugs y mejoras.
 
 ### Flujo de trabajo
 
-```
+```text
 
 1. Crear issue en Jira
 2. Asignar issue a desarrollador
@@ -231,7 +231,7 @@ Configurar Jira para:
 
 #### Generar descripción de issue
 
-```
+```text
 
 Genera una descripción detallada de issue Jira para este cambio.
 
@@ -251,7 +251,7 @@ Formato: Markdown
 
 #### Generar casos de prueba
 
-```
+```text
 
 Genera casos de prueba para este issue Jira.
 
@@ -301,7 +301,7 @@ Integrar TIA Portal con Confluence para documentación técnica, manuales y proc
 
 ### Flujo de trabajo
 
-```
+```text
 
 1. Generar documentación con IA
 2. Crear página en Confluence
@@ -322,7 +322,7 @@ Integrar TIA Portal con Confluence para documentación técnica, manuales y proc
 
 #### 2. Estructura de páginas
 
-```
+```text
 
 TIA Portal Documentation
 ├── Proyectos
@@ -347,7 +347,7 @@ TIA Portal Documentation
 
 #### Generar documentación para Confluence
 
-```
+```text
 
 Genera documentación en formato Confluence para este bloque.
 
@@ -367,7 +367,7 @@ Formato: Confluence Storage Format (si es posible) o Markdown
 
 #### Generar procedimientos operativos
 
-```
+```text
 
 Genera procedimientos operativos para este sistema.
 
@@ -417,7 +417,7 @@ Integrar TIA Portal con Microsoft Teams para notificaciones, colaboración y mon
 
 ### Flujo de trabajo
 
-```
+```text
 
 1. Evento en TIA Portal (compilación, error, alarma)
 2. Webhook envía notificación a Teams
@@ -457,7 +457,7 @@ Set-Content -Path "config\webhook-url.txt" -Value $WebhookUrl
 
 #### Generar mensajes de Teams
 
-```
+```text
 
 Genera un mensaje de Teams para esta notificación.
 
@@ -476,7 +476,7 @@ Formato: Adaptive Cards JSON
 
 #### Generar alertas de Teams
 
-```
+```text
 
 Genera una alerta de Teams para esta alarma.
 
@@ -543,7 +543,7 @@ Integrar TIA Portal con Power BI para dashboards, análisis de datos y monitoreo
 
 ### Flujo de trabajo
 
-```
+```text
 
 1. Exportar datos de TIA Portal
 2. Importar en Power BI
@@ -593,7 +593,7 @@ tia-portal export-events -project $ProjectPath -output $OutputPath\events.csv
 
 #### Generar medidas DAX
 
-```
+```text
 
 Genera medidas DAX para este dashboard de Power BI.
 
@@ -612,7 +612,7 @@ Formato: DAX
 
 #### Generar visualizaciones
 
-```
+```text
 
 Genera recomendaciones de visualizaciones para este dashboard.
 

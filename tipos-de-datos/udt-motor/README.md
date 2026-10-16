@@ -98,7 +98,7 @@ El UDT aparecerá en `Tipos de datos PLC > UDT_Motor`, listo para usar como tipo
 
 Declara una variable del tipo `UDT_Motor` por cada motor de la instalación, normalmente dentro de un DB global de "Equipos":
 
-```
+```text
 
 DB_Equipos.M01_BombaPrincipal : UDT_Motor
 DB_Equipos.M02_VentiladorExtraccion : UDT_Motor
@@ -106,14 +106,14 @@ DB_Equipos.M02_VentiladorExtraccion : UDT_Motor
 
 Desde el HMI enlazas directamente la sub-estructura completa al faceplate (un único enlace en lugar de 20 variables sueltas):
 
-```
+```scl
 
 Faceplate_Motor.Tag = "DB_Equipos".M01_BombaPrincipal
 ```
 
 Y desde un `FB_Motor` (que próximamente subiremos al repo) le pasas la instancia entera como `InOut`:
 
-```
+```scl
 
 "FB_Motor"(
     Motor := "DB_Equipos".M01_BombaPrincipal,

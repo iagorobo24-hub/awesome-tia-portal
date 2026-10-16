@@ -5,8 +5,6 @@
 // - MD041 (primera linea H1): los README de recurso empiezan con frontmatter.
 // - MD026 (puntuacion final en titulos): titulares en espanol con ¿?/¡!.
 // - MD060 (estilo de tablas): cosmetico; GitHub las renderiza igual.
-// - MD040 (lenguaje en fences): pendiente etiquetar los ~230 bloques
-//   existentes (scl/bash/mermaid); hacerlo es una pasada de contenido aparte.
 // - MD051 (fragmentos #ancla): apagada a proposito. Para titulos con emoji,
 //   markdownlint exige el slug `#-python-vs-c` mientras GitHub resuelve
 //   `#python-vs-c`: ningun enlace puede satisfacer a los dos a la vez
@@ -23,7 +21,6 @@
     "MD033": false,
     "MD041": false,
     "MD060": false,
-    "MD040": false,
     "MD051": false,
     "MD024": {
       "siblings_only": true

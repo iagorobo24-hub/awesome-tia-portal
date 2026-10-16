@@ -40,7 +40,7 @@ En TIA Portal V15:
 
 En Claude Desktop:
 
-```
+```text
 
 Analiza estos bloques exportados de TIA Portal V15.
 
@@ -76,7 +76,7 @@ Por favor, genera un reporte detallado en formato Markdown.
 
 Para cada bloque obsoleto, pide:
 
-```
+```text
 
 Genera una versión moderna de este bloque para TIA Portal V20.
 
@@ -122,7 +122,7 @@ Por favor, genera el código SCL completo.
 
 ### 4.1 Generar reporte de migración
 
-```
+```text
 
 Genera un reporte de migración del proyecto.
 

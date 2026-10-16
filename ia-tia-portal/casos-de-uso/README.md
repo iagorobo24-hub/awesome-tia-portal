@@ -45,7 +45,7 @@ Línea de tratamiento de agua para planta industrial con los siguientes procesos
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de control de filtro de agua con las siguientes características:
 
@@ -69,7 +69,7 @@ Genera un FB de control de filtro de agua con las siguientes características:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera documentación completa de todos los bloques de la línea de tratamiento.
 
@@ -92,7 +92,7 @@ Incluye:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera casos de prueba para el FB de control de filtro.
 
@@ -304,7 +304,7 @@ Sistema de transporte con 12 cintas transportoras interconectadas:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de control de cinta transportora con las siguientes características:
 
@@ -328,7 +328,7 @@ Genera un FB de control de cinta transportora con las siguientes característica
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de diagnóstico para el sistema de transporte.
 
@@ -394,7 +394,7 @@ Máquina empacadora automática con:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de coordinación entre 3 PLCs para máquina empacadora.
 
@@ -418,7 +418,7 @@ Funcionalidades:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de control de calidad para máquina empacadora.
 
@@ -483,7 +483,7 @@ Planta química con:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de seguridad SIL 3 para reactor químico.
 
@@ -514,7 +514,7 @@ REQUISITOS DE SEGURIDAD:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de control de temperatura para reactor químico.
 
@@ -580,7 +580,7 @@ Sistema HVAC de edificio de oficinas con:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de control de zona HVAC.
 
@@ -604,7 +604,7 @@ Funcionalidades:
 
 **Prompt usado:**
 
-```
+```text
 
 Genera un FB de optimización energética para sistema HVAC.
 

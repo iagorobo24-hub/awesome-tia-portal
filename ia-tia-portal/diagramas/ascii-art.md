@@ -8,7 +8,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Flujo completo IA → TIA Portal
 
-```
+```text
 
 ┌──────────────────────────────────────────────────────────┐
 │                    FLUJO COMPLETO                         │
@@ -38,7 +38,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Arquitectura de capas
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────┐
 │                  CAPA DE PRESENTACIÓN                     │
@@ -90,7 +90,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Máquina de estados de motor (ASCII)
 
-```
+```text
 
                     ┌─────────────┐
                     │   STOPPED   │
@@ -132,7 +132,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Máquina de estados de filtro (ASCII)
 
-```
+```text
 
                     ┌─────────────┐
                     │     IDLE    │
@@ -182,7 +182,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Máquina de estados de válvula (ASCII)
 
-```
+```text
 
                     ┌─────────────┐
                     │   CLOSED    │
@@ -228,7 +228,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Ciclo de desarrollo con IA
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────┐
 │              CICLO DE DESARROLLO CON IA                 │
@@ -356,7 +356,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Ruta de aprendizaje visual
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────┐
 │              ROADMAP DE APRENDIZAJE                     │
@@ -478,7 +478,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Árbol de decisión detallado
 
-```
+```text
 
                     ┌─────────────────────────┐
                     │ ¿QUÉ EDITOR USAS?     │
@@ -575,7 +575,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ### Comparativa de características
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │              COMPARATIVA DE MCP SERVERS                      │
@@ -654,7 +654,7 @@ Característica: OPEN-SOURCE
 
 ### Línea de tratamiento de agua
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │              LÍNEA DE TRATAMIENTO DE AGUA                    │
@@ -731,7 +731,7 @@ Característica: OPEN-SOURCE
 
 ### Sistema de transporte de cintas
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │           SISTEMA DE TRANSPORTE DE CINTAS                    │
@@ -797,7 +797,7 @@ Característica: OPEN-SOURCE
 
 ### Badges de nivel
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │                    BADGES DE NIVEL                          │
@@ -882,7 +882,7 @@ Característica: OPEN-SOURCE
 
 ### Reducción de tiempo (casos de uso)
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │              REDUCCIÓN DE TIEMPO (CASOS DE USO)              │
@@ -946,7 +946,7 @@ Sistema HVAC de edificio
 
 ### Mejora de calidad (casos de uso)
 
-```
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │              MEJORA DE CALIDAD (CASOS DE USO)                │

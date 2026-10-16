@@ -700,7 +700,7 @@ END_IF;
     bStop := FALSE,
     bFeedback := TRUE
 );
-```
+```markdown
 
 ## Notas
 
@@ -824,7 +824,7 @@ FB_MotorControl(
     bOverheat := bOverheatSensor,
     tTimeout := T#5S
 );
-```
+```markdown
 
 ## Notas (ejemplo FB_MotorControl)
 

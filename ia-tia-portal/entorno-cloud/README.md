@@ -13,7 +13,7 @@ Guía para dejar configurado un **entorno de desarrollo en la nube** (Cursor Clo
 
 Conectar "IA en la nube" con "TIA Portal" son en realidad **dos entornos distintos** que se comunican, no uno solo:
 
-```
+```text
 
 ┌────────────────────────────┐        ┌──────────────────────────────┐
 │  CAPA A — Nube (Linux)     │        │  CAPA B — Tu Windows          │
@@ -140,7 +140,7 @@ Dejas TIA Portal + puente corriendo en Windows y expones su endpoint para que el
 
 ## 5. Flujo completo objetivo
 
-```
+```text
 
 Cloud Agent (Linux)          Puente en Windows            TIA Portal
 ──────────────────           ─────────────────            ──────────

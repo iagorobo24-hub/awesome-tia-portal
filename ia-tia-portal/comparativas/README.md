@@ -336,7 +336,7 @@ Responde a estas preguntas para encontrar el proyecto ideal para ti:
 
 ### Árbol de decisión
 
-```
+```text
 
 ¿Usas VS Code?
 ├── Sí → tiaportal-mcp

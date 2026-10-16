@@ -41,7 +41,7 @@ Total: 126+ herramientas MCP
 
 ## 🏗 Arquitectura
 
-```
+```text
 
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   AI Agent      │   │   T-IA Connect    │   │   TIA Portal  │
@@ -78,7 +78,7 @@ Total: 126+ herramientas MCP
 
 ### Paso 1: Prompt
 
-```
+```text
 
 "Genera un FB de control de bomba con fallo térmico (TON 5s), modo manual/auto"
 ```
@@ -154,7 +154,7 @@ Visita [t-ia-connect.com](https://t-ia-connect.com/) y descarga el instalador. T
 
 Ejecuta el instalador y sigue los pasos. Por defecto se instala en:
 
-```
+```text
 
 C:\Program Files\T-IA Connect\
 ```
@@ -307,7 +307,7 @@ curl -X POST http://localhost:9000/api/blocks/compile `
 
 ### Arquitectura con AgentGateway
 
-```
+```text
 
 Claude Code → AgentGateway (port 4000) → T-IA Connect (port 9000)
                                               → T-IA Connect REST
@@ -366,7 +366,7 @@ El proyecto incluye tests E2E que demuestran:
 
 ### 1. Generación de bloques desde lenguaje natural
 
-```
+```text
 
 Crea un FB de control de válvula con feedback y timeout de 10s
 ```
@@ -375,7 +375,7 @@ Crea un FB de control de válvula con feedback y timeout de 10s
 
 ### 2. Documentación automática
 
-```
+```text
 
 Genera documentación de todos los bloques del proyecto
 ```
@@ -384,7 +384,7 @@ Genera documentación de todos los bloques del proyecto
 
 ### 3. Migración de proyectos
 
-```
+```text
 
 Exporta todo el proyecto como SimaticML XML
 ```
@@ -393,7 +393,7 @@ Exporta todo el proyecto como SimaticML XML
 
 ### 4. Testing automatizado
 
-```
+```text
 
 Crea un test suite para el FB_PumpControl
 ```
@@ -402,7 +402,7 @@ Crea un test suite para el FB_PumpControl
 
 ### 5. Refactorización
 
-```
+```text
 
 Busca bloques con código duplicado y propón refactorización
 ```

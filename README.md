@@ -197,7 +197,7 @@ Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`ud
 
 ## Estructura del proyecto
 
-```
+```text
 
 tipos-de-datos/            UDTs (una carpeta por recurso, con README.md)
 bloques-de-funcion/        FB y FC (fb-alarm-latch incluye fuente SCL + evidencia)

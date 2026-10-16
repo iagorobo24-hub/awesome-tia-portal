@@ -20,7 +20,7 @@ Guía de solución de problemas y preguntas frecuentes para IA + TIA Portal.
 
 **Síntoma:**
 
-```
+```text
 
 Error: No se puede conectar a TIA Portal
 ```
@@ -36,7 +36,7 @@ Error: No se puede conectar a TIA Portal
 
 1. **Abrir TIA Portal**
 
-   ```
+   ```text
 
    1. Abre TIA Portal
    2. Abre el proyecto
@@ -45,7 +45,7 @@ Error: No se puede conectar a TIA Portal
 
 2. **Habilitar API de Openness**
 
-   ```
+   ```text
 
    1. Ve a Opciones → Openness
    2. Habilita "Permitir acceso a Openness"
@@ -54,7 +54,7 @@ Error: No se puede conectar a TIA Portal
 
 3. **Verificar permisos**
 
-   ```
+   ```text
 
    1. Ejecuta TIA Portal como administrador
    2. Verifica permisos de lectura/escritura
@@ -67,7 +67,7 @@ Error: No se puede conectar a TIA Portal
 
 **Síntoma:**
 
-```
+```text
 
 Error: Timeout de compilación
 ```
@@ -83,7 +83,7 @@ Error: Timeout de compilación
 
 1. **Compilar bloques individualmente**
 
-   ```
+   ```text
 
    1. Identifica bloques con errores
    2. Compila bloques uno por uno
@@ -100,7 +100,7 @@ Error: Timeout de compilación
 
 3. **Optimizar proyecto**
 
-   ```
+   ```text
 
    1. Eliminar bloques no usados
    2. Reducir complejidad de bloques
@@ -113,7 +113,7 @@ Error: Timeout de compilación
 
 **Síntoma:**
 
-```
+```text
 
 Error: Bloque no encontrado
 ```
@@ -129,7 +129,7 @@ Error: Bloque no encontrado
 
 1. **Verificar nombre de bloque**
 
-   ```
+   ```text
 
    1. Verifica ortografía del nombre
    2. Verifica mayúsculas/minúsculas
@@ -146,7 +146,7 @@ Error: Bloque no encontrado
 
 3. **Verificar ubicación del bloque**
 
-   ```
+   ```text
 
    1. Busca bloque en TIA Portal
    2. Verifica carpeta del bloque
@@ -159,7 +159,7 @@ Error: Bloque no encontrado
 
 **Síntoma:**
 
-```
+```text
 
 Error: Error de sintaxis en línea X
 ```
@@ -175,7 +175,7 @@ Error: Error de sintaxis en línea X
 
 1. **Verificar sintaxis**
 
-   ```
+   ```text
 
    1. Revisa línea indicada
    2. Verifica punto y coma
@@ -193,7 +193,7 @@ Error: Error de sintaxis en línea X
 
 3. **Pedir a IA que corrija**
 
-   ```
+   ```text
 
    Corrige este error de sintaxis.
 
@@ -209,7 +209,7 @@ Error: Error de sintaxis en línea X
 
 **Síntoma:**
 
-```
+```text
 
 Error: Error de compilación en bloque X
 ```
@@ -225,7 +225,7 @@ Error: Error de compilación en bloque X
 
 1. **Verificar variables**
 
-   ```
+   ```text
 
    1. Verifica que todas las variables están declaradas
    2. Verifica tipos de variables
@@ -234,7 +234,7 @@ Error: Error de compilación en bloque X
 
 2. **Verificar dependencias**
 
-   ```
+   ```text
 
    1. Verifica que todos los bloques existen
    2. Verifica que los bloques están compilados
@@ -243,7 +243,7 @@ Error: Error de compilación en bloque X
 
 3. **Pedir a IA que corrija**
 
-   ```
+   ```text
 
    Corrige este error de compilación.
 
@@ -259,7 +259,7 @@ Error: Error de compilación en bloque X
 
 **Síntoma:**
 
-```
+```text
 
 Error: Error de ejecución en bloque X
 ```
@@ -275,7 +275,7 @@ Error: Error de ejecución en bloque X
 
 1. **Verificar división por cero**
 
-   ```
+   ```text
 
    1. Verifica que el divisor no es cero
    2. Añade validación antes de dividir
@@ -284,7 +284,7 @@ Error: Error de ejecución en bloque X
 
 2. **Verificar overflow/underflow**
 
-   ```
+   ```text
 
    1. Verifica rangos de variables
    2. Añade validación de rangos
@@ -293,7 +293,7 @@ Error: Error de ejecución en bloque X
 
 3. **Pedir a IA que corrija**
 
-   ```
+   ```text
 
    Corrige este error de ejecución.
 
@@ -311,7 +311,7 @@ Error: Error de ejecución en bloque X
 
 **Síntoma:**
 
-```
+```text
 
 Error: Permisos insuficientes para acceder a Openness
 ```
@@ -327,7 +327,7 @@ Error: Permisos insuficientes para acceder a Openness
 
 1. **Ejecutar como administrador**
 
-   ```
+   ```text
 
    1. Cierra TIA Portal
    2. Haz clic derecho en TIA Portal
@@ -337,7 +337,7 @@ Error: Permisos insuficientes para acceder a Openness
 
 2. **Habilitar API de Openness**
 
-   ```
+   ```text
 
    1. Ve a Opciones → Openness
    2. Habilita "Permitir acceso a Openness"
@@ -346,7 +346,7 @@ Error: Permisos insuficientes para acceder a Openness
 
 3. **Configurar firewall**
 
-   ```
+   ```text
 
    1. Abre firewall de Windows
    2. Añade excepción para TIA Portal
@@ -356,7 +356,7 @@ Error: Permisos insuficientes para acceder a Openness
 
 4. **Configurar antivirus**
 
-   ```
+   ```text
 
    1. Abre antivirus
    2. Añade excepción para TIA Portal
@@ -370,7 +370,7 @@ Error: Permisos insuficientes para acceder a Openness
 
 **Síntoma:**
 
-```
+```text
 
 Error: API de Openness no disponible
 ```
@@ -386,7 +386,7 @@ Error: API de Openness no disponible
 
 1. **Instalar Openness**
 
-   ```
+   ```text
 
    1. Descarga Openness desde Siemens
    2. Ejecuta instalador
@@ -395,7 +395,7 @@ Error: API de Openness no disponible
 
 2. **Verificar versión**
 
-   ```
+   ```text
 
    1. Verifica versión de TIA Portal
    2. Verifica versión de Openness
@@ -404,7 +404,7 @@ Error: API de Openness no disponible
 
 3. **Verificar licencia**
 
-   ```
+   ```text
 
    1. Verifica licencia de Openness
    2. Verifica que la licencia es válida
@@ -413,7 +413,7 @@ Error: API de Openness no disponible
 
 4. **Habilitar Openness**
 
-   ```
+   ```text
 
    1. Ve a Opciones → Openness
    2. Habilita "Permitir acceso a Openness"
@@ -428,7 +428,7 @@ Error: API de Openness no disponible
 
 **Síntoma:**
 
-```
+```text
 
 Error: No se puede conectar al servidor MCP
 ```
@@ -452,7 +452,7 @@ Error: No se puede conectar al servidor MCP
 
 2. **Verificar puerto**
 
-   ```
+   ```text
 
    1. Verifica puerto en configuración
    2. Verifica que el puerto no está en uso
@@ -461,7 +461,7 @@ Error: No se puede conectar al servidor MCP
 
 3. **Configurar firewall**
 
-   ```
+   ```text
 
    1. Abre firewall de Windows
    2. Añade excepción para puerto MCP
@@ -470,7 +470,7 @@ Error: No se puede conectar al servidor MCP
 
 4. **Verificar dirección**
 
-   ```
+   ```text
 
    1. Verifica dirección en configuración
    2. Verifica que la dirección es correcta
@@ -483,7 +483,7 @@ Error: No se puede conectar al servidor MCP
 
 **Síntoma:**
 
-```
+```text
 
 Error: Timeout de conexión al servidor MCP
 ```
@@ -512,7 +512,7 @@ Error: Timeout de conexión al servidor MCP
 
 2. **Verificar servidor MCP**
 
-   ```
+   ```text
 
    1. Verifica que el servidor MCP está iniciado
    2. Verifica logs del servidor MCP
@@ -521,7 +521,7 @@ Error: Timeout de conexión al servidor MCP
 
 3. **Verificar red**
 
-   ```
+   ```text
 
    1. Verifica conexión de red
    2. Verifica velocidad de red
@@ -530,7 +530,7 @@ Error: Timeout de conexión al servidor MCP
 
 4. **Configurar firewall**
 
-   ```
+   ```text
 
    1. Abre firewall de Windows
    2. Añade excepción para servidor MCP
@@ -545,7 +545,7 @@ Error: Timeout de conexión al servidor MCP
 
 **Síntoma:**
 
-```
+```text
 
 Error: Bloque no compilado
 ```
@@ -561,7 +561,7 @@ Error: Bloque no compilado
 
 1. **Compilar bloque**
 
-   ```
+   ```text
 
    1. Abre bloque en TIA Portal
    2. Compila bloque
@@ -571,7 +571,7 @@ Error: Bloque no compilado
 
 2. **Validar bloque**
 
-   ```
+   ```text
 
    1. Abre bloque en TIA Portal
    2. Valida bloque
@@ -581,7 +581,7 @@ Error: Bloque no compilado
 
 3. **Verificar dependencias**
 
-   ```
+   ```text
 
    1. Verifica que todas las dependencias existen
    2. Verifica que las dependencias están compiladas
@@ -594,7 +594,7 @@ Error: Bloque no compilado
 
 **Síntoma:**
 
-```
+```text
 
 Error: Error de compilación en bloque X
 ```
@@ -610,7 +610,7 @@ Error: Error de compilación en bloque X
 
 1. **Verificar variables**
 
-   ```
+   ```text
 
    1. Verifica que todas las variables están declaradas
    2. Verifica tipos de variables
@@ -619,7 +619,7 @@ Error: Error de compilación en bloque X
 
 2. **Verificar dependencias**
 
-   ```
+   ```text
 
    1. Verifica que todos los bloques existen
    2. Verifica que los bloques están compilados
@@ -628,7 +628,7 @@ Error: Error de compilación en bloque X
 
 3. **Pedir a IA que corrija**
 
-   ```
+   ```text
 
    Corrige este error de compilación.
 

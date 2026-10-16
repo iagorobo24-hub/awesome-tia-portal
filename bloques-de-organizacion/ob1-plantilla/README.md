@@ -35,7 +35,7 @@ Esta plantilla impone una **estructura clara y comentada** con 5 secciones siemp
 
 El bloque está organizado con **comentarios de bloque (region/separadores)** que dividen el código en secciones:
 
-```
+```scl
 
 // =================================================================
 // 1. LECTURA DE ENTRADAS Y PRE-PROCESADO

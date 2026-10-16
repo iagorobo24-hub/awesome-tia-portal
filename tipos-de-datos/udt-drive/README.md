@@ -107,7 +107,7 @@ Cada fabricante (Siemens G120/V20, ABB, Schneider, Yaskawa…) tiene su propio m
 
 Una variable por cada variador:
 
-```
+```text
 
 DB_Variadores.D01_BombaPrincipal : UDT_Drive
 DB_Variadores.D02_VentiladorRefri : UDT_Drive
@@ -115,7 +115,7 @@ DB_Variadores.D02_VentiladorRefri : UDT_Drive
 
 Pásalo al FB específico del fabricante (ej: `FB_DriveG120`, no incluido en este repo aún) que se ocupa del telegrama PROFINET:
 
-```
+```scl
 
 "FB_DriveG120"(
     HwId := 271,                 // HW identifier del telegrama

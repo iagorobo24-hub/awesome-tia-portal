@@ -48,7 +48,7 @@ Antes de desplegar código generado por IA a producción:
 
 ### Ejemplo de validación de seguridad
 
-```
+```text
 
 Valida este código generado por IA desde el punto de vista de seguridad.
 
@@ -101,7 +101,7 @@ Por favor, genera un reporte de seguridad en formato Markdown.
 
 ### Plantilla de prompt efectivo
 
-```
+```text
 
 Genera un [TIPO DE BLOQUE] con las siguientes especificaciones:
 
@@ -148,14 +148,14 @@ Por favor, genera el código [LENGUAJE] completo.
 
 #### ❌ Mal: Demasiado genérico
 
-```
+```text
 
 Haz un bloque de motor
 ```
 
 #### ✅ Bien: Específico y detallado
 
-```
+```text
 
 Genera un FB de control de motor digital con las siguientes características:
 
@@ -241,7 +241,7 @@ if ($LASTEXITCODE -ne 0) {
 
 #### 2. Validación de lógica
 
-```
+```text
 
 Valida la lógica de este bloque generado por IA.
 
@@ -274,7 +274,7 @@ Por favor, genera un reporte de validación en formato Markdown.
 
 #### 3. Validación de seguridad
 
-```
+```text
 
 Valida este código desde el punto de vista de seguridad.
 
@@ -338,7 +338,7 @@ foreach ($test in $testCases) {
 
 ### Flujo de trabajo completo
 
-```
+```text
 
 1. PLANIFICACIÓN
    ├── Definir requisitos
@@ -428,7 +428,7 @@ if ($LASTEXITCODE -eq 0) {
 
 **❌ Anti-pattern:**
 
-```
+```text
 
 Genera un bloque de control de motor.
 [Usar código directamente sin revisar]
@@ -436,7 +436,7 @@ Genera un bloque de control de motor.
 
 **✅ Correcto:**
 
-```
+```text
 
 Genera un bloque de control de motor con requisitos detallados.
 [Revisar código]
@@ -449,14 +449,14 @@ Genera un bloque de control de motor con requisitos detallados.
 
 **❌ Anti-pattern:**
 
-```
+```text
 
 Haz un bloque
 ```
 
 **✅ Correcto:**
 
-```
+```text
 
 Genera un FB de control de motor con:
 - Máquina de estados: STOPPED → STARTING → RUNNING → FAULT
@@ -470,7 +470,7 @@ Genera un FB de control de motor con:
 
 **❌ Anti-pattern:**
 
-```
+```text
 
 [Generar código]
 [Usar directamente en producción]
@@ -478,7 +478,7 @@ Genera un FB de control de motor con:
 
 **✅ Correcto:**
 
-```
+```text
 
 [Generar código]
 [Compilar]
@@ -492,14 +492,14 @@ Genera un FB de control de motor con:
 
 **❌ Anti-pattern:**
 
-```
+```text
 
 [Generar código sin comentarios]
 ```
 
 **✅ Correcto:**
 
-```
+```text
 
 Genera código con comentarios explicativos:
 - Comentario de cabecera
@@ -512,7 +512,7 @@ Genera código con comentarios explicativos:
 
 **❌ Anti-pattern:**
 
-```
+```text
 
 [Desplegar código nuevo]
 [No tener backup]
@@ -520,7 +520,7 @@ Genera código con comentarios explicativos:
 
 **✅ Correcto:**
 
-```
+```text
 
 [Backup del proyecto anterior]
 [Desplegar código nuevo]

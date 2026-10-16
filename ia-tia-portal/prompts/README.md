@@ -21,14 +21,14 @@ Aprende a escribir prompts efectivos para obtener los mejores resultados de IA a
 
 **❌ Mal:**
 
-```
+```text
 
 Haz un bloque de motor
 ```
 
 **✅ Bien:**
 
-```
+```text
 
 Genera un FB de control de motor digital con las siguientes características:
 
@@ -50,14 +50,14 @@ Funcionalidades:
 
 **❌ Mal:**
 
-```
+```text
 
 Haz un bloque con entradas y salidas
 ```
 
 **✅ Bien:**
 
-```
+```text
 
 Genera un FC con la siguiente interfaz:
 
@@ -79,14 +79,14 @@ SALIDAS (Output):
 
 **❌ Mal:**
 
-```
+```text
 
 El bloque debe controlar el motor
 ```
 
 **✅ Bien:**
 
-```
+```text
 
 El bloque debe implementar la siguiente lógica:
 
@@ -115,14 +115,14 @@ El bloque debe implementar la siguiente lógica:
 
 **❌ Mal:**
 
-```
+```text
 
 El bloque debe escalar valores
 ```
 
 **✅ Bien:**
 
-```
+```text
 
 El bloque debe escalar valores linealmente según estos ejemplos:
 
@@ -143,14 +143,14 @@ Scaled = MinEng + ((Raw - MinRaw) / (MaxRaw - MinRaw)) * (MaxEng - MinEng)
 
 **❌ Mal:**
 
-```
+```text
 
 Haz un bloque seguro
 ```
 
 **✅ Bien:**
 
-```
+```text
 
 El bloque debe cumplir las siguientes restricciones de seguridad:
 
@@ -169,14 +169,14 @@ El bloque debe cumplir las siguientes restricciones de seguridad:
 
 **❌ Mal:**
 
-```
+```text
 
 Genera el código
 ```
 
 **✅ Bien:**
 
-```
+```text
 
 Genera el código SCL con comentarios explicativos:
 
@@ -194,7 +194,7 @@ Genera el código SCL con comentarios explicativos:
 
 ### Prompt 1: FC de escalado lineal
 
-```
+```text
 
 Genera un FC de escalado lineal con las siguientes especificaciones:
 
@@ -239,7 +239,7 @@ Por favor, genera el código SCL completo.
 
 ### Prompt 2: FB de control de motor
 
-```
+```text
 
 Genera un FB de control de motor digital con las siguientes especificaciones:
 
@@ -304,7 +304,7 @@ Por favor, genera el código SCL completo.
 
 ### Prompt 3: FB de control de válvula
 
-```
+```text
 
 Genera un FB de control de válvula con las siguientes especificaciones:
 
@@ -366,7 +366,7 @@ Por favor, genera el código SCL completo.
 
 ### Prompt 1: Análisis de calidad
 
-```
+```text
 
 Analiza este código PLC y genera un reporte de calidad.
 
@@ -415,7 +415,7 @@ Por favor, genera un reporte detallado en formato Markdown con:
 
 ### Prompt 2: Análisis de seguridad
 
-```
+```text
 
 Analiza este código PLC desde el punto de vista de seguridad.
 
@@ -464,7 +464,7 @@ Por favor, genera un reporte de seguridad en formato Markdown con:
 
 ### Prompt 1: Documentación de bloque
 
-```
+```text
 
 Genera documentación completa del bloque [NOMBRE_DEL_BLOQUE].
 
@@ -527,7 +527,7 @@ Organiza todo en formato Markdown con tablas y bloques de código.
 
 ### Prompt 2: Documentación de proyecto
 
-```
+```text
 
 Genera documentación completa de mi proyecto de TIA Portal.
 
@@ -602,7 +602,7 @@ Por favor, genera el documento completo en formato Markdown.
 
 ### Prompt 1: Refactorización de código duplicado
 
-```
+```text
 
 Refactoriza este código PLC para eliminar código duplicado.
 
@@ -636,7 +636,7 @@ Por favor, genera el código refactorizado completo en SCL.
 
 ### Prompt 2: Refactorización de complejidad
 
-```
+```text
 
 Refactoriza este código PLC para reducir complejidad.
 
@@ -674,7 +674,7 @@ Por favor, genera el código refactorizado completo.
 
 ### Prompt 1: Debug de error de compilación
 
-```
+```text
 
 Tengo un error de compilación en este código.
 
@@ -691,7 +691,7 @@ Por favor:
 
 ### Prompt 2: Debug de error de runtime
 
-```
+```text
 
 Tengo un error de runtime en este código.
 

@@ -25,7 +25,7 @@ Convenciones que sigue este repo para que todos los recursos (UDTs, FBs, FCs, OB
 
 El repo se organiza por **categoría** en la raíz, y dentro de cada categoría hay una **subcarpeta por recurso**:
 
-```
+```text
 
 awesome-tia-portal/
 ├── tipos-de-datos/              # UDTs
@@ -136,7 +136,7 @@ Para variables locales que son instancias de FBs estándar, usamos el **nombre d
 
 Por compatibilidad con la nomenclatura clásica de Siemens (área `%Q`), aceptamos el prefijo **`q`** *únicamente* en outputs de tipo `BOOL` que se conectan directamente a una salida física o a un indicador HMI:
 
-```
+```text
 
 qSalidaContactor       BOOL    Salida hacia bobina del KM
 qLamparaMarcha         BOOL    Lámpara verde marcha
@@ -148,7 +148,7 @@ Esto es la única excepción permitida al "el prefijo refleja el tipo". Para out
 
 Las variables que **son instancias de un UDT** o estructuras complejas usan **PascalCase sin prefijo**, igual que el tipo:
 
-```
+```text
 
 Motor                  UDT_Motor          Estructura del motor
 Analog                 UDT_AnalogInput    Estructura de entrada analógica
@@ -173,7 +173,7 @@ Alarmas                ARRAY[1..50] OF UDT_Alarm    Lista de alarmas
 
 Los tipos de datos siempre se escriben en **MAYÚSCULAS** en los READMEs:
 
-```
+```text
 
 ✅ BOOL, INT, DINT, REAL, STRING, TIME, DTL, WORD, DWORD, BYTE
 ❌ Bool, Int, Real, String, Time, Dtl
@@ -183,7 +183,7 @@ Los tipos de datos siempre se escriben en **MAYÚSCULAS** en los READMEs:
 
 Usa siempre **corchetes**, que es la sintaxis nativa de TIA Portal:
 
-```
+```text
 
 ✅ STRING[40], STRING[80], STRING[10]
 ❌ STRING(40), STRING(80)
@@ -193,7 +193,7 @@ Usa siempre **corchetes**, que es la sintaxis nativa de TIA Portal:
 
 Siempre con la palabra `OF` y el tipo en mayúsculas:
 
-```
+```text
 
 ✅ ARRAY[1..50] OF UDT_Alarm
 ✅ ARRAY[0..99] OF REAL
@@ -204,7 +204,7 @@ Siempre con la palabra `OF` y el tipo en mayúsculas:
 
 Para valores tipo enum (motor: 0=manual, 1=auto, 2=remoto), usa el prefijo `e` y documenta los valores en una nota:
 
-```
+```text
 
 | `eModo` | INT | 0 = manual · 1 = auto · 2 = remoto |
 ```

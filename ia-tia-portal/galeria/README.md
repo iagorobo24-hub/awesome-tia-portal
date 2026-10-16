@@ -21,7 +21,7 @@ Demo de generación de un bloque de control de motor usando IA.
 
 ### Prompt
 
-```
+```text
 
 Genera un FB de control de motor digital con las siguientes características:
 
@@ -269,7 +269,7 @@ END_FUNCTION_BLOCK
 
 ### Capturas de pantalla
 
-```
+```scl
 
 ┌─────────────────────────────────────────────────────────────┐
 │ TIA Portal - FB_MotorControl                                │
@@ -318,7 +318,7 @@ Demo de análisis de un proyecto TIA Portal existente usando IA.
 
 ### Prompt
 
-```
+```text
 
 Analiza este proyecto TIA Portal y genera un reporte completo.
 
@@ -408,7 +408,7 @@ Planta de Tratamiento de Agua
     ├── FB_Control_Compresor
     └── FB_Control_Dosificador
 
-```
+```markdown
 
 ### Bloques principales
 
@@ -592,7 +592,7 @@ Demo de compilación automatizada de un proyecto TIA Portal usando IA.
 
 ### Prompt
 
-```
+```text
 
 Genera un script de PowerShell para compilar automáticamente un proyecto TIA Portal.
 
@@ -760,7 +760,7 @@ $($CompiledBlocks bloques)
 
 $($error.Error)
 
-```
+```powershell
 
 "@
         }
@@ -785,7 +785,7 @@ $($error.Error)
 
 $($warning.Warning)
 
-```
+```powershell
 
 "@
         }
@@ -911,7 +911,7 @@ Demo de integración de PLCSIM con IA para pruebas automatizadas.
 
 ### Prompt
 
-```
+```text
 
 Genera un script de PowerShell para automatizar pruebas en PLCSIM usando IA.
 

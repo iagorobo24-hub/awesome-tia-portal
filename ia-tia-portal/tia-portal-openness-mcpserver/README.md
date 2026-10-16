@@ -36,7 +36,7 @@ Total: ~60+ herramientas MCP
 
 ## 🏗 Arquitectura
 
-```
+```text
 
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   AI Agent      │   │   MCP Server     │   │   TIA Portal  │
@@ -296,7 +296,7 @@ npx @modelcontextprotocol/inspector dotnet run --project TiaPortalMcpServer/TiaP
 
 ### 1. Creación de proyecto
 
-```
+```text
 
 Crea un nuevo proyecto TIA Portal con un S7-1500
 ```
@@ -305,7 +305,7 @@ Crea un nuevo proyecto TIA Portal con un S7-1500
 
 ### 2. Gestión de tags
 
-```
+```text
 
 Crea una tabla de tags para todas las entradas analógicas
 ```
@@ -314,7 +314,7 @@ Crea una tabla de tags para todas las entradas analógicas
 
 ### 3. Compilación
 
-```
+```text
 
 Compila el software del PLC_1
 ```
@@ -323,7 +323,7 @@ Compila el software del PLC_1
 
 ### 4. Importación de datos
 
-```
+```text
 
 Importa tags desde un archivo Excel
 ```
@@ -332,7 +332,7 @@ Importa tags desde un archivo Excel
 
 ### 5. Generación asistida por LLM
 
-```
+```text
 
 Genera código SCL para un control de bomba
 ```

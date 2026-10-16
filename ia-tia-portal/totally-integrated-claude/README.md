@@ -29,7 +29,7 @@ Proporciona un framework de skills que Claude Code puede cargar dinámicamente p
 
 ## 🏗 Arquitectura
 
-```
+```text
 
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   Claude Code   │   │  Plugin Skills   │   │   TIA Portal  │
@@ -107,7 +107,7 @@ gemini extensions link .
 
 1. **Cargar el routing skill**:
 
-   ```
+   ```text
 
    ¿Cómo leo todos los bloques PLC de mi proyecto TIA Portal?
    ```
@@ -126,28 +126,28 @@ gemini extensions link .
 
 **Explorar proyecto:**
 
-```
+```text
 
 Analiza mi proyecto TIA Portal y explícame su estructura
 ```
 
 **Leer bloques:**
 
-```
+```text
 
 Muéstrame el código del bloque FB_MotorControl
 ```
 
 **Generar documentación:**
 
-```
+```text
 
 Genera documentación de todos los bloques FB del proyecto
 ```
 
 **Crear Add-In:**
 
-```
+```text
 
 Ayúdame a crear un Add-In de TIA Portal que exporte bloques
 ```
@@ -285,7 +285,7 @@ El plugin incluye tests para validar:
 
 ### 1. Análisis de código PLC
 
-```
+```text
 
 Analiza el bloque FB_PumpControl y busca vulnerabilidades de seguridad
 ```
@@ -294,7 +294,7 @@ Analiza el bloque FB_PumpControl y busca vulnerabilidades de seguridad
 
 ### 2. Documentación automática
 
-```
+```text
 
 Genera documentación de todos los bloques del proyecto
 ```
@@ -303,7 +303,7 @@ Genera documentación de todos los bloques del proyecto
 
 ### 3. Refactorización
 
-```
+```text
 
 Busca bloques con código duplicado y propón refactorización
 ```
@@ -312,7 +312,7 @@ Busca bloques con código duplicado y propón refactorización
 
 ### 4. Desarrollo de Add-In
 
-```
+```text
 
 Ayúdame a crear un Add-In que exporte todos los bloques como XML
 ```
@@ -321,7 +321,7 @@ Ayúdame a crear un Add-In que exporte todos los bloques como XML
 
 ### 5. Configuración de hardware
 
-```
+```text
 
 Configura un S7-1500 con módulos de E/S y comunicación PROFINET
 ```

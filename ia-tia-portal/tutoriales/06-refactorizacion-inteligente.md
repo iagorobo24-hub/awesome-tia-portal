@@ -31,7 +31,7 @@ Refactorizar código PLC existente para mejorar calidad y mantenibilidad con IA.
 
 En Claude Desktop:
 
-```
+```text
 
 Analiza este código PLC e identifica problemas de calidad.
 
@@ -71,7 +71,7 @@ Por favor, genera un reporte detallado en formato Markdown.
 
 Para cada bloque identificado:
 
-```
+```text
 
 Refactoriza este bloque PLC para mejorar calidad y mantenibilidad.
 
@@ -131,7 +131,7 @@ Por favor, genera el código refactorizado completo en SCL.
 
 ### 4.1 Comparar métricas
 
-```
+```text
 
 Compara el código original y el refactorizado.
 

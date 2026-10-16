@@ -34,7 +34,7 @@ Pensada para máquinas individuales: **monobloque mecánico, 1 PLC, 1 HMI, sin r
 
 ## Estructura del proyecto incluida
 
-```
+```text
 
 PLC_1 [CPU 1215C DC/DC/DC]
 ├── Bloques de programa

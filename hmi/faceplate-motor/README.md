@@ -36,7 +36,7 @@ Cada motor en el HMI necesita los mismos elementos: botones marcha/paro, indicad
 
 ## Estructura visual
 
-```
+```text
 
 ┌─────────────────────────────────────────┐
 │ M01_BombaPrincipal       [ Modo Auto ▼ ]│   ← cabecera (texto + selector modo)
@@ -98,7 +98,7 @@ El faceplate expone una única **interfaz de propiedad** llamada `Motor` de tipo
 1. Arrastra el faceplate al lugar de la pantalla donde quieras mostrar el motor.
 2. En las propiedades del faceplate, en la propiedad **`Motor`**, selecciona la variable estructurada del PLC:
 
-   ```
+   ```scl
 
    "DB_Equipos".M01_BombaPrincipal
    ```

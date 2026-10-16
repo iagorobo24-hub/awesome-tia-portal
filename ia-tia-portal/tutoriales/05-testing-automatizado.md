@@ -43,7 +43,7 @@ Crear tests automatizados para tus bloques usando PLCSim Advanced e IA. Al final
 
 En Claude Desktop:
 
-```
+```text
 
 Genera casos de prueba automatizados para el bloque FB_MotorControl.
 
