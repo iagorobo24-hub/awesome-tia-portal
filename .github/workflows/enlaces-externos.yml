@@ -1,0 +1,35 @@
+name: Enlaces Externos
+
+# Los enlaces a proyectos de terceros se pudren solos (cambian, desaparecen).
+# Revision semanal completa, fuera del camino de cada PR para evitar
+# falsos positivos por rate-limits (429) o caidas puntuales.
+on:
+  schedule:
+    # Domingos 04:00 UTC (una hora despues de la validacion interna)
+    - cron: '0 4 * * 0'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+      # Fijado por SHA (v2). Revisa internos + externos + fragmentos #ancla.
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8  # v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --max-retries 3
+            --timeout 20
+            --exclude 'localhost|127\.0\.0\.1'
+            './**/*.md'

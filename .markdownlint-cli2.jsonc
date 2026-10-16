@@ -1,0 +1,20 @@
+// Reglas de markdownlint-cli2 para este repo (ver STYLE.md).
+// Se relajan las incompatibles con el formato del proyecto:
+// - MD013 (longitud de linea): las tablas de recursos son largas por diseno.
+// - MD033 (HTML inline): se usan <div>, <details> e <img> a proposito.
+// - MD041 (primera linea H1): los README de recurso empiezan con frontmatter.
+// - MD026 (puntuacion final en titulos): titulares en espanol con ¿?/¡!.
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD026": false,
+    "MD033": false,
+    "MD041": false
+  },
+  "globs": [
+    "**/*.md",
+    "!node_modules",
+    "!_plantillas"
+  ]
+}
