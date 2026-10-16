@@ -346,4 +346,4 @@ Explícame cómo funciona el bloque FB_PumpControl
 
 ## 📄 Licencia
 
-MIT — Ver [LICENSE](https://github.com/heilingbrunner/tiaportal-mcp/blob/main/LICENSE) en el repositorio original.
+MIT — Ver [LICENSE.txt](https://github.com/heilingbrunner/tiaportal-mcp/blob/main/LICENSE.txt) en el repositorio original.

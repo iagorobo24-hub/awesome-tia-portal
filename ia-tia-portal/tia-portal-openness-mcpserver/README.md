@@ -286,8 +286,8 @@ npx @modelcontextprotocol/inspector dotnet run --project TiaPortalMcpServer/TiaP
 ## 📚 Documentación adicional
 
 - [README principal](https://github.com/chewcw/tia-portal-openness-mcpserver)
-- [CLI README](https://github.com/chewcw/tia-portal-openness-mcpserver/tree/main/cli)
-- [Tests README](https://github.com/chewcw/tia-portal-openness-mcpserver/tree/main/TiaPortalMcpServer.Tests)
+- [CLI README](https://github.com/chewcw/tia-portal-openness-mcpserver/tree/master/cli)
+- [Tests README](https://github.com/chewcw/tia-portal-openness-mcpserver/tree/master/TiaPortalMcpServer.Tests)
 - [TIA Portal Openness docs](https://docs.tia.siemens.cloud/)
 
 ---
@@ -366,4 +366,4 @@ Genera código SCL para un control de bomba
 
 ## 📄 Licencia
 
-MIT — Ver [LICENSE](https://github.com/chewcw/tia-portal-openness-mcpserver/blob/main/LICENSE) en el repositorio original.
+Sin archivo de licencia visible en el [repositorio original](https://github.com/chewcw/tia-portal-openness-mcpserver); consúltalo antes de reutilizar su código.

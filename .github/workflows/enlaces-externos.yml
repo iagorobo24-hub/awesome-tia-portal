@@ -24,6 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       # Fijado por SHA (v2). Revisa internos + externos + fragmentos #ancla.
+      # Exclusiones documentadas:
+      # - ./_plantillas: plantilla con rutas de ejemplo que solo resuelven
+      #   al copiarla a una carpeta de recurso real, no en su sitio actual.
+      # - claude.ai y support.industry.siemens.com: devuelven 403 a bots
+      #   (Cloudflare/login); en navegador funcionan.
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8  # v2
         with:
           args: >-
@@ -31,5 +36,6 @@ jobs:
             --no-progress
             --max-retries 3
             --timeout 20
-            --exclude 'localhost|127\.0\.0\.1'
+            --exclude-path ./_plantillas
+            --exclude 'localhost|127\.0\.0\.1|claude\.ai|support\.industry\.siemens\.com'
             './**/*.md'
