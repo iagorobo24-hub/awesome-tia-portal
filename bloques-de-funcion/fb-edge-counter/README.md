@@ -1,4 +1,5 @@
 ---
+level: basico
 name: FB_EdgeCounter
 type: fb
 tia_version: V20

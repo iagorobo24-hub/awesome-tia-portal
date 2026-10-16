@@ -1,4 +1,5 @@
 ---
+level: basico
 name: FB_Hourmeter
 type: fb
 tia_version: V20

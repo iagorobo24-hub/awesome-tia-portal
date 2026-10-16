@@ -1,4 +1,5 @@
 ---
+level: medio
 name: FB_Motor
 type: fb
 tia_version: V20

@@ -1,4 +1,5 @@
 ---
+level: medio
 name: UDT_Alarm
 type: udt
 tia_version: V20

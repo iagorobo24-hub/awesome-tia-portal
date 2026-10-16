@@ -28,31 +28,31 @@ CATEGORIES = [
         "folder": "tipos-de-datos",
         "title": "🏷️ Tipos de datos (UDT)",
         "types": {"udt"},
-        "columns": ["status", "resource", "description", "tia", "plc"],
+        "columns": ["status", "resource", "description", "tia", "plc", "nivel"],
     },
     {
         "folder": "bloques-de-funcion",
         "title": "🧩 Bloques de función (FB / FC)",
         "types": {"fb", "fc"},
-        "columns": ["status", "resource", "description", "tia", "plc"],
+        "columns": ["status", "resource", "description", "tia", "plc", "nivel"],
     },
     {
         "folder": "bloques-de-organizacion",
         "title": "🏗️ Bloques de organización (OB)",
         "types": {"ob"},
-        "columns": ["status", "resource", "description", "tia", "plc"],
+        "columns": ["status", "resource", "description", "tia", "plc", "nivel"],
     },
     {
         "folder": "hmi",
         "title": "🖥️ HMI",
         "types": {"hmi-faceplate", "hmi-pantalla"},
-        "columns": ["status", "resource", "description", "tia", "panel"],
+        "columns": ["status", "resource", "description", "tia", "panel", "nivel"],
     },
     {
         "folder": "plantillas-de-proyecto",
         "title": "📋 Plantillas de proyecto",
         "types": {"plantilla"},
-        "columns": ["status", "resource", "description", "tia", "plc"],
+        "columns": ["status", "resource", "description", "tia", "plc", "nivel"],
     },
 ]
 
@@ -62,6 +62,12 @@ STATUS_BADGE = {
     "documented": "📝",
     "wip": "⚙️",
     "planned": "⏳",
+}
+
+LEVEL_LABEL = {
+    "basico": "🟢 básico",
+    "medio": "🟡 medio",
+    "avanzado": "🔴 avanzado",
 }
 
 PLC_LABEL = {
@@ -181,7 +187,7 @@ def collect_resources() -> dict[str, list[dict]]:
                     f"{readme.relative_to(REPO)}: falta frontmatter YAML al inicio"
                 )
                 continue
-            for required in ("name", "type", "status"):
+            for required in ("name", "type", "status", "level"):
                 if required not in fm:
                     issues.append(
                         f"{readme.relative_to(REPO)}: frontmatter sin '{required}'"
@@ -202,6 +208,7 @@ def collect_resources() -> dict[str, list[dict]]:
                 "status": fm.get("status", "wip"),
                 "tagline": tagline,
                 "tia_version": fm.get("tia_version"),
+                "level": fm.get("level", "basico"),
                 "tia_compat": fm.get("tia_compat", []) or [],
                 "plc_family": fm.get("plc_family", []) or [],
                 "hmi_panel": fm.get("hmi_panel", []) or [],
@@ -222,6 +229,7 @@ def render_table(cat: dict, resources: list[dict]) -> str:
         "resource": "Recurso",
         "description": "Descripción",
         "tia": "TIA Portal",
+        "nivel": "Nivel",
         "plc": "Familia PLC",
         "panel": "Panel",
     }
@@ -230,6 +238,7 @@ def render_table(cat: dict, resources: list[dict]) -> str:
         "resource": "---",
         "description": "---",
         "tia": ":---:",
+        "nivel": ":---:",
         "plc": ":---:",
         "panel": ":---:",
     }
@@ -251,6 +260,8 @@ def render_table(cat: dict, resources: list[dict]) -> str:
                 cells.append(fmt_plc(r["plc_family"]))
             elif c == "panel":
                 cells.append(fmt_panel(r["hmi_panel"]))
+            elif c == "nivel":
+                cells.append(LEVEL_LABEL.get(r["level"], "—"))
         rows.append("| " + " | ".join(cells) + " |")
     return "\n".join(rows)
 
@@ -279,6 +290,7 @@ HEADER = """\
 | 📝 | **Solo documentado** — el diseño/README está, falta el `.xml` |
 | ⚙️ | **En curso** — recurso identificado y en desarrollo |
 | ⏳ | **Planificado** — recurso identificado como necesario, sin empezar |
+| 🟢/🟡/🔴 | **Nivel** — dificultad (básico, medio, avanzado), no calidad |
 
 ---"""
 

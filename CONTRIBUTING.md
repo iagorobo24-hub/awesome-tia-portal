@@ -57,7 +57,7 @@ Entra en la carpeta correspondiente (`bloques-de-funcion/`, `tipos-de-datos/`, e
 
 1. Crea una subcarpeta para tu recurso (usa nombres en minúsculas y con guiones).
 2. Sube la fuente o exportación que realmente hayas probado; si solo aportas un diseño, indica que todavía no hay bloque importable.
-3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md). **Rellena el frontmatter YAML** del inicio (entre las dos líneas `---`): `name`, `type`, `tia_version`, `plc_family`, `depends_on`, `tags`, `status`. Es lo que alimenta el catálogo automático.
+3. Crea un archivo README.md usando la [plantilla de recursos](./_plantillas/README-recurso.md). **Rellena el frontmatter YAML** del inicio (entre las dos líneas `---`): `name`, `type`, `tia_version`, `plc_family`, `depends_on`, `tags`, `status`, `level`. Es lo que alimenta el catálogo automático.
 
 ### 5. Regenera el catálogo
 

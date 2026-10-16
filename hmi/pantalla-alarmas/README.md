@@ -1,4 +1,5 @@
 ---
+level: medio
 name: Pantalla_Alarmas
 type: hmi-pantalla
 tia_version: V20
@@ -85,6 +86,14 @@ La pantalla de alarmas es de las primeras que pide el cliente final y de las que
 - En **Basic Panels** la tabla de alarmas tiene capacidades reducidas (no permite filtros complejos). En ese caso, la plantilla usa una WinCC alarm view simplificada.
 - En **Unified**, el componente "Alarm Control" es muy distinto al de Comfort — la versión Unified de esta pantalla está construida con `Alarm Control` nativo.
 - Si trabajas con normativas (S88, GMP, FDA 21 CFR Part 11) hay que añadir comentarios obligatorios en los acks y firma electrónica — esta pantalla cubre el caso base, no el regulado.
+
+---
+
+## Textos de ejemplo
+
+El fichero [lista-textos-ejemplo.csv](lista-textos-ejemplo.csv) trae 10 avisos
+de ejemplo (proceso, sistema y mantenimiento) con prioridad y origen, listos
+para cargar como base y adaptar a tu instalación.
 
 ---
 

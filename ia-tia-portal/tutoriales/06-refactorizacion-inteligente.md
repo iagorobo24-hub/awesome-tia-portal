@@ -2,7 +2,7 @@
 
 > **⏱ Tiempo estimado**: 60 minutos
 > **🎯 Dificultad**: ⭐⭐⭐⭐ (Experto)
-> **📋 Prerrequisitos**: Tutorial 2 completado
+> **📋 Necesitas**: Tutorial 2 completado y código propio abundante que merezca limpiar (no refactores por deporte).
 
 ---
 

@@ -1,4 +1,5 @@
 ---
+level: basico
 name: UDT_Motor
 type: udt
 tia_version: V20

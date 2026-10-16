@@ -1,4 +1,5 @@
 ---
+level: basico
 name: FC_Escalado
 type: fc
 tia_version: V20

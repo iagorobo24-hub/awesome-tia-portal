@@ -2,7 +2,7 @@
 
 > **⏱ Tiempo estimado**: 90 minutos
 > **🎯 Dificultad**: ⭐⭐⭐ (Avanzado)
-> **📋 Prerrequisitos**: Tutorial 2 completado
+> **📋 Necesitas**: Tutorial 2 completado, proyecto en versión anterior y backup completo antes de migrar.
 
 ---
 

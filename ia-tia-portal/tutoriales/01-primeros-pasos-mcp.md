@@ -1,6 +1,6 @@
 # Primeros pasos con MCP y TIA Portal V20
 
-Empieza con la [guía de conexión profesional V20](../guias/conexion-profesional-v20.md). Allí están los requisitos reales, las tres capas de acceso, la comprobación `Doctor` y el recorrido seguro de lectura sobre un fixture.
+> **Necesitas**: TIA Portal V20 con Openness (usuario en el grupo `Siemens TIA Openness`), un servidor MCP local y un proyecto de demostración desechable. Nada de descargas a hardware real. Allí están los requisitos reales, las tres capas de acceso, la comprobación `Doctor` y el recorrido seguro de lectura sobre un fixture.
 
 ## Resultado de este primer paso
 

@@ -2,7 +2,7 @@
 
 > **⏱ Tiempo estimado**: 40 minutos
 > **🎯 Dificultad**: ⭐⭐ (Intermedio)
-> **📋 Prerrequisitos**: Tutorial 1 completado
+> **📋 Necesitas**: Tutorial 1 completado y un proyecto con bloques que documentar (mejor una copia desechable).
 
 ---
 

@@ -1,4 +1,5 @@
 ---
+level: medio
 name: Faceplate_Valve
 type: hmi-faceplate
 tia_version: V20

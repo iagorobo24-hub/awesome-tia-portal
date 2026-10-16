@@ -1,4 +1,5 @@
 ---
+level: basico
 name: Plantilla_MaquinaSimple
 type: plantilla
 tia_version: V20

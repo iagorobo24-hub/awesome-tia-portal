@@ -1,4 +1,5 @@
 ---
+level: basico
 name: Plantilla_Navegacion
 type: hmi-pantalla
 tia_version: V20

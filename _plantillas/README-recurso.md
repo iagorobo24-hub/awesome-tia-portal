@@ -19,6 +19,7 @@ depends_on: []                       # Otras carpetas del repo que necesita: ["t
 used_by: []                          # Otros recursos que lo consumen: ["bloques-de-funcion/fb-motor"]
 tags: [motor, control]               # Etiquetas libres para búsqueda
 status: documented                   # documented | compiled | available | wip | planned
+level: basico                        # basico | medio | avanzado (dificultad, no calidad)
 ---
 
 # [Nombre del recurso]

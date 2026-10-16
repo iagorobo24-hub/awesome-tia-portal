@@ -2,7 +2,7 @@
 
 > **⏱ Tiempo estimado**: 75 minutos
 > **🎯 Dificultad**: ⭐⭐⭐ (Avanzado)
-> **📋 Prerrequisitos**: Tutorial 2 completado
+> **📋 Necesitas**: Tutorial 2 completado, PLCSIM disponible y un bloque con su arnés de prueba.
 
 ---
 

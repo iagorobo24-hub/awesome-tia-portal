@@ -1,0 +1,11 @@
+id,texto_es,prioridad,clase,origen
+1,FALLO BOMBA M01 - sin confirmacion de marcha,Alta,Proceso,FB_AlarmLatch/M01
+2,FALLO BOMBA M01 - sobrecarga,Alta,Proceso,FB_AlarmLatch/M01
+3,VALVULA V02 - timeout de feedback,Media,Proceso,FB_Valve/V02
+4,TEMPERATURA REACTOR - alarma alta (HH),Alta,Proceso,FB_AnalogInput/TIC01
+5,TEMPERATURA REACTOR - aviso alto (H),Media,Proceso,FB_AnalogInput/TIC01
+6,TEMPERATURA REACTOR - aviso bajo (L),Media,Proceso,FB_AnalogInput/TIC01
+7,NIVEL DEPOSITO - alarma bajo-bajo (LL),Alta,Proceso,FB_AnalogInput/LT01
+8,COMUNICACION - fallo de hardware OB86,Alta,Sistema,OB82-85-86
+9,HORAS MOTOR M01 - mantenimiento preventivo,Baja,Mantenimiento,FB_Hourmeter/M01
+10,SIMULACION ACTIVA - entrada en manual,Media,Sistema,FB_AnalogInput

@@ -1,4 +1,5 @@
 ---
+level: medio
 name: Faceplate_Motor
 type: hmi-faceplate
 tia_version: V20

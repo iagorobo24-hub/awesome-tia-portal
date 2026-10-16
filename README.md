@@ -9,6 +9,9 @@
 ![PLC](https://img.shields.io/badge/PLC-S7--1200%20%2F%20S7--1500-orange)
 ![Estado](https://img.shields.io/badge/estado-documentado%2C%20XML%20pendiente-F5A623)
 [![PRs](https://img.shields.io/badge/PRs-bienvenidas-brightgreen)](./CONTRIBUTING.md)
+[![Validar Recursos](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/check-resources.yml/badge.svg)](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/check-resources.yml)
+[![Estilo Markdown](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/estilo.yml/badge.svg)](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/estilo.yml)
+[![Enlaces Externos](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/enlaces-externos.yml/badge.svg)](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/enlaces-externos.yml)
 
 **Biblioteca "awesome" de piezas reutilizables para Siemens TIA Portal V20:**
 UDTs, bloques de función, OB, faceplates HMI y plantillas de proyecto que comparten una misma interfaz de datos.
@@ -34,6 +37,7 @@ Solo piezas sueltas, no proyectos completos. Pensada para programadores de PLC q
 | 🏗 **OB** | Esqueletos de OB1, arranque (OB100) y gestión básica de errores de hardware (OB82/85/86). |
 | 🖥 **HMI** | Faceplates enlazados a los UDTs, pantalla de alarmas y plantilla de navegación. |
 | 📋 **Plantillas de proyecto** | Estructura mínima de máquina simple y de línea modular. |
+| ✂️ **Snippets SCL** | Patrones pequeños (flancos, filtros, saturación) para copiar en tus bloques. |
 | 🤖 **IA + TIA Portal** | Guías, comparativas y fichas de herramientas de terceros que conectan modelos de IA con TIA Portal mediante Openness/MCP. No son bloques importables. |
 
 Cada recurso vive en su carpeta con un `README.md` que explica el problema que resuelve, su interfaz, un ejemplo de uso y sus limitaciones.
@@ -164,6 +168,8 @@ Las herramientas de terceros pertenecen a sus autores; consulta su repositorio p
 4. **Prueba en simulación** (PLCSIM o un equipo de pruebas) antes de acercarlo a una instalación real.
 
 > Hoy el paso 3 aún no es posible para ningún recurso, porque los `.xml` no están publicados. Mientras tanto, los README sirven como especificación de la interfaz y del comportamiento esperado.
+
+¿No sabes por dónde empezar? Sigue una [ruta de aprendizaje](docs/rutas/) según tu nivel, consulta el [glosario ES↔EN](docs/glosario.md) cuando un término se te cruce y las [preguntas frecuentes](docs/faq.md) antes de abrir un issue. Para formarte fuera del repo: [vídeos y formación curada](docs/videos.md).
 >
 > 🔧 **Recurso con fuente real:** [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) incluye su `.scl`, compilado en V20 con evidencia y capturas del fixture; la prueba de comportamiento en PLCSIM está preparada y pendiente. Para conectar un agente de IA a TIA Portal, empieza por la [guía de conexión profesional V20](./ia-tia-portal/guias/conexion-profesional-v20.md).
 
@@ -198,12 +204,13 @@ bloques-de-funcion/        FB y FC (fb-alarm-latch incluye fuente SCL + evidenci
 bloques-de-organizacion/   OB
 hmi/                       faceplates, pantallas y plantilla de navegación
 plantillas-de-proyecto/    estructuras base de proyecto
+snippets/                  patrones SCL pequeños reutilizables
 ia-tia-portal/             guías (incluye conexión profesional V20) y fichas de IA + TIA Portal
-_plantillas/               plantilla de README para nuevos recursos
+_plantillas/               plantilla de README y de tabla VAT para nuevos recursos
 assets/                    ilustración de portada (generada, no es captura de TIA)
-scripts/                   validate-resources.sh y check-local-links.py
+scripts/                   validación, catálogo auto-generado y revisión de enlaces
 .github/                   workflow de validación y plantillas de issues/PR
-docs/                      gráficos de este README, hoja de ruta y referencias
+docs/                      gráficos, rutas de aprendizaje, glosario, FAQ, vídeos, hoja de ruta y referencias
 CATALOG.md                 índice y estado de cada recurso
 CONTRIBUTING.md  STYLE.md  guía de contribución y de estilo
 ```

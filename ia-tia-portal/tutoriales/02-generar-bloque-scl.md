@@ -2,7 +2,7 @@
 
 > **⏱ Tiempo estimado**: 60 minutos
 > **🎯 Dificultad**: ⭐⭐ (Intermedio)
-> **📋 Prerrequisitos**: Tutorial 1 completado
+> **📋 Necesitas**: Tutorial 1 completado, TIA Portal V20, `UDT_Motor` creado y un proyecto desechable donde generar.
 
 ---
 

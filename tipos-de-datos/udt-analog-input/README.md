@@ -1,4 +1,5 @@
 ---
+level: basico
 name: UDT_AnalogInput
 type: udt
 tia_version: V20

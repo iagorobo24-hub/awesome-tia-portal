@@ -1,4 +1,5 @@
 ---
+level: basico
 name: OB1
 type: ob
 tia_version: V20
