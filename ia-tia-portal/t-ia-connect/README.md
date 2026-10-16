@@ -35,13 +35,14 @@ Expone prácticamente toda la API de TIA Portal como herramientas MCP, permitien
 | **Teamcenter** | Integración con Teamcenter |
 | **Testing** | TestSuite, Application Test, style-guide rules |
 
-**Total: 126+ herramientas MCP**
+Total: 126+ herramientas MCP
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗 Arquitectura
 
 ```
+
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   AI Agent      │   │   T-IA Connect    │   │   TIA Portal  │
 │  (Claude,       │   │   REST API        │   │  Openness API │
@@ -76,13 +77,18 @@ Expone prácticamente toda la API de TIA Portal como herramientas MCP, permitien
 ## 🔄 Flujo de trabajo
 
 ### Paso 1: Prompt
+
 ```
+
 "Genera un FB de control de bomba con fallo térmico (TON 5s), modo manual/auto"
 ```
 
 ### Paso 2: IA Razona
+
 El modelo de IA diseña la lógica en SCL/JSON:
+
 ```json
+
 {
   "blockType": "FB",
   "blockName": "FB_WaterPump",
@@ -96,8 +102,11 @@ El modelo de IA diseña la lógica en SCL/JSON:
 ```
 
 ### Paso 3: Compilado Determinista
+
 El motor C# construye SimaticML XML estricto:
+
 ```xml
+
 <Blocks xmlns="http://www.siemens.com/automation/Openness/SW/Blocks/v4">
   <FunctionBlock Name="FB_WaterPump">
     <InterfaceSections>
@@ -113,6 +122,7 @@ El motor C# construye SimaticML XML estricto:
 ```
 
 ### Paso 4: Despliegue
+
 El bloque se importa y compila en TIA Portal vía Openness API.
 
 > **Resultado**: Prompt → Bloque PLC compilado en menos de 30 segundos
@@ -122,11 +132,13 @@ El bloque se importa y compila en TIA Portal vía Openness API.
 ## 📦 Requisitos
 
 ### Software
+
 - **Windows 10/11** — Openness API es COM-native
 - **Siemens TIA Portal V17–V21** — Cualquier versión moderna
 - **T-IA Connect** — Descargable desde [t-ia-connect.com](https://t-ia-connect.com/)
 
 ### Permisos
+
 - Usuario en grupo `Siemens TIA Openness`
 - Licencia de TIA Portal válida
 
@@ -141,7 +153,9 @@ Visita [t-ia-connect.com](https://t-ia-connect.com/) y descarga el instalador. T
 ### 2. Instalar
 
 Ejecuta el instalador y sigue los pasos. Por defecto se instala en:
+
 ```
+
 C:\Program Files\T-IA Connect\
 ```
 
@@ -152,6 +166,7 @@ C:\Program Files\T-IA Connect\
 Edita `C:\Users\<user>\AppData\Roaming\Claude\claude_desktop_config.json`:
 
 ```json
+
 {
   "mcpServers": {
     "tia-connect": {
@@ -168,25 +183,32 @@ Similar configuración, ajustando la ruta del ejecutable.
 
 ---
 
-## ⚙️ Modo Headless (API REST)
+## ⚙ Modo Headless (API REST)
 
 T-IA Connect puede ejecutarse sin GUI, exponiendo una API REST:
 
 ### Iniciar modo headless
 
 ```powershell
+
 TiaPortalApi.App.exe --headless
 
 # Output:
+
 #   T-IA Connect — Headless Mode
+
 #   API: http://localhost:9000/
+
 #   Swagger: http://localhost:9000/swagger
+
 #   Press Ctrl+C to stop.
+
 ```
 
 ### Abrir proyecto
 
 ```powershell
+
 curl -X POST http://localhost:9000/api/projects/open `
   -H "X-API-Key: your-key" `
   -H "Content-Type: application/json" `
@@ -196,6 +218,7 @@ curl -X POST http://localhost:9000/api/projects/open `
 ### Generar bloque desde lenguaje natural
 
 ```powershell
+
 curl -X POST http://localhost:9000/api/blocks/generate `
   -H "X-API-Key: your-key" `
   -H "Content-Type: application/json" `
@@ -211,6 +234,7 @@ curl -X POST http://localhost:9000/api/blocks/generate `
 ### Compilar bloque
 
 ```powershell
+
 curl -X POST http://localhost:9000/api/blocks/compile `
   -H "X-API-Key: your-key" `
   -H "Content-Type: application/json" `
@@ -221,9 +245,10 @@ curl -X POST http://localhost:9000/api/blocks/compile `
 
 ---
 
-## 🛠️ Herramientas MCP destacadas
+## 🛠 Herramientas MCP destacadas
 
 ### Gestión de proyectos
+
 - `get_project_overview` — Entender toda la estructura del proyecto PLC
 - `projects_create` — Crear proyecto nuevo
 - `projects_open` — Abrir proyecto existente
@@ -231,6 +256,7 @@ curl -X POST http://localhost:9000/api/blocks/compile `
 - `projects_close` — Cerrar proyecto
 
 ### Bloques PLC
+
 - `list_blocks` — Listar todos los bloques (OB, FB, FC, DB)
 - `get_block_details` — Obtener detalles de un bloque específico
 - `create_scl_block` — Crear bloque SCL desde código
@@ -238,6 +264,7 @@ curl -X POST http://localhost:9000/api/blocks/compile `
 - `delete_block` — Eliminar bloque
 
 ### Tags y UDTs
+
 - `list_tag_tables` — Listar tablas de tags
 - `get_tag_table` — Obtener contenido de una tabla
 - `create_tag` — Crear nuevo tag
@@ -245,24 +272,28 @@ curl -X POST http://localhost:9000/api/blocks/compile `
 - `get_udt` — Obtener definición de UDT
 
 ### Compilación y descarga
+
 - `compile_device` — Compilar dispositivo
 - `compile_software` — Compilar software
 - `download_to_plc` — Descargar a PLC real
 - `download_to_plcsim` — Descargar a PLCSim
 
 ### Simulación
+
 - `plcsim_start_simulation` — Iniciar PLCSim Advanced
 - `plcsim_write_tag` — Escribir valor en tag
 - `plcsim_read_tag` — Leer valor de tag
 - `plcsim_force_value` — Forzar valor
 
 ### HMI
+
 - `list_screens` — Listar pantallas HMI
 - `get_screen` — Obtener detalles de pantalla
 - `list_hmi_tags` — Listar tags HMI
 - `create_hmi_tag` — Crear tag HMI
 
 ### Hardware
+
 - `list_devices` — Listar dispositivos
 - `get_device` — Obtener detalles de dispositivo
 - `add_device` — Añadir dispositivo
@@ -277,6 +308,7 @@ curl -X POST http://localhost:9000/api/blocks/compile `
 ### Arquitectura con AgentGateway
 
 ```
+
 Claude Code → AgentGateway (port 4000) → T-IA Connect (port 9000)
                                               → T-IA Connect REST
 ```
@@ -284,12 +316,14 @@ Claude Code → AgentGateway (port 4000) → T-IA Connect (port 9000)
 ### Políticas de seguridad
 
 ```yaml
+
 policies:
   mcpAuthorization:
     rules:
     - deny: mcp.tool.name == "close_project"
     - deny: mcp.tool.name == "delete_block"
     - allow: mcp.tool.name == "read_*"
+
 ```
 
 **Efecto**: Las herramientas bloqueadas desaparecen completamente de la vista del agente. No hay error, no hay bypass — simplemente no existen.
@@ -297,6 +331,7 @@ policies:
 ### Audit logging
 
 Todas las acciones del IA se registran con:
+
 - Timestamp
 - Usuario
 - Herramienta MCP usada
@@ -330,33 +365,48 @@ El proyecto incluye tests E2E que demuestran:
 ## 🎓 Casos de uso
 
 ### 1. Generación de bloques desde lenguaje natural
+
 ```
+
 Crea un FB de control de válvula con feedback y timeout de 10s
 ```
+
 → El IA genera el bloque completo, lo importa y compila.
 
 ### 2. Documentación automática
+
 ```
+
 Genera documentación de todos los bloques del proyecto
 ```
+
 → El IA explora el proyecto y genera documentación estructurada.
 
 ### 3. Migración de proyectos
+
 ```
+
 Exporta todo el proyecto como SimaticML XML
 ```
+
 → El IA exporta bloques, tags, hardware y configuración.
 
 ### 4. Testing automatizado
+
 ```
+
 Crea un test suite para el FB_PumpControl
 ```
+
 → El IA genera casos de prueba y los ejecuta en PLCSim.
 
 ### 5. Refactorización
+
 ```
+
 Busca bloques con código duplicado y propón refactorización
 ```
+
 → El IA analiza todos los bloques y sugiere mejoras.
 
 ---
@@ -372,7 +422,7 @@ Busca bloques con código duplicado y propón refactorización
 | **Zero-Trust proxy** | ✅ (opcional) | ❌ | ❌ |
 | **Extensión VS Code** | ❌ | ✅ | ❌ |
 | **Claude Desktop** | ✅ | ✅ | ✅ (plugin) |
-| **TIA Portal V21** | ✅ | ⚠️ | ✅ |
+| **TIA Portal V21** | ✅ | ⚠ | ✅ |
 | **Open-source** | Freemium | ✅ | ✅ |
 | **Trial gratuito** | 14 días | — | — |
 
@@ -389,12 +439,12 @@ Busca bloques con código duplicado y propón refactorización
 
 ## 🔗 Enlaces útiles
 
-- **Web**: https://t-ia-connect.com/
-- **Repositorio GenAI Bridge**: https://github.com/feelautom/tia-copilot-genai-bridge
-- **Repositorio AgentGateway**: https://github.com/feelautom/mcp-hack26-tia-connect-agentgateway
-- **AgentGateway**: https://github.com/agentgateway/agentgateway
-- **MCP Specification**: https://modelcontextprotocol.io/
-- **TIA Portal Openness Docs**: https://docs.tia.siemens.cloud/
+- **Web**: <https://t-ia-connect.com/>
+- **Repositorio GenAI Bridge**: <https://github.com/feelautom/tia-copilot-genai-bridge>
+- **Repositorio AgentGateway**: <https://github.com/feelautom/mcp-hack26-tia-connect-agentgateway>
+- **AgentGateway**: <https://github.com/agentgateway/agentgateway>
+- **MCP Specification**: <https://modelcontextprotocol.io/>
+- **TIA Portal Openness Docs**: <https://docs.tia.siemens.cloud/>
 
 ---
 

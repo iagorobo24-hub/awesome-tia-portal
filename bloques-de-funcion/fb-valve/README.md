@@ -79,6 +79,7 @@ Las válvulas digitales se gestionan en cualquier proceso y siempre con la misma
 ## Ejemplo de uso
 
 ```scl
+
 // En OB100, configura los timeouts una sola vez:
 "DB_Equipos".V01_AguaEntrada.Config.tTimeoutAbrir       := T#5s;
 "DB_Equipos".V01_AguaEntrada.Config.tTimeoutCerrar      := T#5s;

@@ -49,6 +49,7 @@ Antes de desplegar código generado por IA a producción:
 ### Ejemplo de validación de seguridad
 
 ```
+
 Valida este código generado por IA desde el punto de vista de seguridad.
 
 CÓDIGO: [pegar código]
@@ -101,6 +102,7 @@ Por favor, genera un reporte de seguridad en formato Markdown.
 ### Plantilla de prompt efectivo
 
 ```
+
 Genera un [TIPO DE BLOQUE] con las siguientes especificaciones:
 
 NOMBRE: [NOMBRE DEL BLOQUE]
@@ -147,12 +149,14 @@ Por favor, genera el código [LENGUAJE] completo.
 #### ❌ Mal: Demasiado genérico
 
 ```
+
 Haz un bloque de motor
 ```
 
 #### ✅ Bien: Específico y detallado
 
 ```
+
 Genera un FB de control de motor digital con las siguientes características:
 
 NOMBRE: FB_MotorControl
@@ -222,10 +226,13 @@ Por favor, genera el código SCL completo.
 #### 1. Validación sintáctica
 
 ```powershell
+
 # Compilar bloque
+
 tia-portal compile-block -block "FB_MotorControl"
 
 # Verificar errores
+
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Errores de compilación detectados"
     exit 1
@@ -235,6 +242,7 @@ if ($LASTEXITCODE -ne 0) {
 #### 2. Validación de lógica
 
 ```
+
 Valida la lógica de este bloque generado por IA.
 
 CÓDIGO: [pegar código]
@@ -267,6 +275,7 @@ Por favor, genera un reporte de validación en formato Markdown.
 #### 3. Validación de seguridad
 
 ```
+
 Valida este código desde el punto de vista de seguridad.
 
 CÓDIGO: [pegar código]
@@ -292,7 +301,9 @@ Por favor, genera un reporte de seguridad.
 #### 4. Pruebas en simulación
 
 ```powershell
+
 # Crear casos de prueba
+
 $testCases = @(
     @{ Name = "Test 1"; Input = @{ Start = $true }; Expected = @{ Running = $true } }
     @{ Name = "Test 2"; Input = @{ Stop = $true }; Expected = @{ Running = $false } }
@@ -300,6 +311,7 @@ $testCases = @(
 )
 
 # Ejecutar pruebas
+
 foreach ($test in $testCases) {
     Write-Host "Ejecutando: $($test.Name)"
     # Ejecutar test
@@ -327,6 +339,7 @@ foreach ($test in $testCases) {
 ### Flujo de trabajo completo
 
 ```
+
 1. PLANIFICACIÓN
    ├── Definir requisitos
    ├── Diseñar arquitectura
@@ -363,7 +376,9 @@ foreach ($test in $testCases) {
 ### Script de workflow
 
 ```powershell
+
 # Workflow de desarrollo con IA
+
 # workflow-ia-tia-portal.ps1
 
 param(
@@ -372,18 +387,23 @@ param(
 )
 
 # 1. Leer prompt
+
 $prompt = Get-Content $PromptFile
 
 # 2. Generar código con IA
+
 $code = Invoke-AIAPI -prompt $prompt
 
 # 3. Guardar código
+
 $code | Out-File "$OutputPath\generated.scl"
 
 # 4. Compilar
+
 tia-portal compile-block -file "$OutputPath\generated.scl"
 
 # 5. Validar
+
 if ($LASTEXITCODE -eq 0) {
     Write-Host "✅ Compilación exitosa"
 
@@ -391,7 +411,7 @@ if ($LASTEXITCODE -eq 0) {
     tia-portal test-in-simulation -file "$OutputPath\generated.scl"
 
     # 7. Revisar
-    Write-Host "⚠️ Revisa el código manualmente antes de desplegar"
+    Write-Host "⚠ Revisa el código manualmente antes de desplegar"
 } else {
     Write-Host "❌ Errores de compilación"
     exit 1
@@ -407,13 +427,17 @@ if ($LASTEXITCODE -eq 0) {
 #### 1. Confianza ciega en IA
 
 **❌ Anti-pattern:**
+
 ```
+
 Genera un bloque de control de motor.
 [Usar código directamente sin revisar]
 ```
 
 **✅ Correcto:**
+
 ```
+
 Genera un bloque de control de motor con requisitos detallados.
 [Revisar código]
 [Validar lógica]
@@ -424,29 +448,38 @@ Genera un bloque de control de motor con requisitos detallados.
 #### 2. Prompts demasiado genéricos
 
 **❌ Anti-pattern:**
+
 ```
+
 Haz un bloque
 ```
 
 **✅ Correcto:**
+
 ```
+
 Genera un FB de control de motor con:
 - Máquina de estados: STOPPED → STARTING → RUNNING → FAULT
 - Timeout de 5 segundos
 - Modo manual/auto
 - Diagnóstico completo
+
 ```
 
 #### 3. Sin validación
 
 **❌ Anti-pattern:**
+
 ```
+
 [Generar código]
 [Usar directamente en producción]
 ```
 
 **✅ Correcto:**
+
 ```
+
 [Generar código]
 [Compilar]
 [Validar lógica]
@@ -458,28 +491,37 @@ Genera un FB de control de motor con:
 #### 4. Sin documentación
 
 **❌ Anti-pattern:**
+
 ```
+
 [Generar código sin comentarios]
 ```
 
 **✅ Correcto:**
+
 ```
+
 Genera código con comentarios explicativos:
 - Comentario de cabecera
 - Comentarios en cada sección
 - Comentarios en lógica compleja
+
 ```
 
 #### 5. Sin plan de rollback
 
 **❌ Anti-pattern:**
+
 ```
+
 [Desplegar código nuevo]
 [No tener backup]
 ```
 
 **✅ Correcto:**
+
 ```
+
 [Backup del proyecto anterior]
 [Desplegar código nuevo]
 [Monitorear comportamiento]

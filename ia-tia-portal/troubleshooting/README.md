@@ -19,11 +19,14 @@ Guía de solución de problemas y preguntas frecuentes para IA + TIA Portal.
 ### Error: "No se puede conectar a TIA Portal"
 
 **Síntoma:**
+
 ```
+
 Error: No se puede conectar a TIA Portal
 ```
 
 **Causas:**
+
 1. TIA Portal no está abierto
 2. API de Openness no está habilitada
 3. Proyecto no está abierto
@@ -32,21 +35,27 @@ Error: No se puede conectar a TIA Portal
 **Soluciones:**
 
 1. **Abrir TIA Portal**
+
    ```
+
    1. Abre TIA Portal
    2. Abre el proyecto
    3. Verifica que el proyecto está activo
    ```
 
 2. **Habilitar API de Openness**
+
    ```
+
    1. Ve a Opciones → Openness
    2. Habilita "Permitir acceso a Openness"
    3. Reinicia TIA Portal
    ```
 
 3. **Verificar permisos**
+
    ```
+
    1. Ejecuta TIA Portal como administrador
    2. Verifica permisos de lectura/escritura
    3. Verifica permisos de red
@@ -57,11 +66,14 @@ Error: No se puede conectar a TIA Portal
 ### Error: "Timeout de compilación"
 
 **Síntoma:**
+
 ```
+
 Error: Timeout de compilación
 ```
 
 **Causas:**
+
 1. Proyecto demasiado grande
 2. Recursos insuficientes
 3. Bloques con errores
@@ -70,20 +82,26 @@ Error: Timeout de compilación
 **Soluciones:**
 
 1. **Compilar bloques individualmente**
+
    ```
+
    1. Identifica bloques con errores
    2. Compila bloques uno por uno
    3. Corrige errores antes de compilar todo
    ```
 
 2. **Aumentar timeout**
+
    ```powershell
+
    # Aumentar timeout de compilación
    tia-portal compile -timeout 600
    ```
 
 3. **Optimizar proyecto**
+
    ```
+
    1. Eliminar bloques no usados
    2. Reducir complejidad de bloques
    3. Eliminar dependencias circulares
@@ -94,11 +112,14 @@ Error: Timeout de compilación
 ### Error: "Bloque no encontrado"
 
 **Síntoma:**
+
 ```
+
 Error: Bloque no encontrado
 ```
 
 **Causas:**
+
 1. Nombre de bloque incorrecto
 2. Bloque no existe
 3. Bloque en otra carpeta
@@ -107,20 +128,26 @@ Error: Bloque no encontrado
 **Soluciones:**
 
 1. **Verificar nombre de bloque**
+
    ```
+
    1. Verifica ortografía del nombre
    2. Verifica mayúsculas/minúsculas
    3. Verifica prefijos/sufijos
    ```
 
 2. **Listar bloques disponibles**
+
    ```powershell
+
    # Listar todos los bloques
    tia-portal list-blocks
    ```
 
 3. **Verificar ubicación del bloque**
+
    ```
+
    1. Busca bloque en TIA Portal
    2. Verifica carpeta del bloque
    3. Verifica que el bloque está compilado
@@ -131,11 +158,14 @@ Error: Bloque no encontrado
 ### Error: "Error de sintaxis"
 
 **Síntoma:**
+
 ```
+
 Error: Error de sintaxis en línea X
 ```
 
 **Causas:**
+
 1. Sintaxis incorrecta
 2. Falta de punto y coma
 3. Paréntesis no cerrados
@@ -144,7 +174,9 @@ Error: Error de sintaxis en línea X
 **Soluciones:**
 
 1. **Verificar sintaxis**
+
    ```
+
    1. Revisa línea indicada
    2. Verifica punto y coma
    3. Verifica paréntesis
@@ -152,13 +184,17 @@ Error: Error de sintaxis en línea X
    ```
 
 2. **Usar validador de sintaxis**
+
    ```powershell
+
    # Validar sintaxis
    tia-portal validate-syntax -file "block.scl"
    ```
 
 3. **Pedir a IA que corrija**
+
    ```
+
    Corrige este error de sintaxis.
 
    ERROR: [pegar error]
@@ -172,11 +208,14 @@ Error: Error de sintaxis en línea X
 ### Error: "Error de compilación"
 
 **Síntoma:**
+
 ```
+
 Error: Error de compilación en bloque X
 ```
 
 **Causas:**
+
 1. Variables no declaradas
 2. Tipos incorrectos
 3. Bloques no encontrados
@@ -185,21 +224,27 @@ Error: Error de compilación en bloque X
 **Soluciones:**
 
 1. **Verificar variables**
+
    ```
+
    1. Verifica que todas las variables están declaradas
    2. Verifica tipos de variables
    3. Verifica nombres de variables
    ```
 
 2. **Verificar dependencias**
+
    ```
+
    1. Verifica que todos los bloques existen
    2. Verifica que los bloques están compilados
    3. Verifica que los bloques están en el proyecto
    ```
 
 3. **Pedir a IA que corrija**
+
    ```
+
    Corrige este error de compilación.
 
    ERROR: [pegar error]
@@ -213,11 +258,14 @@ Error: Error de compilación en bloque X
 ### Error: "Error de ejecución"
 
 **Síntoma:**
+
 ```
+
 Error: Error de ejecución en bloque X
 ```
 
 **Causas:**
+
 1. División por cero
 2. Overflow/underflow
 3. Acceso a memoria inválido
@@ -226,21 +274,27 @@ Error: Error de ejecución en bloque X
 **Soluciones:**
 
 1. **Verificar división por cero**
+
    ```
+
    1. Verifica que el divisor no es cero
    2. Añade validación antes de dividir
    3. Maneja el caso de divisor cero
    ```
 
 2. **Verificar overflow/underflow**
+
    ```
+
    1. Verifica rangos de variables
    2. Añade validación de rangos
    3. Usa tipos apropiados
    ```
 
 3. **Pedir a IA que corrija**
+
    ```
+
    Corrige este error de ejecución.
 
    ERROR: [pegar error]
@@ -256,11 +310,14 @@ Error: Error de ejecución en bloque X
 ### Error: "Permisos insuficientes"
 
 **Síntoma:**
+
 ```
+
 Error: Permisos insuficientes para acceder a Openness
 ```
 
 **Causas:**
+
 1. TIA Portal no ejecutado como administrador
 2. API de Openness no habilitada
 3. Firewall bloqueando conexión
@@ -269,7 +326,9 @@ Error: Permisos insuficientes para acceder a Openness
 **Soluciones:**
 
 1. **Ejecutar como administrador**
+
    ```
+
    1. Cierra TIA Portal
    2. Haz clic derecho en TIA Portal
    3. Selecciona "Ejecutar como administrador"
@@ -277,14 +336,18 @@ Error: Permisos insuficientes para acceder a Openness
    ```
 
 2. **Habilitar API de Openness**
+
    ```
+
    1. Ve a Opciones → Openness
    2. Habilita "Permitir acceso a Openness"
    3. Reinicia TIA Portal
    ```
 
 3. **Configurar firewall**
+
    ```
+
    1. Abre firewall de Windows
    2. Añade excepción para TIA Portal
    3. Añade excepción para Openness
@@ -292,7 +355,9 @@ Error: Permisos insuficientes para acceder a Openness
    ```
 
 4. **Configurar antivirus**
+
    ```
+
    1. Abre antivirus
    2. Añade excepción para TIA Portal
    3. Añade excepción para Openness
@@ -304,11 +369,14 @@ Error: Permisos insuficientes para acceder a Openness
 ### Error: "API de Openness no disponible"
 
 **Síntoma:**
+
 ```
+
 Error: API de Openness no disponible
 ```
 
 **Causas:**
+
 1. Openness no instalado
 2. Versión de Openness incompatible
 3. Licencia de Openness no válida
@@ -317,28 +385,36 @@ Error: API de Openness no disponible
 **Soluciones:**
 
 1. **Instalar Openness**
+
    ```
+
    1. Descarga Openness desde Siemens
    2. Ejecuta instalador
    3. Reinicia TIA Portal
    ```
 
 2. **Verificar versión**
+
    ```
+
    1. Verifica versión de TIA Portal
    2. Verifica versión de Openness
    3. Asegura compatibilidad
    ```
 
 3. **Verificar licencia**
+
    ```
+
    1. Verifica licencia de Openness
    2. Verifica que la licencia es válida
    3. Renueva licencia si es necesario
    ```
 
 4. **Habilitar Openness**
+
    ```
+
    1. Ve a Opciones → Openness
    2. Habilita "Permitir acceso a Openness"
    3. Reinicia TIA Portal
@@ -351,11 +427,14 @@ Error: API de Openness no disponible
 ### Error: "No se puede conectar al servidor MCP"
 
 **Síntoma:**
+
 ```
+
 Error: No se puede conectar al servidor MCP
 ```
 
 **Causas:**
+
 1. Servidor MCP no iniciado
 2. Puerto incorrecto
 3. Firewall bloqueando conexión
@@ -364,27 +443,35 @@ Error: No se puede conectar al servidor MCP
 **Soluciones:**
 
 1. **Iniciar servidor MCP**
+
    ```bash
+
    # Iniciar servidor MCP
    node /path/to/tiaportal-mcp/dist/index.js
    ```
 
 2. **Verificar puerto**
+
    ```
+
    1. Verifica puerto en configuración
    2. Verifica que el puerto no está en uso
    3. Cambia puerto si es necesario
    ```
 
 3. **Configurar firewall**
+
    ```
+
    1. Abre firewall de Windows
    2. Añade excepción para puerto MCP
    3. Reinicia firewall
    ```
 
 4. **Verificar dirección**
+
    ```
+
    1. Verifica dirección en configuración
    2. Verifica que la dirección es correcta
    3. Prueba con localhost
@@ -395,11 +482,14 @@ Error: No se puede conectar al servidor MCP
 ### Error: "Timeout de conexión"
 
 **Síntoma:**
+
 ```
+
 Error: Timeout de conexión al servidor MCP
 ```
 
 **Causas:**
+
 1. Servidor MCP lento
 2. Red lenta
 3. Firewall bloqueando conexión
@@ -408,7 +498,9 @@ Error: Timeout de conexión al servidor MCP
 **Soluciones:**
 
 1. **Aumentar timeout**
+
    ```json
+
    {
      "mcpServers": {
        "tiaportal-mcp": {
@@ -419,21 +511,27 @@ Error: Timeout de conexión al servidor MCP
    ```
 
 2. **Verificar servidor MCP**
+
    ```
+
    1. Verifica que el servidor MCP está iniciado
    2. Verifica logs del servidor MCP
    3. Reinicia servidor MCP si es necesario
    ```
 
 3. **Verificar red**
+
    ```
+
    1. Verifica conexión de red
    2. Verifica velocidad de red
    3. Prueba con otra red
    ```
 
 4. **Configurar firewall**
+
    ```
+
    1. Abre firewall de Windows
    2. Añade excepción para servidor MCP
    3. Reinicia firewall
@@ -446,11 +544,14 @@ Error: Timeout de conexión al servidor MCP
 ### Error: "Bloque no compilado"
 
 **Síntoma:**
+
 ```
+
 Error: Bloque no compilado
 ```
 
 **Causas:**
+
 1. Bloque con errores
 2. Bloque no guardado
 3. Bloque no validado
@@ -459,7 +560,9 @@ Error: Bloque no compilado
 **Soluciones:**
 
 1. **Compilar bloque**
+
    ```
+
    1. Abre bloque en TIA Portal
    2. Compila bloque
    3. Corrige errores si hay
@@ -467,7 +570,9 @@ Error: Bloque no compilado
    ```
 
 2. **Validar bloque**
+
    ```
+
    1. Abre bloque en TIA Portal
    2. Valida bloque
    3. Corrige errores si hay
@@ -475,7 +580,9 @@ Error: Bloque no compilado
    ```
 
 3. **Verificar dependencias**
+
    ```
+
    1. Verifica que todas las dependencias existen
    2. Verifica que las dependencias están compiladas
    3. Verifica que las dependencias están en el proyecto
@@ -486,11 +593,14 @@ Error: Bloque no compilado
 ### Error: "Error de compilación en bloque X"
 
 **Síntoma:**
+
 ```
+
 Error: Error de compilación en bloque X
 ```
 
 **Causas:**
+
 1. Variables no declaradas
 2. Tipos incorrectos
 3. Bloques no encontrados
@@ -499,21 +609,27 @@ Error: Error de compilación en bloque X
 **Soluciones:**
 
 1. **Verificar variables**
+
    ```
+
    1. Verifica que todas las variables están declaradas
    2. Verifica tipos de variables
    3. Verifica nombres de variables
    ```
 
 2. **Verificar dependencias**
+
    ```
+
    1. Verifica que todos los bloques existen
    2. Verifica que los bloques están compilados
    3. Verifica que los bloques están en el proyecto
    ```
 
 3. **Pedir a IA que corrija**
+
    ```
+
    Corrige este error de compilación.
 
    ERROR: [pegar error]
@@ -529,6 +645,7 @@ Error: Error de compilación en bloque X
 ### P: ¿Cómo empiezo a usar IA + TIA Portal?
 
 **R:**
+
 1. Instala un servidor MCP (tiaportal-mcp, tia-portal-openness-mcpserver, etc.)
 2. Configura el servidor MCP en tu cliente de IA
 3. Abre TIA Portal y habilita la API de Openness
@@ -541,6 +658,7 @@ Ver [Tutorial: Primeros pasos con MCP](../tutoriales/01-primeros-pasos-mcp.md) p
 ### P: ¿Qué servidores MCP están disponibles?
 
 **R:**
+
 - **tiaportal-mcp** — Servidor MCP para TIA Portal (Node.js)
 - **tia-portal-openness-mcpserver** — Servidor MCP para TIA Portal Openness (Python)
 - **totally-integrated-claude** — Integración de Claude con TIA Portal
@@ -553,6 +671,7 @@ Ver [Comparativas de MCP Servers](../comparativas/README.md) para más detalles.
 ### P: ¿Cómo genero un bloque con IA?
 
 **R:**
+
 1. Crea un prompt detallado con requisitos
 2. Envía el prompt a tu cliente de IA
 3. Revisa el código generado
@@ -566,6 +685,7 @@ Ver [Tutorial: Generar bloque SCL](../tutoriales/02-generar-bloque-scl.md) para 
 ### P: ¿Cómo valido código generado por IA?
 
 **R:**
+
 1. Compila el bloque en TIA Portal
 2. Verifica que no hay errores
 3. Revisa la lógica manualmente
@@ -580,6 +700,7 @@ Ver [Best practices: Validación de código](../best-practices/README.md#validac
 
 **R:**
 Sí, si sigues las mejores prácticas:
+
 1. Siempre revisa el código manualmente
 2. Valida el código en TIA Portal
 3. Prueba en simulación antes de producción
@@ -593,6 +714,7 @@ Ver [Best practices: Seguridad industrial](../best-practices/README.md#seguridad
 ### P: ¿Cómo soluciono errores de compilación?
 
 **R:**
+
 1. Lee el mensaje de error
 2. Identifica la causa
 3. Corrige el error manualmente
@@ -606,6 +728,7 @@ Ver [Errores de compilación](#errores-de-compilación) para más detalles.
 ### P: ¿Cómo soluciono problemas de conexión?
 
 **R:**
+
 1. Verifica que TIA Portal está abierto
 2. Verifica que la API de Openness está habilitada
 3. Verifica que el servidor MCP está iniciado
@@ -619,6 +742,7 @@ Ver [Problemas de conexión](#problemas-de-conexión) para más detalles.
 ### P: ¿Cómo genero prompts efectivos?
 
 **R:**
+
 1. Sé específico y detallado
 2. Define claramente la interfaz
 3. Especifica el comportamiento
@@ -632,6 +756,7 @@ Ver [Guía de prompts](../prompts/README.md) para más detalles.
 ### P: ¿Cómo automatizo tareas con IA?
 
 **R:**
+
 1. Identifica tareas repetitivas
 2. Crea scripts de automatización
 3. Integra con IA para generación de código
@@ -645,6 +770,7 @@ Ver [Integraciones con otras herramientas](../integraciones/README.md) para más
 ### P: ¿Cómo documento bloques generados por IA?
 
 **R:**
+
 1. Pide a IA que genere documentación
 2. Revisa la documentación
 3. Añade detalles específicos
@@ -658,6 +784,7 @@ Ver [Tutorial: Documentación automática](../tutoriales/03-documentacion-automa
 ### P: ¿Cómo pruebo bloques generados por IA?
 
 **R:**
+
 1. Compila el bloque en TIA Portal
 2. Crea casos de prueba
 3. Ejecuta pruebas en simulación
@@ -671,6 +798,7 @@ Ver [Tutorial: Testing automatizado](../tutoriales/05-testing-automatizado.md) p
 ### P: ¿Cómo migro un proyecto a IA + TIA Portal?
 
 **R:**
+
 1. Analiza el proyecto existente
 2. Identifica bloques que pueden ser generados por IA
 3. Genera bloques con IA
@@ -684,6 +812,7 @@ Ver [Tutorial: Migración de proyecto](../tutoriales/04-migracion-proyecto.md) p
 ### P: ¿Cómo refactorizo bloques con IA?
 
 **R:**
+
 1. Identifica bloques que necesitan refactorización
 2. Pide a IA que refactorice el bloque
 3. Revisa el código refactorizado
@@ -697,6 +826,7 @@ Ver [Tutorial: Refactorización inteligente](../tutoriales/06-refactorizacion-in
 ### P: ¿Cómo integro IA con otras herramientas?
 
 **R:**
+
 1. Identifica herramientas a integrar
 2. Configura integraciones
 3. Automatiza flujos de trabajo
@@ -710,6 +840,7 @@ Ver [Integraciones con otras herramientas](../integraciones/README.md) para más
 ### P: ¿Cómo creo dashboards con IA?
 
 **R:**
+
 1. Exporta datos de TIA Portal
 2. Importa en Power BI
 3. Pide a IA que genere medidas DAX
@@ -723,6 +854,7 @@ Ver [Integración con Power BI](../integraciones/README.md#integración-con-powe
 ### P: ¿Cómo envío notificaciones con IA?
 
 **R:**
+
 1. Configura webhook de Teams
 2. Detecta eventos en TIA Portal
 3. Pide a IA que genere mensajes
@@ -736,6 +868,7 @@ Ver [Integración con Microsoft Teams](../integraciones/README.md#integración-c
 ### P: ¿Cómo controlo versiones con IA?
 
 **R:**
+
 1. Configura Git
 2. Exporta bloques como XML
 3. Commit en Git
@@ -749,6 +882,7 @@ Ver [Integración con Git](../integraciones/README.md#integración-con-git) para
 ### P: ¿Cómo gestiono tareas con IA?
 
 **R:**
+
 1. Configura Jira
 2. Crea issues para cambios
 3. Pide a IA que genere descripciones
@@ -762,6 +896,7 @@ Ver [Integración con Jira](../integraciones/README.md#integración-con-jira) pa
 ### P: ¿Cómo creo documentación con IA?
 
 **R:**
+
 1. Configura Confluence
 2. Pide a IA que genere documentación
 3. Formatea contenido

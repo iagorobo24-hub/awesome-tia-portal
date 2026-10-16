@@ -34,6 +34,7 @@ Pensada para máquinas individuales: **monobloque mecánico, 1 PLC, 1 HMI, sin r
 ## Estructura del proyecto incluida
 
 ```
+
 PLC_1 [CPU 1215C DC/DC/DC]
 ├── Bloques de programa
 │   ├── OB1 [Main] ← incluye plantilla [`ob1-plantilla`](../../bloques-de-organizacion/ob1-plantilla/)

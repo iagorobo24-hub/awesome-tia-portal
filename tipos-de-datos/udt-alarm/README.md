@@ -62,12 +62,14 @@ Las alarmas en TIA Portal se gestionan típicamente con bits sueltos en una marc
 Lo más habitual es declarar un **array de alarmas** dentro de un DB global:
 
 ```
+
 DB_Alarmas.aLista : ARRAY[1..256] OF UDT_Alarm
 ```
 
 Asigna cada alarma del proyecto a un índice fijo y rellena los textos en el OB de arranque (`OB100`):
 
 ```
+
 "DB_Alarmas".aLista[1].sTexto    := 'Térmico bomba principal disparado';
 "DB_Alarmas".aLista[1].sFuente   := 'M01_BombaPrincipal';
 "DB_Alarmas".aLista[1].iPrioridad := 3;
@@ -76,10 +78,12 @@ Asigna cada alarma del proyecto a un índice fijo y rellena los textos en el OB 
 Después en el OB de programa enlazas la condición:
 
 ```
+
 "DB_Alarmas".aLista[1].xActiva := "DB_Equipos".M01_BombaPrincipal.Fallos.xTermico;
 ```
 
 Un FB transversal (`FB_AlarmManager`, no incluido en este repo) se encarga de:
+
 - Detectar flancos de subida → rellenar `dtTimestamp`, marcar `xNueva`
 - Procesar el ack → rellenar `dtTimestampAck`, limpiar `xNueva`
 - Mantener `xMemorizada` hasta el ack final

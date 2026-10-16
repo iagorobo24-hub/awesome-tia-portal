@@ -35,6 +35,7 @@ La práctica correcta es: **el OB existe, captura el evento, lo registra en una 
 Disparado cuando un módulo de la CPU reporta un fallo de diagnóstico (ej: cable cortado en una entrada analógica HART, sobretemperatura del módulo).
 
 ```scl
+
 // Información del evento (los nombres exactos dependen de la versión)
 "DB_Diagnostico".dwIdHardware := #IO_Status;
 "DB_Diagnostico".bEventoEntrante := #Event_Class;
@@ -52,6 +53,7 @@ Disparado cuando un módulo de la CPU reporta un fallo de diagnóstico (ej: cabl
 Disparado por errores que normalmente parmarían el PLC: acceso a un OB inexistente, error de lectura/escritura periférica, etc.
 
 ```scl
+
 // Registrar evento
 "DB_Diagnostico".diOB85_Eventos += 1;
 "DB_Diagnostico".sUltimoFalloOB85 := 'Error de programa OB85';
@@ -67,6 +69,7 @@ Disparado por errores que normalmente parmarían el PLC: acceso a un OB inexiste
 Disparado cuando se cae un rack completo de I/O distribuido (ej: una IM155 de PROFINET).
 
 ```scl
+
 // Marca el sistema en modo seguro
 "DB_Proceso".xModoSeguro := TRUE;
 

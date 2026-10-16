@@ -34,6 +34,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 ## Arquitectura incluida
 
 ```
+
                           ┌────────────────────┐
                           │  HMI_Central       │
                           │  (WinCC Unified)   │
@@ -65,6 +66,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 ### PLC_Maestro
 
 ```
+
 ├── OB1, OB100, OB82, OB85, OB86
 ├── DB_Linea            ← estado global de línea (modo, fase, receta activa)
 ├── DB_Alarmas_Linea    ← alarmas centralizadas (array UDT_Alarm)
@@ -77,6 +79,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 ### PLC_Estacion1 / PLC_Estacion2
 
 ```
+
 ├── OB1, OB100, OB82
 ├── DB_Equipos      ← motores y válvulas locales
 ├── DB_Analogicas
@@ -87,6 +90,7 @@ Esta plantilla parte de **3 PLCs comunicados + 1 HMI central** con la estructura
 ### HMI_Central
 
 ```
+
 Plantilla_Navegacion (header con nombre línea, footer con alarmas globales)
 ├── 00_Inicio
 ├── 10_Sinoptico_Linea

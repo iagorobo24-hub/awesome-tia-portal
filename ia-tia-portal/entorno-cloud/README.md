@@ -1,8 +1,9 @@
-# ☁️ Entorno Cloud para desarrollar el repo + conectar con TIA Portal
+# ☁ Entorno Cloud para desarrollar el repo + conectar con TIA Portal
 
 Guía para dejar configurado un **entorno de desarrollo en la nube** (Cursor Cloud Agents) que permita **seguir mejorando y desarrollando este repositorio de forma automática**, y para entender **cómo conectar ese flujo con TIA Portal** a través de la API de Openness.
 
 > **TL;DR**
+>
 > - El repo (Markdown + recursos `.xml` + validación) **sí** se puede desarrollar 100% en un Cloud Agent Linux, de forma persistente y automática. Ya está configurado en [`.cursor/environment.json`](../../.cursor/environment.json).
 > - TIA Portal + Openness **NO** puede ejecutarse dentro del Cloud Agent (es solo Windows/COM). La parte que toca TIA Portal tiene que correr en **tu máquina Windows** y conectarse mediante un puente (MCP/REST) o un **worker self-hosted**.
 
@@ -13,6 +14,7 @@ Guía para dejar configurado un **entorno de desarrollo en la nube** (Cursor Clo
 Conectar "IA en la nube" con "TIA Portal" son en realidad **dos entornos distintos** que se comunican, no uno solo:
 
 ```
+
 ┌────────────────────────────┐        ┌──────────────────────────────┐
 │  CAPA A — Nube (Linux)     │        │  CAPA B — Tu Windows          │
 │  Cursor Cloud Agent VM     │        │  (PC / VM / Servidor)         │
@@ -60,6 +62,7 @@ Con esto, un Cloud Agent puede, de forma autónoma: añadir/editar recursos y su
 ### Validar en local o en el agente
 
 ```bash
+
 bash scripts/validate-resources.sh
 ```
 
@@ -79,7 +82,9 @@ Instalas **Cursor Desktop en el mismo Windows** donde tienes TIA Portal. El agen
    - [`tiaportal-mcp`](../tia-portal-mcp-server/) → ejecutable `TiaMcpServer.exe` (open-source, ⭐ 56)
    - [`T-IA Connect`](../t-ia-connect/) → `TiaPortalApi.App.exe --mcp` (126+ herramientas, trial 14 días)
 4. Regístralo como MCP en Cursor. Crea `~/.cursor/mcp.json` (global) o `.cursor/mcp.json` (por proyecto):
+
    ```json
+
    {
      "mcpServers": {
        "tiaportal": {
@@ -90,13 +95,15 @@ Instalas **Cursor Desktop en el mismo Windows** donde tienes TIA Portal. El agen
      }
    }
    ```
+
    (Con T-IA Connect: `"command": "C:\\Program Files\\T-IA Connect\\TiaPortalApi.App.exe"`, `"args": ["--mcp"]`.)
 
-   > 💡 **Atajo**: el repo incluye una plantilla lista en [`.cursor/mcp.json.example`](../../.cursor/mcp.json.example). Cópiala a `.cursor/mcp.json`, ajusta la ruta al ejecutable y borra la entrada del servidor que no uses. `.cursor/mcp.json` está en `.gitignore` para no commitear rutas de tu máquina.
+   💡 **Atajo**: el repo incluye una plantilla lista en [`.cursor/mcp.json.example`](../../.cursor/mcp.json.example). Cópiala a `.cursor/mcp.json`, ajusta la ruta al ejecutable y borra la entrada del servidor que no uses. `.cursor/mcp.json` está en `.gitignore` para no commitear rutas de tu máquina.
+
 5. Abre TIA Portal con tu proyecto, abre el chat del agente en Cursor y verifica en **Settings → MCP** que las herramientas del servidor aparecen activas. Pide, p. ej.: *"Lista los bloques FB del proyecto"* o *"Genera un FC de escalado lineal"*.
 
 > **Ventaja**: es la vía más directa y sin fricción para desarrollo asistido. **Contrapartida**: solo funciona mientras tú tienes Cursor abierto en ese Windows (no es automatización desatendida 24/7). Si quieres que trabaje "solo" aunque no estés delante, usa la Opción 1.
-
+>
 > **Compatibilidad**: el propio catálogo lista Cursor como cliente MCP compatible (ver [`../t-ia-connect/README.md`](../t-ia-connect/README.md)).
 
 ### Opción 1 (desatendida): Worker self-hosted de Cursor sobre Windows
@@ -117,10 +124,13 @@ Ejecutas el proceso de worker de Cursor **en tu máquina Windows con TIA Portal 
 Dejas TIA Portal + puente corriendo en Windows y expones su endpoint para que el agente lo consuma por red.
 
 1. En Windows, arranca el puente en modo headless. Ejemplo con **T-IA Connect**:
+
    ```powershell
+
    TiaPortalApi.App.exe --headless
    # API: http://localhost:9000/  (Swagger en /swagger)
    ```
+
 2. Expón el endpoint de forma **segura** (túnel/VPN + API key). Recomendado añadir [AgentGateway](https://github.com/agentgateway/agentgateway) como proxy Zero-Trust para filtrar herramientas peligrosas y auditar.
 3. Registra ese endpoint como servidor MCP para el agente y añade el dominio al **allowlist de egress** del entorno.
 
@@ -131,11 +141,13 @@ Dejas TIA Portal + puente corriendo en Windows y expones su endpoint para que el
 ## 5. Flujo completo objetivo
 
 ```
+
 Cloud Agent (Linux)          Puente en Windows            TIA Portal
 ──────────────────           ─────────────────            ──────────
 1. Mejora el repo  ─PR──▶ GitHub
 2. Genera SCL/XML  ─MCP─▶  T-IA Connect / tiaportal-mcp ─Openness─▶ Importa + compila
 3. Recibe resultado ◀────  (respuesta MCP/REST)         ◀─────────  bloque compilado
+
 ```
 
 - La IA **nunca** toca TIA Portal directamente: siempre a través del puente.

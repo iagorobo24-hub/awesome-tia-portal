@@ -17,6 +17,7 @@ Diagramas y esquemas visuales para facilitar la comprensión de IA + TIA Portal.
 [Ver diagramas Mermaid interactivos](./README.md)
 
 **27 diagramas Mermaid:**
+
 - Arquitectura general (3)
 - Flujo de trabajo (2)
 - Arquitectura de proyectos (3)
@@ -32,11 +33,12 @@ Diagramas y esquemas visuales para facilitar la comprensión de IA + TIA Portal.
 
 ---
 
-## 🖼️ Diagramas ASCII
+## 🖼 Diagramas ASCII
 
 [Ver diagramas ASCII detallados](./ascii-art.md)
 
 **15 diagramas ASCII:**
+
 - Arquitectura general (2)
 - Máquinas de estado (3)
 - Flujo de trabajo (1)
@@ -50,15 +52,12 @@ Diagramas y esquemas visuales para facilitar la comprensión de IA + TIA Portal.
 
 ---
 
-## 📊 Resumen de diagramas
-
----
-
-## 🏗️ Arquitectura general
+## 🏗 Arquitectura general
 
 ### Arquitectura IA + TIA Portal
 
 ```mermaid
+
 graph TB
     subgraph "Usuario"
         A[Ingeniero PLC]
@@ -103,6 +102,7 @@ graph TB
 ### Flujo de datos completo
 
 ```mermaid
+
 sequenceDiagram
     participant U as Usuario
     participant AI as Agente IA
@@ -128,6 +128,7 @@ sequenceDiagram
 ### Flujo de trabajo típico
 
 ```mermaid
+
 graph LR
     A[1. Definir requerimientos] --> B[2. Escribir prompt detallado]
     B --> C[3. IA genera código]
@@ -159,6 +160,7 @@ graph LR
 ### Ciclo de iteración
 
 ```mermaid
+
 graph TD
     A[Prompt inicial] --> B[IA genera código]
     B --> C{Revisión}
@@ -182,11 +184,12 @@ graph TD
 
 ---
 
-## 🏛️ Arquitectura de proyectos
+## 🏛 Arquitectura de proyectos
 
 ### tiaportal-mcp
 
 ```mermaid
+
 graph TB
     subgraph "VS Code"
         A[VS Code Editor]
@@ -218,6 +221,7 @@ graph TB
 ### T-IA Connect
 
 ```mermaid
+
 graph TB
     subgraph "Cliente"
         A[Claude Desktop]
@@ -259,6 +263,7 @@ graph TB
 ### totally-integrated-claude
 
 ```mermaid
+
 graph TB
     subgraph "Claude Code"
         A[Claude Code CLI]
@@ -298,11 +303,12 @@ graph TB
 
 ---
 
-## ⚙️ Máquinas de estado
+## ⚙ Máquinas de estado
 
 ### Máquina de estados de motor
 
 ```mermaid
+
 stateDiagram-v2
     [*] --> STOPPED: Inicialización
     STOPPED --> STARTING: Comando START
@@ -338,6 +344,7 @@ stateDiagram-v2
 ### Máquina de estados de filtro
 
 ```mermaid
+
 stateDiagram-v2
     [*] --> IDLE: Inicialización
     IDLE --> SERVICE: Comando START
@@ -383,6 +390,7 @@ stateDiagram-v2
 ### Máquina de estados de válvula
 
 ```mermaid
+
 stateDiagram-v2
     [*] --> CLOSED: Inicialización
     CLOSED --> OPENING: Comando OPEN
@@ -429,6 +437,7 @@ stateDiagram-v2
 ### Roadmap visual de tutoriales
 
 ```mermaid
+
 graph TD
     A[🥉 Nivel 1: Principiante] --> B[Tutorial 1: Primeros pasos]
     B --> C[Tutorial 2: Generar FB]
@@ -455,6 +464,7 @@ graph TD
 ### Ruta de aprendizaje recomendada
 
 ```mermaid
+
 graph LR
     A[Semana 1] --> B[Tutorial 1]
     A --> C[Conceptos básicos]
@@ -489,6 +499,7 @@ graph LR
 ### Árbol de decisión visual
 
 ```mermaid
+
 graph TD
     A[¿Qué editor usas?] --> B[VS Code]
     A --> C[Claude Desktop]
@@ -527,6 +538,7 @@ graph TD
 ### Matriz de decisión por caso de uso
 
 ```mermaid
+
 graph LR
     A[Caso de uso] --> B[Primeros pasos]
     A --> C[Desarrollo continuo]
@@ -565,6 +577,7 @@ graph LR
 ### Tutorial 1: Primeros pasos
 
 ```mermaid
+
 graph TD
     A[Inicio] --> B[Instalar MCP Server]
     B --> C[Configurar Claude Desktop]
@@ -588,6 +601,7 @@ graph TD
 ### Tutorial 2: Generar FB complejo
 
 ```mermaid
+
 graph TD
     A[Inicio] --> B[Preparar UDT de motor]
     B --> C[Escribir prompt detallado]
@@ -610,6 +624,7 @@ graph TD
 ### Tutorial 3: Documentación automática
 
 ```mermaid
+
 graph TD
     A[Inicio] --> B[Analizar estructura proyecto]
     B --> C[Pedir análisis a IA]
@@ -632,6 +647,7 @@ graph TD
 ### Línea de tratamiento de agua
 
 ```mermaid
+
 graph TB
     subgraph "Entrada"
         A[Agua cruda]
@@ -675,6 +691,7 @@ graph TB
 ### Sistema de transporte de cintas
 
 ```mermaid
+
 graph LR
     A[Cinta 1] --> B[Cinta 2]
     B --> C[Cinta 3]
@@ -718,6 +735,7 @@ graph LR
 ### Comparativa de MCP Servers
 
 ```mermaid
+
 graph TB
     subgraph "tiaportal-mcp"
         A1[⭐ 56]
@@ -764,6 +782,7 @@ graph TB
 ### Matriz de características
 
 ```mermaid
+
 graph LR
     A[Característica] --> B[tiaportal-mcp]
     A --> C[T-IA Connect]
@@ -791,6 +810,7 @@ graph LR
 ### Esquema de conexión MCP
 
 ```mermaid
+
 graph LR
     A[Claude Desktop] -->|stdio| B[MCP Server]
     B -->|Openness API| C[TIA Portal]
@@ -805,6 +825,7 @@ graph LR
 ### Esquema de API REST
 
 ```mermaid
+
 graph LR
     A[Cliente HTTP] -->|REST| B[T-IA Connect API]
     B -->|Openness| C[TIA Portal]
@@ -819,6 +840,7 @@ graph LR
 ### Esquema de SignalR
 
 ```mermaid
+
 graph LR
     A[Frontend React] -->|WebSocket| B[SignalR Hub]
     B -->|REST| C[Backend .NET]
@@ -837,6 +859,7 @@ graph LR
 ### Badges de nivel
 
 ```mermaid
+
 graph LR
     A[🥉 Principiante] --> B[🥈 Intermedio]
     B --> C[🥇 Avanzado]
@@ -851,10 +874,11 @@ graph LR
 ### Badges de proyecto
 
 ```mermaid
+
 graph LR
     A[🏆 Más popular] --> B[💪 Más potente]
     B --> C[🎓 Mejor para aprender]
-    C --> D[🛠️ Mejor CLI]
+    C --> D[🛠 Mejor CLI]
     D --> E[🌐 Mejor plataforma web]
     E --> F[🚀 Mejor para producción]
     F --> G[🔒 Mejor seguridad]
@@ -875,6 +899,7 @@ graph LR
 ### Reducción de tiempo
 
 ```mermaid
+
 graph TB
     A[Antes: 12 semanas] --> B[Después: 6 semanas]
     B --> C[Reducción: 50%]
@@ -887,6 +912,7 @@ graph TB
 ### Mejora de calidad
 
 ```mermaid
+
 graph TB
     A[Antes: 23 errores] --> B[Después: 2 errores]
     B --> C[Mejora: 91%]
@@ -898,7 +924,7 @@ graph TB
 
 ---
 
-## 📊 Resumen de diagramas
+## 📊 Balance Mermaid + ASCII
 
 | Categoría | Mermaid | ASCII | Total |
 |---|---|---|---|
@@ -993,4 +1019,4 @@ Ahora tienes 42 diagramas visuales para facilitar la comprensión de IA + TIA Po
 | **Badges** | 3 | Visualizar logros |
 | **Métricas** | 4 | Ver mejoras |
 
-**Total: 42 diagramas visuales**
+Total: 42 diagramas visuales

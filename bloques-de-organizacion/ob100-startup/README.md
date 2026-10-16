@@ -33,6 +33,7 @@ Muchos parámetros del proyecto (textos de alarma, umbrales por defecto, configu
 ## Estructura
 
 ```scl
+
 // =================================================================
 // 1. TEXTOS DE ALARMAS
 // =================================================================

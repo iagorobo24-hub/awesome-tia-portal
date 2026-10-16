@@ -30,13 +30,14 @@ Expone la API de TIA Portal como herramientas MCP organizadas en grupos:
 | **Sampling/LLM** | `sampling_generate_code`, `sampling_summarize_project`, `sampling_get_suggestions` |
 | **Utilities** | `utilities_elicit_user_input`, `utilities_get_project_info`, `utilities_list_libraries` |
 
-**Total: ~60+ herramientas MCP**
+Total: ~60+ herramientas MCP
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗 Arquitectura
 
 ```
+
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   AI Agent      │   │   MCP Server     │   │   TIA Portal  │
 │  (Claude,       │   │   (C# / .NET)    │   │  Openness API │
@@ -59,11 +60,13 @@ Expone la API de TIA Portal como herramientas MCP organizadas en grupos:
 ## 📦 Requisitos
 
 ### Software
+
 - **Windows 10/11** — Openness API es COM-native
 - **.NET Framework 4.8** — Runtime de .NET
 - **Siemens TIA Portal V20** — Versión soportada
 
 ### Permisos
+
 - Usuario en grupo `TIA Portal Openness Users`
 - TIA Portal V20 instalado y licenciado
 
@@ -74,10 +77,12 @@ Expone la API de TIA Portal como herramientas MCP organizadas en grupos:
 ### Opción 1: CLI (recomendada)
 
 ```bash
+
 npx @chewcw/tia-portal-openness-mcpserver install --server-version v1.0.0
 ```
 
 **Variables de entorno opcionales:**
+
 - `GITHUB_TOKEN` — Token para acceso autenticado a GitHub API
 - `TIA_MCP_INSTALL_DIR` — Override del directorio de instalación
 - `TIA_MCP_AGENT_TYPE` — Override del tipo de agente detectado
@@ -85,6 +90,7 @@ npx @chewcw/tia-portal-openness-mcpserver install --server-version v1.0.0
 
 **Detección automática de agente:**
 El CLI detecta automáticamente el tipo de agente desde:
+
 - `OPENCODE_SESSION_ID`
 - `OPENCODE_ROOT`
 - `CLAUDE_AGENT_METADATA_FILE`
@@ -93,6 +99,7 @@ El CLI detecta automáticamente el tipo de agente desde:
 ### Opción 2: Build desde código
 
 ```bash
+
 git clone https://github.com/chewcw/tia-portal-openness-mcpserver.git
 cd tia-portal-openness-mcpserver
 dotnet build tia-portal-openness-mcpserver.sln
@@ -101,13 +108,14 @@ dotnet run --project TiaPortalMcpServer/TiaPortalMcpServer.csproj
 
 ---
 
-## ⚙️ Configuración
+## ⚙ Configuración
 
 ### Claude Desktop
 
 Edita `C:\Users\<user>\AppData\Roaming\Claude\claude_desktop_config.json`:
 
 ```json
+
 {
   "mcpServers": {
     "tia-portal-openness": {
@@ -125,7 +133,7 @@ Similar configuración, ajustando la ruta del ejecutable.
 
 ---
 
-## 🛠️ Herramientas MCP destacadas
+## 🛠 Herramientas MCP destacadas
 
 ### Project Lifecycle
 
@@ -173,6 +181,7 @@ Similar configuración, ajustando la ruta del ejecutable.
 ### Advanced Blocks (19 herramientas)
 
 Cubre:
+
 - Fuentes externas
 - ProDiag
 - UDTs
@@ -247,24 +256,28 @@ Cubre:
 ### Ejecutar todos los tests
 
 ```bash
+
 dotnet test TiaPortalMcpServer.Tests/TiaPortalMcpServer.Tests.csproj
 ```
 
 ### Solo tests unitarios
 
 ```bash
+
 dotnet test --filter "Category!=Integration"
 ```
 
 ### Solo tests de integración
 
 ```bash
+
 dotnet test --filter "Category=Integration"
 ```
 
 ### MCP Inspector
 
 ```bash
+
 npx @modelcontextprotocol/inspector dotnet run --project TiaPortalMcpServer/TiaPortalMcpServer.csproj
 ```
 
@@ -282,33 +295,48 @@ npx @modelcontextprotocol/inspector dotnet run --project TiaPortalMcpServer/TiaP
 ## 🎓 Casos de uso
 
 ### 1. Creación de proyecto
+
 ```
+
 Crea un nuevo proyecto TIA Portal con un S7-1500
 ```
+
 → El IA usa `projects_create`, `devices_create`, `devices_search_catalog`.
 
 ### 2. Gestión de tags
+
 ```
+
 Crea una tabla de tags para todas las entradas analógicas
 ```
+
 → El IA usa `tags_tagtable_create`, `tags_create`, `tags_tagtable_export`.
 
 ### 3. Compilación
+
 ```
+
 Compila el software del PLC_1
 ```
+
 → El IA usa `compilation_software`.
 
 ### 4. Importación de datos
+
 ```
+
 Importa tags desde un archivo Excel
 ```
+
 → El IA usa `files_read_excel`, `files_list_sheets`, `tags_create`.
 
 ### 5. Generación asistida por LLM
+
 ```
+
 Genera código SCL para un control de bomba
 ```
+
 → El IA usa `sampling_generate_code`.
 
 ---
@@ -329,10 +357,10 @@ Genera código SCL para un control de bomba
 
 ## 🔗 Enlaces útiles
 
-- **Repositorio**: https://github.com/chewcw/tia-portal-openness-mcpserver
+- **Repositorio**: <https://github.com/chewcw/tia-portal-openness-mcpserver>
 - **CLI**: `npx @chewcw/tia-portal-openness-mcpserver`
 - **MCP Inspector**: `npx @modelcontextprotocol/inspector`
-- **TIA Portal Openness docs**: https://docs.tia.siemens.cloud/
+- **TIA Portal Openness docs**: <https://docs.tia.siemens.cloud/>
 
 ---
 

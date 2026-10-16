@@ -34,6 +34,7 @@ La pantalla de alarmas es de las primeras que pide el cliente final y de las que
 ## Estructura visual
 
 ```
+
 ┌────────────────────────────────────────────────────────────────────┐
 │ ALARMAS                                  [ACTIVAS] [HISTÓRICO]     │   ← tabs
 ├────────────────────────────────────────────────────────────────────┤

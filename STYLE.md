@@ -26,6 +26,7 @@ Convenciones que sigue este repo para que todos los recursos (UDTs, FBs, FCs, OB
 El repo se organiza por **categoría** en la raíz, y dentro de cada categoría hay una **subcarpeta por recurso**:
 
 ```
+
 awesome-tia-portal/
 ├── tipos-de-datos/              # UDTs
 │   ├── udt-motor/               # 1 carpeta = 1 recurso
@@ -136,6 +137,7 @@ Para variables locales que son instancias de FBs estándar, usamos el **nombre d
 Por compatibilidad con la nomenclatura clásica de Siemens (área `%Q`), aceptamos el prefijo **`q`** *únicamente* en outputs de tipo `BOOL` que se conectan directamente a una salida física o a un indicador HMI:
 
 ```
+
 qSalidaContactor       BOOL    Salida hacia bobina del KM
 qLamparaMarcha         BOOL    Lámpara verde marcha
 ```
@@ -147,6 +149,7 @@ Esto es la única excepción permitida al "el prefijo refleja el tipo". Para out
 Las variables que **son instancias de un UDT** o estructuras complejas usan **PascalCase sin prefijo**, igual que el tipo:
 
 ```
+
 Motor                  UDT_Motor          Estructura del motor
 Analog                 UDT_AnalogInput    Estructura de entrada analógica
 Alarmas                ARRAY[1..50] OF UDT_Alarm    Lista de alarmas
@@ -171,6 +174,7 @@ Alarmas                ARRAY[1..50] OF UDT_Alarm    Lista de alarmas
 Los tipos de datos siempre se escriben en **MAYÚSCULAS** en los READMEs:
 
 ```
+
 ✅ BOOL, INT, DINT, REAL, STRING, TIME, DTL, WORD, DWORD, BYTE
 ❌ Bool, Int, Real, String, Time, Dtl
 ```
@@ -180,6 +184,7 @@ Los tipos de datos siempre se escriben en **MAYÚSCULAS** en los READMEs:
 Usa siempre **corchetes**, que es la sintaxis nativa de TIA Portal:
 
 ```
+
 ✅ STRING[40], STRING[80], STRING[10]
 ❌ STRING(40), STRING(80)
 ```
@@ -189,6 +194,7 @@ Usa siempre **corchetes**, que es la sintaxis nativa de TIA Portal:
 Siempre con la palabra `OF` y el tipo en mayúsculas:
 
 ```
+
 ✅ ARRAY[1..50] OF UDT_Alarm
 ✅ ARRAY[0..99] OF REAL
 ❌ Array[1..50] of UDT_Alarm
@@ -199,6 +205,7 @@ Siempre con la palabra `OF` y el tipo en mayúsculas:
 Para valores tipo enum (motor: 0=manual, 1=auto, 2=remoto), usa el prefijo `e` y documenta los valores en una nota:
 
 ```
+
 | `eModo` | INT | 0 = manual · 1 = auto · 2 = remoto |
 ```
 
@@ -267,27 +274,31 @@ El repo está optimizado para **TIA Portal V20**. Cada recurso debe declarar en 
 |---|:---:|---|
 | V20 | ✅ | Versión de referencia |
 | V19 | ✅ | Probado, funciona idéntico |
-| V18 | ⚠️ | Funciona pero algunos campos opcionales no aparecen |
+| V18 | ⚠ | Funciona pero algunos campos opcionales no aparecen |
 | V17 y anteriores | ❌ | No probado, no soportado |
 
 **Convenciones de iconos:**
+
 - ✅ probado y funciona OK
-- ⚠️ funciona pero con limitaciones (documentar cuáles)
+- ⚠ funciona pero con limitaciones (documentar cuáles)
 - ❌ no soportado / no probado
 - ➖ no aplica (ej: faceplate Unified en V18 no existe)
 
-Si tu recurso solo se ha probado en V20, sé honesto: pon ⚠️ o ➖ en V18/V19 y deja una nota.
+Si tu recurso solo se ha probado en V20, sé honesto: pon ⚠ o ➖ en V18/V19 y deja una nota.
 
 ---
 
 ## 9. Comentarios en SCL
 
 - Comentarios de **bloque** al principio de cada sección lógica:
+
   ```scl
+
   // ===========================================================
   // Sección 2: Lógica de seguridad
   // ===========================================================
   ```
+
 - Comentarios de **línea** (`//`) para aclarar una decisión, no para narrar el código.
 - **Nunca** comentar el diff (*"// ahora también comprobamos X"*). El "qué cambió" va en el commit / PR description, no en el código.
 - Si el código es trivial, no añadas comentario. Confía en buenos nombres de variables.
@@ -306,6 +317,7 @@ Mini-checklist antes de abrir la PR:
 - [ ] Si `status: available`: el `.xml` está en UTF-8 sin BOM y se ha probado importarlo en TIA Portal V20 desde cero.
 - [ ] He regenerado [`CATALOG.md`](./CATALOG.md) con `python3 scripts/generate_catalog.py` y commiteado el resultado.
 - [ ] `bash scripts/validate-resources.sh`, `python3 scripts/validate-xml.py` y `python scripts/check-local-links.py` pasan localmente.
+- [ ] `npx markdownlint-cli2 --config .markdownlint-cli2.jsonc` no da errores (requiere Node.js; si no lo tienes, lo revisa CI).
 - [ ] CI pasa en verde.
 
 ---

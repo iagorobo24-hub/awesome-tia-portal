@@ -29,10 +29,10 @@ Solo piezas sueltas, no proyectos completos. Pensada para programadores de PLC q
 
 | | |
 |---|---|
-| 🏷️ **UDTs** | Estructuras estándar (motor, válvula, entrada analógica, variador, alarma) organizadas, en general, en comando, estado, fallos, diagnóstico y configuración. |
+| 🏷 **UDTs** | Estructuras estándar (motor, válvula, entrada analógica, variador, alarma) organizadas, en general, en comando, estado, fallos, diagnóstico y configuración. |
 | 🧩 **FB / FC** | Bloques que consumen esos UDTs: control de motor y válvula, procesado analógico, escalado, contador de horas, de flancos y generador de pulsos. |
-| 🏗️ **OB** | Esqueletos de OB1, arranque (OB100) y gestión básica de errores de hardware (OB82/85/86). |
-| 🖥️ **HMI** | Faceplates enlazados a los UDTs, pantalla de alarmas y plantilla de navegación. |
+| 🏗 **OB** | Esqueletos de OB1, arranque (OB100) y gestión básica de errores de hardware (OB82/85/86). |
+| 🖥 **HMI** | Faceplates enlazados a los UDTs, pantalla de alarmas y plantilla de navegación. |
 | 📋 **Plantillas de proyecto** | Estructura mínima de máquina simple y de línea modular. |
 | 🤖 **IA + TIA Portal** | Guías, comparativas y fichas de herramientas de terceros que conectan modelos de IA con TIA Portal mediante Openness/MCP. No son bloques importables. |
 
@@ -69,7 +69,7 @@ Un resumen honesto de lo que hay.
 Todos están hoy en estado 📝 (documentados). La tabla completa, con versión y familia de PLC, está en el [catálogo](./CATALOG.md).
 
 <details open>
-<summary><b>🏷️ Tipos de datos (UDT)</b></summary>
+<summary><b>🏷 Tipos de datos (UDT)</b></summary>
 
 Carpeta: [`tipos-de-datos/`](./tipos-de-datos/)
 
@@ -102,7 +102,7 @@ Carpeta: [`bloques-de-funcion/`](./bloques-de-funcion/)
 </details>
 
 <details>
-<summary><b>🏗️ Bloques de organización (OB)</b></summary>
+<summary><b>🏗 Bloques de organización (OB)</b></summary>
 
 Carpeta: [`bloques-de-organizacion/`](./bloques-de-organizacion/)
 
@@ -115,7 +115,7 @@ Carpeta: [`bloques-de-organizacion/`](./bloques-de-organizacion/)
 </details>
 
 <details>
-<summary><b>🖥️ HMI</b></summary>
+<summary><b>🖥 HMI</b></summary>
 
 Carpeta: [`hmi/`](./hmi/)
 
@@ -164,7 +164,7 @@ Las herramientas de terceros pertenecen a sus autores; consulta su repositorio p
 4. **Prueba en simulación** (PLCSIM o un equipo de pruebas) antes de acercarlo a una instalación real.
 
 > Hoy el paso 3 aún no es posible para ningún recurso, porque los `.xml` no están publicados. Mientras tanto, los README sirven como especificación de la interfaz y del comportamiento esperado.
-
+>
 > 🔧 **Recurso con fuente real:** [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) incluye su `.scl`, compilado en V20 con evidencia y capturas del fixture; la prueba de comportamiento en PLCSIM está preparada y pendiente. Para conectar un agente de IA a TIA Portal, empieza por la [guía de conexión profesional V20](./ia-tia-portal/guias/conexion-profesional-v20.md).
 
 ## Contribuir
@@ -192,6 +192,7 @@ Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`ud
 ## Estructura del proyecto
 
 ```
+
 tipos-de-datos/            UDTs (una carpeta por recurso, con README.md)
 bloques-de-funcion/        FB y FC (fb-alarm-latch incluye fuente SCL + evidencia)
 bloques-de-organizacion/   OB
@@ -218,4 +219,3 @@ CONTRIBUTING.md  STYLE.md  guía de contribución y de estilo
 <sub>Proyecto personal de la comunidad, no afiliado a Siemens. Siemens, SIMATIC y TIA Portal son marcas de sus propietarios.</sub>
 
 </div>
-

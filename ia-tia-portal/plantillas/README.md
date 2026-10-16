@@ -18,6 +18,7 @@ Colección de plantillas y snippets reutilizables para acelerar el desarrollo co
 ### Plantilla base
 
 ```markdown
+
 Genera un [TIPO DE BLOQUE] con las siguientes especificaciones:
 
 NOMBRE: [NOMBRE DEL BLOQUE]
@@ -62,6 +63,7 @@ Por favor, genera el código [LENGUAJE] completo.
 ### Ejemplo: Control de motor
 
 ```markdown
+
 Genera un FB de control de motor digital con las siguientes especificaciones:
 
 NOMBRE: FB_MotorControl
@@ -125,6 +127,7 @@ Por favor, genera el código SCL completo.
 ### Ejemplo: Control de válvula
 
 ```markdown
+
 Genera un FB de control de válvula con las siguientes especificaciones:
 
 NOMBRE: FB_ValveControl
@@ -190,11 +193,12 @@ Por favor, genera el código SCL completo.
 
 ---
 
-## ⚙️ Plantilla de configuración de MCP
+## ⚙ Plantilla de configuración de MCP
 
 ### Plantilla base (JSON)
 
 ```json
+
 {
   "mcpServers": {
     "tiaportal-mcp": {
@@ -214,6 +218,7 @@ Por favor, genera el código SCL completo.
 ### Plantilla base (YAML)
 
 ```yaml
+
 mcpServers:
   tiaportal-mcp:
     command: node
@@ -227,6 +232,7 @@ mcpServers:
 ### Ejemplo: Configuración completa
 
 ```json
+
 {
   "mcpServers": {
     "tiaportal-mcp": {
@@ -259,6 +265,7 @@ mcpServers:
 ### Ejemplo: Configuración con múltiples servidores
 
 ```json
+
 {
   "mcpServers": {
     "tiaportal-mcp": {
@@ -303,6 +310,7 @@ mcpServers:
 ### Máquina de estados
 
 ```scl
+
 // Máquina de estados básica
 CASE eState OF
     0:  // Estado STOPPED
@@ -334,6 +342,7 @@ END_CASE;
 ### Timer con timeout
 
 ```scl
+
 // Timer con timeout
 tonTimeout(IN := bStart, PT := tTimeout);
 
@@ -348,6 +357,7 @@ END_IF;
 ### Contador de ciclos
 
 ```scl
+
 // Contador de ciclos
 IF bRisingEdge AND NOT bLastState THEN
     iCycleCount := iCycleCount + 1;
@@ -359,6 +369,7 @@ bLastState := bRisingEdge;
 ### Promedio móvil
 
 ```scl
+
 // Promedio móvil
 rSum := rSum - arValues[iIndex] + rNewValue;
 arValues[iIndex] := rNewValue;
@@ -369,6 +380,7 @@ rAverage := rSum / ARRAY_SIZE;
 ### Filtro de paso bajo
 
 ```scl
+
 // Filtro de paso bajo
 rFiltered := rFiltered + (rInput - rFiltered) * rAlpha;
 ```
@@ -376,6 +388,7 @@ rFiltered := rFiltered + (rInput - rFiltered) * rAlpha;
 ### Detección de flanco
 
 ```scl
+
 // Detección de flanco ascendente
 bRisingEdge := bInput AND NOT bLastInput;
 bLastInput := bInput;
@@ -388,6 +401,7 @@ bLastInput := bInput;
 ### Interlock básico
 
 ```scl
+
 // Interlock básico
 IF bCondition1 AND bCondition2 AND NOT bInterlock THEN
     bOutput := TRUE;
@@ -399,6 +413,7 @@ END_IF;
 ### Manejo de errores
 
 ```scl
+
 // Manejo de errores
 IF bError THEN
     eState := 3;  // Ir a estado FAULT
@@ -410,6 +425,7 @@ END_IF;
 ### Timestamp de eventos
 
 ```scl
+
 // Timestamp de eventos
 IF bEvent AND NOT bLastEvent THEN
     dtEventTime := NOW();
@@ -421,6 +437,7 @@ bLastEvent := bEvent;
 ### Validación de rangos
 
 ```scl
+
 // Validación de rangos
 IF rValue >= rMin AND rValue <= rMax THEN
     bInRange := TRUE;
@@ -432,6 +449,7 @@ END_IF;
 ### Escalado de valores
 
 ```scl
+
 // Escalado de valores
 rScaled := (rInput - rInputMin) * (rOutputMax - rOutputMin) / (rInputMax - rInputMin) + rOutputMin;
 ```
@@ -439,6 +457,7 @@ rScaled := (rInput - rInputMin) * (rOutputMax - rOutputMin) / (rInputMax - rInpu
 ### Histeresis
 
 ```scl
+
 // Histeresis
 IF rInput >= rHigh THEN
     bOutput := TRUE;
@@ -450,6 +469,7 @@ END_IF;
 ### PID básico
 
 ```scl
+
 // PID básico
 rError := rSetpoint - rProcessValue;
 rIntegral := rIntegral + rError * rSampleTime;
@@ -461,6 +481,7 @@ rLastError := rError;
 ### Secuenciador
 
 ```scl
+
 // Secuenciador
 CASE iStep OF
     0:  // Paso 1
@@ -483,6 +504,7 @@ END_CASE;
 ### Watchdog
 
 ```scl
+
 // Watchdog
 tonWatchdog(IN := NOT bHeartbeat, PT := tWatchdogTimeout);
 
@@ -495,6 +517,7 @@ END_IF;
 ### Debounce
 
 ```scl
+
 // Debounce
 tonDebounce(IN := bInput, PT := tDebounceTime);
 
@@ -508,6 +531,7 @@ END_IF;
 ### Limitador de velocidad
 
 ```scl
+
 // Limitador de velocidad
 rRamp := rRamp + rRampRate * rSampleTime;
 
@@ -523,6 +547,7 @@ END_IF;
 ### Selección de modo
 
 ```scl
+
 // Selección de modo
 IF bModeAuto THEN
     // Modo automático
@@ -536,6 +561,7 @@ END_IF;
 ### Prioridad de comandos
 
 ```scl
+
 // Prioridad de comandos
 IF bEmergencyStop THEN
     bOutput := FALSE;
@@ -549,6 +575,7 @@ END_IF;
 ### Diagnóstico de fallos
 
 ```scl
+
 // Diagnóstico de fallos
 IF bFault1 THEN
     iFaultCode := 1;
@@ -564,6 +591,7 @@ END_IF;
 ### Logging de eventos
 
 ```scl
+
 // Logging de eventos
 IF bEvent AND NOT bLastEvent THEN
     // Registrar evento
@@ -577,6 +605,7 @@ bLastEvent := bEvent;
 ### Validación de precondiciones
 
 ```scl
+
 // Validación de precondiciones
 IF bPrecondition1 AND bPrecondition2 AND bPrecondition3 THEN
     bReady := TRUE;
@@ -588,6 +617,7 @@ END_IF;
 ### Verificación de postcondiciones
 
 ```scl
+
 // Verificación de postcondiciones
 IF bPostcondition1 AND bPostcondition2 AND bPostcondition3 THEN
     bSuccess := TRUE;
@@ -603,6 +633,7 @@ END_IF;
 ### Plantilla base
 
 ```markdown
+
 # [NOMBRE DEL BLOQUE]
 
 ## Descripción
@@ -662,6 +693,7 @@ END_IF;
 ## Ejemplo de uso
 
 ```scl
+
 // Ejemplo de uso
 [Nombre del bloque](
     bStart := TRUE,
@@ -680,11 +712,13 @@ END_IF;
 - **Versión**: [Versión]
 - **Fecha**: [Fecha]
 - **Autor**: [Autor]
+
 ```
 
 ### Ejemplo: FB_MotorControl
 
 ```markdown
+
 # FB_MotorControl
 
 ## Descripción
@@ -777,6 +811,7 @@ Control de motor digital con máquina de estados, diagnóstico y alarmas.
 ## Ejemplo de uso
 
 ```scl
+
 // Ejemplo de uso
 FB_MotorControl(
     bStart := bStartCommand,
@@ -791,17 +826,18 @@ FB_MotorControl(
 );
 ```
 
-## Notas
+## Notas (ejemplo FB_MotorControl)
 
 - Prioridad de STOP sobre START
 - Parada de emergencia inmediata
 - No arrancar si hay fallo activo
 
-## Versión
+## Versión (ejemplo FB_MotorControl)
 
 - **Versión**: 0.1
 - **Fecha**: 2024-01-15
 - **Autor**: Iago Durán
+
 ```
 
 ---

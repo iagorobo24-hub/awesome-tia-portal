@@ -24,6 +24,7 @@ MCP no es otra API Siemens: sus servidores llaman a Openness. Una aplicación .N
 En ese workspace, el primer diagnóstico es:
 
 ```powershell
+
 .\30-tools\scripts\Invoke-TiaMcp.ps1 -Calls @(@{ name = 'Doctor' })
 ```
 

@@ -1,6 +1,6 @@
 # Tutorial 6: Refactorizar código con IA
 
-> **⏱️ Tiempo estimado**: 60 minutos
+> **⏱ Tiempo estimado**: 60 minutos
 > **🎯 Dificultad**: ⭐⭐⭐⭐ (Experto)
 > **📋 Prerrequisitos**: Tutorial 2 completado
 
@@ -32,6 +32,7 @@ Refactorizar código PLC existente para mejorar calidad y mantenibilidad con IA.
 En Claude Desktop:
 
 ```
+
 Analiza este código PLC e identifica problemas de calidad.
 
 CÓDIGO: [pegar código]
@@ -71,6 +72,7 @@ Por favor, genera un reporte detallado en formato Markdown.
 Para cada bloque identificado:
 
 ```
+
 Refactoriza este bloque PLC para mejorar calidad y mantenibilidad.
 
 CÓDIGO ORIGINAL: [pegar código]
@@ -130,6 +132,7 @@ Por favor, genera el código refactorizado completo en SCL.
 ### 4.1 Comparar métricas
 
 ```
+
 Compara el código original y el refactorizado.
 
 MÉTRICAS:

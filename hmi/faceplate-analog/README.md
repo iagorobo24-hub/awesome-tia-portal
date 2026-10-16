@@ -36,6 +36,7 @@ Cada variable analógica en HMI requiere lo mismo: valor numérico grande, unida
 ## Estructura visual
 
 ```
+
 ┌─────────────────────────────────────────┐
 │ AI01_TempReactor                         │
 ├─────────────────────────────────────────┤
@@ -88,6 +89,7 @@ Una única propiedad `Analog` de tipo `UDT_AnalogInput`.
 ## Ejemplo de uso
 
 ```
+
 Variable enlazada: "DB_Analogicas".AI01_TempReactor
 ```
 

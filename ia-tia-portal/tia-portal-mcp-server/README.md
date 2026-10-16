@@ -29,9 +29,10 @@ Expone las capacidades de TIA Portal como herramientas MCP que un modelo de IA p
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗 Arquitectura
 
 ```
+
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   AI Agent      │   │   TIA Portal     │   │   TIA Portal  │
 │  (Copilot,      │   │   MCP Server     │   │   (Openness)  │
@@ -45,6 +46,7 @@ Expone las capacidades de TIA Portal como herramientas MCP que un modelo de IA p
 ```
 
 **Componentes:**
+
 - **TiaMcpServer.exe** — Aplicación .NET Framework 4.8 que implementa el protocolo MCP
 - **Transporte stdio** — Comunicación vía entrada/salida estándar
 - **Openness API** — API oficial de Siemens para automatizar TIA Portal
@@ -54,15 +56,19 @@ Expone las capacidades de TIA Portal como herramientas MCP que un modelo de IA p
 ## 📦 Requisitos
 
 ### Software
+
 - **Windows 10/11** — La API Openness es COM-native, solo funciona en Windows
 - **.NET Framework 4.8** — Runtime de .NET para ejecutar el servidor
 - **Siemens TIA Portal V20** (compatible con V18+ usando argumento)
 - **TIA Portal Openness** — Debe estar instalado con TIA Portal
 
 ### Permisos
+
 - Usuario debe estar en el grupo **`Siemens TIA Openness`**
 - Variable de entorno `TiaPortalLocation` configurada:
+
   ```
+
   TiaPortalLocation = C:\Program Files\Siemens\Automation\Portal V20
   ```
 
@@ -84,13 +90,14 @@ Expone las capacidades de TIA Portal como herramientas MCP que un modelo de IA p
 
 ---
 
-## ⚙️ Configuración
+## ⚙ Configuración
 
 ### VS Code + GitHub Copilot
 
 El archivo `mcp.json` se crea automáticamente al instalar la extensión. Para TIA Portal V18:
 
 ```json
+
 {
   "servers": {
     "vscode-tiaportal-mcp": {
@@ -110,6 +117,7 @@ El archivo `mcp.json` se crea automáticamente al instalar la extensión. Para T
 Edita `C:\Users\<user>\AppData\Roaming\Claude\claude_desktop_config.json`:
 
 ```json
+
 {
   "mcpServers": {
     "vscode-tiaportal-mcp": {
@@ -123,27 +131,35 @@ Edita `C:\Users\<user>\AppData\Roaming\Claude\claude_desktop_config.json`:
 
 ---
 
-## 🛠️ Uso
+## 🛠 Uso
 
 ### Ejemplos de prompts
 
 **Explorar proyecto:**
+
 ```
+
 ¿Qué bloques FB tiene mi proyecto TIA Portal?
 ```
 
 **Leer un bloque:**
+
 ```
+
 Muéstrame el código del bloque FB_Motor
 ```
 
 **Exportar bloque:**
+
 ```
+
 Exporta el bloque FC_Escalado como XML
 ```
 
 **Compilar:**
+
 ```
+
 Compila el proyecto actual
 ```
 
@@ -173,17 +189,20 @@ Compila el proyecto actual
 
 ---
 
-## ⚠️ Limitaciones conocidas
+## ⚠ Limitaciones conocidas
 
 ### Importación de Ladder (LAD)
+
 - Requiere que el archivo `.s7res` contenga tags en-US para todos los items
 - Si no, la importación puede fallar (bug conocido de TIA Portal Openness)
 
 ### ExportBlock
+
 - Requiere ruta completa del bloque: `Group/Subgroup/Name`
 - Si solo das el nombre, devuelve `InvalidParams` con sugerencias
 
 ### Versiones TIA Portal
+
 - **V20** es la versión por defecto
 - V18/V19 compatible con `--tia-major-version`
 - Export/Import de documentos requiere V20+
@@ -195,13 +214,17 @@ Compila el proyecto actual
 El proyecto incluye tests unitarios y de integración:
 
 ```bash
+
 # Ejecutar todos los tests
+
 dotnet test
 
 # Solo tests unitarios
+
 dotnet test --filter "Category!=Integration"
 
 # Solo tests de integración
+
 dotnet test --filter "Category=Integration"
 ```
 
@@ -225,35 +248,47 @@ dotnet test --filter "Category=Integration"
 | V20 | ✅ Full | Versión por defecto |
 | V19 | ✅ Compatible | Usa `--tia-major-version 19` |
 | V18 | ✅ Compatible | Usa `--tia-major-version 18` |
-| V17 | ⚠️ Parcial | No probado oficialmente |
-| V21 | ⚠️ Parcial | No probado oficialmente |
+| V17 | ⚠ Parcial | No probado oficialmente |
+| V21 | ⚠ Parcial | No probado oficialmente |
 
 ---
 
 ## 🎓 Casos de uso
 
 ### 1. Documentación automática
+
 ```
+
 Genera documentación de todos los bloques FB del proyecto
 ```
+
 → El IA lista todos los bloques, lee cada uno y genera documentación estructurada.
 
 ### 2. Revisión de código
+
 ```
+
 Busca bloques con código duplicado o patrones sospechosos
 ```
+
 → El IA analiza todos los bloques buscando redundancias.
 
 ### 3. Migración de proyectos
+
 ```
+
 Exporta todos los bloques del proyecto como XML
 ```
+
 → El IA itera sobre todos los bloques y los exporta para backup o migración.
 
 ### 4. Aprendizaje
+
 ```
+
 Explícame cómo funciona el bloque FB_PumpControl
 ```
+
 → El IA lee el bloque y explica la lógica paso a paso.
 
 ---
@@ -268,7 +303,7 @@ Explícame cómo funciona el bloque FB_PumpControl
 | **Herramientas MCP** | ~20 | 126+ | ~50 (via skills) |
 | **Modo headless** | ❌ | ✅ | ❌ |
 | **Open-source** | ✅ | Freemium | ✅ |
-| **TIA Portal V21** | ⚠️ Parcial | ✅ | ✅ |
+| **TIA Portal V21** | ⚠ Parcial | ✅ | ✅ |
 
 ---
 
@@ -277,9 +312,11 @@ Explícame cómo funciona el bloque FB_PumpControl
 ### Transportes soportados
 
 **Actualmente:**
+
 - ✅ `stdio` — Comunicación vía entrada/salida estándar
 
 **Futuro (planificado):**
+
 - ⏳ `stream` — Streams personalizados (TCP, etc.)
 - ⏳ `HTTP` — Servidor HTTP con endpoint `/mcp`
 - ⏳ `Streamable HTTP` — Especificación MCP para HTTP streaming
@@ -299,11 +336,11 @@ Explícame cómo funciona el bloque FB_PumpControl
 
 ## 🔗 Enlaces útiles
 
-- **Repositorio**: https://github.com/heilingbrunner/tiaportal-mcp
-- **Extensión VS Code**: https://marketplace.visualstudio.com/items?itemName=JHeilingbrunner.vscode-tiaportal-mcp
-- **Repositorio VS Code**: https://github.com/heilingbrunner/vscode-tiaportal-mcp
-- **MCP Specification**: https://modelcontextprotocol.io/
-- **TIA Portal Openness Docs**: https://docs.tia.siemens.cloud/
+- **Repositorio**: <https://github.com/heilingbrunner/tiaportal-mcp>
+- **Extensión VS Code**: <https://marketplace.visualstudio.com/items?itemName=JHeilingbrunner.vscode-tiaportal-mcp>
+- **Repositorio VS Code**: <https://github.com/heilingbrunner/vscode-tiaportal-mcp>
+- **MCP Specification**: <https://modelcontextprotocol.io/>
+- **TIA Portal Openness Docs**: <https://docs.tia.siemens.cloud/>
 
 ---
 

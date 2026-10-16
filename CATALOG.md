@@ -20,7 +20,6 @@
 
 ---
 
-
 ## 🏷️ Tipos de datos (UDT)
 
 > Carpeta: [`tipos-de-datos/`](./tipos-de-datos/)

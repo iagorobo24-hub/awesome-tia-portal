@@ -53,6 +53,7 @@ Es el **caso de uso más universal** de TIA Portal y la primera pieza que cualqu
 ### Lógica interna (en SCL)
 
 ```scl
+
 IF iRawMax = iRawMin THEN
     #Ret_Val := #rEscalaMin;   // protección división por cero
 ELSE
@@ -60,6 +61,7 @@ ELSE
               + (INT_TO_REAL(#iValorCrudo - #iRawMin)
                  / INT_TO_REAL(#iRawMax - #iRawMin))
               * (#rEscalaMax - #rEscalaMin);
+
 END_IF;
 ```
 
@@ -78,6 +80,7 @@ END_IF;
 ## Ejemplo de uso
 
 ```scl
+
 // Sensor de pH (0-10V) escalado a 0.0-14.0 pH
 "DB_Proceso".rPH_Reactor := "FC_Escalado"(
     iValorCrudo := %IW64,

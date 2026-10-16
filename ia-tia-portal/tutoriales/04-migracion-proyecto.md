@@ -1,6 +1,6 @@
 # Tutorial 4: Migrar un proyecto antiguo con ayuda de IA
 
-> **⏱️ Tiempo estimado**: 90 minutos
+> **⏱ Tiempo estimado**: 90 minutos
 > **🎯 Dificultad**: ⭐⭐⭐ (Avanzado)
 > **📋 Prerrequisitos**: Tutorial 2 completado
 
@@ -41,6 +41,7 @@ En TIA Portal V15:
 En Claude Desktop:
 
 ```
+
 Analiza estos bloques exportados de TIA Portal V15.
 
 Quiero que identifiques:
@@ -76,6 +77,7 @@ Por favor, genera un reporte detallado en formato Markdown.
 Para cada bloque obsoleto, pide:
 
 ```
+
 Genera una versión moderna de este bloque para TIA Portal V20.
 
 BLOQUE ORIGINAL: [pegar código del bloque antiguo]
@@ -121,6 +123,7 @@ Por favor, genera el código SCL completo.
 ### 4.1 Generar reporte de migración
 
 ```
+
 Genera un reporte de migración del proyecto.
 
 INCLUYE:

@@ -20,12 +20,16 @@ Aprende a escribir prompts efectivos para obtener los mejores resultados de IA a
 ### 1. Sé específico
 
 **❌ Mal:**
+
 ```
+
 Haz un bloque de motor
 ```
 
 **✅ Bien:**
+
 ```
+
 Genera un FB de control de motor digital con las siguientes características:
 
 - Nombre: FB_MotorControl
@@ -39,17 +43,22 @@ Funcionalidades:
 - Timeout: 5 segundos para feedback
 - Modo: Manual/Auto
 - Diagnóstico: Códigos de fallo, timestamp
+
 ```
 
 ### 2. Define claramente la estructura
 
 **❌ Mal:**
+
 ```
+
 Haz un bloque con entradas y salidas
 ```
 
 **✅ Bien:**
+
 ```
+
 Genera un FC con la siguiente interfaz:
 
 ENTRADAS (Input):
@@ -63,17 +72,22 @@ SALIDAS (Output):
 - rScaledValue : REAL — Valor escalado
 - bOutOfRange : BOOL — Fuera de rango
 - iErrorCode : INT — Código de error
+
 ```
 
 ### 3. Especifica el comportamiento
 
 **❌ Mal:**
+
 ```
+
 El bloque debe controlar el motor
 ```
 
 **✅ Bien:**
+
 ```
+
 El bloque debe implementar la siguiente lógica:
 
 1. Al recibir comando START:
@@ -94,17 +108,22 @@ El bloque debe implementar la siguiente lógica:
    - Transición a estado STOPPED
    - Desactivar salida de motor
    - Resetear temporizadores
+
 ```
 
 ### 4. Incluye ejemplos
 
 **❌ Mal:**
+
 ```
+
 El bloque debe escalar valores
 ```
 
 **✅ Bien:**
+
 ```
+
 El bloque debe escalar valores linealmente según estos ejemplos:
 
 Ejemplo 1:
@@ -123,12 +142,16 @@ Scaled = MinEng + ((Raw - MinRaw) / (MaxRaw - MinRaw)) * (MaxEng - MinEng)
 ### 5. Especifica restricciones
 
 **❌ Mal:**
+
 ```
+
 Haz un bloque seguro
 ```
 
 **✅ Bien:**
+
 ```
+
 El bloque debe cumplir las siguientes restricciones de seguridad:
 
 1. Prioridad de STOP sobre START
@@ -139,17 +162,22 @@ El bloque debe cumplir las siguientes restricciones de seguridad:
 6. Diagnóstico continuo
 7. No usar variables globales
 8. Usar solo instrucciones de TIA Portal V20+
+
 ```
 
 ### 6. Pide comentarios
 
 **❌ Mal:**
+
 ```
+
 Genera el código
 ```
 
 **✅ Bien:**
+
 ```
+
 Genera el código SCL con comentarios explicativos:
 
 - Comentario de cabecera con propósito y autor
@@ -157,6 +185,7 @@ Genera el código SCL con comentarios explicativos:
 - Comentarios en lógica compleja
 - Comentarios en fórmulas
 - Comentarios en manejo de errores
+
 ```
 
 ---
@@ -166,6 +195,7 @@ Genera el código SCL con comentarios explicativos:
 ### Prompt 1: FC de escalado lineal
 
 ```
+
 Genera un FC de escalado lineal con las siguientes especificaciones:
 
 NOMBRE: FC_Escalado_Temperatura
@@ -210,6 +240,7 @@ Por favor, genera el código SCL completo.
 ### Prompt 2: FB de control de motor
 
 ```
+
 Genera un FB de control de motor digital con las siguientes especificaciones:
 
 NOMBRE: FB_MotorControl
@@ -274,6 +305,7 @@ Por favor, genera el código SCL completo.
 ### Prompt 3: FB de control de válvula
 
 ```
+
 Genera un FB de control de válvula con las siguientes especificaciones:
 
 NOMBRE: FB_ValveControl
@@ -335,6 +367,7 @@ Por favor, genera el código SCL completo.
 ### Prompt 1: Análisis de calidad
 
 ```
+
 Analiza este código PLC y genera un reporte de calidad.
 
 CÓDIGO: [pegar código]
@@ -377,11 +410,13 @@ Por favor, genera un reporte detallado en formato Markdown con:
 - Lista de problemas encontrados
 - Recomendaciones de mejora
 - Prioridad de cada recomendación
+
 ```
 
 ### Prompt 2: Análisis de seguridad
 
 ```
+
 Analiza este código PLC desde el punto de vista de seguridad.
 
 CÓDIGO: [pegar código]
@@ -420,6 +455,7 @@ Por favor, genera un reporte de seguridad en formato Markdown con:
 - Lista de problemas de seguridad
 - Recomendaciones de mitigación
 - Prioridad de cada recomendación
+
 ```
 
 ---
@@ -429,6 +465,7 @@ Por favor, genera un reporte de seguridad en formato Markdown con:
 ### Prompt 1: Documentación de bloque
 
 ```
+
 Genera documentación completa del bloque [NOMBRE_DEL_BLOQUE].
 
 CÓDIGO: [pegar código]
@@ -491,6 +528,7 @@ Organiza todo en formato Markdown con tablas y bloques de código.
 ### Prompt 2: Documentación de proyecto
 
 ```
+
 Genera documentación completa de mi proyecto de TIA Portal.
 
 QUiero que crees un documento Markdown con las siguientes secciones:
@@ -565,6 +603,7 @@ Por favor, genera el documento completo en formato Markdown.
 ### Prompt 1: Refactorización de código duplicado
 
 ```
+
 Refactoriza este código PLC para eliminar código duplicado.
 
 CÓDIGO: [pegar código]
@@ -598,6 +637,7 @@ Por favor, genera el código refactorizado completo en SCL.
 ### Prompt 2: Refactorización de complejidad
 
 ```
+
 Refactoriza este código PLC para reducir complejidad.
 
 CÓDIGO: [pegar código]
@@ -635,6 +675,7 @@ Por favor, genera el código refactorizado completo.
 ### Prompt 1: Debug de error de compilación
 
 ```
+
 Tengo un error de compilación en este código.
 
 CÓDIGO: [pegar código]
@@ -645,11 +686,13 @@ Por favor:
 2. Explica por qué ocurre
 3. Propón una solución
 4. Genera el código corregido
+
 ```
 
 ### Prompt 2: Debug de error de runtime
 
 ```
+
 Tengo un error de runtime en este código.
 
 CÓDIGO: [pegar código]
@@ -662,6 +705,7 @@ Por favor:
 3. Propón una solución
 4. Genera el código corregido
 5. Sugiere tests para validar la solución
+
 ```
 
 ---

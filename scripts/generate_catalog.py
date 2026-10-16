@@ -280,8 +280,7 @@ HEADER = """\
 | ⚙️ | **En curso** — recurso identificado y en desarrollo |
 | ⏳ | **Planificado** — recurso identificado como necesario, sin empezar |
 
----
-"""
+---"""
 
 FOOTER = """
 ## 🛣️ Roadmap por orden recomendado

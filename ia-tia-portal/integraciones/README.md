@@ -23,12 +23,14 @@ Integrar TIA Portal con Git para control de versiones de bloques PLC, tags y con
 ### Flujo de trabajo
 
 ```
+
 1. Exportar bloques como XML (SimaticML)
 2. Commit en Git con mensaje descriptivo
 3. Push a repositorio remoto
 4. Pull requests para revisión
 5. Merge a main
 6. Importar bloques en TIA Portal
+
 ```
 
 ### Configuración
@@ -36,20 +38,26 @@ Integrar TIA Portal con Git para control de versiones de bloques PLC, tags y con
 #### 1. Crear repositorio Git
 
 ```bash
+
 # Inicializar repositorio
+
 git init
 
 # Crear estructura de carpetas
+
 mkdir -p blocks tags hardware
 
 # Crear .gitignore
+
 cat > .gitignore << EOF
 # Archivos temporales de TIA Portal
+
 *.tmp
 *.bak
 ~$*
 
 # Archivos binarios grandes
+
 *.ap17
 *.ap18
 *.ap19
@@ -57,6 +65,7 @@ cat > .gitignore << EOF
 *.ap21
 
 # Archivos de sistema
+
 .DS_Store
 Thumbs.db
 EOF
@@ -65,7 +74,9 @@ EOF
 #### 2. Script de exportación
 
 ```powershell
+
 # Exportar bloques a Git
+
 # export-blocks-to-git.ps1
 
 param(
@@ -74,15 +85,19 @@ param(
 )
 
 # Exportar bloques como XML
+
 tia-portal export-blocks -project $ProjectPath -output $GitPath\blocks
 
 # Exportar tags
+
 tia-portal export-tags -project $ProjectPath -output $GitPath\tags
 
 # Exportar configuración de hardware
+
 tia-portal export-hardware -project $ProjectPath -output $GitPath\hardware
 
 # Commit en Git
+
 cd $GitPath
 git add .
 git commit -m "Export: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
@@ -92,7 +107,9 @@ git push
 #### 3. Script de importación
 
 ```powershell
+
 # Importar bloques desde Git
+
 # import-blocks-from-git.ps1
 
 param(
@@ -101,16 +118,20 @@ param(
 )
 
 # Pull últimos cambios
+
 cd $GitPath
 git pull
 
 # Importar bloques
+
 tia-portal import-blocks -project $ProjectPath -input $GitPath\blocks
 
 # Importar tags
+
 tia-portal import-tags -project $ProjectPath -input $GitPath\tags
 
 # Importar configuración de hardware
+
 tia-portal import-hardware -project $ProjectPath -input $GitPath\hardware
 ```
 
@@ -119,6 +140,7 @@ tia-portal import-hardware -project $ProjectPath -input $GitPath\hardware
 #### Generar commits descriptivos
 
 ```
+
 Genera un mensaje de commit descriptivo para estos cambios.
 
 CAMBIOS:
@@ -131,11 +153,13 @@ Por favor, genera un mensaje de commit siguiendo el formato Conventional Commits
 - scope: área afectada
 - subject: descripción corta
 - body: descripción detallada
+
 ```
 
 #### Generar diff de bloques
 
 ```
+
 Genera un diff legible entre dos versiones de este bloque.
 
 VERSIÓN ANTERIOR: [pegar código anterior]
@@ -145,6 +169,7 @@ Por favor, genera un diff en formato:
 - Líneas añadidas marcadas con +
 - Líneas eliminadas marcadas con -
 - Resumen de cambios
+
 ```
 
 ### Best practices
@@ -166,12 +191,14 @@ Integrar TIA Portal con Jira para seguimiento de tareas, bugs y mejoras.
 ### Flujo de trabajo
 
 ```
+
 1. Crear issue en Jira
 2. Asignar issue a desarrollador
 3. Desarrollar bloque en TIA Portal
 4. Actualizar issue con progreso
 5. Crear pull request con referencia a issue
 6. Merge y cerrar issue
+
 ```
 
 ### Configuración
@@ -195,6 +222,7 @@ Integrar TIA Portal con Jira para seguimiento de tareas, bugs y mejoras.
 #### 3. Integración con Git
 
 Configurar Jira para:
+
 - Mostrar commits en issues
 - Cerrar issues automáticamente con commits
 - Mostrar pull requests
@@ -204,6 +232,7 @@ Configurar Jira para:
 #### Generar descripción de issue
 
 ```
+
 Genera una descripción detallada de issue Jira para este cambio.
 
 CAMBIO: [describir cambio]
@@ -223,6 +252,7 @@ Formato: Markdown
 #### Generar casos de prueba
 
 ```
+
 Genera casos de prueba para este issue Jira.
 
 ISSUE: [pegar descripción del issue]
@@ -241,7 +271,9 @@ Formato: Tabla
 #### Script de actualización de Jira
 
 ```powershell
+
 # Actualizar issue de Jira
+
 # update-jira-issue.ps1
 
 param(
@@ -251,9 +283,11 @@ param(
 )
 
 # Actualizar estado
+
 jira update-issue -key $IssueKey -status $Status
 
 # Añadir comentario
+
 jira add-comment -key $IssueKey -comment $Comment
 ```
 
@@ -268,12 +302,14 @@ Integrar TIA Portal con Confluence para documentación técnica, manuales y proc
 ### Flujo de trabajo
 
 ```
+
 1. Generar documentación con IA
 2. Crear página en Confluence
 3. Formatear contenido
 4. Añadir diagramas y tablas
 5. Vincular a Jira issues
 6. Mantener actualizada
+
 ```
 
 ### Configuración
@@ -287,6 +323,7 @@ Integrar TIA Portal con Confluence para documentación técnica, manuales y proc
 #### 2. Estructura de páginas
 
 ```
+
 TIA Portal Documentation
 ├── Proyectos
 │   ├── Proyecto A
@@ -311,6 +348,7 @@ TIA Portal Documentation
 #### Generar documentación para Confluence
 
 ```
+
 Genera documentación en formato Confluence para este bloque.
 
 BLOQUE: [pegar código]
@@ -330,6 +368,7 @@ Formato: Confluence Storage Format (si es posible) o Markdown
 #### Generar procedimientos operativos
 
 ```
+
 Genera procedimientos operativos para este sistema.
 
 SISTEMA: [describir sistema]
@@ -349,7 +388,9 @@ Formato: Pasos numerados con precauciones
 #### Script de publicación a Confluence
 
 ```powershell
+
 # Publicar documentación a Confluence
+
 # publish-to-confluence.ps1
 
 param(
@@ -358,9 +399,11 @@ param(
 )
 
 # Convertir Markdown a Confluence format
+
 $confluenceFormat = Convert-MarkdownToConfluence -file $MarkdownFile
 
 # Publicar a Confluence
+
 confluence update-page -id $PageId -content $confluenceFormat
 ```
 
@@ -375,11 +418,13 @@ Integrar TIA Portal con Microsoft Teams para notificaciones, colaboración y mon
 ### Flujo de trabajo
 
 ```
+
 1. Evento en TIA Portal (compilación, error, alarma)
 2. Webhook envía notificación a Teams
 3. Canal de Teams recibe notificación
 4. Equipo puede responder y tomar acción
 5. Seguimiento en Teams
+
 ```
 
 ### Configuración
@@ -394,7 +439,9 @@ Integrar TIA Portal con Microsoft Teams para notificaciones, colaboración y mon
 #### 2. Configurar notificaciones
 
 ```powershell
+
 # Configurar webhook de Teams
+
 # configure-teams-webhook.ps1
 
 param(
@@ -402,6 +449,7 @@ param(
 )
 
 # Guardar webhook URL en configuración
+
 Set-Content -Path "config\webhook-url.txt" -Value $WebhookUrl
 ```
 
@@ -410,6 +458,7 @@ Set-Content -Path "config\webhook-url.txt" -Value $WebhookUrl
 #### Generar mensajes de Teams
 
 ```
+
 Genera un mensaje de Teams para esta notificación.
 
 EVENTO: [describir evento]
@@ -428,6 +477,7 @@ Formato: Adaptive Cards JSON
 #### Generar alertas de Teams
 
 ```
+
 Genera una alerta de Teams para esta alarma.
 
 ALARMA: [describir alarma]
@@ -449,7 +499,9 @@ Formato: Adaptive Cards JSON con colores según severidad
 #### Script de notificación a Teams
 
 ```powershell
+
 # Enviar notificación a Teams
+
 # send-teams-notification.ps1
 
 param(
@@ -459,9 +511,11 @@ param(
 )
 
 # Leer webhook URL
+
 $webhookUrl = Get-Content "config\webhook-url.txt"
 
 # Crear mensaje
+
 $body = @{
     title = $Title
     text = $Message
@@ -475,6 +529,7 @@ $body = @{
 } | ConvertTo-Json
 
 # Enviar a Teams
+
 Invoke-RestMethod -Uri $webhookUrl -Method Post -Body $body -ContentType "application/json"
 ```
 
@@ -489,11 +544,13 @@ Integrar TIA Portal con Power BI para dashboards, análisis de datos y monitoreo
 ### Flujo de trabajo
 
 ```
+
 1. Exportar datos de TIA Portal
 2. Importar en Power BI
 3. Crear dashboards
 4. Publicar en Power BI Service
 5. Compartir con stakeholders
+
 ```
 
 ### Configuración
@@ -501,7 +558,9 @@ Integrar TIA Portal con Power BI para dashboards, análisis de datos y monitoreo
 #### 1. Configurar exportación de datos
 
 ```powershell
+
 # Exportar datos de TIA Portal para Power BI
+
 # export-data-for-powerbi.ps1
 
 param(
@@ -510,12 +569,15 @@ param(
 )
 
 # Exportar tags como CSV
+
 tia-portal export-tags -project $ProjectPath -output $OutputPath\tags.csv
 
 # Exportar alarmas como CSV
+
 tia-portal export-alarms -project $ProjectPath -output $OutputPath\alarms.csv
 
 # Exportar eventos como CSV
+
 tia-portal export-events -project $ProjectPath -output $OutputPath\events.csv
 ```
 
@@ -532,6 +594,7 @@ tia-portal export-events -project $ProjectPath -output $OutputPath\events.csv
 #### Generar medidas DAX
 
 ```
+
 Genera medidas DAX para este dashboard de Power BI.
 
 DATASET: [describir dataset]
@@ -550,6 +613,7 @@ Formato: DAX
 #### Generar visualizaciones
 
 ```
+
 Genera recomendaciones de visualizaciones para este dashboard.
 
 DATASET: [describir dataset]
@@ -570,6 +634,7 @@ Formato: Lista con descripciones
 #### Dashboard de alarmas
 
 ```dax
+
 // Total de alarmas
 Total Alarmas = COUNTROWS(Alarmas)
 
@@ -608,6 +673,7 @@ AVERAGEX(
 #### Dashboard de eficiencia
 
 ```dax
+
 // Eficiencia del sistema
 Eficiencia Sistema =
 DIVIDE(
@@ -637,7 +703,9 @@ CALCULATE(
 #### Script de actualización de Power BI
 
 ```powershell
+
 # Actualizar dataset de Power BI
+
 # refresh-powerbi-dataset.ps1
 
 param(
@@ -646,6 +714,7 @@ param(
 )
 
 # Actualizar dataset
+
 powerbi refresh-dataset -workspace $WorkspaceId -dataset $DatasetId
 ```
 

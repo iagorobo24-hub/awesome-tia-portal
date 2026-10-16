@@ -1,6 +1,6 @@
 # Tutorial 3: Documentar todo tu proyecto con IA
 
-> **⏱️ Tiempo estimado**: 40 minutos
+> **⏱ Tiempo estimado**: 40 minutos
 > **🎯 Dificultad**: ⭐⭐ (Intermedio)
 > **📋 Prerrequisitos**: Tutorial 1 completado
 
@@ -34,6 +34,7 @@ Antes de empezar, asegúrate de haber completado:
 En Claude Desktop, escribe:
 
 ```
+
 Analiza mi proyecto de TIA Portal y genera un resumen estructurado.
 
 Quiero que me proporciones:
@@ -69,10 +70,12 @@ Claude generará un análisis completo. Revisa:
 Si falta información, pide más detalles:
 
 ```
+
 El análisis está bien, pero:
 1. Añade más detalles sobre los bloques FB
 2. Incluye las interfaces de cada bloque
 3. Muestra qué bloques llaman a otros
+
 ```
 
 ---
@@ -84,6 +87,7 @@ El análisis está bien, pero:
 Elige un bloque de tu proyecto (por ejemplo, `FB_MotorControl`) y pide:
 
 ```
+
 Genera documentación completa del bloque FB_MotorControl.
 
 Quiero que incluyas:
@@ -148,10 +152,12 @@ Claude generará documentación detallada. Revisa:
 Si algo falta, pide mejoras:
 
 ```
+
 La documentación está bien, pero:
 1. Añade más detalles en la sección de lógica
 2. Mejora el diagrama de flujo
 3. Añade más ejemplos de uso
+
 ```
 
 ---
@@ -163,6 +169,7 @@ La documentación está bien, pero:
 En Claude Desktop, escribe:
 
 ```
+
 Genera documentación completa de TODO mi proyecto de TIA Portal.
 
 Quiero que crees un documento Markdown con las siguientes secciones:
@@ -245,6 +252,7 @@ Por favor, genera el documento completo en formato Markdown.
 Pide a Claude que genere diagramas ASCII:
 
 ```
+
 Añade diagramas ASCII a la documentación:
 
 1. Diagrama de arquitectura del sistema
@@ -260,6 +268,7 @@ Usa caracteres ASCII para crear diagramas claros y comprensibles.
 Pide ejemplos de uso:
 
 ```
+
 Añade ejemplos de código SCL para cada bloque:
 
 1. Ejemplo de llamada al bloque desde OB1
@@ -275,6 +284,7 @@ Incluye comentarios explicativos en cada ejemplo.
 Pide tablas de referencia:
 
 ```
+
 Añade tablas de referencia a la documentación:
 
 1. Tabla de códigos de fallo
@@ -288,6 +298,7 @@ Cada tabla debe incluir:
 - Rango válido
 - Unidades
 - Valor por defecto
+
 ```
 
 ---
@@ -309,6 +320,7 @@ Revisa la documentación generada:
 Si falta información, pide a Claude que la añada:
 
 ```
+
 La documentación está casi completa, pero falta:
 1. [indicar qué falta]
 2. [indicar qué falta]

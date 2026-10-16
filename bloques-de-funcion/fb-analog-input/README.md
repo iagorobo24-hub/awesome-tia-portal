@@ -74,6 +74,7 @@ Cada entrada analógica necesita el mismo tratamiento: leer raw → escalar → 
 ## Ejemplo de uso
 
 ```scl
+
 // En el OB de arranque (OB100), configura los parámetros una sola vez:
 "DB_Analogicas".AI01_TempReactor.Escalado.rRangoMinIng := 0.0;
 "DB_Analogicas".AI01_TempReactor.Escalado.rRangoMaxIng := 150.0;

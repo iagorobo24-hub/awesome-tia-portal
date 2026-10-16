@@ -34,6 +34,7 @@ Esta plantilla maestra define la estructura común que se hereda en todas las pa
 ## Estructura visual
 
 ```
+
 ┌────────────────────────────────────────────────────────────────────┐
 │ [LOGO]  Mi Proyecto              29/04/2026  10:24    [ Iago ▼ ]   │   ← HEADER (fija)
 ├────────────────────────────────────────────────────────────────────┤

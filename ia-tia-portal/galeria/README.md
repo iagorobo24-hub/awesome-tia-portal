@@ -1,4 +1,4 @@
-# 🖼️ Galería de demos y screenshots
+# 🖼 Galería de demos y screenshots
 
 Colección de demos y screenshots que muestran el uso de IA + TIA Portal en acción.
 
@@ -22,6 +22,7 @@ Demo de generación de un bloque de control de motor usando IA.
 ### Prompt
 
 ```
+
 Genera un FB de control de motor digital con las siguientes características:
 
 NOMBRE: FB_MotorControl
@@ -85,6 +86,7 @@ Por favor, genera el código SCL completo.
 ### Código generado
 
 ```scl
+
 FUNCTION_BLOCK "FB_MotorControl"
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
@@ -268,6 +270,7 @@ END_FUNCTION_BLOCK
 ### Capturas de pantalla
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │ TIA Portal - FB_MotorControl                                │
 ├─────────────────────────────────────────────────────────────┤
@@ -316,6 +319,7 @@ Demo de análisis de un proyecto TIA Portal existente usando IA.
 ### Prompt
 
 ```
+
 Analiza este proyecto TIA Portal y genera un reporte completo.
 
 PROYECTO: [pegar descripción del proyecto]
@@ -364,6 +368,7 @@ Por favor, genera un reporte en formato Markdown.
 ### Reporte generado
 
 ```markdown
+
 # 📊 Análisis de Proyecto TIA Portal
 
 ## 📋 Resumen
@@ -379,11 +384,12 @@ Por favor, genera un reporte en formato Markdown.
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗 Arquitectura
 
 ### Estructura del proyecto
 
 ```
+
 Planta de Tratamiento de Agua
 ├── PLC_1 (S7-1500)
 │   ├── FB_Control_Bomba_1
@@ -401,6 +407,7 @@ Planta de Tratamiento de Agua
     ├── FB_Control_Caldera
     ├── FB_Control_Compresor
     └── FB_Control_Dosificador
+
 ```
 
 ### Bloques principales
@@ -437,7 +444,7 @@ Planta de Tratamiento de Agua
 
 ---
 
-## 🏷️ Tags
+## 🏷 Tags
 
 ### Total de tags
 
@@ -494,7 +501,7 @@ Planta de Tratamiento de Agua
 
 ---
 
-## ⚠️ Riesgos
+## ⚠ Riesgos
 
 ### Bloques sin documentación
 
@@ -562,6 +569,7 @@ El proyecto está bien estructurado pero hay oportunidades de mejora:
 2. **Unificar bloques duplicados** — Mejorar mantenibilidad
 3. **Añadir documentación** — Mejorar legibilidad
 4. **Generar bloques con IA** — Acelerar desarrollo
+
 ```
 
 ### Resultados
@@ -585,6 +593,7 @@ Demo de compilación automatizada de un proyecto TIA Portal usando IA.
 ### Prompt
 
 ```
+
 Genera un script de PowerShell para compilar automáticamente un proyecto TIA Portal.
 
 REQUISITOS:
@@ -617,11 +626,17 @@ Por favor, genera el script de PowerShell completo.
 ### Script generado
 
 ```powershell
+
 # ========================================
+
 # Compile-TiaPortalProject.ps1
+
 # ========================================
+
 # Propósito: Compilar automáticamente un proyecto TIA Portal
+
 # Versión: 1.0
+
 # ========================================
 
 param(
@@ -636,8 +651,11 @@ param(
 )
 
 # ========================================
+
 # VARIABLES
+
 # ========================================
+
 $ErrorActionPreference = "Stop"
 $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $Errors = @()
@@ -647,7 +665,9 @@ $CompiledBlocks = 0
 $FailedBlocks = 0
 
 # ========================================
+
 # FUNCIONES
+
 # ========================================
 
 function Write-Log {
@@ -737,7 +757,9 @@ $($CompiledBlocks bloques)
 ### $($error.Block)
 
 ```
+
 $($error.Error)
+
 ```
 
 "@
@@ -750,7 +772,7 @@ $($error.Error)
 
 ---
 
-## ⚠️ Warnings
+## ⚠ Warnings
 
 "@
 
@@ -760,7 +782,9 @@ $($error.Error)
 ### $($warning.Block)
 
 ```
+
 $($warning.Warning)
+
 ```
 
 "@
@@ -800,7 +824,9 @@ $($warning.Warning)
 }
 
 # ========================================
+
 # EJECUCIÓN
+
 # ========================================
 
 try {
@@ -854,10 +880,13 @@ try {
 ### Ejecución del script
 
 ```powershell
+
 # Ejecutar script
+
 .\Compile-TiaPortalProject.ps1 -ProjectPath "C:\Projects\MyProject" -OutputPath ".\report.md" -Verbose
 
 # Salida
+
 [2024-01-15 10:30:00] [INFO] Iniciando compilación del proyecto: C:\Projects\MyProject
 [2024-01-15 10:30:01] [INFO] Abriendo proyecto TIA Portal...
 [2024-01-15 10:30:05] [INFO] Obteniendo lista de bloques...
@@ -883,6 +912,7 @@ Demo de integración de PLCSIM con IA para pruebas automatizadas.
 ### Prompt
 
 ```
+
 Genera un script de PowerShell para automatizar pruebas en PLCSIM usando IA.
 
 REQUISITOS:
@@ -914,11 +944,17 @@ Por favor, genera el script de PowerShell completo.
 ### Script generado
 
 ```powershell
+
 # ========================================
+
 # Test-PlcsimWithAI.ps1
+
 # ========================================
+
 # Propósito: Automatizar pruebas en PLCSIM usando IA
+
 # Versión: 1.0
+
 # ========================================
 
 param(
@@ -936,8 +972,11 @@ param(
 )
 
 # ========================================
+
 # VARIABLES
+
 # ========================================
+
 $ErrorActionPreference = "Stop"
 $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $TestResults = @()
@@ -945,7 +984,9 @@ $PassedTests = 0
 $FailedTests = 0
 
 # ========================================
+
 # FUNCIONES
+
 # ========================================
 
 function Write-Log {
@@ -1147,7 +1188,9 @@ function Generate-TestReport {
 }
 
 # ========================================
+
 # EJECUCIÓN
+
 # ========================================
 
 try {
@@ -1206,10 +1249,13 @@ try {
 ### Ejecución del script
 
 ```powershell
+
 # Ejecutar script
+
 .\Test-PlcsimWithAI.ps1 -ProjectPath "C:\Projects\MyProject" -TestCasesPath ".\test-cases.json" -OutputPath ".\test-report.md" -Verbose
 
 # Salida
+
 [2024-01-15 10:30:00] [INFO] Iniciando pruebas PLCSIM...
 [2024-01-15 10:30:01] [INFO] Iniciando PLCSIM...
 [2024-01-15 10:30:05] [SUCCESS] ✅ PLCSIM iniciado

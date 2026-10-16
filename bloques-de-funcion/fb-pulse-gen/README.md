@@ -63,6 +63,7 @@ TIA Portal ofrece la marca de ciclo (ej: `%M0.5` a 1Hz), pero solo a frecuencias
 ## Ejemplo de uso
 
 ```scl
+
 // Parpadeo de lámpara de fallo (medio segundo encendida cada segundo)
 "FB_PulseGen".Blink_1Hz_50pct(
     xEnable     := "DB_Equipos".M01_BombaPrincipal.Estado.xFallo,

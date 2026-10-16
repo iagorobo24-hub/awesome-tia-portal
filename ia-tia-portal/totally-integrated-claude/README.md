@@ -27,9 +27,10 @@ Proporciona un framework de skills que Claude Code puede cargar dinámicamente p
 
 ---
 
-## 🏗️ Arquitectura
+## 🏗 Arquitectura
 
 ```
+
 ┌─────────────────┐   ┌──────────────────┐   ┌───────────────┐
 │   Claude Code   │   │  Plugin Skills   │   │   TIA Portal  │
 │   (CLI)         │──▶│  (Python + C#)   │──▶│  Openness API │
@@ -41,7 +42,7 @@ Proporciona un framework de skills que Claude Code puede cargar dinámicamente p
                                               └───────────────┘
 ```
 
-**Componentes:**
+### Componentes
 
 1. **Plugin Framework** — Estructura de skills que Claude Code puede cargar
 2. **Routing Skill** — `tia-openness-roadmap` selecciona automáticamente Python o C#
@@ -54,11 +55,13 @@ Proporciona un framework de skills que Claude Code puede cargar dinámicamente p
 ## 📦 Requisitos
 
 ### Software
+
 - **Claude Code CLI** — Agente de Anthropic para desarrollo
 - **Windows 10/11** — Openness API es COM-native
 - **Siemens TIA Portal V17+** — Cualquier versión moderna
 
 ### Permisos
+
 - Usuario en grupo `Siemens TIA Openness`
 - TIA Scripting Python instalado (viene con TIA Portal)
 
@@ -69,24 +72,28 @@ Proporciona un framework de skills que Claude Code puede cargar dinámicamente p
 ### Claude Code
 
 ```bash
+
 /plugin marketplace add Czarnak/totally-integrated-claude
 ```
 
 ### Gemini CLI
 
 ```bash
+
 gemini extensions install https://github.com/Czarnak/totally-integrated-claude
 ```
 
 ### Codex
 
 ```bash
+
 codex plugin marketplace add Czarnak/totally-integrated-claude
 ```
 
 ### Desarrollo local
 
 ```bash
+
 git clone https://github.com/Czarnak/totally-integrated-claude.git
 cd totally-integrated-claude
 gemini extensions link .
@@ -94,12 +101,14 @@ gemini extensions link .
 
 ---
 
-## ⚙️ Uso
+## ⚙ Uso
 
 ### Flujo típico
 
 1. **Cargar el routing skill**:
+
    ```
+
    ¿Cómo leo todos los bloques PLC de mi proyecto TIA Portal?
    ```
 
@@ -116,28 +125,36 @@ gemini extensions link .
 ### Ejemplos de prompts
 
 **Explorar proyecto:**
+
 ```
+
 Analiza mi proyecto TIA Portal y explícame su estructura
 ```
 
 **Leer bloques:**
+
 ```
+
 Muéstrame el código del bloque FB_MotorControl
 ```
 
 **Generar documentación:**
+
 ```
+
 Genera documentación de todos los bloques FB del proyecto
 ```
 
 **Crear Add-In:**
+
 ```
+
 Ayúdame a crear un Add-In de TIA Portal que exporte bloques
 ```
 
 ---
 
-## 🛠️ Skills disponibles
+## 🛠 Skills disponibles
 
 ### Routing y análisis
 
@@ -154,6 +171,7 @@ Ayúdame a crear un Add-In de TIA Portal que exporte bloques
 | `tia-python` | Cobertura completa: bloques, tags, HMI, librerías, ciclo de vida del proyecto |
 
 **Funcionalidades:**
+
 - Leer/escribir bloques PLC (OB, FB, FC, DB)
 - Gestionar tablas de tags y UDTs
 - Exportar/importar bloques
@@ -167,6 +185,7 @@ Ayúdame a crear un Add-In de TIA Portal que exporte bloques
 | `tia-csharp-common` | Fundación C#: attach, ExclusiveAccess, Transaction, disposable patterns |
 
 **Patrones implementados:**
+
 - Attach a proceso TIA Portal
 - ExclusiveAccess para operaciones exclusivas
 - Transaction para cambios atómicos
@@ -265,33 +284,48 @@ El plugin incluye tests para validar:
 ## 🎓 Casos de uso
 
 ### 1. Análisis de código PLC
+
 ```
+
 Analiza el bloque FB_PumpControl y busca vulnerabilidades de seguridad
 ```
+
 → Claude carga `plc-code-analysis` y genera un reporte de seguridad.
 
 ### 2. Documentación automática
+
 ```
+
 Genera documentación de todos los bloques del proyecto
 ```
+
 → Claude carga `tia-python` y documenta cada bloque.
 
 ### 3. Refactorización
+
 ```
+
 Busca bloques con código duplicado y propón refactorización
 ```
+
 → Claude analiza todos los bloques y sugiere mejoras.
 
 ### 4. Desarrollo de Add-In
+
 ```
+
 Ayúdame a crear un Add-In que exporte todos los bloques como XML
 ```
+
 → Claude carga `addin-operations` y guía el desarrollo.
 
 ### 5. Configuración de hardware
+
 ```
+
 Configura un S7-1500 con módulos de E/S y comunicación PROFINET
 ```
+
 → Claude carga `tia-devices-general` y `tia-networks`.
 
 ---
@@ -315,11 +349,11 @@ Configura un S7-1500 con módulos de E/S y comunicación PROFINET
 
 ## 🔗 Enlaces útiles
 
-- **Repositorio**: https://github.com/Czarnak/totally-integrated-claude
-- **TIA Portal Openness docs**: https://docs.tia.siemens.cloud/
-- **TIA Scripting Python**: https://support.industry.siemens.com/cs/document/109742322/
-- **Siemens LSP**: https://marketplace.visualstudio.com/items?itemName=DynamicEngineering.dynamic-siemens-language-support
-- **Claude Code**: https://claude.ai/code
+- **Repositorio**: <https://github.com/Czarnak/totally-integrated-claude>
+- **TIA Portal Openness docs**: <https://docs.tia.siemens.cloud/>
+- **TIA Scripting Python**: <https://support.industry.siemens.com/cs/document/109742322/>
+- **Siemens LSP**: <https://marketplace.visualstudio.com/items?itemName=DynamicEngineering.dynamic-siemens-language-support>
+- **Claude Code**: <https://claude.ai/code>
 
 ---
 

@@ -65,6 +65,7 @@ La tabla describe la intención del código. **Todavía necesita una prueba de t
 Ejemplo conceptual de llamada desde un bloque que ya declara una instancia `AlarmPump`:
 
 ```scl
+
 #AlarmPump(
     Condition := #PumpFault,
     CmdAck := #Acknowledge,

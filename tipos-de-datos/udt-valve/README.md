@@ -94,6 +94,7 @@ El UDT está organizado en 5 sub-estructuras.
 ## Ejemplo de uso
 
 ```
+
 DB_Equipos.V01_AguaEntrada : UDT_Valve
 DB_Equipos.V02_DescargaTanque : UDT_Valve
 ```
@@ -101,6 +102,7 @@ DB_Equipos.V02_DescargaTanque : UDT_Valve
 Desde el `FB_Valve`:
 
 ```
+
 "FB_Valve"(
     xFeedbackAbierta := %I1.0,
     xFeedbackCerrada := %I1.1,

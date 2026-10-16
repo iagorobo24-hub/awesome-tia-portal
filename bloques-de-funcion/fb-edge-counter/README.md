@@ -70,6 +70,7 @@ Contar pulsos parece trivial, pero hay 3 errores típicos: olvidar el flanco (cu
 ## Ejemplo de uso
 
 ```scl
+
 // Contar piezas producidas en una línea
 "FB_EdgeCounter".PiezasOK(
     xSignal   := %I2.0,                          // sensor de paso

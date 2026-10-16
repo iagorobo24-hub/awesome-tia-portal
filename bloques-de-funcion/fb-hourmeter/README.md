@@ -72,6 +72,7 @@ Cualquier proyecto industrial necesita contar horas de funcionamiento de equipos
 ## Ejemplo de uso
 
 ```scl
+
 // Conteo de horas de la bomba principal
 "FB_Hourmeter".M01_Horas(
     xRunning      := "DB_Equipos".M01_BombaPrincipal.Estado.xEnMarcha,

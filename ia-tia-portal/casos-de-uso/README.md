@@ -1,7 +1,6 @@
 # 📚 Casos de uso reales
 
-> ⚠️ **Casos ilustrativos, no datos reales.** Los escenarios, porcentajes de ahorro, métricas de calidad, cobertura de tests y resultados de seguridad (incluidos SIL y número de incidentes) de este documento son ejemplos hipotéticos sin respaldo en proyectos medidos. No los cites como evidencia. Los bloques SCL no se han compilado ni probado.
-
+> ⚠ **Casos ilustrativos, no datos reales.** Los escenarios, porcentajes de ahorro, métricas de calidad, cobertura de tests y resultados de seguridad (incluidos SIL y número de incidentes) de este documento son ejemplos hipotéticos sin respaldo en proyectos medidos. No los cites como evidencia. Los bloques SCL no se han compilado ni probado.
 
 Casos de uso reales de proyectos donde se ha utilizado IA + TIA Portal para acelerar el desarrollo, mejorar la calidad y reducir tiempos.
 
@@ -45,7 +44,9 @@ Línea de tratamiento de agua para planta industrial con los siguientes procesos
 #### 1. Generación de bloques de control
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de control de filtro de agua con las siguientes características:
 
 - 4 filtros en paralelo
@@ -55,9 +56,11 @@ Genera un FB de control de filtro de agua con las siguientes características:
 - Alarmas: presión alta/baja, flujo bajo, turbidez alta
 - Interlocks: no abrir válvulas si bomba parada
 - Lenguaje: SCL
+
 ```
 
 **Resultado:**
+
 - ✅ FB generado en 15 minutos
 - ✅ 0 errores de compilación
 - ✅ Lógica correcta a la primera
@@ -65,7 +68,9 @@ Genera un FB de control de filtro de agua con las siguientes características:
 #### 2. Documentación automática
 
 **Prompt usado:**
+
 ```
+
 Genera documentación completa de todos los bloques de la línea de tratamiento.
 
 Incluye:
@@ -74,9 +79,11 @@ Incluye:
 - Diagramas de flujo
 - Casos de uso
 - Procedimientos de mantenimiento
+
 ```
 
 **Resultado:**
+
 - ✅ Documentación de 150 páginas en 2 horas
 - ✅ Formato Markdown fácil de mantener
 - ✅ Incluye diagramas ASCII
@@ -84,7 +91,9 @@ Incluye:
 #### 3. Generación de tests
 
 **Prompt usado:**
+
 ```
+
 Genera casos de prueba para el FB de control de filtro.
 
 Casos:
@@ -93,9 +102,11 @@ Casos:
 - Alarmas de flujo
 - Interlocks de seguridad
 - Modo manual vs automático
+
 ```
 
 **Resultado:**
+
 - ✅ 25 casos de prueba generados
 - ✅ Todos los tests pasaron
 - ✅ Cobertura del 95%
@@ -122,6 +133,7 @@ Casos:
 **FB de control de filtro (generado por IA):**
 
 ```scl
+
 FUNCTION_BLOCK "FB_FilterControl"
 { S7_Optimized_Access := 'TRUE' }
 VERSION : 0.1
@@ -291,7 +303,9 @@ Sistema de transporte con 12 cintas transportoras interconectadas:
 #### 1. Generación de bloques de control de cinta
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de control de cinta transportora con las siguientes características:
 
 - Control de velocidad con PID
@@ -301,9 +315,11 @@ Genera un FB de control de cinta transportora con las siguientes característica
 - Alarmas: atasco, desalineamiento, motor sobrecalentado
 - Interlocks: no arrancar si cinta aguas abajo parada
 - Lenguaje: SCL
+
 ```
 
 **Resultado:**
+
 - ✅ FB generado en 20 minutos
 - ✅ Control PID implementado correctamente
 - ✅ Lógica de sincronización funcional
@@ -311,7 +327,9 @@ Genera un FB de control de cinta transportora con las siguientes característica
 #### 2. Generación de bloques de diagnóstico
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de diagnóstico para el sistema de transporte.
 
 Funcionalidades:
@@ -321,9 +339,11 @@ Funcionalidades:
 - Registro de eventos
 - Generación de alarmas
 - Interfaz HMI para diagnóstico
+
 ```
 
 **Resultado:**
+
 - ✅ FB de diagnóstico completo
 - ✅ Interfaz HMI generada
 - ✅ Sistema de alarmas funcional
@@ -373,7 +393,9 @@ Máquina empacadora automática con:
 #### 1. Generación de bloques de coordinación
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de coordinación entre 3 PLCs para máquina empacadora.
 
 Funcionalidades:
@@ -383,9 +405,11 @@ Funcionalidades:
 - Gestión de buffers
 - Control de flujo de productos
 - Lenguaje: SCL
+
 ```
 
 **Resultado:**
+
 - ✅ FB de coordinación funcional
 - ✅ Handshake implementado correctamente
 - ✅ Control de flujo optimizado
@@ -393,7 +417,9 @@ Funcionalidades:
 #### 2. Generación de bloques de control de calidad
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de control de calidad para máquina empacadora.
 
 Funcionalidades:
@@ -402,9 +428,11 @@ Funcionalidades:
 - Estadísticas de calidad
 - Alarmas de calidad
 - Registro de lotes
+
 ```
 
 **Resultado:**
+
 - ✅ FB de control de calidad completo
 - ✅ Estadísticas implementadas
 - ✅ Sistema de rechazo funcional
@@ -454,7 +482,9 @@ Planta química con:
 #### 1. Generación de bloques de seguridad
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de seguridad SIL 3 para reactor químico.
 
 Funcionalidades:
@@ -471,9 +501,11 @@ REQUISITOS DE SEGURIDAD:
 - Lógica de votación 2oo3
 - Diagnóstico continuo
 - Tiempo de respuesta < 100ms
+
 ```
 
 **Resultado:**
+
 - ✅ FB de seguridad SIL 3 funcional
 - ✅ Validación de entradas implementada
 - ✅ Lógica de votación 2oo3 correcta
@@ -481,7 +513,9 @@ REQUISITOS DE SEGURIDAD:
 #### 2. Generación de bloques de control de temperatura
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de control de temperatura para reactor químico.
 
 Funcionalidades:
@@ -491,9 +525,11 @@ Funcionalidades:
 - Alarmas de temperatura
 - Historial de temperatura
 - Lenguaje: SCL
+
 ```
 
 **Resultado:**
+
 - ✅ FB de control de temperatura completo
 - ✅ Control PID implementado
 - ✅ Rampas y alarmas funcionales
@@ -543,7 +579,9 @@ Sistema HVAC de edificio de oficinas con:
 #### 1. Generación de bloques de control de zona
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de control de zona HVAC.
 
 Funcionalidades:
@@ -553,9 +591,11 @@ Funcionalidades:
 - Optimización energética
 - Modos: ocupado/desocupado/noche
 - Lenguaje: SCL
+
 ```
 
 **Resultado:**
+
 - ✅ FB de control de zona funcional
 - ✅ Optimización energética implementada
 - ✅ Modos de operación correctos
@@ -563,7 +603,9 @@ Funcionalidades:
 #### 2. Generación de bloques de optimización
 
 **Prompt usado:**
+
 ```
+
 Genera un FB de optimización energética para sistema HVAC.
 
 Funcionalidades:
@@ -572,9 +614,11 @@ Funcionalidades:
 - Gestión de recuperación de calor
 - Estadísticas de consumo
 - Reportes de eficiencia
+
 ```
 
 **Resultado:**
+
 - ✅ FB de optimización completo
 - ✅ Estadísticas de consumo implementadas
 - ✅ Reportes de eficiencia funcionales

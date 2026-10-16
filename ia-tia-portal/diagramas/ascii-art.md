@@ -4,11 +4,12 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ---
 
-## 🏗️ Arquitectura general
+## 🏗 Arquitectura general
 
 ### Flujo completo IA → TIA Portal
 
 ```
+
 ┌──────────────────────────────────────────────────────────┐
 │                    FLUJO COMPLETO                         │
 │                                                          │
@@ -38,6 +39,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Arquitectura de capas
 
 ```
+
 ┌─────────────────────────────────────────────────────────┐
 │                  CAPA DE PRESENTACIÓN                     │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
@@ -84,11 +86,12 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 
 ---
 
-## ⚙️ Máquinas de estado
+## ⚙ Máquinas de estado
 
 ### Máquina de estados de motor (ASCII)
 
 ```
+
                     ┌─────────────┐
                     │   STOPPED   │
                     │ Motor parado│
@@ -130,6 +133,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Máquina de estados de filtro (ASCII)
 
 ```
+
                     ┌─────────────┐
                     │     IDLE    │
                     │ Filtro      │
@@ -179,6 +183,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Máquina de estados de válvula (ASCII)
 
 ```
+
                     ┌─────────────┐
                     │   CLOSED    │
                     │ Válvula     │
@@ -224,6 +229,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Ciclo de desarrollo con IA
 
 ```
+
 ┌─────────────────────────────────────────────────────────┐
 │              CICLO DE DESARROLLO CON IA                 │
 └─────────────────────────────────────────────────────────┘
@@ -351,6 +357,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Ruta de aprendizaje visual
 
 ```
+
 ┌─────────────────────────────────────────────────────────┐
 │              ROADMAP DE APRENDIZAJE                     │
 └─────────────────────────────────────────────────────────┘
@@ -472,6 +479,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Árbol de decisión detallado
 
 ```
+
                     ┌─────────────────────────┐
                     │ ¿QUÉ EDITOR USAS?     │
                     └───────────┬─────────────┘
@@ -568,6 +576,7 @@ Diagramas ASCII para casos donde Mermaid no es suficiente o para mayor claridad.
 ### Comparativa de características
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │              COMPARATIVA DE MCP SERVERS                      │
 └─────────────────────────────────────────────────────────────┘
@@ -646,6 +655,7 @@ Característica: OPEN-SOURCE
 ### Línea de tratamiento de agua
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │              LÍNEA DE TRATAMIENTO DE AGUA                    │
 └─────────────────────────────────────────────────────────────┘
@@ -722,6 +732,7 @@ Característica: OPEN-SOURCE
 ### Sistema de transporte de cintas
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │           SISTEMA DE TRANSPORTE DE CINTAS                    │
 └─────────────────────────────────────────────────────────────┘
@@ -787,6 +798,7 @@ Característica: OPEN-SOURCE
 ### Badges de nivel
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │                    BADGES DE NIVEL                          │
 └─────────────────────────────────────────────────────────────┘
@@ -871,6 +883,7 @@ Característica: OPEN-SOURCE
 ### Reducción de tiempo (casos de uso)
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │              REDUCCIÓN DE TIEMPO (CASOS DE USO)              │
 └─────────────────────────────────────────────────────────────┘
@@ -934,6 +947,7 @@ Sistema HVAC de edificio
 ### Mejora de calidad (casos de uso)
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
 │              MEJORA DE CALIDAD (CASOS DE USO)                │
 └─────────────────────────────────────────────────────────────┘
@@ -1003,4 +1017,4 @@ Total de diagramas ASCII creados: **15**
 | Métricas | 2 |
 | Esquemas técnicos | 2 |
 
-**Total combinado (Mermaid + ASCII): 42 diagramas visuales**
+Total combinado (Mermaid + ASCII): 42 diagramas visuales

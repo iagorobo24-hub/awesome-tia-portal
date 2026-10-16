@@ -138,10 +138,10 @@ Caso de prueba mínimo para comprobar que el recurso funciona tras importarlo:
 |---|:---:|---|
 | V20 | ✅ | Versión de referencia |
 | V19 | ✅ | Probado, idéntico |
-| V18 | ⚠️ | Probado, pero el campo `xNuevoCampo` no aparece |
+| V18 | ⚠ | Probado, pero el campo `xNuevoCampo` no aparece |
 | V17 | ❌ | No soportado (UDTs anidados) |
 
-> Iconos: ✅ probado y OK · ⚠️ con limitaciones (documenta cuáles) · ❌ no soportado · ➖ no aplica.
+> Iconos: ✅ probado y OK · ⚠ con limitaciones (documenta cuáles) · ❌ no soportado · ➖ no aplica.
 
 ---
 

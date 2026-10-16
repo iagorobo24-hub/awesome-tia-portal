@@ -34,6 +34,7 @@ Igual que con motores, cada válvula del proyecto necesita botones de mando, ind
 ## Estructura visual
 
 ```
+
 ┌─────────────────────────────────────────┐
 │ V01_AguaEntrada           [ Modo Auto ▼]│
 ├─────────────────────────────────────────┤
@@ -59,6 +60,7 @@ Igual que con motores, cada válvula del proyecto necesita botones de mando, ind
 ```
 
 Adicionalmente, una **representación en planta de la válvula** (símbolo de proceso) cambia de color según el estado:
+
 - **Verde** → abierta
 - **Gris** → cerrada
 - **Amarillo** → en movimiento
@@ -96,6 +98,7 @@ Una única propiedad `Valve` de tipo `UDT_Valve`.
 ## Ejemplo de uso
 
 ```
+
 Variable enlazada: "DB_Equipos".V01_AguaEntrada
 ```
 

@@ -1,6 +1,6 @@
 # Tutorial 2: Generar un FB de control desde lenguaje natural
 
-> **⏱️ Tiempo estimado**: 60 minutos
+> **⏱ Tiempo estimado**: 60 minutos
 > **🎯 Dificultad**: ⭐⭐ (Intermedio)
 > **📋 Prerrequisitos**: Tutorial 1 completado
 
@@ -34,6 +34,7 @@ Antes de empezar, asegúrate de haber completado:
 En TIA Portal, crea un UDT llamado `UDT_Motor` con la siguiente estructura:
 
 ```scl
+
 TYPE "UDT_Motor" : STRUCT
     // Comandos
     bStart : BOOL;        // Comando de arranque
@@ -76,6 +77,7 @@ Guarda el UDT en tu proyecto. Lo usaremos como estructura de E/S del FB.
 En Claude Desktop, escribe:
 
 ```
+
 Genera un FB de control de motor digital con las siguientes especificaciones:
 
 NOMBRE: FB_MotorControl
@@ -148,10 +150,12 @@ Claude generará un FB completo. Revisa:
 Si algo no te gusta, pide mejoras:
 
 ```
+
 El código está bien, pero:
 1. Añade más comentarios en la sección de timeouts
 2. Mejora la legibilidad de la máquina de estados
 3. Añade una sección de inicialización
+
 ```
 
 ---
@@ -197,6 +201,7 @@ El código está bien, pero:
 Si hay errores, pide a Claude que los corrija:
 
 ```
+
 El bloque tiene errores de compilación:
 [pegar errores aquí]
 
@@ -219,12 +224,16 @@ Revisa el código generado:
 ### 5.1 Crear una instancia del FB
 
 1. En OB1, crea una instancia del FB:
+
    ```scl
+
    "Motor_1" : "FB_MotorControl";
    ```
 
 2. Crea una DB para la instancia:
+
    ```scl
+
    "DB_Motor_1" : { "Motor_1" };
    ```
 
@@ -245,20 +254,20 @@ Revisa el código generado:
 
 ### 5.3 Probar la máquina de estados
 
-**Test 1: Arranque normal**
+#### Test 1: Arranque normal
 
 1. Pon `Motor_1.Motor.bStart` a TRUE
 2. Observa que el estado cambia a STARTING
 3. Después de 5 segundos, el estado debería cambiar a RUNNING
 4. `Motor_1.Motor.bRunning` debería ser TRUE
 
-**Test 2: Parada normal**
+#### Test 2: Parada normal
 
 1. Pon `Motor_1.Motor.bStop` a TRUE
 2. Observa que el estado cambia a STOPPED
 3. `Motor_1.Motor.bRunning` debería ser FALSE
 
-**Test 3: Timeout de feedback**
+#### Test 3: Timeout de feedback
 
 1. Pon `Motor_1.Motor.bStart` a TRUE
 2. No simules feedback (deja `Motor_1.Motor.bRunning` en FALSE)
@@ -266,13 +275,13 @@ Revisa el código generado:
 4. `Motor_1.Motor.bFault` debería ser TRUE
 5. `Motor_1.Motor.iFaultCode` debería ser 3 (timeout)
 
-**Test 4: Reset de fallo**
+#### Test 4: Reset de fallo
 
 1. Pon `Motor_1.Motor.bReset` a TRUE
 2. Observa que el estado cambia a STOPPED
 3. `Motor_1.Motor.bFault` debería ser FALSE
 
-**Test 5: Fallo de sobrecarga**
+#### Test 5: Fallo de sobrecarga
 
 1. Pon `Motor_1.Motor.bOverload` a TRUE
 2. El estado debería cambiar a FAULT inmediatamente

@@ -1,4 +1,4 @@
-# 🗺️ Roadmap de aprendizaje
+# 🗺 Roadmap de aprendizaje
 
 Guía estructurada para aprender IA + TIA Portal desde principiante hasta experto.
 
@@ -34,6 +34,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 - ¿Qué se puede hacer con IA + TIA Portal?
 
 **Recursos:**
+
 - [Introducción](../README.md)
 - [Herramientas analizadas](../README.md)
 
@@ -44,6 +45,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 - ¿Cómo configurar MCP?
 
 **Recursos:**
+
 - [Tutorial: Primeros pasos con MCP](../tutoriales/01-primeros-pasos-mcp.md)
 - [Plantilla de configuración de MCP](../plantillas/README.md#plantilla-de-configuración-de-mcp)
 
@@ -54,6 +56,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 - ¿Cómo validar código generado?
 
 **Recursos:**
+
 - [Tutorial: Generar bloque SCL](../tutoriales/02-generar-bloque-scl.md)
 - [Plantilla de prompt para bloques](../plantillas/README.md#plantilla-de-prompt-para-bloques)
 
@@ -64,6 +67,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 - ¿Cómo corregir errores?
 
 **Recursos:**
+
 - [Best practices: Validación de código](../best-practices/README.md#validación-de-código-generado-por-ia)
 - [Troubleshooting: Errores de compilación](../troubleshooting/README.md#errores-de-compilación)
 
@@ -74,6 +78,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 - ¿Cómo verificar resultados?
 
 **Recursos:**
+
 - [Tutorial: Testing automatizado](../tutoriales/05-testing-automatizado.md)
 - [Galería: PLCSIM + IA](../galeria/README.md#demo-plcsim--ia)
 
@@ -82,6 +87,7 @@ Entender los conceptos básicos de IA + TIA Portal y generar bloques simples.
 **Objetivo:** Generar un bloque de control de motor simple.
 
 **Pasos:**
+
 1. Configurar MCP
 2. Generar bloque de control de motor
 3. Revisar código generado
@@ -122,6 +128,7 @@ Generar bloques complejos, automatizar tareas y mejorar productividad.
 - ¿Cómo generar bloques con diagnóstico?
 
 **Recursos:**
+
 - [Tutorial: Generar bloque SCL](../tutoriales/02-generar-bloque-scl.md)
 - [Galería: Generación de bloque](../galeria/README.md#demo-generación-de-bloque)
 
@@ -132,6 +139,7 @@ Generar bloques complejos, automatizar tareas y mejorar productividad.
 - ¿Cómo publicar documentación?
 
 **Recursos:**
+
 - [Tutorial: Documentación automática](../tutoriales/03-documentacion-automatica.md)
 - [Plantilla de documentación de bloques](../plantillas/README.md#plantilla-de-documentación-de-bloques)
 
@@ -142,6 +150,7 @@ Generar bloques complejos, automatizar tareas y mejorar productividad.
 - ¿Cómo automatizar despliegue?
 
 **Recursos:**
+
 - [Galería: Compilación automatizada](../galeria/README.md#demo-compilación-automatizada)
 - [Integraciones con otras herramientas](../integraciones/README.md)
 
@@ -152,6 +161,7 @@ Generar bloques complejos, automatizar tareas y mejorar productividad.
 - ¿Cómo mantener librería de prompts?
 
 **Recursos:**
+
 - [Guía de prompts](../prompts/README.md)
 - [Best practices: Prompts efectivos](../best-practices/README.md#prompts-efectivos)
 
@@ -162,6 +172,7 @@ Generar bloques complejos, automatizar tareas y mejorar productividad.
 - ¿Cómo reutilizar snippets?
 
 **Recursos:**
+
 - [Snippets SCL comunes](../plantillas/README.md#snippets-scl-comunes)
 
 ### Proyecto práctico
@@ -169,6 +180,7 @@ Generar bloques complejos, automatizar tareas y mejorar productividad.
 **Objetivo:** Generar un sistema de control de bombas con documentación completa.
 
 **Pasos:**
+
 1. Generar bloques de control de bombas
 2. Generar documentación
 3. Automatizar compilación
@@ -209,6 +221,7 @@ Refactorizar proyectos, integrar con otras herramientas y optimizar flujos de tr
 - ¿Cómo refactorizar bloques con IA?
 
 **Recursos:**
+
 - [Tutorial: Refactorización inteligente](../tutoriales/06-refactorizacion-inteligente.md)
 - [Galería: Análisis de proyecto](../galeria/README.md#demo-análisis-de-proyecto)
 
@@ -219,6 +232,7 @@ Refactorizar proyectos, integrar con otras herramientas y optimizar flujos de tr
 - ¿Cómo importar bloques desde Git?
 
 **Recursos:**
+
 - [Integración con Git](../integraciones/README.md#integración-con-git)
 
 #### 3. Integración con Jira
@@ -228,6 +242,7 @@ Refactorizar proyectos, integrar con otras herramientas y optimizar flujos de tr
 - ¿Cómo actualizar issues?
 
 **Recursos:**
+
 - [Integración con Jira](../integraciones/README.md#integración-con-jira)
 
 #### 4. Integración con Confluence
@@ -237,6 +252,7 @@ Refactorizar proyectos, integrar con otras herramientas y optimizar flujos de tr
 - ¿Cómo publicar documentación?
 
 **Recursos:**
+
 - [Integración con Confluence](../integraciones/README.md#integración-con-confluence)
 
 #### 5. Integración con Teams
@@ -246,6 +262,7 @@ Refactorizar proyectos, integrar con otras herramientas y optimizar flujos de tr
 - ¿Cómo recibir respuestas?
 
 **Recursos:**
+
 - [Integración con Microsoft Teams](../integraciones/README.md#integración-con-microsoft-teams)
 
 ### Proyecto práctico
@@ -253,6 +270,7 @@ Refactorizar proyectos, integrar con otras herramientas y optimizar flujos de tr
 **Objetivo:** Refactorizar un proyecto existente e integrar con Git, Jira y Confluence.
 
 **Pasos:**
+
 1. Analizar proyecto existente
 2. Identificar oportunidades de refactorización
 3. Refactorizar bloques con IA
@@ -295,6 +313,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 - ¿Cómo publicar dashboards?
 
 **Recursos:**
+
 - [Integración con Power BI](../integraciones/README.md#integración-con-power-bi)
 
 #### 2. Optimización de flujos de trabajo
@@ -304,6 +323,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 - ¿Cómo medir mejoras?
 
 **Recursos:**
+
 - [Best practices: Workflow recomendado](../best-practices/README.md#workflow-recomendado)
 
 #### 3. Seguridad industrial
@@ -313,6 +333,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 - ¿Cómo auditar cambios?
 
 **Recursos:**
+
 - [Best practices: Seguridad industrial](../best-practices/README.md#seguridad-industrial)
 
 #### 4. Liderazgo y adopción
@@ -322,6 +343,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 - ¿Cómo medir éxito?
 
 **Recursos:**
+
 - [Casos de uso](../casos-de-uso/README.md)
 
 #### 5. Innovación continua
@@ -331,6 +353,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 - ¿Cómo compartir conocimiento?
 
 **Recursos:**
+
 - [Herramientas analizadas](../README.md)
 
 ### Proyecto práctico
@@ -338,6 +361,7 @@ Crear flujos de trabajo completos, optimizar procesos y liderar adopción de IA 
 **Objetivo:** Crear un flujo de trabajo completo con integración de todas las herramientas.
 
 **Pasos:**
+
 1. Diseñar flujo de trabajo
 2. Integrar con todas las herramientas
 3. Crear dashboards de Power BI
@@ -425,4 +449,4 @@ Si tienes preguntas o necesitas ayuda:
 
 Selecciona el nivel que mejor se adapte a tu experiencia y comienza a aprender IA + TIA Portal.
 
-**¡Buena suerte! 🎉**
+¡Buena suerte! 🎉

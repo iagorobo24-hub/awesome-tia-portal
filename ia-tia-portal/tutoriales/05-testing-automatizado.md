@@ -1,6 +1,6 @@
 # Tutorial 5: Crear tests automatizados con PLCSim + IA
 
-> **⏱️ Tiempo estimado**: 75 minutos
+> **⏱ Tiempo estimado**: 75 minutos
 > **🎯 Dificultad**: ⭐⭐⭐ (Avanzado)
 > **📋 Prerrequisitos**: Tutorial 2 completado
 
@@ -44,6 +44,7 @@ Crear tests automatizados para tus bloques usando PLCSim Advanced e IA. Al final
 En Claude Desktop:
 
 ```
+
 Genera casos de prueba automatizados para el bloque FB_MotorControl.
 
 REQUISITOS:

@@ -82,6 +82,7 @@ Controlar un motor digital "bien hecho" implica más que cerrar un contactor: ha
 ## Ejemplo de uso
 
 ```scl
+
 // Bomba principal, KM en %Q0.0, térmico en %I0.0, feedback en %I0.1
 "FB_Motor"(
     xEntradaTermico     := %I0.0,
