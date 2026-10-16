@@ -180,7 +180,7 @@ Una aportación es una carpeta con su `README.md` y, cuando esté exportado, el 
 - Pasos detallados, pensados para quien viene del mundo PLC: [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 - Convenciones de nombres, prefijos, README y compatibilidad: [`STYLE.md`](./STYLE.md).
 - Plantilla del README de cada recurso: [`_plantillas/README-recurso.md`](./_plantillas/README-recurso.md).
-- Al subir un recurso, actualiza su fila en [`CATALOG.md`](./CATALOG.md) con el estado y las versiones realmente probadas.
+- Al subir un recurso, regenera [`CATALOG.md`](./CATALOG.md) con `python3 scripts/generate_catalog.py` y commitea el resultado con el estado y las versiones realmente probadas.
 - Si prefieres no usar Git, abre un [issue](https://github.com/iagorobo24-hub/awesome-tia-portal/issues/new/choose) con tu propuesta.
 
 Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`udt-motor/`, `fb-analog-input/`); dentro de TIA Portal, nombres con prefijo (`UDT_`, `FB_`, `FC_`, `Faceplate_`, `Pantalla_`).
