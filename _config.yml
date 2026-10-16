@@ -1,7 +1,7 @@
 # GitHub Pages (Jekyll) con el tema just-the-docs: navegación lateral,
 // buscador y enlace "Editar esta página" en cada documento.
 // No afecta a los scripts ni a CI: solo lo usa el build de Pages.
-remote_theme: just-the-docs/just-the-docs@v0.10.1
+remote_theme: just-the-docs/just-the-docs@v0.12.0
 title: Awesome TIA Portal
 description: Biblioteca curada de piezas reutilizables para Siemens TIA Portal V20, con estado verificado por recurso.
 baseurl: /awesome-tia-portal
