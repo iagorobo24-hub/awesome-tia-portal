@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome TIA Portal</title>
+  <meta name="description" content="Biblioteca curada de piezas reutilizables para Siemens TIA Portal V20, con estado verificado por recurso.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
+</head>
+<body>
+  <div id="app">Cargando la biblioteca...</div>
+  <script>
+    window.$docsify = {
+      name: 'Awesome TIA Portal',
+      repo: 'https://github.com/iagorobo24-hub/awesome-tia-portal',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      coverpage: true,
+      onlyCover: false,
+      search: {
+        placeholder: 'Buscar bloques, UDTs, guías...',
+        noData: 'Sin resultados.',
+        depth: 4
+      },
+      plugins: [
+        // Quita el frontmatter YAML (lo usa generate_catalog.py) antes de pintar.
+        function (hook) {
+          hook.beforeEach(function (html) {
+            return html.replace(/^---\n[\s\S]*?\n---\n/, '');
+          });
+        }
+      ]
+    };
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+</body>
+</html>
