@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "date": "PENDING-AAAA-MM-DD",
+  "resource": "FB_AlarmLatch.scl + arnes-ob1.md (DB AlarmPump en OB1)",
+  "sourceSha256": "PENDING-hash-del-scl-usado",
+  "projectAp20Sha256Before": "PENDING",
+  "projectAp20Sha256After": "PENDING",
+  "environment": {
+    "engineering": "TIA Portal V20 (indicar update exacto)",
+    "plcFamily": "S7-1500",
+    "cpuOrderNumber": "PENDING-referencia-exacta",
+    "virtualCpu": "PENDING (p. ej. CPU 1513 virtual, Softbus local)",
+    "projectKind": "disposable demo project (harness AlarmPump)"
+  },
+  "checks": {
+    "harnessOb1Call": "PENDING-passed|failed",
+    "softwareCompile": {
+      "state": "PENDING-Success",
+      "errors": "PENDING-0",
+      "warnings": "PENDING-0"
+    },
+    "plcsimDownloadTarget": "PENDING (solo CPU virtual, verificado en dialogo PG/PC)",
+    "plcsimRun": "PENDING-passed|failed",
+    "observedTransitions": [
+      { "case": "reposo", "forced": "M0.0=0 M0.1=0", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "aparece-alarma", "forced": "M0.0=1", "expected": "1,1,1,0,1", "observed": null },
+      { "case": "reconocer-presente", "forced": "M0.0=1 M0.1=pulso", "expected": "1,1,0,0,0", "observed": null },
+      { "case": "desaparece-tras-ack", "forced": "M0.0=0", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "redisparo-sin-ack", "forced": "M0.0=1->0", "expected": "0,1,1,1,1", "observed": null },
+      { "case": "ack-causa-ida", "forced": "M0.0=0 M0.1=pulso", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "inhibicion", "forced": "M0.2=FALSE M0.0=1", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "retardo-500ms", "forced": "MD4=T#500MS M0.0=1", "expected": "retardo-luego-1,1,1,0,1", "observed": null },
+      { "case": "ack-como-nivel", "forced": "M0.1=1-fijo, alarma-nueva", "expected": "documentar-comportamiento", "observed": null }
+    ],
+    "deviations": [],
+    "plcsimScreenshot": "PENDING-ruta-captura",
+    "programDownload": "solo CPU virtual (nunca planta)",
+    "behaviorTransitions": "PENDING-verified|partial-con-hallazgos"
+  },
+  "scope": "Evidencia de comportamiento en PLCSIM con arnes dedicado. No acredita uso en instalacion real ni certificacion."
+}
