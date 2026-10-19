@@ -27,23 +27,37 @@ La CPU de esta prueba es FW **V3.0**, dentro del rango soportado → **la combin
 versiones es válida**. El bloqueo H-19 no es de compatibilidad, sino de coexistencia del
 PLCSIM clásico V19 en la interfaz PG/PC del host.
 
-## Hallazgo H-19 — resumen
+## Hallazgo H-19 — hipótesis original **refutada**
 
-Con TIA V20 y el clásico V19 instalados a la vez, la interfaz PG/PC que TIA enumera como
-`PLCSIM` es la del simulador clásico, cuyo runtime no enlaza por Softbus con un proyecto
-V20. Resultado observado en 6 intentos: `DownloadToPlc` y `GoOnline` fallan ambos con
-`NotReachable` / `Connect to module PLC_1 failed`, pese a que la instancia virtual está
-sana por API.
+Se propuso que el bloqueo venía de que **S7-PLCSIM clásico V19** ocupaba la interfaz
+PG/PC `PLCSIM`. **Se refutó empíricamente**: tras instalar **S7-PLCSIM clásico V20**
+(`S7PLCSIMV20.exe`, v2000.0.200.9871) y repetir la descarga en tres variantes
+—interfaz `PLCSIM`, sin forzar interfaz y `PLCSIM.TCPIP.1`— el resultado no cambió.
+La versión del simulador clásico **no es la causa**.
 
-> Detalle completo y evidencia por intento en
-> [`RUN.md`](https://github.com/iagorobo24-hub/T-IA-Portal-RocaRoibas/blob/main/70-runs/e2e/20261016-fb-alarm-latch/RUN.md)
-> (run `20261016-fb-alarm-latch` del workspace TIA-Claude).
+Lo que sí está medido:
+
+- TIA V20 en esta máquina **no alcanza ninguna CPU virtual por Softbus**, ni con la
+  instancia de PLCSIM Advanced sana (`registerCode/powerOnCode = 0x0`), ni con `GoOnline`.
+- La **única ruta** que TIA declara es `PN/IE / PLCSIM [no IP] -> 1 X1`. Pedir
+  explícitamente `PLCSIM.TCPIP.1` es rechazado por el propio servidor **antes** de
+  intentar la conexión, lo que confirma que no hay una segunda interfaz que probar.
+- Siete intentos llegaron a la fase de conexión y fallaron de forma idéntica.
+
+Determinar el ajuste concreto que rompe esa ruta exige **inspección visual del diálogo
+de descarga** (lista de destinos y aviso de CPU simulada). El Ribbon de TIA V20 no
+expone controles por UI Automation en este host, así que esa observación no puede
+automatizarse.
+
+> Detalle completo, intento a intento, en
+> [`informe-ejecucion-2026-10-19.md`](informe-ejecucion-2026-10-19.md) (run
+> `20261016-fb-alarm-latch` del workspace TIA-Claude).
 
 ## Cómo completar esta matriz
 
-1. Instalar S7-PLCSIM clásico **V20** (pareja correcta de TIA V20), o
-2. usar la ruta TCP/IP con la NIC virtual Siemens en consola elevada, o
-3. retirar el clásico V19 para que TIA V20 use la interfaz Softbus de Advanced.
+1. Inspeccionar el diálogo de descarga en la TIA GUI y registrar qué destinos aparecen.
+   Dependiendo de lo observado: ajustar la PG/PC, retirar el clásico V19 para que TIA
+   use la interfaz Softbus de Advanced, o probar la ruta TCP/IP con la NIC virtual.
+2. Repetir `DownloadToPlc` → `Online` → plan de 9 casos y anotar `PLCSIM = Sí` por fila.
 
-Repetir entonces: `DownloadToPlc` → `Online` → plan de 9 casos y anotar `PLCSIM = Sí`
-por fila. Hasta entonces, **la columna PLCSIM permanece vacía a propósito**.
+Hasta entonces, **la columna PLCSIM permanece vacía a propósito**.

@@ -27,7 +27,7 @@
       "warnings": "0",
       "repeatCount": "6 compilaciones independientes en el dia 2026-10-19, todas 0/0"
     },
-    "plcsimDownloadTarget": "BLOCKED - 6 intentos de DownloadToPlc (pgPcInterface=PLCSIM) fallan identicamente con 'Connect to module PLC_1 failed'. TIA no alcanza ninguna CPU virtual en este host. Causa raiz identificada en hallazgo H-19.",
+    "plcsimDownloadTarget": "BLOCKED - 7 intentos llegaron a la fase de conexion y fallaron identicamente (Connect to module PLC_1 failed / NotReachable). Instalar S7-PLCSIM clasico V20 no lo cambia. La unica ruta que TIA declara es PLCSIM [no IP]; pedir PLCSIM.TCPIP.1 es rechazado por el servidor antes de conectar. La causa exacta exige inspeccion visual del dialogo de descarga.",
     "plcsimRun": "not-reached (bloqueado por descarga)",
     "observedTransitions": [
       { "case": "reposo", "forced": "M0.0=0 M0.1=0", "expected": "0,0,0,0,0", "observed": null },
@@ -41,7 +41,7 @@
       { "case": "ack-como-nivel", "forced": "M0.1=1-fijo, alarma-nueva", "expected": "documentar-comportamiento", "observed": null }
     ],
     "deviations": [
-      "H-19: descarga a PLCSIM Advanced bloqueada por coexistencia de S7-PLCSIM clasico V19 con TIA V20 en el mismo host. La interfaz PG/PC 'PLCSIM' que TIA V20 enumera corresponde al clasico V19 y no enlaza por Softbus con un proyecto V20.",
+      "H-19 REFUTADO: la hipotesis de que S7-PLCSIM clasico V19 ocupaba la interfaz PLCSIM era incorrecta. Instalar el clasico V20 y probar tres variantes de interfaz no cambia el resultado.",
       "H-15/H-16: DownloadToPlc por Openness no abre dialogo 'Load preview' en este build; ademas GoOnline tambien devuelve NotReachable, lo que confirma que el bloqueo es de conectividad Softbus y no del proveedor de descarga.",
       "H-10/H-13: sin efecto adverso en el proyecto; documentados en el informe de ejecucion."
     ],
