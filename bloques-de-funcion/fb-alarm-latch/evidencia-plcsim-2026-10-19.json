@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-19",
+  "resource": "FB_AlarmLatch.scl + arnes-ob1.md (DB AlarmPump en OB1)",
+  "sourceSha256": {
+    "importedFromLibrary": "C9373511D6C944CD7ACBCF7B65A44A14724B2EC81F992E0436D25F618F11A17F",
+    "packCopy": "139D94B56F2E402A716E97C7158F94C22F7394DBA6CB34F9AE7042A215A609FE",
+    "difference": "1 linea de comentario (encuadre); 91/91 lineas, logica SCL identica"
+  },
+  "projectAp20Sha256Before": "1F7A19A7537E209633D165503F853F930BA2C21A7ACAD06EB07AA4E44131B526",
+  "projectAp20Sha256After": "37C36C5A88F8D694263D9AEA5EA8C80A3A6AC9B34A3A64FF8E3EF94D404846E6",
+  "environment": {
+    "engineering": "TIA Portal V20 (build V20.0.0, sin update aplicado)",
+    "plcFamily": "S7-1500",
+    "cpuOrderNumber": "6ES7 513-1AM03-0AB0 (CPU 1513-1 PN)",
+    "cpuFirmware": "V3.0",
+    "plcsimAdvanced": "V7.0.0.0 / API 7.0",
+    "plcsimClassicOnHost": "S7-PLCSIM V19 (1900.1.60.8554) - ver bloque H-19",
+    "virtualCpu": "NO ALCANZADA por TIA en esta sesion (instancia registrada: 1513, Softbus, PoweredOn 0x0)",
+    "projectKind": "disposable demo project (harness AlarmPump)"
+  },
+  "checks": {
+    "harnessOb1Call": "passed - OB1 'Main' [OB1, SCL] generado desde fuente SCL con CALL \"AlarmPump\" y los 9 parametros cableados a tags globales",
+    "softwareCompile": {
+      "state": "Success",
+      "errors": "0",
+      "warnings": "0",
+      "repeatCount": "6 compilaciones independientes en el dia 2026-10-19, todas 0/0"
+    },
+    "plcsimDownloadTarget": "BLOCKED - 6 intentos de DownloadToPlc (pgPcInterface=PLCSIM) fallan identicamente con 'Connect to module PLC_1 failed'. TIA no alcanza ninguna CPU virtual en este host. Causa raiz identificada en hallazgo H-19.",
+    "plcsimRun": "not-reached (bloqueado por descarga)",
+    "observedTransitions": [
+      { "case": "reposo", "forced": "M0.0=0 M0.1=0", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "aparece-alarma", "forced": "M0.0=1", "expected": "1,1,1,0,1", "observed": null },
+      { "case": "reconocer-presente", "forced": "M0.0=1 M0.1=pulso", "expected": "1,1,0,0,0", "observed": null },
+      { "case": "desaparece-tras-ack", "forced": "M0.0=0", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "redisparo-sin-ack", "forced": "M0.0=1->0", "expected": "0,1,1,1,1", "observed": null },
+      { "case": "ack-causa-ida", "forced": "M0.0=0 M0.1=pulso", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "inhibicion", "forced": "M0.2=FALSE M0.0=1", "expected": "0,0,0,0,0", "observed": null },
+      { "case": "retardo-500ms", "forced": "MD4=T#500MS M0.0=1", "expected": "retardo-luego-1,1,1,0,1", "observed": null },
+      { "case": "ack-como-nivel", "forced": "M0.1=1-fijo, alarma-nueva", "expected": "documentar-comportamiento", "observed": null }
+    ],
+    "deviations": [
+      "H-19: descarga a PLCSIM Advanced bloqueada por coexistencia de S7-PLCSIM clasico V19 con TIA V20 en el mismo host. La interfaz PG/PC 'PLCSIM' que TIA V20 enumera corresponde al clasico V19 y no enlaza por Softbus con un proyecto V20.",
+      "H-15/H-16: DownloadToPlc por Openness no abre dialogo 'Load preview' en este build; ademas GoOnline tambien devuelve NotReachable, lo que confirma que el bloqueo es de conectividad Softbus y no del proveedor de descarga.",
+      "H-10/H-13: sin efecto adverso en el proyecto; documentados en el informe de ejecucion."
+    ],
+    "plcsimScreenshot": "not-available - sin descarga no hay estado online que capturar en PLCSIM",
+    "programDownload": "solo CPU virtual (nunca planta). 0 descargas efectivas hasta el momento.",
+    "behaviorTransitions": "not-verified (bloqueado antes de descarga por H-19)"
+  },
+  "blockImportFromScratch": {
+    "xmlFile": "outputs/FB_AlarmLatch.xml (SimaticML V20, 22173 bytes, exportado del bloque compilado)",
+    "importedToFreshFixture": "pending - Fase 2 posterior al desbloqueo de descarga"
+  },
+  "scope": "Evidencia de compilacion y arnesOB1 en V20. NO acredita comportamiento en PLCSIM: la descarga quedo bloqueada por el hallazgo H-19. No acredita uso en instalacion real ni certificacion."
+}

@@ -1,0 +1,18 @@
+ORGANIZATION_BLOCK "Main"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+BEGIN
+   // Arnes de prueba para FB_AlarmLatch (bloques-de-funcion/fb-alarm-latch/arnes-ob1.md).
+   // Llamada ciclica del DB de instancia AlarmPump con el mapa de memorias:
+   //   Condition=M0.0 CmdAck=M0.1 Enable=M0.2 OnDelay=MD4
+   //   Active=M2.0 Latched=M2.1 Unacked=M2.2 GoneUnacked=M2.3 Horn=M2.4
+   "AlarmPump"(Condition := "Condition",
+               CmdAck    := "CmdAck",
+               Enable    := "Enable",
+               OnDelay   := "OnDelay",
+               Active      => "Active",
+               Latched     => "Latched",
+               Unacked     => "Unacked",
+               GoneUnacked => "GoneUnacked",
+               Horn        => "Horn");
+END_ORGANIZATION_BLOCK

@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <DocumentInfo>
+    <Created>2026-10-16T10:21:44.1242207Z</Created>
+    <ExportSetting>None</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Basic/Comfort/Advanced</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <Product>
+        <DisplayName>WinCC Unified</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <HeaderAuthor>JMellid</HeaderAuthor>
+      <HeaderFamily>Diag</HeaderFamily>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Condition" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Condicion de alarma, ya evaluada</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="CmdAck" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Reconocimiento del operador</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Enable" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">FALSE: alarma inhibida (bypass)</MultiLanguageText>
+      </Comment>
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="OnDelay" Datatype="Time">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Filtro antirrebote de la condicion</MultiLanguageText>
+      </Comment>
+      <StartValue>T#0MS</StartValue>
+    </Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="Active" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">La condicion esta presente ahora</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Latched" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Enclavada: hubo alarma y falta ack</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Unacked" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Pendiente de reconocer</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="GoneUnacked" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">La causa se fue y nadie la reconocio</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Horn" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Debe sonar la sirena</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="statLatched" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Memoria de la alarma</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="statAcked" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Ya fue reconocida</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="tonFilter" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">Antirrebote</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp">
+    <Member Name="tempActive" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Condicion ya filtrada</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>FB_AlarmLatch</Name>
+      <Namespace />
+      <Number>2</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>==============================================================================
+ Una alarma: enclava, exige reconocimiento y distingue los cuatro estados.
+
+ La alarma tiene DOS dimensiones independientes, y confundirlas es el error
+ clasico de las listas de alarmas caseras:
+
+                    | sin reconocer      | reconocida
+   -----------------+--------------------+-------------------
+   condicion activa | ACTIVA NO ACK      | ACTIVA ACK
+   condicion ida    | IDA NO ACK  &lt;- ojo | (se borra)
+
+ El cuadrante de abajo a la izquierda es el que se olvida: la causa ya no esta
+ pero nadie se entero de que paso. Esa alarma NO debe desaparecer sola.
+
+ Ver 10-kb/20-recetas/R12-gestion-alarmas.md
+==============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <NewLine Num="2" UId="21" />
+  <Token Text="REGION" UId="22" />
+  <Blank UId="23" />
+  <Text UId="24">1 - Filtrado de la condicion</Text>
+  <NewLine UId="25" />
+  <Blank Num="4" UId="26" />
+  <LineComment UId="27">
+    <Text UId="28"> Sin filtro, un contacto que rebota genera diez alarmas. OnDelay = 0</Text>
+  </LineComment>
+  <NewLine UId="29" />
+  <Blank Num="4" UId="30" />
+  <LineComment UId="31">
+    <Text UId="32"> desactiva el filtro y el comportamiento es inmediato.</Text>
+  </LineComment>
+  <NewLine UId="33" />
+  <Blank Num="4" UId="34" />
+  <Access Scope="LocalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="tonFilter" UId="37" />
+    </Symbol>
+  </Access>
+  <Access Scope="Call" UId="38">
+    <Instruction UId="39">
+      <Token Text="(" UId="40" />
+      <Parameter Name="IN" UId="41">
+        <Blank UId="42" />
+        <Token Text=":=" UId="43" />
+        <Blank UId="44" />
+        <Access Scope="LocalVariable" UId="45">
+          <Symbol UId="46">
+            <Component Name="Condition" UId="47" />
+          </Symbol>
+        </Access>
+        <Blank UId="48" />
+        <Token Text="AND" UId="49" />
+        <Blank UId="50" />
+        <Access Scope="LocalVariable" UId="51">
+          <Symbol UId="52">
+            <Component Name="Enable" UId="53" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="54" />
+      <NewLine UId="55" />
+      <Blank Num="15" UId="56" />
+      <Parameter Name="PT" UId="57">
+        <Blank UId="58" />
+        <Token Text=":=" UId="59" />
+        <Blank UId="60" />
+        <Access Scope="LocalVariable" UId="61">
+          <Symbol UId="62">
+            <Component Name="OnDelay" UId="63" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="64" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="65" />
+  <NewLine UId="66" />
+  <Blank Num="4" UId="67" />
+  <Access Scope="LocalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="tempActive" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank UId="71" />
+  <Token Text=":=" UId="72" />
+  <Blank UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="tonFilter" UId="76" />
+      <Token Text="." UId="77" />
+      <Component Name="Q" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank UId="79" />
+  <Token Text="OR" UId="80" />
+  <Blank UId="81" />
+  <Token Text="(" UId="82" />
+  <Access Scope="LocalVariable" UId="83">
+    <Symbol UId="84">
+      <Component Name="Condition" UId="85" />
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text="AND" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="LocalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="Enable" UId="91" />
+    </Symbol>
+  </Access>
+  <Blank UId="92" />
+  <Token Text="AND" UId="93" />
+  <Blank UId="94" />
+  <Access Scope="LocalVariable" UId="95">
+    <Symbol UId="96">
+      <Component Name="OnDelay" UId="97" />
+    </Symbol>
+  </Access>
+  <Blank UId="98" />
+  <Token Text="=" UId="99" />
+  <Blank UId="100" />
+  <Access Scope="TypedConstant" UId="101">
+    <Constant UId="102">
+      <ConstantValue UId="103">T#0S</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=")" UId="104" />
+  <Token Text=";" UId="105" />
+  <NewLine UId="106" />
+  <Token Text="END_REGION" UId="107" />
+  <NewLine Num="2" UId="108" />
+  <Token Text="REGION" UId="109" />
+  <Blank UId="110" />
+  <Text UId="111">2 - Enclavamiento y reconocimiento</Text>
+  <NewLine UId="112" />
+  <Blank Num="4" UId="113" />
+  <LineComment UId="114">
+    <Text UId="115"> Al aparecer la alarma se enclava y se marca como no reconocida. Un ack</Text>
+  </LineComment>
+  <NewLine UId="116" />
+  <Blank Num="4" UId="117" />
+  <LineComment UId="118">
+    <Text UId="119"> anterior no vale para una alarma nueva.</Text>
+  </LineComment>
+  <NewLine UId="120" />
+  <Blank Num="4" UId="121" />
+  <Token Text="IF" UId="122" />
+  <Blank UId="123" />
+  <Access Scope="LocalVariable" UId="124">
+    <Symbol UId="125">
+      <Component Name="tempActive" UId="126" />
+    </Symbol>
+  </Access>
+  <Blank UId="127" />
+  <Token Text="AND" UId="128" />
+  <Blank UId="129" />
+  <Token Text="NOT" UId="130" />
+  <Blank UId="131" />
+  <Access Scope="LocalVariable" UId="132">
+    <Symbol UId="133">
+      <Component Name="statLatched" UId="134" />
+    </Symbol>
+  </Access>
+  <Blank UId="135" />
+  <Token Text="THEN" UId="136" />
+  <NewLine UId="137" />
+  <Blank Num="8" UId="138" />
+  <Access Scope="LocalVariable" UId="139">
+    <Symbol UId="140">
+      <Component Name="statLatched" UId="141" />
+    </Symbol>
+  </Access>
+  <Blank UId="142" />
+  <Token Text=":=" UId="143" />
+  <Blank UId="144" />
+  <Access Scope="LiteralConstant" UId="145">
+    <Constant UId="146">
+      <ConstantValue UId="148">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="149" />
+  <NewLine UId="150" />
+  <Blank Num="8" UId="151" />
+  <Access Scope="LocalVariable" UId="152">
+    <Symbol UId="153">
+      <Component Name="statAcked" UId="154" />
+    </Symbol>
+  </Access>
+  <Blank UId="155" />
+  <Token Text=":=" UId="156" />
+  <Blank UId="157" />
+  <Access Scope="LiteralConstant" UId="158">
+    <Constant UId="159">
+      <ConstantValue UId="161">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="162" />
+  <NewLine UId="163" />
+  <Blank Num="4" UId="164" />
+  <Token Text="END_IF" UId="165" />
+  <Token Text=";" UId="166" />
+  <NewLine UId="167" />
+  <Blank Num="4" UId="168" />
+  <NewLine UId="169" />
+  <Blank Num="4" UId="170" />
+  <Token Text="IF" UId="171" />
+  <Blank UId="172" />
+  <Access Scope="LocalVariable" UId="173">
+    <Symbol UId="174">
+      <Component Name="CmdAck" UId="175" />
+    </Symbol>
+  </Access>
+  <Blank UId="176" />
+  <Token Text="AND" UId="177" />
+  <Blank UId="178" />
+  <Access Scope="LocalVariable" UId="179">
+    <Symbol UId="180">
+      <Component Name="statLatched" UId="181" />
+    </Symbol>
+  </Access>
+  <Blank UId="182" />
+  <Token Text="THEN" UId="183" />
+  <NewLine UId="184" />
+  <Blank Num="8" UId="185" />
+  <Access Scope="LocalVariable" UId="186">
+    <Symbol UId="187">
+      <Component Name="statAcked" UId="188" />
+    </Symbol>
+  </Access>
+  <Blank UId="189" />
+  <Token Text=":=" UId="190" />
+  <Blank UId="191" />
+  <Access Scope="LiteralConstant" UId="192">
+    <Constant UId="193">
+      <ConstantValue UId="195">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="196" />
+  <NewLine UId="197" />
+  <Blank Num="4" UId="198" />
+  <Token Text="END_IF" UId="199" />
+  <Token Text=";" UId="200" />
+  <NewLine UId="201" />
+  <Blank Num="4" UId="202" />
+  <NewLine UId="203" />
+  <Blank Num="4" UId="204" />
+  <LineComment UId="205">
+    <Text UId="206"> Solo se borra cuando se dan las DOS cosas: la causa se ha ido Y alguien</Text>
+  </LineComment>
+  <NewLine UId="207" />
+  <Blank Num="4" UId="208" />
+  <LineComment UId="209">
+    <Text UId="210"> la ha reconocido. Si falta una, la alarma sigue visible.</Text>
+  </LineComment>
+  <NewLine UId="211" />
+  <Blank Num="4" UId="212" />
+  <Token Text="IF" UId="213" />
+  <Blank UId="214" />
+  <Access Scope="LocalVariable" UId="215">
+    <Symbol UId="216">
+      <Component Name="statLatched" UId="217" />
+    </Symbol>
+  </Access>
+  <Blank UId="218" />
+  <Token Text="AND" UId="219" />
+  <Blank UId="220" />
+  <Access Scope="LocalVariable" UId="221">
+    <Symbol UId="222">
+      <Component Name="statAcked" UId="223" />
+    </Symbol>
+  </Access>
+  <Blank UId="224" />
+  <Token Text="AND" UId="225" />
+  <Blank UId="226" />
+  <Token Text="NOT" UId="227" />
+  <Blank UId="228" />
+  <Access Scope="LocalVariable" UId="229">
+    <Symbol UId="230">
+      <Component Name="tempActive" UId="231" />
+    </Symbol>
+  </Access>
+  <Blank UId="232" />
+  <Token Text="THEN" UId="233" />
+  <NewLine UId="234" />
+  <Blank Num="8" UId="235" />
+  <Access Scope="LocalVariable" UId="236">
+    <Symbol UId="237">
+      <Component Name="statLatched" UId="238" />
+    </Symbol>
+  </Access>
+  <Blank UId="239" />
+  <Token Text=":=" UId="240" />
+  <Blank UId="241" />
+  <Access Scope="LiteralConstant" UId="242">
+    <Constant UId="243">
+      <ConstantValue UId="245">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="246" />
+  <NewLine UId="247" />
+  <Blank Num="8" UId="248" />
+  <Access Scope="LocalVariable" UId="249">
+    <Symbol UId="250">
+      <Component Name="statAcked" UId="251" />
+    </Symbol>
+  </Access>
+  <Blank UId="252" />
+  <Token Text=":=" UId="253" />
+  <Blank UId="254" />
+  <Access Scope="LiteralConstant" UId="255">
+    <Constant UId="256">
+      <ConstantValue UId="258">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="259" />
+  <NewLine UId="260" />
+  <Blank Num="4" UId="261" />
+  <Token Text="END_IF" UId="262" />
+  <Token Text=";" UId="263" />
+  <NewLine UId="264" />
+  <Blank Num="4" UId="265" />
+  <NewLine UId="266" />
+  <Blank Num="4" UId="267" />
+  <LineComment UId="268">
+    <Text UId="269"> Una alarma inhibida se borra: no tiene sentido dejarla enclavada.</Text>
+  </LineComment>
+  <NewLine UId="270" />
+  <Blank Num="4" UId="271" />
+  <Token Text="IF" UId="272" />
+  <Blank UId="273" />
+  <Token Text="NOT" UId="274" />
+  <Blank UId="275" />
+  <Access Scope="LocalVariable" UId="276">
+    <Symbol UId="277">
+      <Component Name="Enable" UId="278" />
+    </Symbol>
+  </Access>
+  <Blank UId="279" />
+  <Token Text="THEN" UId="280" />
+  <NewLine UId="281" />
+  <Blank Num="8" UId="282" />
+  <Access Scope="LocalVariable" UId="283">
+    <Symbol UId="284">
+      <Component Name="statLatched" UId="285" />
+    </Symbol>
+  </Access>
+  <Blank UId="286" />
+  <Token Text=":=" UId="287" />
+  <Blank UId="288" />
+  <Access Scope="LiteralConstant" UId="289">
+    <Constant UId="290">
+      <ConstantValue UId="292">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="293" />
+  <NewLine UId="294" />
+  <Blank Num="8" UId="295" />
+  <Access Scope="LocalVariable" UId="296">
+    <Symbol UId="297">
+      <Component Name="statAcked" UId="298" />
+    </Symbol>
+  </Access>
+  <Blank UId="299" />
+  <Token Text=":=" UId="300" />
+  <Blank UId="301" />
+  <Access Scope="LiteralConstant" UId="302">
+    <Constant UId="303">
+      <ConstantValue UId="305">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="306" />
+  <NewLine UId="307" />
+  <Blank Num="4" UId="308" />
+  <Token Text="END_IF" UId="309" />
+  <Token Text=";" UId="310" />
+  <NewLine UId="311" />
+  <Token Text="END_REGION" UId="312" />
+  <NewLine Num="2" UId="313" />
+  <Token Text="REGION" UId="314" />
+  <Blank UId="315" />
+  <Text UId="316">3 - Salidas</Text>
+  <NewLine UId="317" />
+  <Blank Num="4" UId="318" />
+  <Access Scope="LocalVariable" UId="319">
+    <Symbol UId="320">
+      <Component Name="Active" UId="321" />
+    </Symbol>
+  </Access>
+  <Blank UId="322" />
+  <Token Text=":=" UId="323" />
+  <Blank UId="324" />
+  <Access Scope="LocalVariable" UId="325">
+    <Symbol UId="326">
+      <Component Name="tempActive" UId="327" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="328" />
+  <NewLine UId="329" />
+  <Blank Num="4" UId="330" />
+  <Access Scope="LocalVariable" UId="331">
+    <Symbol UId="332">
+      <Component Name="Latched" UId="333" />
+    </Symbol>
+  </Access>
+  <Blank UId="334" />
+  <Token Text=":=" UId="335" />
+  <Blank UId="336" />
+  <Access Scope="LocalVariable" UId="337">
+    <Symbol UId="338">
+      <Component Name="statLatched" UId="339" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="340" />
+  <NewLine UId="341" />
+  <Blank Num="4" UId="342" />
+  <Access Scope="LocalVariable" UId="343">
+    <Symbol UId="344">
+      <Component Name="Unacked" UId="345" />
+    </Symbol>
+  </Access>
+  <Blank UId="346" />
+  <Token Text=":=" UId="347" />
+  <Blank UId="348" />
+  <Access Scope="LocalVariable" UId="349">
+    <Symbol UId="350">
+      <Component Name="statLatched" UId="351" />
+    </Symbol>
+  </Access>
+  <Blank UId="352" />
+  <Token Text="AND" UId="353" />
+  <Blank UId="354" />
+  <Token Text="NOT" UId="355" />
+  <Blank UId="356" />
+  <Access Scope="LocalVariable" UId="357">
+    <Symbol UId="358">
+      <Component Name="statAcked" UId="359" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="360" />
+  <NewLine UId="361" />
+  <Blank Num="4" UId="362" />
+  <Access Scope="LocalVariable" UId="363">
+    <Symbol UId="364">
+      <Component Name="GoneUnacked" UId="365" />
+    </Symbol>
+  </Access>
+  <Blank UId="366" />
+  <Token Text=":=" UId="367" />
+  <Blank UId="368" />
+  <Access Scope="LocalVariable" UId="369">
+    <Symbol UId="370">
+      <Component Name="statLatched" UId="371" />
+    </Symbol>
+  </Access>
+  <Blank UId="372" />
+  <Token Text="AND" UId="373" />
+  <Blank UId="374" />
+  <Token Text="NOT" UId="375" />
+  <Blank UId="376" />
+  <Access Scope="LocalVariable" UId="377">
+    <Symbol UId="378">
+      <Component Name="statAcked" UId="379" />
+    </Symbol>
+  </Access>
+  <Blank UId="380" />
+  <Token Text="AND" UId="381" />
+  <Blank UId="382" />
+  <Token Text="NOT" UId="383" />
+  <Blank UId="384" />
+  <Access Scope="LocalVariable" UId="385">
+    <Symbol UId="386">
+      <Component Name="tempActive" UId="387" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="388" />
+  <NewLine UId="389" />
+  <Blank Num="4" UId="390" />
+  <LineComment UId="391">
+    <Text UId="392"> La sirena suena mientras no se reconozca, este o no la causa presente.</Text>
+  </LineComment>
+  <NewLine UId="393" />
+  <Blank Num="4" UId="394" />
+  <Access Scope="LocalVariable" UId="395">
+    <Symbol UId="396">
+      <Component Name="Horn" UId="397" />
+    </Symbol>
+  </Access>
+  <Blank UId="398" />
+  <Token Text=":=" UId="399" />
+  <Blank UId="400" />
+  <Access Scope="LocalVariable" UId="401">
+    <Symbol UId="402">
+      <Component Name="statLatched" UId="403" />
+    </Symbol>
+  </Access>
+  <Blank UId="404" />
+  <Token Text="AND" UId="405" />
+  <Blank UId="406" />
+  <Token Text="NOT" UId="407" />
+  <Blank UId="408" />
+  <Access Scope="LocalVariable" UId="409">
+    <Symbol UId="410">
+      <Component Name="statAcked" UId="411" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="412" />
+  <NewLine UId="413" />
+  <Token Text="END_REGION" UId="414" />
+  <NewLine Num="2" UId="415" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>
