@@ -38,11 +38,18 @@ La versión del simulador clásico **no es la causa**.
 Lo que sí está medido:
 
 - TIA V20 en esta máquina **no alcanza ninguna CPU virtual por Softbus**, ni con la
-  instancia de PLCSIM Advanced sana (`registerCode/powerOnCode = 0x0`), ni con `GoOnline`.
+  instancia de PLCSIM Advanced sana (`registerCode/powerOnCode = 0x0`, nombre `PLC_1`
+  igual que el dispositivo, 1 instancia activa), ni con `GoOnline`, ni con **TIA cerrada**.
 - La **única ruta** que TIA declara es `PN/IE / PLCSIM [no IP] -> 1 X1`. Pedir
-  explícitamente `PLCSIM.TCPIP.1` es rechazado por el propio servidor **antes** de
-  intentar la conexión, lo que confirma que no hay una segunda interfaz que probar.
-- Siete intentos llegaron a la fase de conexión y fallaron de forma idéntica.
+  `PLCSIM.TCPIP.1` o una `targetIpAddress` se rechaza por el propio servidor **antes**
+  de intentar la conexión: no hay una segunda interfaz ni ruta con IP que probar.
+- **Nueve** intentos llegaron a la fase de conexión y fallaron de forma idéntica.
+
+> Ojo con un caso aparte que se confundió con este: la **configuración de hardware no
+> compilaba** (3 errores por la protección de datos de configuración), porque
+> `CompileSoftware` solo compila software. Se corrigió sin tocar contraseñas y el
+> hardware pasó a 0/0 — **pero la descarga sigue fallando igual**. Son dos problemas
+> distintos; los detalles están en el [informe de ejecución](informe-ejecucion-2026-10-19.md) (H-20, H-22).
 
 Determinar el ajuste concreto que rompe esa ruta exige **inspección visual del diálogo
 de descarga** (lista de destinos y aviso de CPU simulada). El Ribbon de TIA V20 no

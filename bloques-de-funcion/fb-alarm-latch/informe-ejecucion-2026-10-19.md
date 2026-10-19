@@ -155,7 +155,7 @@ Readback XML del OB1 compilado (`GetBlockSource Main`): call nest con
 - **H-13** [VERIFICADO] Si muere el proceso que hospeda el adaptador, PLCSIM Advanced **destruye la instancia automáticamente** (`registeredCount` → 0). No hay riesgo de CPU virtual huérfana; sí hay que re-registrar.
 - **H-14** [VERIFICADO] Esta sesión no puede leer imágenes (el `read` de PNG no está soportado). La inspección visual se sustituye por **UI Automation** (texto real de las ventanas TIA) + capturas guardadas para el usuario. UIA además confirma que el ribbon/proyecto de TIA V20 **no expone controles** (41 panes WinForms host, contenido WPF noAutomation), por lo que la GUI no es automatizable por UIA en este host.
 
-### Estado de la descarga a PLCSIM: **BLOCKED** (6 intentos, evidencia completa)
+### Estado de la descarga a PLCSIM: **BLOCKED** (11 intentos, evidencia completa)
 `DownloadToPlc` falla siempre en el mismo punto, con gates previos en verde:
 
 ```text
@@ -174,10 +174,13 @@ Route used: PN/IE / PLCSIM [no IP] -> 1 X1
 | 7 | 2026-10-19 | **S7-PLCSIM clásico V20 recién instalado** + interfaz `PLCSIM` | `Connect to module PLC_1 failed` |
 | 8 | 2026-10-19 | clásico V20 instalado + **sin forzar interfaz** (TIA elige la preferida) | `Connect to module PLC_1 failed` |
 | 9 | 2026-10-19 | clásico V20 instalado + `pgPcInterface=PLCSIM.TCPIP.1` | **Rechazada antes de conectar**: `No PG/PC interface matches 'PLCSIM.TCPIP.1'. Available routes: PN/IE / PLCSIM [no IP] -> 1 X1` |
+| 10 | 2026-10-19 | **hardware compilado 0/0** (arreglo de protección, ver H-21) + **TIA Portal cerrada** | `Connect to module PLC_1 failed` |
+| 11 | 2026-10-19 | `targetIpAddress=192.168.0.1`, sola y con `pgPcInterface` | **Rechazada antes de conectar**: `No download route reaches target IP '192.168.0.1'` |
 
 Lo que SÍ está verificado en cada intento (no es un problema de compilación ni de seguridad):
 
 - `CompileSoftware` → **Success 0 errores 0 avisos**.
+- `CompileHardware` sobre `PLC_1/PLC_1` → **3 errores** hasta aplicar el arreglo de H-21; **`Success` 0/0** después. Este gate **no estaba cubierto** en las sesiones anteriores (ver H-20).
 - `CheckDownloadReadiness` → `ready=true`, `isConsistent=true`, **1 sola ruta** `PG/IE / PLCSIM [no IP] -> 1 X1` (cero NICs).
 - Preflight interno de `DownloadToPlc` → *"F/Safety download preflight passed: 4 standard blocks, 11 non-Safety tags"*.
 - Instancia PLCSIM viva: nombre `PLC_1`, CPU 1513, Softbus, IP `192.168.0.1`, todos los códigos API `0x0`.
@@ -196,14 +199,55 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
   - Conclusión operativa: **no reparable desde MCP ni desde la automatización del Control Panel**. El siguiente paso exige evidencia visual del diálogo de descarga en la TIA GUI (lista de destinos y aviso de CPU simulada), porque ninguna llamada por API aporta esa observación. El Ribbon de TIA V20 no expone controles por UI Automation en este host (solo 41 paneles WinForms shell), de modo que la inspección no puede automatizarse.
   - Nota de rigor: un primer intento de la variante 9 se ejecutó con un marcador inválido en la cadena y **abortó antes de descargar**; no cuenta como resultado. La variante 9 válida se relanzó y produjo el rechazo de interfaz descrito arriba. De los 9 intentos, **7 llegaron a la fase de conexión** y fallaron de forma idéntica; los 2 restantes no fueron pruebas de conexión.
 
+## Hallazgos del 19/09 por la tarde: compilación de hardware y alcance real del bloqueo
+
+- **H-20** [VERIFICADO] **La configuración de hardware NO compilaba, y `CompileSoftware` no lo cubría.** El error que aparecía en el panel Compile de la TIA GUI (3 errores, 1 aviso) se reprodujo **headless** con `CompileHardware` sobre una fixture sonda desechable, obteniendo el árbol de mensajes exacto:
+  - `The PLC communication certificate cannot be configured without the password for confidential PLC configuration data. Enter the password.`
+  - `Password for confidential PLC configuration data is not configured in the PLC.`
+  - `If access control via access level is enabled and a higher access level ... the password for full access (no protection) must be set.`
+  - aviso: `The S7-1500 CPU display does not contain any password protection.`
+  - Es el mismo diagnóstico documentado en `R17` el 28/09 para esta fixture. `CompileSoftware` devolvía 0/0 porque solo compila software: **el gate de compilación usado en toda la sesión era incompleto**.
+
+- **H-21** [VERIFICADO] El diagnóstico de H-20 **se corrige sin tocar ninguna contraseña**, con dos herramientas acotadas que solo existen en `tia-inspect --isolated --fixture-root <run-dir> --allow-write`. Lecturas reales de la CPU (`deviceItemPath=PLC_1/PLC_1`):
+
+  | Ajuste | Antes | Después | Readback tras reabrir |
+  |---|---|---|---|
+  | Nivel de acceso a la PLC | `NoAccess` | `FullAccess` | `FullAccess` (`changed=false`) |
+  | Protección de datos de configuración | `WithoutPassword` | `None` | `None` (`changed=false`) |
+
+  Resultado: `CompileHardware` pasa de **3 errores** a **`state=Success`, 0 errores y 0 avisos** una vez reabierto y recompilado. Ninguna contraseña se fijó, se pidió ni se reseteó: ambas herramientas se niegan si el estado no es el esperado, rechazan CPU con `SafetyAdministration` y exigen readback.
+
+- **H-22** [VERIFICADO] **El fallo de hardware NO era la causa del bloqueo de descarga.** Con el hardware en 0/0 y TIA Portal cerrada, `DownloadToPlc` sigue fallando en `Connect to module PLC_1 failed` (intento 10). Son dos problemas distintos y reales. El arreglo de H-21 elimina los errores visibles en la GUI, pero **no desbloquea la descarga**.
+
+- **H-23** [VERIFICADO] **El hash del `.ap20` NO detecta el cambio de protección.** Tras `SaveProject` correcto, el `.ap20` quedó **byte a byte idéntico**; solo cambian `System\PEData.idx`, `System\PEData.plf` y aparece `AgentDemo_V20.info`. Cualquier verificación de integridad basada en el hash del `.ap20` da un falso "sin cambios" para ajustes de protección de la CPU.
+
+- **H-24** [VERIFICADO] **La TIA GUI abierta no es la causa.** Los intentos 10 y 11 se ejecutaron con **TIA Portal cerrada** (verificado: sin procesos `Siemens.Automation.Portal`) y el resultado es idéntico. Con la GUI abierta, el `.ap20` de la fixture quedaba además bloqueado en exclusiva.
+
+- **H-25** [VERIFICADO] Datos de la instancia PLCSIM Advanced leídos por **UI Automation** del Control Panel (`OnlineAccess = PLCSIM/Softbus`):
+  - Instancia registrada: **`PLC_1`** — coincide con el nombre del dispositivo, así que la regla de H-11 se cumple.
+  - Dirección mostrada `192.168.0.1`; instancias activas: 1 (`ManagerInstanceCount: 1` confirmado por API).
+  - `PlcStateRunButton` / `PlcStateStopButton` / `PlcStateMresButton` están **deshabilitados**; `PowerOn/Off` habilitado (coherente con instancia en `Stop`, no `Off`).
+  - La NIC del simulador es **`Ethernet 2` = `Siemens PLCSIM Virtual Ethernet Adapter`**, activa pero en **APIPA `169.254.188.159/16`**. Ninguna NIC de la máquina está en `192.168.0.0/24` ni hay vecinos ARP ahí.
+
+- **H-26** [VERIFICADO] La ruta TCP/IP **no es una salida disponible desde la API**: `DownloadToPlc(targetIpAddress=192.168.0.1)` se rechaza antes de conectar con `No download route reaches target IP '192.168.0.1'`, porque la configuración de red del proyecto solo tiene la ruta Softbus **sin direcciones**. Cualquier ruta TCP/IP exigiría antes una escritura de hardware (configurar IP en la interfaz PROFINET de la CPU).
+
+- **H-27** [VERIFICADO] La propiedad **Support simulation during block compilation** que exige el contrato del workspace **no es accesible por MCP**: ninguno de los dos servidores (87 herramientas en `tia-inspect` write) la expone, ni para lectura ni para escritura. Openness sí la expone como `Project.IsSimulationDuringBlockCompilationEnabled`. Es un gate que hoy solo se puede comprobar a mano en la GUI.
+
+### Notas de método que corrigen errores de esta sesión
+
+- **Ruta de `DeviceItem`**: las herramientas de hardware resuelven `Device/DeviceItem` separados por `/`. `PLC_1` (un solo segmento) **nunca casa**, aunque el árbol muestre `PLC_1 [Device]` y `PLC_1 [DeviceItem]`. La ruta correcta es **`PLC_1/PLC_1`**.
+- **Fixture sonda hay que recrearla antes de cada sesión**: al abrir el proyecto, TIA regenera ficheros del directorio y la validación de manifiesto falla. Es el mismo problema documentado el 25/09.
+- **`GetDevices` y `GetDeviceInfo` fallan con error genérico** en este build. Para leer rutas de dispositivo hay que usar `GetProjectTree`.
+
 ## Pendiente (F2+)
 
-1. F2: leer `10-kb/20-recetas/R17-aceptacion-plcsim.md` y arrancar PLCSIM (una instancia,
+1. **Decidir si el arreglo de H-21 se aplica a la fixture de trabajo.** Quita los 3 errores visibles en la GUI, pero no desbloquea la descarga (H-22). Es una decisión, no un paso automático.
+2. F2: leer `10-kb/20-recetas/R17-aceptacion-plcsim.md` y arrancar PLCSIM (una instancia,
    Softbus local, sin mapeo TCP ni SetIPSuite pre-arranque).
 
-2. F3: descarga con testigo visual (opción A del usuario) confirmando `CPU-1500 Simulation`.
-3. F4: 9 casos del protocolo F0-F5.
-4. VAT vacía: operandos se cargan en GUI (o ImportWatchTable XML) antes de F4.
-5. Fase 2: prueba de importación desde cero con `FB_AlarmLatch.xml` en fixture nueva.
-6. Fase 3: consolidación en awesome + actualización de arnes-ob1.md (la hace el usuario con
+3. F3: descarga con testigo visual (opción A del usuario) confirmando `CPU-1500 Simulation`.
+4. F4: 9 casos del protocolo F0-F5.
+5. VAT vacía: operandos se cargan en GUI (o ImportWatchTable XML) antes de F4.
+6. Fase 2: prueba de importación desde cero con `FB_AlarmLatch.xml` en fixture nueva.
+7. Fase 3: consolidación en awesome + actualización de arnes-ob1.md (la hace el usuario con
    el SCL/backup de este informe).

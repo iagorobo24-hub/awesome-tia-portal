@@ -27,7 +27,7 @@
       "warnings": "0",
       "repeatCount": "6 compilaciones independientes en el dia 2026-10-19, todas 0/0"
     },
-    "plcsimDownloadTarget": "BLOCKED - 7 intentos llegaron a la fase de conexion y fallaron identicamente (Connect to module PLC_1 failed / NotReachable). Instalar S7-PLCSIM clasico V20 no lo cambia. La unica ruta que TIA declara es PLCSIM [no IP]; pedir PLCSIM.TCPIP.1 es rechazado por el servidor antes de conectar. La causa exacta exige inspeccion visual del dialogo de descarga.",
+    "plcsimDownloadTarget": "BLOCKED - 9 intentos llegaron a la fase de conexion y fallaron identicamente (Connect to module PLC_1 failed / NotReachable), incluso con TIA Portal cerrada. Instalar S7-PLCSIM clasico V20 no lo cambia. La unica ruta que TIA declara es PLCSIM [no IP]; tanto pgPcInterface=PLCSIM.TCPIP.1 como targetIpAddress=192.168.0.1 se rechazan por el servidor antes de intentar conectar. La causa exacta exige inspeccion visual del dialogo de descarga.",
     "plcsimRun": "not-reached (bloqueado por descarga)",
     "observedTransitions": [
       { "case": "reposo", "forced": "M0.0=0 M0.1=0", "expected": "0,0,0,0,0", "observed": null },
@@ -42,6 +42,13 @@
     ],
     "deviations": [
       "H-19 REFUTADO: la hipotesis de que S7-PLCSIM clasico V19 ocupaba la interfaz PLCSIM era incorrecta. Instalar el clasico V20 y probar tres variantes de interfaz no cambia el resultado.",
+      "H-20/H-21: la configuracion de hardware NO compilaba (3 errores por proteccion de datos de configuracion) porque CompileSoftware solo compila software. Se corrige sin tocar contrasenas con las herramientas acotadas de tia-inspect --isolated --allow-write (acceso NoAccess->FullAccess, proteccion WithoutPassword->None) y el hardware pasa a 0 errores / 0 avisos.",
+      "H-22: ese arreglo NO era la causa del bloqueo de descarga; con hardware 0/0 la descarga sigue fallando igual. Son dos problemas distintos.",
+      "H-23: el hash del .ap20 no cambia al aplicar el ajuste de proteccion; la verificacion de integridad por hash da un falso 'sin cambios'.",
+      "H-24: la TIA GUI abierta no es la causa (intentos 10 y 11 con TIA cerrada fallan igual).",
+      "H-25: la instancia registrada se llama PLC_1, igual que el dispositivo, y hay 1 instancia activa; el nombre no es el problema.",
+      "H-26: no hay ruta con IP disponible; la ruta TCP/IP exigiria escribir la IP en la interfaz PROFINET de la CPU.",
+      "H-27: la propiedad 'Support simulation during block compilation' que exige AGENTS.md no la expone ninguno de los dos servidores MCP; solo se puede comprobar en la GUI.",
       "H-15/H-16: DownloadToPlc por Openness no abre dialogo 'Load preview' en este build; ademas GoOnline tambien devuelve NotReachable, lo que confirma que el bloqueo es de conectividad Softbus y no del proveedor de descarga.",
       "H-10/H-13: sin efecto adverso en el proyecto; documentados en el informe de ejecucion."
     ],
