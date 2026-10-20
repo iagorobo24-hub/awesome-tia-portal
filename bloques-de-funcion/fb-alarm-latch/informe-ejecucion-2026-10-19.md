@@ -252,6 +252,38 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
 - **H-31** [VERIFICADO, 2026-10-20] El manifiesto de la fixture de trabajo quedó obsoleto (ediciones SCL + ficheros regenerados por TIA) y hubo que **reconstruirlo**: `project/` y `backup/` se hicieron idénticos a partir del estado con el trabajo SCL, y el manifiesto se regeneró apuntando al `.ap20` original intacto (`1F7A19A7…`) en `sourceProjectPath`. **El `projectSnapshotSha256` del manifiesto es la huella del *directorio*, no la del `.ap20`** — confundirlas lleva a conclusions erróneas.
 - **H-32** [VERIFICADO, 2026-10-20] El arreglo de H-21 se aplicó también a la **fixture de trabajo**: acceso `NoAccess→FullAccess`, protección `WithoutPassword→None`, `CompileHardware` 0 errores y `CompileSoftware` 0/0, guardado. La descarga sigue bloqueada (intento 12), confirmando H-22 con la fixture definitiva.
 
+### Tercera tanda (2026-10-20): lado simulador verificado en detalle y configuración PG/PC de TIA
+
+- **H-33** [VERIFICADO, 2026-10-20] **La instancia PLCSIM Advanced está impecable.** Inspección con `--inspect-registered-instance`:
+
+  | Propiedad | Valor |
+  |---|---|
+  | `name` / `nameCode` | `PLC_1` / `0x0` |
+  | `cpuType` | `1513` (`SRCT_1513` = *1513-1 PN*, coincide con el `6ES7 513-1AM03-0AB0` del proyecto) |
+  | `communicationInterface` | **`Softbus`** (valor 1) |
+  | `operatingState` | `Stop` (valor 3 → encendida, no apagada) |
+  | `ipAddresses` | `["192.168.0.1"]` |
+  | `registeredCount` / `destroyCode` | `1` / `0x0` |
+
+  El lado **simulador no es el problema**. Y el tipo de CPU es el correcto: en `SimulationRuntimeApi.h`, `SRCT_1513` es exactamente *1513-1 PN*; el `1500` que devuelve la sonda es `SRCT_1500_Unspecified`, el valor por defecto de una instancia nueva.
+
+- **H-34** [VERIFICADO, 2026-10-20] La **configuración PG/PC guardada por TIA V20** apunta a un driver que no existe. En `%APPDATA%\Siemens\Automation\Portal V20\Settings\Settings.xml`, nodo `ControllerConfigurations` (dos entradas idénticas, `CreationTime = 09/22/2026`):
+
+  ```xml
+  <Setting name="BoardName">       <String>PLCSIM</String>
+  <Setting name="BoardNumber">     <String>1</String>
+  <Setting name="OamName">         <String>PLCSIM.TCPIP.1</String>
+  <Setting name="SubnetMode">      <String>LocalOnConnectionPoint</String>
+  <Setting name="ConnectionPoint"> <String>1 X1</String>
+  ```
+
+  `PLCSIM.TCPIP.1` es la variante **TCP/IP** de la interfaz PLCSIM, y **no aparece en ninguna clave del registro** (0 coincidencias en `HKLM\SOFTWARE\WOW6432Node\Siemens`). La configuración equivalente de **TIA V19** apunta a una NIC física (`Realtek PCIe GbE Family Controller.TCPIP.1`). TIA V20 quedó así el 22/09, cuando el PLCSIM clásico estaba instalado.
+  - **Prueba realizada**: con backup (`Settings.xml.bak-20261020`) se cambió `OamName` a `PLCSIM` (la variante Softbus). La ruta siguió siendo **exactamente la misma** (`PN/IE / PLCSIM [no IP] -> 1 X1`) y el fallo fue idéntico. Por tanto **esa clave no determina la ruta en las sesiones headless**, o el nombre del OAM no es lo que la resuelve. El fichero quedó **restaurado**; no se deja ningún cambio especulativo.
+
+- **H-35** [VERIFICADO, 2026-10-20] **Defecto del runner**: `Invoke-McpToolSequence.ps1` aborta la cadena en el primer error, así que `CloseProject` y `Disconnect` nunca se ejecutan. El proceso `Siemens.Automation.Portal` sobrevive **con el proyecto abierto**, y la sesión siguiente falla con *"The project ... has already been opened by user jose.mellid ... only be opened again after a 2 minute delay"*. Ocurrió dos veces el 20/10. El `finally` del runner mata el servidor MCP y libera el lease, pero no cierra la sesión de Openness.
+
+- **H-36** [VERIFICADO, 2026-10-20] El gate **Support simulation during block compilation** está **cumplido**: el usuario confirma que ya estaba marcado en las propiedades del proyecto. Nota: la premisa de `AGENTS.md` de que V20 lo deja desactivado por defecto **no se cumple en este proyecto**. Con ese gate descartado y el simulador verificado sano (H-33), el bloqueo queda íntegramente del lado de TIA.
+
 ## Pendiente (F2+)
 
 1. **Decidir si el arreglo de H-21 se aplica a la fixture de trabajo.** Quita los 3 errores visibles en la GUI, pero no desbloquea la descarga (H-22). Es una decisión, no un paso automático.

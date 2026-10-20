@@ -54,6 +54,10 @@
       "H-30: en el host coexisten TIA Portal V19 y V20, PLCSIM clasico V19 y V20 y PLCSIM Advanced V7.0.",
       "H-31: el projectSnapshotSha256 del manifiesto es la huella del directorio, no la del .ap20; el manifiesto de la fixture hubo que reconstruirlo tras las ediciones SCL.",
       "H-32: el arreglo de proteccion se aplico tambien a la fixture de trabajo (hardware 0/0, software 0/0, guardado) y la descarga sigue bloqueada, confirmando H-22.",
+      "H-33: la instancia PLCSIM Advanced esta verificada sana en detalle: name PLC_1 (0x0), cpuType 1513 (SRCT_1513 = 1513-1 PN, coincide con el 6ES7 513-1AM03-0AB0 del proyecto), communicationInterface Softbus, operatingState Stop (encendida), ip 192.168.0.1, registeredCount 1. El lado simulador no es el problema.",
+      "H-34: la configuracion PG/PC guardada por TIA V20 (Settings.xml, ControllerConfigurations) usa OamName=PLCSIM.TCPIP.1, variante TCP/IP que no existe en ninguna clave del registro. Probado el cambio a 'PLCSIM' con backup: la ruta y el fallo fueron identicos, asi que esa clave no resuelve la ruta en sesiones headless. Fichero restaurado.",
+      "H-35: defecto del runner: al abortar la cadena en el primer error no se ejecutan CloseProject/Disconnect, el proceso Siemens.Automation.Portal sobrevive con el proyecto abierto y la sesion siguiente falla con 'already been opened ... 2 minute delay'. Ocurrio dos veces el 20/10.",
+      "H-36: el gate 'Support simulation during block compilation' esta cumplido (el usuario confirma que ya estaba marcado). La premisa de AGENTS.md de que V20 lo deja desactivado por defecto no se cumple en este proyecto.",
       "H-15/H-16: DownloadToPlc por Openness no abre dialogo 'Load preview' en este build; ademas GoOnline tambien devuelve NotReachable, lo que confirma que el bloqueo es de conectividad Softbus y no del proveedor de descarga.",
       "H-10/H-13: sin efecto adverso en el proyecto; documentados en el informe de ejecucion."
     ],
