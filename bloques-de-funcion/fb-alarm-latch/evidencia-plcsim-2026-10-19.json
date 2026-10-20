@@ -27,7 +27,7 @@
       "warnings": "0",
       "repeatCount": "6 compilaciones independientes en el dia 2026-10-19, todas 0/0"
     },
-    "plcsimDownloadTarget": "BLOCKED - 9 intentos llegaron a la fase de conexion y fallaron identicamente (Connect to module PLC_1 failed / NotReachable), incluso con TIA Portal cerrada. Instalar S7-PLCSIM clasico V20 no lo cambia. La unica ruta que TIA declara es PLCSIM [no IP]; tanto pgPcInterface=PLCSIM.TCPIP.1 como targetIpAddress=192.168.0.1 se rechazan por el servidor antes de intentar conectar. La causa exacta exige inspeccion visual del dialogo de descarga.",
+    "plcsimDownloadTarget": "BLOCKED - 11 intentos llegaron a la fase de conexion y fallaron identicamente (Connect to module PLC_1 failed / NotReachable), incluso con TIA Portal cerrada y con una instancia PLCSIM recien registrada desde cero. Instalar S7-PLCSIM clasico V20 no lo cambia. La unica ruta que TIA declara es PLCSIM [no IP]; tanto pgPcInterface=PLCSIM.TCPIP.1 como targetIpAddress=192.168.0.1 se rechazan por el servidor antes de intentar conectar, y sanear el registro STEP7 tampoco. La causa exacta exige inspeccion visual del dialogo de descarga.",
     "plcsimRun": "not-reached (bloqueado por descarga)",
     "observedTransitions": [
       { "case": "reposo", "forced": "M0.0=0 M0.1=0", "expected": "0,0,0,0,0", "observed": null },
@@ -49,6 +49,11 @@
       "H-25: la instancia registrada se llama PLC_1, igual que el dispositivo, y hay 1 instancia activa; el nombre no es el problema.",
       "H-26: no hay ruta con IP disponible; la ruta TCP/IP exigiria escribir la IP en la interfaz PROFINET de la CPU.",
       "H-27: la propiedad 'Support simulation during block compilation' que exige AGENTS.md no la expone ninguno de los dos servidores MCP; solo se puede comprobar en la GUI.",
+      "H-28: una instancia PLCSIM recien registrada desde cero falla igual; no es estado residual de una instancia vieja.",
+      "H-29: sanear el valor obsoleto RunningCPUs\\PLCSimLogdev del registro STEP7 no cambia el resultado; la hipotesis queda refutada.",
+      "H-30: en el host coexisten TIA Portal V19 y V20, PLCSIM clasico V19 y V20 y PLCSIM Advanced V7.0.",
+      "H-31: el projectSnapshotSha256 del manifiesto es la huella del directorio, no la del .ap20; el manifiesto de la fixture hubo que reconstruirlo tras las ediciones SCL.",
+      "H-32: el arreglo de proteccion se aplico tambien a la fixture de trabajo (hardware 0/0, software 0/0, guardado) y la descarga sigue bloqueada, confirmando H-22.",
       "H-15/H-16: DownloadToPlc por Openness no abre dialogo 'Load preview' en este build; ademas GoOnline tambien devuelve NotReachable, lo que confirma que el bloqueo es de conectividad Softbus y no del proveedor de descarga.",
       "H-10/H-13: sin efecto adverso en el proyecto; documentados en el informe de ejecucion."
     ],

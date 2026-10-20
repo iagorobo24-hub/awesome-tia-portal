@@ -155,7 +155,7 @@ Readback XML del OB1 compilado (`GetBlockSource Main`): call nest con
 - **H-13** [VERIFICADO] Si muere el proceso que hospeda el adaptador, PLCSIM Advanced **destruye la instancia automáticamente** (`registeredCount` → 0). No hay riesgo de CPU virtual huérfana; sí hay que re-registrar.
 - **H-14** [VERIFICADO] Esta sesión no puede leer imágenes (el `read` de PNG no está soportado). La inspección visual se sustituye por **UI Automation** (texto real de las ventanas TIA) + capturas guardadas para el usuario. UIA además confirma que el ribbon/proyecto de TIA V20 **no expone controles** (41 panes WinForms host, contenido WPF noAutomation), por lo que la GUI no es automatizable por UIA en este host.
 
-### Estado de la descarga a PLCSIM: **BLOCKED** (11 intentos, evidencia completa)
+### Estado de la descarga a PLCSIM: **BLOCKED** (13 intentos, evidencia completa)
 `DownloadToPlc` falla siempre en el mismo punto, con gates previos en verde:
 
 ```text
@@ -176,6 +176,10 @@ Route used: PN/IE / PLCSIM [no IP] -> 1 X1
 | 9 | 2026-10-19 | clásico V20 instalado + `pgPcInterface=PLCSIM.TCPIP.1` | **Rechazada antes de conectar**: `No PG/PC interface matches 'PLCSIM.TCPIP.1'. Available routes: PN/IE / PLCSIM [no IP] -> 1 X1` |
 | 10 | 2026-10-19 | **hardware compilado 0/0** (arreglo de protección, ver H-21) + **TIA Portal cerrada** | `Connect to module PLC_1 failed` |
 | 11 | 2026-10-19 | `targetIpAddress=192.168.0.1`, sola y con `pgPcInterface` | **Rechazada antes de conectar**: `No download route reaches target IP '192.168.0.1'` |
+| 12 | 2026-10-20 | **instancia PLCSIM recién registrada** + fixture de trabajo con hardware 0/0 | `Connect to module PLC_1 failed` |
+| 13 | 2026-10-20 | instancia recién registrada + **registro STEP7 saneado** (ver H-28) | `Connect to module PLC_1 failed` |
+
+De los 13 intentos, **11 llegaron a la fase de conexión** y fallaron de forma idéntica; los 2 restantes fueron rechazados antes de conectar por pedir una interfaz o una IP inexistentes.
 
 Lo que SÍ está verificado en cada intento (no es un problema de compilación ni de seguridad):
 
@@ -238,6 +242,15 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
 - **Ruta de `DeviceItem`**: las herramientas de hardware resuelven `Device/DeviceItem` separados por `/`. `PLC_1` (un solo segmento) **nunca casa**, aunque el árbol muestre `PLC_1 [Device]` y `PLC_1 [DeviceItem]`. La ruta correcta es **`PLC_1/PLC_1`**.
 - **Fixture sonda hay que recrearla antes de cada sesión**: al abrir el proyecto, TIA regenera ficheros del directorio y la validación de manifiesto falla. Es el mismo problema documentado el 25/09.
 - **`GetDevices` y `GetDeviceInfo` fallan con error genérico** en este build. Para leer rutas de dispositivo hay que usar `GetProjectTree`.
+
+## Segunda sesión (2026-10-20): entorno repuesto y dos hipótesis más refutadas
+
+- **H-28** [REFUTADO, 2026-10-20] Se repuso el entorno tras un reinicio: la instancia PLCSIM había muerto con el proceso que la hospeda (H-13) y se re-registró **limpia** (`status=ready`, `instanceName=PLC_1`, `cpuType=1513`, `networkMode=SOFTBUS`, `registerCode/powerOnCode=0x0`). Con instancia nueva, el fallo persiste idéntico: **no es estado residual de una instancia vieja**.
+- **H-29** [REFUTADO, 2026-10-20] En `HKCU\Software\Siemens\STEP7\2.0\APPLICATIONS\S7WSAAPX\RunningCPUs` había un valor obsoleto `PLCSimLogdev = PLCSIM.TCPIP.1` (libro de registro de PLCSIM **clásico**, que no estaba corriendo). Hipótesis: TIA leía esa lista y tomaba una interfaz inexistente en vez de la Softbus real. **Se borró el valor (con backup en `%LOCALAPPDATA%\Temp\opencode\s7wsaapx-backup.reg`) y la descarga siguió fallando igual.** La hipótesis queda refutada.
+
+- **H-30** [VERIFICADO, 2026-10-20] Inventario real del host, leído de `_InstalledSW`: **TIA Portal V19 y V20** instalados a la vez, **PLCSIM clásico V19 y V20**, y **PLCSIM Advanced V7.0**. La coexistencia de TIA V19 es una variable que nadie ha controlado todavía.
+- **H-31** [VERIFICADO, 2026-10-20] El manifiesto de la fixture de trabajo quedó obsoleto (ediciones SCL + ficheros regenerados por TIA) y hubo que **reconstruirlo**: `project/` y `backup/` se hicieron idénticos a partir del estado con el trabajo SCL, y el manifiesto se regeneró apuntando al `.ap20` original intacto (`1F7A19A7…`) en `sourceProjectPath`. **El `projectSnapshotSha256` del manifiesto es la huella del *directorio*, no la del `.ap20`** — confundirlas lleva a conclusions erróneas.
+- **H-32** [VERIFICADO, 2026-10-20] El arreglo de H-21 se aplicó también a la **fixture de trabajo**: acceso `NoAccess→FullAccess`, protección `WithoutPassword→None`, `CompileHardware` 0 errores y `CompileSoftware` 0/0, guardado. La descarga sigue bloqueada (intento 12), confirmando H-22 con la fixture definitiva.
 
 ## Pendiente (F2+)
 
