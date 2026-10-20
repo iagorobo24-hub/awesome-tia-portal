@@ -284,6 +284,29 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
 
 - **H-36** [VERIFICADO, 2026-10-20] El gate **Support simulation during block compilation** está **cumplido**: el usuario confirma que ya estaba marcado en las propiedades del proyecto. Nota: la premisa de `AGENTS.md` de que V20 lo deja desactivado por defecto **no se cumple en este proyecto**. Con ese gate descartado y el simulador verificado sano (H-33), el bloqueo queda íntegramente del lado de TIA.
 
+### Cuarta tanda (2026-10-20 tarde): se cierra el diagnóstico de la ruta
+
+- **H-37** [VERIFICADO, 2026-10-20] **La CPU del proyecto ya tiene la IP PROFINET correcta.** `GetDeviceIpAddress('PLC_1')` devuelve `ipAddress = 192.168.0.1`, `nodeCount = 6`, y todos los nodos apuntan a `X1` = `192.168.0.1` en `PROFINET interface_1`. Es **exactamente la IP de la instancia PLCSIM** (`192.168.0.1`). Es decir: **el lado del proyecto y el del simulador ya están configurados para la ruta TCP/IP**; lo único sin dirección es el lado **PG/PC**.
+
+- **H-38** [VERIFICADO, 2026-10-20] La NIC del simulador es **`Ethernet 2` = `Siemens PLCSIM Virtual Ethernet Adapter`**, que estaba en **APIPA `169.254.188.159/16`**. Con elevación se fijó a **`192.168.0.2/24`** (subred de la CPU y de la instancia). **Pero eso NO da dirección a la ruta**: la interfaz `PLCSIM` es Softbus y **es sin dirección por diseño**; `CheckDownloadReadiness` siguió devolviendo `pgPcAddresses: ""` y `targetAddresses: ""`, y `targetIpAddress=192.168.0.1` siguió rechazándose con *"No download route reaches target IP"*. Para que la ruta tenga dirección, el **Online access del Control Panel debe pasar a TCP/IP**, no basta con la NIC.
+
+- **H-39** [VERIFICADO, 2026-10-20] **La API de runtime de PLCSIM Advanced solo inicializa desde un proceso elevado** en este host: `InitializeCode = 0x0` elevada frente a `0xFFFFFFFF` sin elevar. Consecuencia operativa: **el adaptador y el driver del agente deben ejecutarse elevados**. Coherente con el propio código: *"Runtime bindings require an administrator parent session"*.
+
+- **H-40** [REFUTADO, 2026-10-20] **La elevación de los componentes PLCSIM no es la causa del fallo de conexión.** Con el Runtime Manager elevado, la instancia registrada desde un driver elevado y la descarga ejecutada, el resultado fue **idéntico** (`Connect to module PLC_1 failed`). La elevación es un requisito del *adaptador*, no la causa.
+
+- **H-41** [VERIFICADO, 2026-10-20] **El radio "Online access" del Control Panel no se puede cambiar por UIA** en este host. Se intentaron, con el panel elevado y sin elevar: `InvokePattern`, `SelectionItemPattern.Select()`, clic físico con `SetCursorPos`+`mouse_event` y envío de teclado (`ESPACIO`, `ENTER`) con la ventana al frente. El valor permanece en `PLCSIM` / Softbus. Es **acción exclusiva de usuario**.
+
+- **H-42** [VERIFICADO, 2026-10-20] El adaptador admite **`--transport tcpip-local`** con `--ip/--mask/--gateway`, que llama a `SetNetworkMode(TCPIP_SINGLE_ADAPTER)` y exige sesión administrativa. Aviso de seguridad: el código documenta que *"the Control Panel already selects Ethernet 3 in single-adapter mode"*, y **`Ethernet 3` es `192.168.1.113/24`, una NIC real de la red local**. Para que la ruta TCP/IP siga siendo local y aislada, el Control Panel debe apuntar a la NIC virtual de Siemens (`Ethernet 2`), nunca a `Ethernet 3`.
+
+## Cambios aplicados al sistema durante esta tanda (todos reversibles)
+
+| Cambio | Estado | Cómo revertir |
+|---|---|---|
+| `Ethernet 2` de APIPA `169.254.188.159/16` a **`192.168.0.2/24`** | aplicado (requiere elevación) | `%LOCALAPPDATA%\Temp\opencode\restore-plcsim-nic-ip.ps1` |
+| `HKCU\Software\Siemens\STEP7\2.0\APPLICATIONS\S7WSAAPX\RunningCPUs\PLCSimLogdev` eliminado (valor obsoleto) | aplicado | `%LOCALAPPDATA%\Temp\opencode\s7wsaapx-backup.reg` |
+| `Portal V20\Settings\Settings.xml` (`OamName`) | **restaurado** al original | `Settings.xml.bak-20261020` junto al original |
+| Control Panel y driver de PLCSIM Advanced | ejecutándose **elevados** (requisito de H-39) | reiniciar sin elevación |
+
 ## Pendiente (F2+)
 
 1. **Decidir si el arreglo de H-21 se aplica a la fixture de trabajo.** Quita los 3 errores visibles en la GUI, pero no desbloquea la descarga (H-22). Es una decisión, no un paso automático.
