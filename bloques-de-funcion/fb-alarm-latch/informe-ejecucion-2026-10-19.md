@@ -309,6 +309,88 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
 | `Portal V20\Settings\Settings.xml` (`OamName`) | **restaurado** al original | `Settings.xml.bak-20261020` junto al original |
 | Control Panel y driver de PLCSIM Advanced | ejecutándose **elevados** (requisito de H-39) | reiniciar sin elevación |
 
+## Causa raíz y solución (2026-10-20, sesión de diagnóstico profundo)
+
+### RC-1 · El adaptador de PLCSIM invertía los octetos de la IP  **[CORREGIDO]**
+
+`ParseIp` rellenaba los octetos en el orden del texto (`IPs[0]` = primer octeto), pero la API
+de PLCSIM los guarda **invertidos** (`IPs[3]` = primer octet, como demuestra `PrintIpv4`, que
+vuelca `IPs[3].IPs[2].IPs[1].IPs[0]`). La CPU virtual recibía **`1.0.168.192`** en lugar de
+`192.168.0.1`: el `SetIPSuite` devolvía `0x0` (aceptado) y la dirección se descartaba en
+silencio. **Esta era la causa del "no hay CPU virtual en la red"**, y explica por qué
+`ipCode` salía bien y la IP acababa en `0.0.0.0`.
+
+Corregido en `tia_claude_plcsim_adapter.cpp` (`output->IPs[3 - octet]`). Verificado:
+
+| Comprobación | Antes | Después |
+|---|---|---|
+| `controllerIp` del adaptador | `0.0.0.0` | **`192.168.0.1`** |
+| `ping 192.168.0.1` | 100 % perdidos | **0 % perdidos** |
+| ARP | sin entrada | `192.168.0.1 → 02-c0-a8-00-02-00` (MAC virtual local) |
+| Lectura S7 (`ReadPlcLiveValuesS7`) | `TCP: Connection Error` | **`identityConfirmed: true`**, `CPU 1513-1 PN`, `asName: CentralDevice`, `serialNumber: 10S C-k97047rD94`, 117 ms |
+
+### RC-2 · La instancia nunca se enlazaba con el adaptador de red  **[CORREGIDO]**
+
+El camino vivo de registro (`RunLocalAcceptanceInstance`) **nunca llamaba** a
+`SetNetInterfaceMapping` ni a `SetNetInterfaceBindings`: el puerto IE1 de la CPU virtual no
+quedaba mapeado a ninguna NIC, así que la CPU tenía IP configurada y no llegaba a la red. La
+implementación correcta existía en el código (`RunAcceptanceInstance`) pero **no estaba
+conectada al dispatcher**: era código muerto.
+
+Corregido, respetando las restricciones que impone el runtime (medidas, no supuestas):
+
+| Llamada | Restricción real | Código que la delata |
+|---|---|---|
+| `SetNetInterfaceMapping(IE1, índice)` | instancia **parada** | `-72` `SREC_INSTANCE_ALREADY_RUNNING` |
+| …usar la sobrecarga de **índice**, no de nombre | el nombre del OAM va entrecomillado (`"Ethernet 2"`) | `-32` `SREC_WRONG_COMMUNICATION_INTERFACE` |
+| …en modo *single adapter* el índice de PC **no es seleccionable** | lo decide el `ComChannel` del Control Panel | `-32` |
+| `SetNetInterfaceBindings(0)` | solo comunicación local con el PC, nunca expuesta a la LAN | — |
+| `SetIPSuite(0, ip, máscara)` | instancia **corriendo** | `-14` `SREC_INSTANCE_NOT_RUNNING` |
+
+Orden final: *mapping + binding con la instancia parada* → *PowerOn* → *IP suite*.
+
+### RC-3 · La NIC del simulador estaba en APIPA  **[CORREGIDO]**
+
+`Ethernet 2` (`Siemens PLCSIM Virtual Ethernet Adapter`) estaba en `169.254.188.159/16` (APIPA).
+El Control Panel de PLCSIM Advanced tiene ya `Online access = TCP/IP Single Adapter` con
+`ComChannel = "Siemens PLCSIM Virtual Ethernet Adapter"` (verificado en
+`HKLM\SOFTWARE\WOW6432Node\Siemens\PLCSIMADV\Settings`), o sea que **la IP que la CPU virtual
+esperaba era `192.168.0.1` en esa subred**. Se fijó `Ethernet 2` en **`192.168.0.2/24`**.
+
+### RC-4 · La API de runtime solo funciona elevada  **[CORREGIDO]**
+
+`InitializeCode = 0x0` en proceso elevado frente a `0xFFFFFFFF` sin elevar. Coherente con el
+código: *"Runtime bindings require an administrator parent session"*. El driver del agente debe
+ejecutarse elevado.
+
+### RC-5 · El script de build abortaba por un *warning*  **[CORREGIDO]**
+
+`Build-PlcSimAdapter.ps1` fallaba aunque compilase bien: con `$ErrorActionPreference = 'Stop'`, la
+salida de stderr del compilador (un simple *warning* por una función sin usar) se convertía en un
+error terminante. Corregido; además se añadió **respaldo con MSVC** para hosts sin LLVM. El
+`clang-cl 23.1.2` de este host sí estaba instalado, solo que no estaba en el `PATH`.
+
+### Lo que queda: un paso de GUI, y por qué es imprescindible
+
+La CPU virtual **responde** (ping, ARP y S7 verificados) y la lista de rutas de TIA ya ofrece
+`PN/IE / Siemens PLCSIM Virtual Ethernet Adapter`. Pero la descarga por API sigue en
+`Connect to module PLC_1 failed` y la ruta se anuncia como **`[no IP]`**:
+
+- la **búsqueda de destino** ("Start search") solo la hace el diálogo de la GUI, no la API
+  (H-12), y es la que resuelve la CPU por IP sobre ese adaptador;
+- la herramienta `Set PG/PC interface` de *Siemens Automation Tools* **no está instalada** en esta
+  máquina, y tampoco la hoja de propiedades del OAM (`s7eptcpx.dll`), así que ninguna interfaz
+  PG/PC tiene dirección configurada en el OAM y el matcher de `targetIpAddress` del servidor MCP
+  no encuentra ruta;
+- el nombre PROFINET que publica la CPU virtual es `CentralDevice` (`asName`), mientras TIA
+  busca el módulo `PLC_1`; sin búsqueda por IP no hay forma de emparejarlos.
+
+**Acción manual exacta:** TIA V20 → abrir la fixture → **Project view** → seleccionar `PLC_1` →
+**Download to device** → en el diálogo, **"Interface for the PG/PC connection" =
+`Siemens PLCSIM Virtual Ethernet Adapter`** → pulsar **"Start search"** → decir qué aparece en la
+lista de destinos. Si aparece `CPU-1500 Simulation` o el dispositivo `192.168.0.1`, la descarga
+puede completarse desde la GUI y los 9 casos se pueden ejecutar después por S7, que ya funciona.
+
 ## Pendiente (F2+)
 
 1. **Decidir si el arreglo de H-21 se aplica a la fixture de trabajo.** Quita los 3 errores visibles en la GUI, pero no desbloquea la descarga (H-22). Es una decisión, no un paso automático.
