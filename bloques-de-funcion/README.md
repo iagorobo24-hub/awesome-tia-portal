@@ -9,17 +9,19 @@ Cada recurso tiene su propia subcarpeta y un `README.md`. Solo se anuncian archi
 
 ---
 
-Recursos incluidos (ver el README raíz para el estado honesto del proyecto):
+Recursos incluidos (el detalle de qué hay en cada carpeta está en la
+[matriz de trazabilidad](../MATRIZ-TRAZABILIDAD.md)):
 
-- [`fb-alarm-latch`](fb-alarm-latch/) 🔧 (fuente SCL compilada en V20; PLCSIM pendiente)
+- [`fb-alarm-latch`](fb-alarm-latch/) 🏆 (fuente SCL y XML, compilada en V20 con 0/0, ejecutada en PLCSIM: 9 casos)
+- [`fc-escalado`](fc-escalado/) 🏆 (fuente SCL y XML, compilada en V20 con 0/0, ejecutada en PLCSIM: 9 casos)
 - [`fb-analog-input`](fb-analog-input/) 📝
 - [`fb-edge-counter`](fb-edge-counter/) 📝
 - [`fb-hourmeter`](fb-hourmeter/) 📝
 - [`fb-motor`](fb-motor/) 📝
 - [`fb-pulse-gen`](fb-pulse-gen/) 📝
 - [`fb-valve`](fb-valve/) 📝
-- [`fc-escalado`](fc-escalado/) 📝
 
-Salvo `fb-alarm-latch`, las carpetas contienen fichas de diseño, sin bloque importable todavía. Consulta el [catálogo](../CATALOG.md).
+Salvo `fb-alarm-latch` y `fc-escalado`, las carpetas contienen fichas de diseño, sin bloque
+importable todavía. Consulta el [catálogo](../CATALOG.md).
 
 ¿Quieres aportar uno? Lee [cómo contribuir](../CONTRIBUTING.md).

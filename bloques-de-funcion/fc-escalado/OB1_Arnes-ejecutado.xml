@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <DocumentInfo>
+    <Created>2026-10-21T10:56:20.5683147Z</Created>
+    <ExportSetting>None</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Basic/Comfort/Advanced</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <Product>
+        <DisplayName>WinCC Unified</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Initial_Call" Datatype="Bool" Informative="true">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Initial call of this OB</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Remanence" Datatype="Bool" Informative="true">
+      <Comment>
+        <MultiLanguageText Lang="en-US">=True, if remanent data are available</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>Main</Name>
+      <Namespace />
+      <Number>1</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SecondaryType>ProgramCycle</SecondaryType>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <NewLine UId="21" />
+  <LineComment UId="22">
+    <Text UId="23"> Arnes de prueba para FC_Escalado (bloques-de-funcion/fc-escalado/arnes-ob1.md).</Text>
+  </LineComment>
+  <NewLine UId="24" />
+  <LineComment UId="25">
+    <Text UId="26" />
+  </LineComment>
+  <NewLine UId="27" />
+  <LineComment UId="28">
+    <Text UId="29"> Las seis variables de test son REAL: la API de PLCSIM Advanced resuelve y escribe</Text>
+  </LineComment>
+  <NewLine UId="30" />
+  <LineComment UId="31">
+    <Text UId="32"> simbolos REAL de forma nativa, mientras que el bloque recibe INT. El arnes hace la</Text>
+  </LineComment>
+  <NewLine UId="33" />
+  <LineComment UId="34">
+    <Text UId="35"> conversion con REAL_TO_INT, que trunca hacia cero, y los valores de prueba se</Text>
+  </LineComment>
+  <NewLine UId="36" />
+  <LineComment UId="37">
+    <Text UId="38"> mantienen dentro del rango INT.</Text>
+  </LineComment>
+  <NewLine UId="39" />
+  <LineComment UId="40">
+    <Text UId="41" />
+  </LineComment>
+  <NewLine UId="42" />
+  <LineComment UId="43">
+    <Text UId="44"> Mapa de tags (tabla Agent_Escalado):</Text>
+  </LineComment>
+  <NewLine UId="45" />
+  <LineComment UId="46">
+    <Text UId="47">   RawValue    entrada  valor crudo de la entrada analogica</Text>
+  </LineComment>
+  <NewLine UId="48" />
+  <LineComment UId="49">
+    <Text UId="50">   RawMin      entrada  raw del minimo de escala</Text>
+  </LineComment>
+  <NewLine UId="51" />
+  <LineComment UId="52">
+    <Text UId="53">   RawMax      entrada  raw del maximo de escala</Text>
+  </LineComment>
+  <NewLine UId="54" />
+  <LineComment UId="55">
+    <Text UId="56">   ScaleMin    entrada  valor de ingenieria del raw minimo</Text>
+  </LineComment>
+  <NewLine UId="57" />
+  <LineComment UId="58">
+    <Text UId="59">   ScaleMax    entrada  valor de ingenieria del raw maximo</Text>
+  </LineComment>
+  <NewLine UId="60" />
+  <LineComment UId="61">
+    <Text UId="62">   ScaledValue salida   valor escalado</Text>
+  </LineComment>
+  <NewLine UId="63" />
+  <Access Scope="Call" UId="64">
+    <CallInfo UId="65" BlockType="FC">
+      <Instance Scope="GlobalVariable" UId="67">
+        <Component Name="FC_Escalado" UId="66" />
+      </Instance>
+      <Token Text="(" UId="68" />
+      <Parameter Name="iValorCrudo" UId="69">
+        <Blank UId="70" />
+        <Token Text=":=" UId="71" />
+        <Blank UId="72" />
+        <Access Scope="Call" UId="73">
+          <Instruction Name="REAL_TO_INT" UId="74">
+            <Token Text="(" UId="75" />
+            <NamelessParameter UId="76">
+              <Access Scope="GlobalVariable" UId="77">
+                <Symbol UId="78">
+                  <Component Name="RawValue" UId="79">
+                    <BooleanAttribute Name="HasQuotes" UId="80">true</BooleanAttribute>
+                  </Component>
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="82" />
+          </Instruction>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="83" />
+      <NewLine UId="84" />
+      <Blank Num="14" UId="85" />
+      <Parameter Name="iRawMin" UId="86">
+        <Blank UId="87" />
+        <Token Text=":=" UId="88" />
+        <Blank UId="89" />
+        <Access Scope="Call" UId="90">
+          <Instruction Name="REAL_TO_INT" UId="91">
+            <Token Text="(" UId="92" />
+            <NamelessParameter UId="93">
+              <Access Scope="GlobalVariable" UId="94">
+                <Symbol UId="95">
+                  <Component Name="RawMin" UId="96">
+                    <BooleanAttribute Name="HasQuotes" UId="97">true</BooleanAttribute>
+                  </Component>
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="99" />
+          </Instruction>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="100" />
+      <NewLine UId="101" />
+      <Blank Num="14" UId="102" />
+      <Parameter Name="iRawMax" UId="103">
+        <Blank UId="104" />
+        <Token Text=":=" UId="105" />
+        <Blank UId="106" />
+        <Access Scope="Call" UId="107">
+          <Instruction Name="REAL_TO_INT" UId="108">
+            <Token Text="(" UId="109" />
+            <NamelessParameter UId="110">
+              <Access Scope="GlobalVariable" UId="111">
+                <Symbol UId="112">
+                  <Component Name="RawMax" UId="113">
+                    <BooleanAttribute Name="HasQuotes" UId="114">true</BooleanAttribute>
+                  </Component>
+                </Symbol>
+              </Access>
+            </NamelessParameter>
+            <Token Text=")" UId="116" />
+          </Instruction>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="117" />
+      <NewLine UId="118" />
+      <Blank Num="14" UId="119" />
+      <Parameter Name="rEscalaMin" UId="120">
+        <Blank UId="121" />
+        <Token Text=":=" UId="122" />
+        <Blank UId="123" />
+        <Access Scope="GlobalVariable" UId="124">
+          <Symbol UId="125">
+            <Component Name="ScaleMin" UId="126">
+              <BooleanAttribute Name="HasQuotes" UId="127">true</BooleanAttribute>
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="128" />
+      <NewLine UId="129" />
+      <Blank Num="14" UId="130" />
+      <Parameter Name="rEscalaMax" UId="131">
+        <Blank UId="132" />
+        <Token Text=":=" UId="133" />
+        <Blank UId="134" />
+        <Access Scope="GlobalVariable" UId="135">
+          <Symbol UId="136">
+            <Component Name="ScaleMax" UId="137">
+              <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text="," UId="139" />
+      <NewLine UId="140" />
+      <Blank Num="14" UId="141" />
+      <Parameter Name="rEscalado" UId="142">
+        <Blank UId="143" />
+        <Token Text="=&gt;" UId="144" />
+        <Blank UId="145" />
+        <Access Scope="GlobalVariable" UId="146">
+          <Symbol UId="147">
+            <Component Name="ScaledValue" UId="148">
+              <BooleanAttribute Name="HasQuotes" UId="149">true</BooleanAttribute>
+            </Component>
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="150" />
+    </CallInfo>
+  </Access>
+  <Token Text=";" UId="151" />
+  <NewLine UId="152" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

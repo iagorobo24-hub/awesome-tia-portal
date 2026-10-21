@@ -1,6 +1,11 @@
 # Filtro antirrebote con TON
 
-> **Estado**: probado en uso dentro de [FB_AlarmLatch](../bloques-de-funcion/fb-alarm-latch/) (compilado en V20, 0/0). Aquí aislado como patrón, pendiente de compilación aislada.
+> **Estado**: verificado en ejecución. Es el filtro `OnDelay` de
+> [FB_AlarmLatch](../bloques-de-funcion/fb-alarm-latch/), que se compiló en V20 con 0/0, se
+> descargó a una CPU virtual y se ejecutó en PLCSIM: el caso `retardo-500ms` comprueba que la
+> alarma no aparece hasta que el retardo vence, y `reposo` que con `T#0MS` el filtrado se
+> desactiva y la condición pasa inmediata. Evidencia:
+> [`evidencia-plcsim-2026-10-21.json`](../bloques-de-funcion/fb-alarm-latch/evidencia-plcsim-2026-10-21.json).
 
 Ignora activaciones más cortas que `OnDelay`. Con `T#0MS` el filtro se
 desactiva y la condición pasa inmediata.

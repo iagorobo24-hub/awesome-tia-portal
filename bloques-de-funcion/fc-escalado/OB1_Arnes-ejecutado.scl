@@ -1,0 +1,25 @@
+ORGANIZATION_BLOCK "Main"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+BEGIN
+   // Arnes de prueba para FC_Escalado (bloques-de-funcion/fc-escalado/arnes-ob1.md).
+   //
+   // Las seis variables de test son REAL: la API de PLCSIM Advanced resuelve y escribe
+   // simbolos REAL de forma nativa, mientras que el bloque recibe INT. El arnes hace la
+   // conversion con REAL_TO_INT, que trunca hacia cero, y los valores de prueba se
+   // mantienen dentro del rango INT.
+   //
+   // Mapa de tags (tabla Agent_Escalado):
+   //   RawValue    entrada  valor crudo de la entrada analogica
+   //   RawMin      entrada  raw del minimo de escala
+   //   RawMax      entrada  raw del maximo de escala
+   //   ScaleMin    entrada  valor de ingenieria del raw minimo
+   //   ScaleMax    entrada  valor de ingenieria del raw maximo
+   //   ScaledValue salida   valor escalado
+   "FC_Escalado"(iValorCrudo := REAL_TO_INT("RawValue"),
+                 iRawMin     := REAL_TO_INT("RawMin"),
+                 iRawMax     := REAL_TO_INT("RawMax"),
+                 rEscalaMin  := "ScaleMin",
+                 rEscalaMax  := "ScaleMax",
+                 rEscalado   => "ScaledValue");
+END_ORGANIZATION_BLOCK

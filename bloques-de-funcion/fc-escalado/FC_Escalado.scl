@@ -1,0 +1,48 @@
+//==============================================================================
+// Escala un valor analogico crudo a unidades de ingenieria.
+//
+// Es la pieza mas universal de cualquier proyecto con entradas analogicas: la
+// conversion 0-27648 -> 0.0-10.0 bar se reescribe en cada maquina y cada vez
+// aparecen los mismos errores: division por cero, overflow al restar, y el
+// cambio de INT a REAL hecho en el orden equivocado.
+//
+// Aqui la resta se hace EN REAL, no en INT: con el rango completo de INT
+// (-32768..32767) restar en INT puede desbordar y el resultado es un valor
+// sin sentido. La division por cero se cubre aparte y devuelve el minimo de
+// escala, que es la unica respuesta sensata cuando no hay rango.
+//
+// NO satura: si el raw esta fuera del rango configurado, el resultado sale
+// fuera de escala. Si necesitas saturar, envuelve la llamada con MIN/MAX.
+//
+// Consulta README.md de este recurso para la interfaz, las limitaciones y la
+// prueba ejecutada.
+//==============================================================================
+FUNCTION "FC_Escalado" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT
+      iValorCrudo : Int;               // Valor crudo de la entrada analogica
+      iRawMin     : Int;               // Raw que corresponde al minimo de escala
+      iRawMax     : Int;               // Raw que corresponde al maximo de escala
+      rEscalaMin  : Real;              // Valor de ingenieria del raw minimo
+      rEscalaMax  : Real;              // Valor de ingenieria del raw maximo
+   END_VAR
+
+   VAR_OUTPUT
+      rEscalado : Real;                // Valor escalado en unidades de ingenieria
+   END_VAR
+
+BEGIN
+
+   // Sin rango no hay escala posible: se devuelve el minimo en vez de dejar que
+   // la division por cero reviente el ciclo.
+   IF #iRawMax = #iRawMin THEN
+      #rEscalado := #rEscalaMin;
+   ELSE
+      #rEscalado := #rEscalaMin
+                 + ((INT_TO_REAL(#iValorCrudo) - INT_TO_REAL(#iRawMin))
+                    / (INT_TO_REAL(#iRawMax) - INT_TO_REAL(#iRawMin)))
+                 * (#rEscalaMax - #rEscalaMin);
+   END_IF;
+
+END_FUNCTION

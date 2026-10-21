@@ -58,6 +58,7 @@ CATEGORIES = [
 
 STATUS_BADGE = {
     "available": "✅",
+    "verified": "🏆",
     "compiled": "🔧",
     "documented": "📝",
     "wip": "⚙️",
@@ -285,6 +286,7 @@ HEADER = """\
 
 | Símbolo | Significado |
 |:---:|---|
+| 🏆 | **Verificado en ejecución** — fuente incluida, compilada en la versión declarada, descargada a una CPU virtual y ejecutada con casos de comportamiento observados; la evidencia está en su ficha |
 | ✅ | **Disponible** — README + `.xml` exportados, listo para importar |
 | 🔧 | **Fuente compilada** — código incluido y compilado en la versión declarada, con evidencia en su ficha; no implica `.xml` ni prueba de runtime |
 | 📝 | **Solo documentado** — el diseño/README está, falta el `.xml` |

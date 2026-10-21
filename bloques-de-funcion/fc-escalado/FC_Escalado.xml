@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <DocumentInfo>
+    <Created>2026-10-21T10:56:20.4273163Z</Created>
+    <ExportSetting>None</ExportSetting>
+    <InstalledProducts>
+      <Product>
+        <DisplayName>Totally Integrated Automation Portal</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>TIA Portal Openness</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <OptionPackage>
+        <DisplayName>TIA Portal Version Control Interface</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>STEP 7 Professional</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <OptionPackage>
+        <DisplayName>STEP 7 Safety</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </OptionPackage>
+      <Product>
+        <DisplayName>WinCC Basic/Comfort/Advanced</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+      <Product>
+        <DisplayName>WinCC Unified</DisplayName>
+        <DisplayVersion>V20</DisplayVersion>
+      </Product>
+    </InstalledProducts>
+  </DocumentInfo>
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="iValorCrudo" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Valor crudo de la entrada analogica</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="iRawMin" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Raw que corresponde al minimo de escala</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="iRawMax" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Raw que corresponde al maximo de escala</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="rEscalaMin" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Valor de ingenieria del raw minimo</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="rEscalaMax" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Valor de ingenieria del raw maximo</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output">
+    <Member Name="rEscalado" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="en-US">Valor escalado en unidades de ingenieria</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>FC_Escalado</Name>
+      <Namespace />
+      <Number>1</Number>
+      <ProgrammingLanguage>SCL</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>==============================================================================
+ Escala un valor analogico crudo a unidades de ingenieria.
+
+ Es la pieza mas universal de cualquier proyecto con entradas analogicas: la
+ conversion 0-27648 -> 0.0-10.0 bar se reescribe en cada maquina y cada vez
+ aparecen los mismos errores: division por cero, overflow al restar, y el
+ cambio de INT a REAL hecho en el orden equivocado.
+
+ Aqui la resta se hace EN REAL, no en INT: con el rango completo de INT
+ (-32768..32767) restar en INT puede desbordar y el resultado es un valor
+ sin sentido. La division por cero se cubre aparte y devuelve el minimo de
+ escala, que es la unica respuesta sensata cuando no hay rango.
+
+ NO satura: si el raw esta fuera del rango configurado, el resultado sale
+ fuera de escala. Si necesitas saturar, envuelve la llamada con MIN/MAX.
+
+ Consulta README.md de este recurso para la interfaz, las limitaciones y la
+ prueba ejecutada.
+==============================================================================</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <NewLine Num="2" UId="21" />
+  <LineComment UId="22">
+    <Text UId="23"> Sin rango no hay escala posible: se devuelve el minimo en vez de dejar que</Text>
+  </LineComment>
+  <NewLine UId="24" />
+  <LineComment UId="25">
+    <Text UId="26"> la division por cero reviente el ciclo.</Text>
+  </LineComment>
+  <NewLine UId="27" />
+  <Token Text="IF" UId="28" />
+  <Blank UId="29" />
+  <Access Scope="LocalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="iRawMax" UId="32" />
+    </Symbol>
+  </Access>
+  <Blank UId="33" />
+  <Token Text="=" UId="34" />
+  <Blank UId="35" />
+  <Access Scope="LocalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="iRawMin" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text="THEN" UId="40" />
+  <NewLine UId="41" />
+  <Blank Num="4" UId="42" />
+  <Access Scope="LocalVariable" UId="43">
+    <Symbol UId="44">
+      <Component Name="rEscalado" UId="45" />
+    </Symbol>
+  </Access>
+  <Blank UId="46" />
+  <Token Text=":=" UId="47" />
+  <Blank UId="48" />
+  <Access Scope="LocalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="rEscalaMin" UId="51" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="52" />
+  <NewLine UId="53" />
+  <Token Text="ELSE" UId="54" />
+  <NewLine UId="55" />
+  <Blank Num="4" UId="56" />
+  <Access Scope="LocalVariable" UId="57">
+    <Symbol UId="58">
+      <Component Name="rEscalado" UId="59" />
+    </Symbol>
+  </Access>
+  <Blank UId="60" />
+  <Token Text=":=" UId="61" />
+  <Blank UId="62" />
+  <Access Scope="LocalVariable" UId="63">
+    <Symbol UId="64">
+      <Component Name="rEscalaMin" UId="65" />
+    </Symbol>
+  </Access>
+  <NewLine UId="66" />
+  <Blank Num="4" UId="67" />
+  <Token Text="+" UId="68" />
+  <Blank UId="69" />
+  <Token Text="(" UId="70" />
+  <Token Text="(" UId="71" />
+  <Access Scope="Call" UId="72">
+    <Instruction Name="INT_TO_REAL" UId="73">
+      <Token Text="(" UId="74" />
+      <NamelessParameter UId="75">
+        <Access Scope="LocalVariable" UId="76">
+          <Symbol UId="77">
+            <Component Name="iValorCrudo" UId="78" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="80" />
+    </Instruction>
+  </Access>
+  <Blank UId="81" />
+  <Token Text="-" UId="82" />
+  <Blank UId="83" />
+  <Access Scope="Call" UId="84">
+    <Instruction Name="INT_TO_REAL" UId="85">
+      <Token Text="(" UId="86" />
+      <NamelessParameter UId="87">
+        <Access Scope="LocalVariable" UId="88">
+          <Symbol UId="89">
+            <Component Name="iRawMin" UId="90" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="92" />
+    </Instruction>
+  </Access>
+  <Token Text=")" UId="93" />
+  <NewLine UId="94" />
+  <Blank Num="4" UId="95" />
+  <Token Text="/" UId="96" />
+  <Blank UId="97" />
+  <Token Text="(" UId="98" />
+  <Access Scope="Call" UId="99">
+    <Instruction Name="INT_TO_REAL" UId="100">
+      <Token Text="(" UId="101" />
+      <NamelessParameter UId="102">
+        <Access Scope="LocalVariable" UId="103">
+          <Symbol UId="104">
+            <Component Name="iRawMax" UId="105" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="107" />
+    </Instruction>
+  </Access>
+  <Blank UId="108" />
+  <Token Text="-" UId="109" />
+  <Blank UId="110" />
+  <Access Scope="Call" UId="111">
+    <Instruction Name="INT_TO_REAL" UId="112">
+      <Token Text="(" UId="113" />
+      <NamelessParameter UId="114">
+        <Access Scope="LocalVariable" UId="115">
+          <Symbol UId="116">
+            <Component Name="iRawMin" UId="117" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="119" />
+    </Instruction>
+  </Access>
+  <Token Text=")" UId="120" />
+  <Token Text=")" UId="121" />
+  <NewLine UId="122" />
+  <Blank Num="4" UId="123" />
+  <Token Text="*" UId="124" />
+  <Blank UId="125" />
+  <Token Text="(" UId="126" />
+  <Access Scope="LocalVariable" UId="127">
+    <Symbol UId="128">
+      <Component Name="rEscalaMax" UId="129" />
+    </Symbol>
+  </Access>
+  <Blank UId="130" />
+  <Token Text="-" UId="131" />
+  <Blank UId="132" />
+  <Access Scope="LocalVariable" UId="133">
+    <Symbol UId="134">
+      <Component Name="rEscalaMin" UId="135" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="136" />
+  <Token Text=";" UId="137" />
+  <NewLine UId="138" />
+  <Token Text="END_IF" UId="139" />
+  <Token Text=";" UId="140" />
+  <NewLine Num="2" UId="141" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="8" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

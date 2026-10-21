@@ -66,11 +66,15 @@ Un resumen honesto de lo que hay.
 
 <img src="docs/img/estados.svg" alt="Ciclo de vida de un recurso: planificado, documentado y disponible; hoy 22 documentados y 0 disponibles" width="100%">
 
-> El estado de cada recurso se mantiene en [`CATALOG.md`](./CATALOG.md): ✅ disponible (README + `.xml`), 📝 solo documentado, ⏳ planificado.
+> El estado de cada recurso se mantiene en [`CATALOG.md`](./CATALOG.md): 🏆 verificado en ejecución, ✅ disponible (README + `.xml`), 📝 solo documentado, ⏳ planificado. El detalle de **qué hay realmente en cada carpeta** (fuente, compilación, ejecución y evidencia) está en la [matriz de trazabilidad](./MATRIZ-TRAZABILIDAD.md).
 
 ## Índice de recursos
 
-Todos están hoy en estado 📝 (documentados). La tabla completa, con versión y familia de PLC, está en el [catálogo](./CATALOG.md).
+La tabla completa, con versión y familia de PLC, está en el [catálogo](./CATALOG.md); lo que hay
+de verdad en cada carpeta, en la [matriz de trazabilidad](./MATRIZ-TRAZABILIDAD.md). Hoy hay
+**2 recursos verificados en ejecución** (`fb-alarm-latch` y `fc-escalado`, con fuente, compilación
+0/0 y casos de comportamiento observados en CPU virtual) y **22 fichas de diseño** sin código
+importable.
 
 <details open>
 <summary><b>🏷 Tipos de datos (UDT)</b></summary>
@@ -212,6 +216,7 @@ scripts/                   validación, catálogo auto-generado y revisión de e
 .github/                   workflow de validación y plantillas de issues/PR
 docs/                      gráficos, rutas de aprendizaje, glosario, FAQ, vídeos, hoja de ruta y referencias
 CATALOG.md                 índice y estado de cada recurso
+MATRIZ-TRAZABILIDAD.md     qué hay realmente en cada carpeta: fuente, compilación, ejecución y evidencia
 CONTRIBUTING.md  STYLE.md  guía de contribución y de estilo
 ```
 

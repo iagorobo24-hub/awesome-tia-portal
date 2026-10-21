@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "resource": "FC_Escalado.scl + arnes-ob1.md (llamada ciclica en OB1)",
+  "sourceSha256": "2995540FC80B0298A3174E2EE5D1ADC181A698FA9975DB63CD8F29F95E6909A7",
+  "ob1SclSha256": "758B95CDF5D0CE7348010BF26B9B9912737BD299D19E4EF643E04B1D8880ACD6",
+  "exportedXmlSha256": "B1B0AAA410A18A03B13AF20CFBC12A6DB65F5882353DA6C9DAAC9D7FE67DEB99",
+  "environment": {
+    "engineering": "TIA Portal V20 build 2000.0.9501.1",
+    "plcFamily": "S7-1500",
+    "cpuOrderNumber": "6ES7 513-1AM03-0AB0 (CPU 1513-1 PN), firmware V3.0",
+    "virtualCpu": "CPU 1513 virtual, instancia unica llamada PLC_1, modo TCP/IP sobre 'Siemens PLCSIM Virtual Ethernet Adapter' (192.168.0.2/24), CPU virtual en 192.168.0.1",
+    "plcsimAdvanced": "V7.0.0.0 (API 7.0, interfaceVersion 0x00070000)",
+    "projectKind": "disposable demo project (harness Agent_Escalado)"
+  },
+  "checks": {
+    "harnessOb1Call": "passed",
+    "sourceAccepted": "El generador de fuentes SCL de TIA V20 no admite VERSION, AUTHOR ni FAMILY en un FUNCTION, y exige el tipo de retorno en la cabecera. La forma que si genera es 'FUNCTION \"FC_Escalado\" : Void' con la salida por VAR_OUTPUT.",
+    "softwareCompile": {
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    "blockReadback": "FC_Escalado [FC1, SCL], isFailsafe=false, isKnowHowProtected=false, isConsistent=true. Main [OB1, SCL] igual.",
+    "plcsimDownloadTarget": "solo CPU virtual. Descarga desde la sesion Openness adjunta al TIA abierto (AttachToOpenProject), ruta 'PN/IE / Siemens PLCSIM Virtual Ethernet Adapter -> 1 X1'. Resultado: Download Success, 0 errores, 0 avisos.",
+    "plcsimRun": "passed (GoOnline: state=Online, isOnline=true, isReachable=true)",
+    "planExecution": {
+      "steps": 33,
+      "passed": 33,
+      "failed": 0
+    },
+    "observedTransitions": [
+      {
+        "case": "escala-minimo",
+        "forced": "RawMin=0 RawMax=27648 ScaleMin=0 ScaleMax=100 RawValue=0",
+        "expected": "0",
+        "observed": "0"
+      },
+      {
+        "case": "escala-maximo",
+        "forced": "RawValue=27648",
+        "expected": "100",
+        "observed": "100"
+      },
+      {
+        "case": "escala-mitad",
+        "forced": "RawValue=13824",
+        "expected": "50",
+        "observed": "50"
+      },
+      {
+        "case": "escala-cuarto",
+        "forced": "RawValue=6912",
+        "expected": "25",
+        "observed": "25"
+      },
+      {
+        "case": "escala-4-20ma-minimo",
+        "forced": "RawMin=5530 RawMax=27648 ScaleMin=0 ScaleMax=10 RawValue=5530",
+        "expected": "0",
+        "observed": "0"
+      },
+      {
+        "case": "escala-4-20ma-media",
+        "forced": "RawValue=16589",
+        "expected": "5",
+        "observed": "5"
+      },
+      {
+        "case": "fuera-de-rango-no-satura",
+        "forced": "RawMin=0 RawMax=27648 ScaleMin=0 ScaleMax=100 RawValue=30000",
+        "expected": "108.5069",
+        "observed": "108.507",
+        "note": "El bloque no satura, como dice la ficha: el resultado sale fuera del rango de escala. La diferencia con el esperado es la precision de 6 digitos con la que el adaptador serializa el REAL."
+      },
+      {
+        "case": "raw-negativo",
+        "forced": "RawValue=-1000",
+        "expected": "-3.6169",
+        "observed": "-3.6169"
+      },
+      {
+        "case": "rango-degenerado",
+        "forced": "RawMin=1000 RawMax=1000 ScaleMin=7.5 ScaleMax=99 RawValue=5000",
+        "expected": "7.5",
+        "observed": "7.5",
+        "note": "Con RawMax = RawMin no hay division por cero: devuelve el minimo de escala."
+      }
+    ],
+    "deviations": [
+      "Interfaz implementada: la salida es un VAR_OUTPUT 'rEscalado : Real' en vez de un valor de retorno. El generador de fuentes SCL de TIA V20 exige el tipo de retorno en la cabecera ('FUNCTION \"X\" : Void') y rechaza VERSION, AUTHOR y FAMILY en un FUNCTION; la forma que genera y compila es la que usa este bloque.",
+      "Arnes con variables de test REAL: la API de PLCSIM Advanced resuelve y escribe simbolos REAL de forma nativa, pero no expone acceso simbolico a INT. Las seis variables de la tabla Agent_Escalado son REAL y el OB1 las convierte con REAL_TO_INT al llamar al bloque, que conserva su interfaz INT. Los valores de prueba se mantienen dentro del rango INT.",
+      "Transporte: TCP/IP sobre 'Siemens PLCSIM Virtual Ethernet Adapter' en vez de Softbus local, por el estado del Control Panel de PLCSIM Advanced en este host.",
+      "Precision: el adaptador de PLCSIM serializa los REAL con 6 digitos significativos, asi que las comparaciones del plan se hacen con tolerancia (0.001) en vez de igualdad textual."
+    ],
+    "plcsimScreenshot": "assets/plcsim-control-panel-2026-10-21-fc-escalado.png (Control Panel de PLCSIM Advanced V7.0: '1 Active PLC Instance(s): PLC_1' en marcha y '/ 192.168.0.1')",
+    "programDownload": "solo CPU virtual (nunca planta)",
+    "behaviorTransitions": "verified"
+  },
+  "scope": "Evidencia de comportamiento en PLCSIM con arnes dedicado. No acredita uso en instalacion real ni certificacion."
+}

@@ -12,6 +12,7 @@
 
 | Símbolo | Significado |
 |:---:|---|
+| 🏆 | **Verificado en ejecución** — fuente incluida, compilada en la versión declarada, descargada a una CPU virtual y ejecutada con casos de comportamiento observados; la evidencia está en su ficha |
 | ✅ | **Disponible** — README + `.xml` exportados, listo para importar |
 | 🔧 | **Fuente compilada** — código incluido y compilado en la versión declarada, con evidencia en su ficha; no implica `.xml` ni prueba de runtime |
 | 📝 | **Solo documentado** — el diseño/README está, falta el `.xml` |
@@ -41,14 +42,14 @@
 
 | Estado | Recurso | Descripción | TIA Portal | Familia PLC | Nivel |
 |:---:|---|---|:---:|:---:|:---:|
-| 🔧 | [`fb-alarm-latch`](./bloques-de-funcion/fb-alarm-latch/) | Enclavamiento de alarma con reconocimiento y petición de sirena; fuente SCL compilada en V20, PLCSIM pendiente. | V20 | 1500 | 🟡 medio |
+| 🏆 | [`fb-alarm-latch`](./bloques-de-funcion/fb-alarm-latch/) | Enclavamiento de alarma con reconocimiento y petición de sirena; fuente SCL verificada en V20, con descarga a CPU virtual y nueve casos de comportamiento observados en PLCSIM. | V20 | 1500 | 🟡 medio |
 | 📝 | [`fb-analog-input`](./bloques-de-funcion/fb-analog-input/) | Bloque de procesado de entrada analógica — escalado, filtrado pasa-baja, alarmas HH/H/L/LL con histéresis, y simulación. | V20 | 1200 / 1500 | 🟡 medio |
 | 📝 | [`fb-edge-counter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos de subida con reset y configuración de límite — útil para contar ciclos de máquina, piezas producidas, paradas… | V20 | 1200 / 1500 | 🟢 básico |
 | 📝 | [`fb-hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas de funcionamiento — acumula el tiempo en el que su entrada está activa, con persistencia entre cortes de tensión. | V20 | 1200 / 1500 | 🟢 básico |
 | 📝 | [`fb-motor`](./bloques-de-funcion/fb-motor/) | Bloque de control digital de motor — gestiona marcha/paro, modo manual/auto, vigilancia de feedback con timeout, contador de horas y arranques. | V20 | 1200 / 1500 | 🟡 medio |
 | 📝 | [`fb-pulse-gen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable — produce un tren de pulsos con periodo y duty cycle configurables. Útil para parpadeos, refresco, tests, etc. | V20 | 1200 / 1500 | 🟢 básico |
 | 📝 | [`fb-valve`](./bloques-de-funcion/fb-valve/) | Bloque de control de válvula digital — gestiona apertura/cierre, modo manual/auto, vigilancia de feedback con timeout, detección de posición inválida. | V20 | 1200 / 1500 | 🟡 medio |
-| 📝 | [`fc-escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal genérico de un INT raw (0-27648) a un REAL en unidades de ingeniería. | V20 | 1200 / 1500 | 🟢 básico |
+| 🏆 | [`fc-escalado`](./bloques-de-funcion/fc-escalado/) | Escalado lineal genérico de un valor analógico crudo (0-27648) a un REAL en unidades de ingeniería; fuente SCL verificada en V20, con descarga a CPU virtual y nueve casos de escalado observados en PLCSIM. | V20 | 1200 / 1500 | 🟢 básico |
 
 ---
 

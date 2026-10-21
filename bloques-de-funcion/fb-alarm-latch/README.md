@@ -8,12 +8,12 @@ plc_family: [s7-1500]
 depends_on: []
 used_by: []
 tags: [alarma, enclavamiento, fb]
-status: compiled
+status: verified
 ---
 
 # FB_AlarmLatch
 
-> Enclavamiento de alarma con reconocimiento y petición de sirena; fuente SCL compilada en V20, PLCSIM pendiente.
+> Enclavamiento de alarma con reconocimiento y petición de sirena; fuente SCL verificada en V20, con descarga a CPU virtual y nueve casos de comportamiento observados en PLCSIM.
 
 Enclava una alarma de proceso, conserva una alarma que ya desapareció sin reconocimiento y genera una petición de sirena hasta que el operador la reconozca.
 
