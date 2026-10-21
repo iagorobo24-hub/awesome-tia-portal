@@ -5,6 +5,9 @@
   "sourceSha256": "2995540FC80B0298A3174E2EE5D1ADC181A698FA9975DB63CD8F29F95E6909A7",
   "ob1SclSha256": "758B95CDF5D0CE7348010BF26B9B9912737BD299D19E4EF643E04B1D8880ACD6",
   "exportedXmlSha256": "B1B0AAA410A18A03B13AF20CFBC12A6DB65F5882353DA6C9DAAC9D7FE67DEB99",
+  "projectAp20Sha256Before": "37C36C5A88F8D694263D9AEA5EA8C80A3A6AC9B34A3A64FF8E3EF94D404846E6",
+  "projectAp20Sha256After": "37C36C5A88F8D694263D9AEA5EA8C80A3A6AC9B34A3A64FF8E3EF94D404846E6",
+  "ap20HashNote": "El hash del .ap20 no cambia al anadir la tabla de tags, el bloque FC_Escalado y el OB1 nuevo: los cambios de bloque se guardan en AgentDemo_V20.info y en la carpeta de trabajo, no en el .ap20. Es la misma observacion que se documento como H-23 en fb-alarm-latch.",
   "environment": {
     "engineering": "TIA Portal V20 build 2000.0.9501.1",
     "plcFamily": "S7-1500",
