@@ -48,9 +48,17 @@ Para repetirlo hacen falta cuatro cosas que no son evidentes:
 
 El 23/09/2026 se encendió y apagó una CPU 1513 virtual temporal en modo local Softbus. No se le descargó el proyecto, por lo que todavía no se pueden marcar como aprobados los casos anteriores. Una ruta TCP/IP ensayada antes intentó llamar funciones de mapeo de red en modo Softbus y obtuvo `SREC_NOT_SUPPORTED` (`-19`); además, `SetIPSuite` antes de arrancar la CPU obtuvo `SREC_INSTANCE_NOT_RUNNING` (`-14`). Son fallos de secuencia/modo de la prueba, no fallos demostrados del FB. [Siemens documenta Softbus y su descarga desde TIA](https://docs.tia.siemens.cloud/r/simatic_s7_1500_et_200mp_manual_collection_enus_20/comprehensive-information/cpu-function-manuals/s7-plcsim-advanced/simulating/simulating-a-cpu/control-panel-user-interface/s7-plcsim-advanced-control-panel).
 
-Ya se publicó una captura del bloque desde el proyecto de demostración. La captura de la observación
-en PLCSIM queda pendiente: el Control Panel corre elevado y su contenido no es legible por
-automatización.
+Ya se publicó una captura del bloque desde el proyecto de demostración. La captura de la
+observación en PLCSIM se publicó el 21/10/2026: el Control Panel corre elevado y su contenido no
+es legible por automatización desde una sesión normal, pero **sus píxeles sí se pueden copiar
+desde un proceso elevado**, que es como se obtuvo.
+
+![Control Panel de PLCSIM Advanced V7.0 con la instancia virtual PLC_1 en marcha y la IP 192.168.0.1](assets/plcsim-control-panel-2026-10-21.png)
+
+*Captura directa del Control Panel de PLCSIM Advanced V7.0, 21/10/2026. Se ve `Online Access =
+TCP/IP Single Adapter`, `TCP/IP communication with: <Local>`, y `1 Active PLC Instance(s): PLC_1`
+con el indicador verde de marcha y la dirección `/ 192.168.0.1`. Es la prueba de que el destino
+de la descarga era una CPU virtual y no un PLC de planta.*
 
 ## Comprobación adicional del 24/09/2026
 

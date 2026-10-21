@@ -109,7 +109,7 @@
       "Tiempo de asentamiento: tras arrancar el Control Panel de PLCSIM Advanced, la primera descarga por API falla y la segunda, unos 100 s despues, funciona. La OAM necesita ese margen para queda configurada.",
       "Lecturas simbolicas: el plan solo relee parte de las senales en cuatro de los nueve casos (reconocer-presente, desaparece-tras-ack, ack-causa-ida, inhibicion). Los valores no releidos se anotan como '-' y se razonan a partir del estado previo; no se presentan como observados."
     ],
-    "plcsimScreenshot": "PENDING-captura (el Control Panel de PLCSIM Advanced no expone su contenido a la automatizacion: la ventana corre elevada y la API de accesibilidad no ve sus controles desde una sesion no elevada)",
+    "plcsimScreenshot": "assets/plcsim-control-panel-2026-10-21.png (captura directa del Control Panel de PLCSIM Advanced V7.0: '1 Active PLC Instance(s): PLC_1' en marcha y '/ 192.168.0.1', modo TCP/IP Single Adapter)",
     "programDownload": "solo CPU virtual (nunca planta)",
     "behaviorTransitions": "verified"
   },

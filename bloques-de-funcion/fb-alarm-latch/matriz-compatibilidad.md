@@ -11,7 +11,9 @@ compilación y la ejecución en PLCSIM quedaron realmente probadas o siguen pend
 | `FB_AgentDemo` (FB1, SCL) — baseline de la fixture | 1513-1 PN · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **Sí** — descargado junto con el resto |
 
 Evidencia de ejecución: [`evidencia-plcsim-2026-10-21.json`](evidencia-plcsim-2026-10-21.json)
-(65/65 pasos del plan, 9 casos con los valores observados).
+(65/65 pasos del plan, 9 casos con los valores observados) y la
+[captura del Control Panel](assets/plcsim-control-panel-2026-10-21.png) con la instancia
+`PLC_1` en marcha.
 
 ## Entorno de la prueba
 
