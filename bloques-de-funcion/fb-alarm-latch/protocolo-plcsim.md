@@ -18,12 +18,17 @@ y anotar antes de seguir.
 3. Crear la tabla VAT `VAT_AlarmLatch` con los 10 operandos.
 4. Forzar `M0.2 = TRUE` (Enable) y comprobar reposo: `M2.0…M2.4 = 0`.
 
-## F2. Arranque de la CPU virtual (lecciones del 23/09)
+## F2. Arranque de la CPU virtual (lecciones del 23/09 y del 21/10)
 
-1. **Una sola** CPU virtual S7-1500, modo local Softbus (el modo que ya funcionó aquí).
+1. **Una sola** CPU virtual S7-1500.
 2. No llamar a funciones de mapeo TCP/IP en modo Softbus (da `SREC_NOT_SUPPORTED`).
 3. No configurar IP antes de arrancar la CPU (`SREC_INSTANCE_NOT_RUNNING`).
 4. Anotar tipo de CPU virtual, modo y hora de arranque.
+5. **Reservar ~100 s tras arrancar el Control Panel** antes del primer intento de descarga: la OAM
+   no queda configurada al instante y la primera descarga falla aunque la instancia esté sana.
+6. **Transporte**: este host tiene el Control Panel de PLCSIM Advanced en *TCP/IP Single Adapter*,
+   con la NIC virtual de Siemens en `192.168.0.2/24` y la CPU virtual en `192.168.0.1`. En
+   Softbus, `SetIPSuite` da `-14` y las funciones de mapeo dan `-19`.
 
 ## F3. Descarga con seguridad (leer dos veces)
 
@@ -32,10 +37,21 @@ y anotar antes de seguir.
 3. Descargar **únicamente** a la instancia virtual. Jamás a un PLC de planta.
 4. Pasar la CPU a RUN.
 
+> En modo desatendido, la descarga se hizo desde la sesión Openness **adjunta al TIA abierto**
+> (`AttachToOpenProject`): en sesión headless aislada el mismo proyecto falla con
+> `Connect to module PLC_1 failed` aunque la CPU virtual esté viva. Verificado el 21/10/2026.
+
 ## F4. Casos y observación
 
 `OnDelay = T#0MS` y `Enable = TRUE` salvo indicación. `CmdAck` se pulsa
 un ciclo y se libera antes del caso siguiente.
+
+> **Nombres de tag al observar por API.** La API simbólica de PLCSIM Advanced resuelve por el
+> **nombre simple** del tag (`Active`, `Latched`, `Unacked`, `GoneUnacked`, `Horn`), **sin** el
+> prefijo de tabla de TIA. Con `Agent_Signals.Active` la lectura devuelve `-4`
+> (`SREC_DOES_NOT_EXIST`). Además, hay que llamar a `IInstance::UpdateTagList()` antes de la
+> primera lectura simbólica: si no, devuelve `-47` (`SREC_NOT_UP_TO_DATE`) aunque la CPU ejecute
+> el programa descargado. Verificado el 21/10/2026.
 
 | Paso | `M0.0` | `M0.1` | Esperado (`M2.0`…`M2.4`) | Observado |
 |---|---|---|---|---|

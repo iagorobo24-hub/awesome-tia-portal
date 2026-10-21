@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-21",
+  "resource": "FB_AlarmLatch.scl + arnes-ob1.md (DB AlarmPump en OB1)",
+  "sourceSha256": "139D94B56F2E402A716E97C7158F94C22F7394DBA6CB34F9AE7042A215A609FE",
+  "ob1SclSha256": "DBAEB397FACA3010D267DDB279A1384775F3508D9BED02532794745E8E316161",
+  "projectAp20Sha256Before": "37C36C5A88F8D694263D9AEA5EA8C80A3A6AC9B34A3A64FF8E3EF94D404846E6",
+  "projectAp20Sha256After": "37C36C5A88F8D694263D9AEA5EA8C80A3A6AC9B34A3A64FF8E3EF94D404846E6",
+  "ap20HashNote": "El .ap20 no cambia al aplicar el ajuste de proteccion de la CPU (hallazgo H-23): el cambio se guarda en AgentDemo_V20.info y en System\\PEData.*, no en el .ap20. Por eso el hash es el mismo antes y despues.",
+  "environment": {
+    "engineering": "TIA Portal V20 build 2000.0.9501.1",
+    "plcFamily": "S7-1500",
+    "cpuOrderNumber": "6ES7 513-1AM03-0AB0 (CPU 1513-1 PN), firmware V3.0",
+    "virtualCpu": "CPU 1513 virtual, instancia unica llamada PLC_1, modo TCP/IP sobre 'Siemens PLCSIM Virtual Ethernet Adapter' (192.168.0.2/24), CPU virtual en 192.168.0.1",
+    "plcsimAdvanced": "V7.0.0.0 (API 7.0, interfaceVersion 0x00070000)",
+    "projectKind": "disposable demo project (harness AlarmPump)"
+  },
+  "checks": {
+    "harnessOb1Call": "passed",
+    "softwareCompile": {
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0
+    },
+    "hardwareCompile": {
+      "state": "Success",
+      "errors": 0,
+      "warnings": 0,
+      "note": "Inicialmente 3 errores por la proteccion de datos de configuracion de la PLC; corregidos sin contrasena (hallazgo H-21)"
+    },
+    "plcsimDownloadTarget": "solo CPU virtual. La descarga se hizo desde la sesion Openness adjunta al TIA abierto (AttachToOpenProject), ruta 'PN/IE / Siemens PLCSIM Virtual Ethernet Adapter -> 1 X1'. Resultado: Download Success, 0 errores, 0 avisos.",
+    "plcsimRun": "passed (GoOnline: state=Online, isOnline=true, isReachable=true; la CPU virtual quedo en RUN)",
+    "planExecution": {
+      "steps": 65,
+      "passed": 65,
+      "failed": 0,
+      "note": "Los 65 pasos se ejecutaron contra la instancia ya descargada, con las 65 expectativas satisfied."
+    },
+    "observedTransitions": [
+      {
+        "case": "reposo",
+        "forced": "M0.2=1 (Enable) sin condicion",
+        "expected": "0,0,0,0,0",
+        "observed": "0,0,0,0,0",
+        "signalsRead": "Active, Latched, Unacked, GoneUnacked, Horn"
+      },
+      {
+        "case": "aparece-alarma",
+        "forced": "M0.0=1 (condicion presente)",
+        "expected": "1,1,1,0,1",
+        "observed": "1,1,1,0,1",
+        "signalsRead": "Active, Latched, Unacked, GoneUnacked, Horn"
+      },
+      {
+        "case": "reconocer-presente",
+        "forced": "M0.1=1 (pulso de acknowledge) con la causa presente",
+        "expected": "1,1,0,0,0",
+        "observed": "1,1,0,-,0",
+        "signalsRead": "Active, Latched, Unacked, Horn. GoneUnacked no se relee en este caso y sigue en 0 desde el caso 1."
+      },
+      {
+        "case": "desaparece-tras-ack",
+        "forced": "M0.1=0 y M0.0=0 (retirada de la causa)",
+        "expected": "0,0,0,0,0",
+        "observed": "0,-,-,-,0",
+        "signalsRead": "Solo Horn. El resto no se relee tras el flanco de acknowledge; quedan en 0 por el estado previo y por la retirada de la causa."
+      },
+      {
+        "case": "redisparo-sin-ack",
+        "forced": "M0.0=1 y luego M0.0=0 sin acknowledge",
+        "expected": "0,1,1,1,1",
+        "observed": "0,1,1,1,1",
+        "signalsRead": "Active, Latched, Unacked, GoneUnacked, Horn"
+      },
+      {
+        "case": "ack-causa-ida",
+        "forced": "M0.1=1 con la causa ya desaparecida",
+        "expected": "0,0,0,0,0",
+        "observed": "0,0,-,0,0",
+        "signalsRead": "Active, Latched, GoneUnacked, Horn. Unacked no se relee en este caso."
+      },
+      {
+        "case": "inhibicion",
+        "forced": "M0.2=0 (Enable=FALSE) con M0.0=1",
+        "expected": "0,0,0,0,0",
+        "observed": "0,-,-,-,0",
+        "signalsRead": "Active, Latched, Horn. Unacked y GoneUnacked no se releen en este caso."
+      },
+      {
+        "case": "retardo-500ms",
+        "forced": "M0.2=1 y MD4=T#500MS (MD6=1, MD7=244) con M0.0=1",
+        "expected": "retardo-luego-1,1,1,0,1",
+        "observed": "1,1,1,0,1",
+        "signalsRead": "Active, Latched, Unacked, GoneUnacked, Horn"
+      },
+      {
+        "case": "ack-como-nivel",
+        "forced": "M0.1=1 fijo con alarma nueva (M0.0=1 y luego M0.0=0)",
+        "expected": "documentar-comportamiento",
+        "observed": "Latched=0 tras el primer acknowledge; nueva alarma: Active=1 y Latched=1; Unacked=0; tras liberar el acknowledge: Latched=0 y Horn=0",
+        "signalsRead": "Latched, Active, Latched, Unacked, Latched, Horn"
+      }
+    ],
+    "deviations": [
+      "Transporte: el protocolo pide modo local Softbus; la ejecucion real fue TCP/IP sobre 'Siemens PLCSIM Virtual Ethernet Adapter'. Motivo: el Control Panel de PLCSIM Advanced esta en 'TCP/IP Single Adapter' y su ComChannel es precisamente esa NIC; forzar Softbus no era posible desde la API sin desregistrar la instancia.",
+      "Nombres de tag: el plan usaba 'Agent_Signals.<tag>'. La API symbolism de PLCSIM Advanced resuelve por el nombre simple del tag ('Active', 'Latched', ...), sin el prefijo de tabla. Con el nombre cualificado la lectura devuelve -4 (SREC_DOES_NOT_EXIST).",
+      "Actualizacion de la lista de tags: la lectura simbolica devuelve -47 (SREC_NOT_UP_TO_DATE) hasta que se llama a IInstance::UpdateTagList(), que lee los tags del VPLC y los escribe en la memoria compartida ordenada por nombre. Sin esa llamada la resolucion simbolica no funciona aunque la CPU ejecute el programa descargado.",
+      "Descarga por sesion adjunta: DownloadToPlc solo resuelve el destino cuando la sesion Openness se adjunta al TIA abierto (AttachToOpenProject). En sesion headless aislada (ConnectIsolated) el mismo proyecto falla con 'Connect to module PLC_1 failed' aunque la CPU virtual este viva y accesible por S7.",
+      "Tiempo de asentamiento: tras arrancar el Control Panel de PLCSIM Advanced, la primera descarga por API falla y la segunda, unos 100 s despues, funciona. La OAM necesita ese margen para queda configurada.",
+      "Lecturas simbolicas: el plan solo relee parte de las senales en cuatro de los nueve casos (reconocer-presente, desaparece-tras-ack, ack-causa-ida, inhibicion). Los valores no releidos se anotan como '-' y se razonan a partir del estado previo; no se presentan como observados."
+    ],
+    "plcsimScreenshot": "PENDING-captura (el Control Panel de PLCSIM Advanced no expone su contenido a la automatizacion: la ventana corre elevada y la API de accesibilidad no ve sus controles desde una sesion no elevada)",
+    "programDownload": "solo CPU virtual (nunca planta)",
+    "behaviorTransitions": "verified"
+  },
+  "scope": "Evidencia de comportamiento en PLCSIM con arnes dedicado. No acredita uso en instalacion real ni certificacion."
+}

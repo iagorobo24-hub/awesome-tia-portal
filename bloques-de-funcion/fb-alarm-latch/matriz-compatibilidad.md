@@ -5,27 +5,47 @@ compilación y la ejecución en PLCSIM quedaron realmente probadas o siguen pend
 
 | Bloque | CPU (referencia exacta) | TIA | Compilación 0/0 | PLCSIM |
 |---|---|---|---|---|
-| `FB_AlarmLatch` (FB2, SCL) | 1513-1 PN · `6ES7 513-1AM03-0AB0` · FW **V3.0** | **V20** | **Sí** — 0 errores / 0 avisos | **No** — bloqueado (H-19) |
-| `Main` (OB1, SCL) — arnés `CALL "AlarmPump"` | 1513-1 PN · `6ES7 513-1AM03-0AB0` · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **No** — bloqueado (H-19) |
-| `AlarmPump` (DB1, instancia de FB_AlarmLatch) | 1513-1 PN · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **No** — bloqueado (H-19) |
-| `FB_AgentDemo` (FB1, SCL) — baseline de la fixture | 1513-1 PN · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **No** — bloqueado (H-19) |
+| `FB_AlarmLatch` (FB2, SCL) | 1513-1 PN · `6ES7 513-1AM03-0AB0` · FW **V3.0** | **V20** | **Sí** — 0 errores / 0 avisos | **Sí** — descarga y 9 casos verificados (2026-10-21) |
+| `Main` (OB1, SCL) — arnés `CALL "AlarmPump"` | 1513-1 PN · `6ES7 513-1AM03-0AB0` · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **Sí** — el arnés es lo que se ejecutó |
+| `AlarmPump` (DB1, instancia de FB_AlarmLatch) | 1513-1 PN · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **Sí** — DB leída y escrita durante los casos |
+| `FB_AgentDemo` (FB1, SCL) — baseline de la fixture | 1513-1 PN · FW V3.0 | **V20** | **Sí** — 0 errores / 0 avisos | **Sí** — descargado junto con el resto |
+
+Evidencia de ejecución: [`evidencia-plcsim-2026-10-21.json`](evidencia-plcsim-2026-10-21.json)
+(65/65 pasos del plan, 9 casos con los valores observados).
 
 ## Entorno de la prueba
 
 | Componente | Versión | Nota |
 |---|---|---|
-| TIA Portal | **V20** | build V20.0.0, sin update aplicado |
-| PLCSIM Advanced | **V7.0.0.0** (API 7.0) | Runtime Manager operativo; `Online Access = PLCSIM (Softbus)` confirmado |
-| S7-PLCSIM clásico | **V19** (1900.1.60.8554) | instalado en el mismo host — ver hallazgo H-19 |
-| SOFTBUS | `SOFTBUS` · interfaz `PLCSIM` · `ip=null` · códigos API `0x0` | instancia registrada correctamente |
-| SOFTBUS en TIA | ruta única `PG/IE / PLCSIM [no IP] → 1 X1` | `CheckDownloadReadiness`: `ready=true`, `isConsistent=true`, 0 NICs |
+| TIA Portal | **V20** | build `2000.0.9501.1` |
+| PLCSIM Advanced | **V7.0.0.0** (API 7.0, `0x00070000`) | Runtime Manager operativo; `Online Access = TCP/IP Single Adapter` |
+| S7-PLCSIM clásico | **V19** y **V20** | instalados en el mismo host; ver H-19 (refutado) |
+| Transporte | **TCP/IP** sobre `Siemens PLCSIM Virtual Ethernet Adapter` (`192.168.0.2/24`) | instancia `PLC_1` en `192.168.0.1`, CPU virtual en `RUN` |
+| Ruta de descarga | `PN/IE / Siemens PLCSIM Virtual Ethernet Adapter → 1 X1` | `Download Success`, 0 errores, 0 avisos |
 
 ## Compatibilidad de versión (matriz Siemens)
 
 TIA **V20** requiere S7-PLCSIM Advanced **V7.0** (cubre TIA V14–V20 y CPU FW V1.8–V4.0).
 La CPU de esta prueba es FW **V3.0**, dentro del rango soportado → **la combinación de
-versiones es válida**. El bloqueo H-19 no es de compatibilidad, sino de coexistencia del
-PLCSIM clásico V19 en la interfaz PG/PC del host.
+versiones es válida** y queda verificada en ejecución, no solo por rango.
+
+## Las cuatro condiciones que había que cumplir
+
+Ninguna era evidente y las cuatro hacen falta a la vez. Sin una de ellas la descarga
+vuelve a fallar con `Connect to module PLC_1 failed`:
+
+1. **La sesión Openness tiene que ir adjunta al TIA abierto** (`AttachToOpenProject`), no
+   aislada. En sesión headless (`ConnectIsolated`) el mismo proyecto falla aunque la CPU
+   virtual esté viva y respondiendo por S7.
+2. **El Control Panel de PLCSIM Advanced necesita margen**: la primera descarga tras
+   arrancarlo falla y la segunda, unos 100 s después, funciona. La OAM no queda configurada
+   al instante.
+3. **La lista de etiquetas hay que refrescarla** con `IInstance::UpdateTagList()`. Sin esa
+   llamada la lectura simbólica devuelve `-47` (`SREC_NOT_UP_TO_DATE`) aunque la CPU
+   ejecute el programa descargado.
+4. **Los tags se nombran sin el prefijo de tabla**: la API resuelve por `Active`, no por
+   `Agent_Signals.Active`; con el nombre cualificado devuelve `-4`
+   (`SREC_DOES_NOT_EXIST`).
 
 ## Hallazgo H-19 — hipótesis original **refutada**
 
@@ -35,36 +55,32 @@ PG/PC `PLCSIM`. **Se refutó empíricamente**: tras instalar **S7-PLCSIM clásic
 —interfaz `PLCSIM`, sin forzar interfaz y `PLCSIM.TCPIP.1`— el resultado no cambió.
 La versión del simulador clásico **no es la causa**.
 
-Lo que sí está medido:
+Lo que sí era la causa, y quedó medido:
 
-- TIA V20 en esta máquina **no alcanza ninguna CPU virtual por Softbus**, ni con la
-  instancia de PLCSIM Advanced sana (`registerCode/powerOnCode = 0x0`, nombre `PLC_1`
-  igual que el dispositivo, 1 instancia activa), ni con `GoOnline`, ni con **TIA cerrada**.
-- La **única ruta** que TIA declara es `PN/IE / PLCSIM [no IP] -> 1 X1`. Pedir
-  `PLCSIM.TCPIP.1` o una `targetIpAddress` se rechaza por el propio servidor **antes**
-  de intentar la conexión: no hay una segunda interfaz ni ruta con IP que probar.
-- **Nueve** intentos llegaron a la fase de conexión y fallaron de forma idéntica.
-
-> Ojo con un caso aparte que se confundió con este: la **configuración de hardware no
-> compilaba** (3 errores por la protección de datos de configuración), porque
-> `CompileSoftware` solo compila software. Se corrigió sin tocar contraseñas y el
-> hardware pasó a 0/0 — **pero la descarga sigue fallando igual**. Son dos problemas
-> distintos; los detalles están en el [informe de ejecución](informe-ejecucion-2026-10-19.md) (H-20, H-22).
-
-Determinar el ajuste concreto que rompe esa ruta exige **inspección visual del diálogo
-de descarga** (lista de destinos y aviso de CPU simulada). El Ribbon de TIA V20 no
-expone controles por UI Automation en este host, así que esa observación no puede
-automatizarse.
+- **La configuración de hardware no compilaba** (3 errores por la protección de datos de
+  configuración), porque `CompileSoftware` solo compila software. Se corrigió sin tocar
+  contraseñas y el hardware pasó a 0/0.
+- **El adaptador de PLCSIM invertía los octetos de la IP** al construirla, de modo que la
+  CPU virtual recibía `1.0.168.192` en vez de `192.168.0.1`: el `SetIPSuite` lo aceptaba
+  con `0x0` y lo descartaba en silencio. Corregido, la CPU responde a ping, a ARP y a S7.
+- **El puerto IE1 de la instancia no se enlazaba con ninguna NIC**: el camino de registro
+  nunca llamaba a `SetNetInterfaceMapping` ni a `SetNetInterfaceBindings`.
 
 > Detalle completo, intento a intento, en
 > [`informe-ejecucion-2026-10-19.md`](informe-ejecucion-2026-10-19.md) (run
 > `20261016-fb-alarm-latch` del workspace TIA-Claude).
 
-## Cómo completar esta matriz
+## Desviaciones de esta ejecución
 
-1. Inspeccionar el diálogo de descarga en la TIA GUI y registrar qué destinos aparecen.
-   Dependiendo de lo observado: ajustar la PG/PC, retirar el clásico V19 para que TIA
-   use la interfaz Softbus de Advanced, o probar la ruta TCP/IP con la NIC virtual.
-2. Repetir `DownloadToPlc` → `Online` → plan de 9 casos y anotar `PLCSIM = Sí` por fila.
+- **Transporte TCP/IP en vez de Softbus local**: el Control Panel está en *TCP/IP Single
+  Adapter* y su `ComChannel` es precisamente la NIC virtual de Siemens; forzar Softbus desde
+  la API era incompatible.
+- **Cuatro de los nueve casos releen solo parte de las señales**. Los valores no releídos
+  se anotan como `-` y se razonan a partir del estado previo; no se presentan como
+  observados.
 
-Hasta entonces, **la columna PLCSIM permanece vacía a propósito**.
+## Lo que queda fuera del alcance
+
+Esta matriz acredita el comportamiento del bloque en un proyecto desechable con arnés
+dedicado, sobre una CPU virtual 1513-1 PN. **No acredita** uso en instalación real, ni
+compatibilidad con otras familias de CPU, ni variantes del bloque sin el arnés.

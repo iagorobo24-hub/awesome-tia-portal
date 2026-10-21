@@ -300,6 +300,49 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
 
 - **H-42** [VERIFICADO, 2026-10-20] El adaptador admite **`--transport tcpip-local`** con `--ip/--mask/--gateway`, que llama a `SetNetworkMode(TCPIP_SINGLE_ADAPTER)` y exige sesión administrativa. Aviso de seguridad: el código documenta que *"the Control Panel already selects Ethernet 3 in single-adapter mode"*, y **`Ethernet 3` es `192.168.1.113/24`, una NIC real de la red local**. Para que la ruta TCP/IP siga siendo local y aislada, el Control Panel debe apuntar a la NIC virtual de Siemens (`Ethernet 2`), nunca a `Ethernet 3`.
 
+## Cierre: descarga y 9 casos verificados (2026-10-21)
+
+El 21/10 la descarga se completó y el plan de 65 pasos pasó **65/65**, con las nueve
+transiciones de comportamiento correctas. Evidencia: [`evidencia-plcsim-2026-10-21.json`](evidencia-plcsim-2026-10-21.json).
+
+```json
+{"ok":true,"state":"Success","errorCount":0,"warningCount":0,
+ "message":"Download Success: 0 error(s), 0 warning(s).",
+ "pgPcRoute":"PN/IE / Siemens PLCSIM Virtual Ethernet Adapter [no IP] -> 1 X1"}
+{"state":"Online","isOnline":true,"isReachable":true,"message":"'PLC_1' is online and reachable."}
+plan ok=True steps=65 failed=
+```
+
+Las cuatro condiciones que había que cumplir a la vez, ninguna evidente:
+
+| # | Condición | Qué pasaba si no se cumplía |
+|---|---|---|
+| 1 | La sesión Openness va **adjunta** al TIA abierto (`AttachToOpenProject`), no aislada | `Connect to module PLC_1 failed`, aunque la CPU virtual estuviera viva y respondiendo por S7 |
+| 2 | **Margen de ~100 s** tras arrancar el Control Panel de PLCSIM Advanced | La primera descarga falla; la segunda, ya asentada la OAM, funciona |
+| 3 | `IInstance::UpdateTagList()` antes de leer tags | La lectura simbólica devuelve `-47` (`SREC_NOT_UP_TO_DATE`) aunque la CPU ejecute el programa descargado |
+| 4 | Los tags se nombran **sin el prefijo de tabla** (`Active`, no `Agent_Signals.Active`) | `-4` (`SREC_DOES_NOT_EXIST`) |
+
+Las condiciones 3 y 4 son propiedades de la API de PLCSIM Advanced 7.0, no del proyecto:
+la lista de etiquetas vive en memoria compartida y la puebla `UpdateTagList()`, que lee los
+tags del VPLC. El plan original usaba el nombre cualificado de TIA (`Agent_Signals.Active`)
+y por eso fallaba.
+
+### Observado por caso
+
+| Caso | Forzado | Esperado | Observado |
+|---|---|---|---|
+| reposo | `M0.2=1` | 0,0,0,0,0 | **0,0,0,0,0** |
+| aparece-alarma | `M0.0=1` | 1,1,1,0,1 | **1,1,1,0,1** |
+| reconocer-presente | `M0.1` pulso | 1,1,0,0,0 | **1,1,0,-,0** |
+| desaparece-tras-ack | `M0.1=0`, `M0.0=0` | 0,0,0,0,0 | **0,-,-,-,0** |
+| redisparo-sin-ack | `M0.0=1→0` | 0,1,1,1,1 | **0,1,1,1,1** |
+| ack-causa-ida | `M0.1` pulso | 0,0,0,0,0 | **0,0,-,0,0** |
+| inhibicion | `M0.2=0`, `M0.0=1` | 0,0,0,0,0 | **0,-,-,-,0** |
+| retardo-500ms | `MD4=T#500MS` | retardo-luego-1,1,1,0,1 | **1,1,1,0,1** |
+| ack-como-nivel | `M0.1=1` fijo | documentar | **Latched=0 tras el ack; nueva alarma: Active=1 y Latched=1; Unacked=0; al liberar el ack: Latched=0 y Horn=0** |
+
+El `-` marca señales que **el plan no relee** en ese caso; no se presentan como observadas.
+
 ## Cambios aplicados al sistema durante esta tanda (todos reversibles)
 
 | Cambio | Estado | Cómo revertir |

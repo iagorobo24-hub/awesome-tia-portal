@@ -28,9 +28,29 @@ Añadir después un caso con `OnDelay = T#500MS` para medir la transición antes
 
 ## Estado del camino de simulación en esta máquina
 
+**Resuelto el 21/10/2026.** La prueba funcional se ejecutó completa sobre una CPU 1513 virtual
+(PLCSIM Advanced V7.0, modo TCP/IP sobre `Siemens PLCSIM Virtual Ethernet Adapter`): descarga
+`Success` con 0 errores y 0 avisos, `GoOnline` → `Online`, y el plan de 65 pasos pasó **65/65**
+con los nueve casos de esta tabla correctos. Valores observados y desviaciones en
+[`evidencia-plcsim-2026-10-21.json`](evidencia-plcsim-2026-10-21.json).
+
+Para repetirlo hacen falta cuatro cosas que no son evidentes:
+
+1. La sesión Openness debe ir **adjunta al TIA abierto** (`AttachToOpenProject`). En sesión
+   headless aislada la descarga falla con `Connect to module PLC_1 failed` aunque la CPU virtual
+   esté viva y respondiendo por S7.
+2. Tras arrancar el Control Panel de PLCSIM Advanced hay que **esperar unos 100 s**: la primera
+   descarga falla y la segunda funciona.
+3. Antes de leer tags hay que llamar a **`IInstance::UpdateTagList()`**; sin eso la lectura
+   simbólica devuelve `-47` (`SREC_NOT_UP_TO_DATE`).
+4. Los tags se nombran **sin el prefijo de tabla** (`Active`, no `Agent_Signals.Active`); con el
+   nombre cualificado devuelven `-4` (`SREC_DOES_NOT_EXIST`).
+
 El 23/09/2026 se encendió y apagó una CPU 1513 virtual temporal en modo local Softbus. No se le descargó el proyecto, por lo que todavía no se pueden marcar como aprobados los casos anteriores. Una ruta TCP/IP ensayada antes intentó llamar funciones de mapeo de red en modo Softbus y obtuvo `SREC_NOT_SUPPORTED` (`-19`); además, `SetIPSuite` antes de arrancar la CPU obtuvo `SREC_INSTANCE_NOT_RUNNING` (`-14`). Son fallos de secuencia/modo de la prueba, no fallos demostrados del FB. [Siemens documenta Softbus y su descarga desde TIA](https://docs.tia.siemens.cloud/r/simatic_s7_1500_et_200mp_manual_collection_enus_20/comprehensive-information/cpu-function-manuals/s7-plcsim-advanced/simulating/simulating-a-cpu/control-panel-user-interface/s7-plcsim-advanced-control-panel).
 
-Ya se publicó una captura del bloque desde el proyecto de demostración. Cuando se complete la prueba funcional, añadir una captura de la observación en PLCSIM sin datos de cliente y registrar los valores realmente observados junto a esta tabla.
+Ya se publicó una captura del bloque desde el proyecto de demostración. La captura de la observación
+en PLCSIM queda pendiente: el Control Panel corre elevado y su contenido no es legible por
+automatización.
 
 ## Comprobación adicional del 24/09/2026
 
