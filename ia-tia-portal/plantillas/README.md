@@ -242,7 +242,7 @@ mcpServers:
       ],
       "env": {
         "TIAPORTAL_PROJECT_PATH": "/home/user/projects/MyProject",
-        "TIAPORTAL_OPENNESS_API_KEY": "sk-1234567890abcdef",
+        "TIAPORTAL_OPENNESS_API_KEY": "<clave-de-ejemplo>",
         "TIAPORTAL_LOG_LEVEL": "info",
         "TIAPORTAL_TIMEOUT": "30000"
       }
@@ -255,7 +255,7 @@ mcpServers:
       ],
       "env": {
         "TIAPORTAL_PROJECT_PATH": "/home/user/projects/MyProject",
-        "TIAPORTAL_OPENNESS_API_KEY": "sk-1234567890abcdef"
+        "TIAPORTAL_OPENNESS_API_KEY": "<clave-de-ejemplo>"
       }
     }
   }
@@ -275,7 +275,7 @@ mcpServers:
       ],
       "env": {
         "TIAPORTAL_PROJECT_PATH": "/home/user/projects/MyProject",
-        "TIAPORTAL_OPENNESS_API_KEY": "sk-1234567890abcdef"
+        "TIAPORTAL_OPENNESS_API_KEY": "<clave-de-ejemplo>"
       }
     },
     "tia-portal-openness-mcpserver": {
@@ -286,7 +286,7 @@ mcpServers:
       ],
       "env": {
         "TIAPORTAL_PROJECT_PATH": "/home/user/projects/MyProject",
-        "TIAPORTAL_OPENNESS_API_KEY": "sk-1234567890abcdef"
+        "TIAPORTAL_OPENNESS_API_KEY": "<clave-de-ejemplo>"
       }
     },
     "totally-integrated-claude": {
@@ -296,7 +296,7 @@ mcpServers:
       ],
       "env": {
         "TIAPORTAL_PROJECT_PATH": "/home/user/projects/MyProject",
-        "TIAPORTAL_OPENNESS_API_KEY": "sk-1234567890abcdef"
+        "TIAPORTAL_OPENNESS_API_KEY": "<clave-de-ejemplo>"
       }
     }
   }

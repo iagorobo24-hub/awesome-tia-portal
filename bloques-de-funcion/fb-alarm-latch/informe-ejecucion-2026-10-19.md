@@ -227,7 +227,7 @@ Lo que SÍ está verificado en cada intento (no es un problema de compilación n
 
 - **H-24** [VERIFICADO] **La TIA GUI abierta no es la causa.** Los intentos 10 y 11 se ejecutaron con **TIA Portal cerrada** (verificado: sin procesos `Siemens.Automation.Portal`) y el resultado es idéntico. Con la GUI abierta, el `.ap20` de la fixture quedaba además bloqueado en exclusiva.
 
-- **H-25** [VERIFICADO] Datos de la instancia PLCSIM Advanced leídos por **UI Automation** del Control Panel (`OnlineAccess = PLCSIM/Softbus`):
+- **H-25** [VERIFICADO] Datos de la instancia PLCSIM Advanced leídos por **UI Automation** del Control Panel (la propiedad *OnlineAccess* está en `PLCSIM`, modo Softbus):
   - Instancia registrada: **`PLC_1`** — coincide con el nombre del dispositivo, así que la regla de H-11 se cumple.
   - Dirección mostrada `192.168.0.1`; instancias activas: 1 (`ManagerInstanceCount: 1` confirmado por API).
   - `PlcStateRunButton` / `PlcStateStopButton` / `PlcStateMresButton` están **deshabilitados**; `PowerOn/Off` habilitado (coherente con instancia en `Stop`, no `Off`).
