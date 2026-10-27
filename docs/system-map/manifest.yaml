@@ -6,6 +6,7 @@ psm:
   map_last_updated: "2026-10-27"
   profile: "lite"
   status: "draft"
+  verified_at: "2026-10-27" # Solo inspeccion de rutas GitHub; NO validacion semantica
   source:
     repository: "https://github.com/iagorobo24-hub/awesome-tia-portal"
     ref: "main"
