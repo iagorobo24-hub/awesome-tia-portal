@@ -12,7 +12,7 @@ La conexión para automatizar ingeniería en TIA Portal se basa en la [API ofici
 
 | Proyecto | Uso principal | Comprobación aquí |
 |---|---|---|
-| [heilingbrunner/tiaportal-mcp](https://github.com/heilingbrunner/tiaportal-mcp) | Lectura y análisis mediante MCP + Openness. | Compilado y utilizado en el [workspace TIA-Claude](https://github.com/iagorobo24-hub/T-IA-Portal-RocaRoibas), con perfil de solo lectura por defecto. |
+| [heilingbrunner/tiaportal-mcp](https://github.com/heilingbrunner/tiaportal-mcp) | Lectura y análisis mediante MCP + Openness. | Compilado y utilizado en el [workspace T-IA-Portal](https://github.com/iagorobo24-hub/T-IA-Portal), con perfil de solo lectura por defecto. |
 | [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP) | Creación de proyectos, hardware y HMI según perfil. | Binario V20 compilado y algunas operaciones probadas en fixtures; el inventario de herramientas no acredita todas ellas. |
 
 Los nombres, opciones y requisitos de esos proyectos pueden cambiar. Comprueba su documentación y prueba una versión exacta en un clon antes de adoptar una receta.

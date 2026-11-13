@@ -1,6 +1,6 @@
 # Conectar agentes de IA con TIA Portal V20
 
-Esta guía explica la arquitectura que se ha probado en el workspace abierto [TIA-Claude](https://github.com/iagorobo24-hub/T-IA-Portal-RocaRoibas). Separa **la API**, **el puente para agentes**, **la interfaz gráfica** y **la simulación**, porque una prueba de conexión no valida las otras capas. El ejemplo local se realizó en Windows y TIA Portal V20; una instalación nueva debe repetir todas las comprobaciones.
+Esta guía explica la arquitectura que se ha probado en el workspace abierto [T-IA-Portal](https://github.com/iagorobo24-hub/T-IA-Portal). Separa **la API**, **el puente para agentes**, **la interfaz gráfica** y **la simulación**, porque una prueba de conexión no valida las otras capas. El ejemplo local se realizó en Windows y TIA Portal V20; una instalación nueva debe repetir todas las comprobaciones.
 
 ## 1. Elige la vía correcta
 

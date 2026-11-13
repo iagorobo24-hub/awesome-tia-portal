@@ -70,7 +70,7 @@ Lo que sí era la causa, y quedó medido:
 
 > Detalle completo, intento a intento, en
 > [`informe-ejecucion-2026-10-19.md`](informe-ejecucion-2026-10-19.md) (run
-> `20261016-fb-alarm-latch` del workspace TIA-Claude).
+> `20261016-fb-alarm-latch` del workspace T-IA-Portal).
 
 ## Desviaciones de esta ejecución
 

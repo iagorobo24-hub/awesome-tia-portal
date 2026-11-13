@@ -164,6 +164,39 @@ Las herramientas de terceros pertenecen a sus autores; consulta su repositorio p
 
 </details>
 
+## Referencias externas verificadas
+
+Enlaces de la comunidad y del fabricante que complementan este repositorio. Se han revisado los archivos reales (README y LICENSE) de cada uno; se indica la licencia y el uso recomendado. Ninguno se integra como código en este repositorio: son referencias para estudiar, enlazar o descargar desde su origen.
+
+### Comunicación industrial (PLC ↔ exterior)
+
+| Recurso | URL | Licencia | Utilidad |
+|---|---|---|---|
+| [`python-snap7`](https://github.com/gijzelaerr/python-snap7) | gijzelaerr/python-snap7 | MIT | Librería Python pura para S7-300/400 y S7-1200/1500 (PUT/GET). Documentada, con matriz de hardware probado. |
+| [`gos7`](https://github.com/robinson/gos7) | robinson/gos7 | BSD-3-Clause | Protocolo S7 en Go puro (lectura/escritura DB, marcas, E/S, temporizadores, contadores). |
+| [`simatic-s7-webserver-api`](https://github.com/siemens/simatic-s7-webserver-api) | siemens/simatic-s7-webserver-api | MIT | Librería .NET oficial de Siemens para el Webserver API de S7-1500 y S7-1200 G2/1200, con tabla de compatibilidad por firmware. |
+| [`HarpoS7`](https://github.com/bonk-dev/HarpoS7) | bonk-dev/HarpoS7 | MIT | Autenticación de sesiones S7 Comm Plus (challenge V16- y TLS V17+). Para integración de comunicación avanzada en C#. |
+| [`dacs7`](https://github.com/proemmer/dacs7) | proemmer/dacs7 | Apache-2.0 | Lectura/escritura en S7 por RFC1006 desde .NET. |
+| [`plc4x`](https://github.com/apache/plc4x) | apache/plc4x | Apache-2.0 | Adaptador de protocolos industriales (S7 entre otros) bajo la Apache Software Foundation. |
+
+### TIA Portal y Openness
+
+| Recurso | URL | Licencia | Utilidad |
+|---|---|---|---|
+| [`tia-portal-openness-code-snippets`](https://github.com/siemens/tia-portal-openness-code-snippets) | siemens/tia-portal-openness-code-snippets | MIT (fuente) / condiciones royalty-free Siemens (binarios) | Snippets oficiales de Siemens de la API de TIA Portal Openness V20 (C#): crear proyectos, generar bloques, compilar y diagnosticar. |
+| [`TIA_Add-In_VCI_Git_Connector`](https://github.com/IgorCoraine/TIA_Add-In_VCI_Git_Connector) | IgorCoraine/TIA_Add-In_VCI_Git_Connector | MIT | Add-In de TIA Portal para conectar el Version Control Interface (VCI) a un repositorio Git (add/commit/pull/push). |
+| [`PLCsim-Advanced-Manager`](https://github.com/jasperdekeuk/PLCsim-Advanced-Manager) | jasperdekeuk/PLCsim-Advanced-Manager | MIT | Gestor web de instancias PLCSIM Advanced (arranque, lectura/escritura de variables, snapshots). Requiere PLCSIM Advanced v5+ con licencia. |
+
+### Edición y algoritmos SCL
+
+| Recurso | URL | Licencia | Utilidad |
+|---|---|---|---|
+| [`vscode-scl`](https://github.com/Gunders89/vscode-scl) | Gunders89/vscode-scl | MIT | Soporte de lenguaje SCL y snippets para Visual Studio Code (edición de fuentes fuera de TIA Portal). |
+| [`SIEMENS_SIMATIC_STEP7_Classic_Algorithms`](https://github.com/LeoSunSET/SIEMENS_SIMATIC_STEP7_Classic_Algorithms) | LeoSunSET/SIEMENS_SIMATIC_STEP7_Classic_Algorithms | MIT | Colección de algoritmos clásicos para S7 en STL/SCL (S7-300/400/1200/1500). Referencia de bloques reutilizables. |
+| [`S7-Project-Explorer`](https://github.com/enlyze/S7-Project-Explorer) | enlyze/S7-Project-Explorer | MIT | Abre proyectos STEP 7 (.s7p, S7-300/400), navega variables y exporta CSV. Útil para documentar equipos legacy. |
+
+> **Licencias desconocidas o copyleft:** algunos proyectos de interés (bloques MQTT en SCL, WinCC Unified, generadores de código vía Openness) tienen licencia no declarada o GPL/AGPL. Por política de este repositorio (MIT) no se integran como código; se listan solo como referencia externa en [`docs/research/github-research.md`](./docs/research/github-research.md).
+
 ## Cómo usar un recurso
 
 1. **Elige** el recurso en el [índice](#índice-de-recursos) y lee su `README.md`: interfaz, ejemplo y limitaciones.
