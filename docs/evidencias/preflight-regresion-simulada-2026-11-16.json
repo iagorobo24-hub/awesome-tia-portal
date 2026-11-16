@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-16",
+  "testType": "Live read-only Openness preflight + offline simulated safety regression",
+  "scope": "Awesome TIA Portal v0.2.0 isolated S7-1500 test projects",
+  "safetyStatus": "BLOCKED_BEFORE_DOWNLOAD",
+  "downloadAttempted": false,
+  "physicalPlcAccessed": false,
+  "plcsimRuntimeStepsExecuted": 0,
+  "liveProject": {
+    "projectName": "AW20_Import",
+    "projectFixture": "FC fixture-ready",
+    "cpuName": "PLC_1",
+    "cpuReference": "6ES7513-1AM03-0AB0",
+    "tiaMajor": 20,
+    "compiledErrors": 0,
+    "compiledWarnings": 0,
+    "projectConfiguredIp": "192.168.0.1",
+    "readOnlyCalls": [
+      "GetProjectTree",
+      "GetDeviceIpAddress",
+      "CheckDownloadReadiness",
+      "GetBlocks",
+      "GetTags"
+    ],
+    "sequenceSuccess": true,
+    "checkDownloadReadiness": {
+      "ready": true,
+      "hasDownloadProvider": true,
+      "isConsistent": true,
+      "availableRoutes": [
+        {
+          "pgPcInterface": "Siemens PLCSIM Virtual Ethernet Adapter",
+          "mode": "PN/IE",
+          "preferred": false,
+          "targetAddresses": ""
+        },
+        {
+          "pgPcInterface": "ASIX USB to Gigabit Ethernet Family Adapter",
+          "mode": "PN/IE",
+          "preferred": false,
+          "targetAddresses": ""
+        },
+        {
+          "pgPcInterface": "Wintun Userspace Tunnel",
+          "mode": "PN/IE",
+          "preferred": false,
+          "targetAddresses": ""
+        }
+      ],
+      "preferredRouteCount": 0,
+      "explicitlyConfirmedTargetCount": 0
+    }
+  },
+  "windowsRouteReadback": {
+    "targetIp": "192.168.0.1",
+    "routeInterface": "Ethernet 2",
+    "routeInterfaceDescription": "Siemens PLCSIM Virtual Ethernet Adapter",
+    "routeIfIndex": 18,
+    "hostIp": "192.168.0.100",
+    "prefixLength": 24,
+    "otherActivePhysicalInterface": "ASIX USB Gigabit Ethernet",
+    "otherPhysicalIp": "192.168.1.113",
+    "otherPhysicalPrefixLength": 24,
+    "osRoutePointsToSiemensAdapter": true,
+    "doesNotProveSimulatorDestination": true
+  },
+  "plcsimProbe": {
+    "runtimeApi": "7.0",
+    "initStatus": "initialized",
+    "initializationCode": "0x00000000",
+    "destroyCode": "0x00000000",
+    "instanceCount": 0,
+    "exitCode": 0
+  },
+  "instanceDbSafetyGate": {
+    "originalBehavior": "FAIL: real AlarmPump InstanceDB is consistent, not Safety and linked to FB_AlarmLatch, but GetBlocks reports no PLCSimAdvancedSupport attribute.",
+    "isolatedCorrection": "PASS offline: only an InstanceDB uniquely linked by InstanceOfName, InstanceOfType and InstanceOfNumber to an FB in the same complete GetBlocks inventory can omit that attribute; all original protections remain in effect.",
+    "originalRunnerModified": false,
+    "isolatedProofSha256": "cae06b1aa7d0b9922bd1827a5d233b1bc5d1ce123db9c1e4afe2cd66abb89130",
+    "redTestOriginalFailure": true,
+    "greenTestRealInstance": true,
+    "negativeCasesTested": 13,
+    "negativeCasesRejected": 13,
+    "existingMockSafetySuite": {
+      "exitCode": 0,
+      "passMarkers": 11,
+      "downloadIsSimulatedMockOnly": true
+    }
+  },
+  "blockers": [
+    "No fresh native-computer-use evidence of the Siemens 'CPU-1500 Simulation' window and explicit simulated-download notice, required by R17. Desktop command execution/screenshot alone is not accepted as that evidence.",
+    "The Windows route is on the Siemens virtual adapter, but the Openness download-roster lists three possible PG/PC interfaces, no preferred route and blank target addresses; a simulator endpoint still must be identified uniquely.",
+    "No simulated CPU instance was registered at the time of the read-only probe.",
+    "The isolated InstanceDB gate correction has not been incorporated into the T-IA-Portal runner; its original safety check continues to block the live DB as designed."
+  ],
+  "acceptance": "NOT_RUN",
+  "githubPullRequest": 9,
+  "githubCiAtTest": "3/3 PASS",
+  "releaseAuthorizedByTests": false
+}

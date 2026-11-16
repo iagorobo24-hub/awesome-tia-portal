@@ -13,6 +13,7 @@ Formato compacto inspirado en Keep a Changelog. Cada versión enlaza su release 
 - Reparados 21 avisos de formato en el plan v0.2.0; `markdownlint-cli2` 0 avisos sobre los Markdown.
 - Revisadas las 12 referencias GitHub de la portada. La licencia oficial Siemens combina MIT para fuente y condiciones royalty-free para binarios; no se ha incorporado código ajeno.
 - **Validación adicional 16/11:** activado soporte de compilación para PLCSIM con API oficial Siemens V20, y preparados dos proyectos de laboratorio con arneses SCL, DB de instancia de alarma y tablas de 6/9 señales; ambos compilan 0/0. [Evidencia](docs/evidencias/preparacion-regresion-plcsim-2026-11-16.json).
+- **Preflight adicional 16/11:** [13 casos negativos de seguridad y 11 pruebas de aceptación con fixture mock](docs/evidencias/preflight-regresion-simulada-2026-11-16.json) superados sobre una corrección aislada de validación del DB de instancia; el runner original de T-IA-Portal no se modificó. Openness devuelve tres rutas de descarga sin preferida; la ruta Windows al objetivo pasa por la NIC Siemens, pero falta corroborar la identidad visual del simulador.
 - **Límites:** el ensayo PLCSIM de 2026-10-21 sigue siendo la única evidencia conductual ejecutada; la nueva regresión no se descargó a una CPU porque faltan identificación visual y cierre del preflight del DB de instancia. No hay validación para PLC físico, otras versiones TIA o nuevas fichas de diseño. La publicación está condicionada a pasar los controles remotos sin tergiversar estos límites.
 
 ### Añadido
