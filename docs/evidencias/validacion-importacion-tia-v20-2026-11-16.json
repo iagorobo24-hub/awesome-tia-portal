@@ -1,0 +1,56 @@
+{
+    "schemaVersion":  1,
+    "testDate":  "2026-11-16",
+    "scope":  "New disposable TIA V20 project, offline imports and compile only",
+    "sourceCommit":  "d5cefea",
+    "tiaMajor":  20,
+    "mcpVersion":  "2.7.2.0",
+    "projectName":  "AW20_Import",
+    "cpuOrderNumber":  "6ES7513-1AM03-0AB0",
+    "pristineFullProjectBackup":  {
+                                      "hashesCompared":  7,
+                                      "files":  7,
+                                      "mismatches":  0
+                                  },
+    "projectSavedAndClosed":  true,
+    "ap20AfterSha256":  "4f270e45d61e749e6757d3c9ad2c08b961b11ae8a046b95b040d386733418877",
+    "softwareCompile":  {
+                            "errors":  0,
+                            "warnings":  0,
+                            "state":  "Success"
+                        },
+    "blocks":  [
+                   {
+                       "isConsistent":  true,
+                       "type":  "FB",
+                       "isFailsafe":  false,
+                       "readback":  "block \u0027FB_AlarmLatch\u0027 (number 2) present after import; attributes match; not verifiable via XML round-trip: PriorityNumber (SimaticML block export does not carry it; set/check it in TIA)",
+                       "importVerified":  true,
+                       "artifact":  "bloques-de-funcion/fb-alarm-latch/FB_AlarmLatch.xml",
+                       "isKnowHowProtected":  false,
+                       "resource":  "FB_AlarmLatch",
+                       "xmlSha256":  "b3adb41bf5c903360722caee62b7d57691c2d96a16a9ad5120c21a4479886295",
+                       "programmingLanguage":  "SCL"
+                   },
+                   {
+                       "isConsistent":  true,
+                       "type":  "FC",
+                       "isFailsafe":  false,
+                       "readback":  "block \u0027FC_Escalado\u0027 (number 1) present after import; attributes match; not verifiable via XML round-trip: PriorityNumber (SimaticML block export does not carry it; set/check it in TIA)",
+                       "importVerified":  true,
+                       "artifact":  "bloques-de-funcion/fc-escalado/FC_Escalado.xml",
+                       "isKnowHowProtected":  false,
+                       "resource":  "FC_Escalado",
+                       "xmlSha256":  "d6610d55056dccfa8faa008836e40c1ac524a10245899408de5b86dfee18c0c5",
+                       "programmingLanguage":  "SCL"
+                   }
+               ],
+    "xmlReimportFromEmptyProject":  "PASS",
+    "plcsimRerun":  "NOT_RUN",
+    "previousBehaviorEvidence":  "bloques-de-funcion/*/evidencia-plcsim-2026-10-21.json",
+    "limitations":  [
+                        "No runtime tests or download in this session",
+                        "SimaticML verification cannot confirm PriorityNumber because export omits this attribute",
+                        "Use only a non-safety virtual CPU for subsequent simulation"
+                    ]
+}

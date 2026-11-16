@@ -16,10 +16,10 @@ status: verified
 > Escalado lineal genérico de un valor analógico crudo (0-27648) a un REAL en unidades de ingeniería; fuente SCL verificada en V20, con descarga a CPU virtual y nueve casos de escalado observados en PLCSIM.
 
 **Tipo:** `Función (FC)`
-**Versión TIA Portal:** V20 *(compatible con V18 y V19)*
+**Versión TIA Portal:** V20 *(V18 y V19 declaradas como compatibles, pero no verificadas mediante compilación o simulación en esas versiones)*
 **Familia PLC:** S7-1200 / S7-1500
 
-**Fuente:** [`FC_Escalado.scl`](FC_Escalado.scl) · **XML exportado:** [`FC_Escalado.xml`](FC_Escalado.xml)
+**Fuente:** [`FC_Escalado.scl`](FC_Escalado.scl) · **XML exportado:** [`FC_Escalado.xml`](FC_Escalado.xml) · **Reimportación V20 desde cero (16/11/2026):** [PASS, compilación 0/0](../../docs/evidencias/validacion-importacion-tia-v20-2026-11-16.json).
 
 ---
 

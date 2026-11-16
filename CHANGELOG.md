@@ -4,10 +4,22 @@ Formato compacto inspirado en Keep a Changelog. Cada versión enlaza su release 
 
 ## [Sin publicar]
 
+### Candidato v0.2.0 — cierre local 16/11/2026
+
+- Reimportados **desde cero** `FB_AlarmLatch.xml` y `FC_Escalado.xml` en proyecto desechable TIA V20 con CPU 1513: readback SCL, no F/Safety, compilación `Success`, **0 errores y 0 advertencias**. [Evidencia](docs/evidencias/validacion-importacion-tia-v20-2026-11-16.json).
+- Corregidos estados del README, FAQ, hoja de ruta, matriz, referencias de recursos y SVG de catálogo; 26 recursos: 2 verificados y 24 documentados.
+- Incorporada comprobación de cobertura de recursos en README y matriz mediante `scripts/check-resource-index.py`, con prueba negativa aislada y ejecución prevista en CI.
+- Clasificados seis falsos positivos históricos de Gitleaks; exclusiones por huella exacta, con reglas generales conservadas. Reproducido Gitleaks 8.24.3 en `main` local: 6 alertas sin excepciones, 0 con las seis huellas.
+- Reparados 21 avisos de formato en el plan v0.2.0; `markdownlint-cli2` 0 avisos sobre los Markdown.
+- Revisadas las 12 referencias GitHub de la portada. La licencia oficial Siemens combina MIT para fuente y condiciones royalty-free para binarios; no se ha incorporado código ajeno.
+- **Validación adicional 16/11:** activado soporte de compilación para PLCSIM con API oficial Siemens V20, y preparados dos proyectos de laboratorio con arneses SCL, DB de instancia de alarma y tablas de 6/9 señales; ambos compilan 0/0. [Evidencia](docs/evidencias/preparacion-regresion-plcsim-2026-11-16.json).
+- **Preflight adicional 16/11:** [13 casos negativos de seguridad y 11 pruebas de aceptación con fixture mock](docs/evidencias/preflight-regresion-simulada-2026-11-16.json) superados sobre una corrección aislada de validación del DB de instancia; el runner original de T-IA-Portal no se modificó. Openness devuelve tres rutas de descarga sin preferida; la ruta Windows al objetivo pasa por la NIC Siemens, pero falta corroborar la identidad visual del simulador.
+- **Límites:** el ensayo PLCSIM de 2026-10-21 sigue siendo la única evidencia conductual ejecutada; la nueva regresión no se descargó a una CPU porque faltan identificación visual y cierre del preflight del DB de instancia. No hay validación para PLC físico, otras versiones TIA o nuevas fichas de diseño. La publicación está condicionada a pasar los controles remotos sin tergiversar estos límites.
+
 ### Añadido
 
 - `fc-escalado` deja de ser una ficha de diseño y pasa a **bloque verificado**: fuente SCL, XML exportado, arnés con OB1 en SCL y tabla de tags `Agent_Escalado`, y nueve casos de escalado observados sobre una CPU 1513 virtual (33/33 pasos, 0 errores y 0 avisos en compilación y descarga). Incluye la nota de las dos desviaciones respecto a la ficha original: la salida es un `VAR_OUTPUT` y no un valor de retorno, porque el generador de fuentes SCL de TIA V20 exige el tipo de retorno en la cabecera y no admite `VERSION`, `AUTHOR` ni `FAMILY` en un `FUNCTION`; y las variables de prueba son `Real` porque la API de PLCSIM no expone acceso simbólico a `Int`.
-- `MATRIZ-TRAZABILIDAD.md`: qué hay **realmente** en cada una de las 24 carpetas (fuente, compilación, ejecución y evidencia), con los pasos que faltan para cerrar cada ficha. Hoy hay 2 recursos verificados en ejecución y 22 fichas de diseño sin código importable.
+- `MATRIZ-TRAZABILIDAD.md`: inventario trazable de las 26 carpetas de recursos (fuente, compilación, ejecución y evidencia), con los pasos que faltan para cerrar cada ficha. Hoy hay 2 recursos con evidencia de simulación y 24 fichas de diseño sin código importable.
 - Evidencias de PLCSIM con los valores observados de los dos bloques verificados, y capturas del Control Panel de PLCSIM Advanced con la instancia virtual en marcha y su dirección.
 
 ### Cambiado

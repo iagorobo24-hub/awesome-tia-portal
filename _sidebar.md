@@ -3,6 +3,7 @@
 - [Rutas de aprendizaje](docs/rutas/)
 - [Glosario ES-EN](docs/glosario.md)
 - [FAQ](docs/faq.md)
+- [Reproducir bloques en V20](docs/guia-reproduccion-v20.md)
 - [Vídeos y formación](docs/videos.md)
 
 - Recursos
@@ -14,7 +15,8 @@
   - [Snippets SCL](snippets/)
 
 - Destacado
-  - [FB_AlarmLatch :wrench:](bloques-de-funcion/fb-alarm-latch/)
+  - [FB_AlarmLatch · verificado](bloques-de-funcion/fb-alarm-latch/)
+  - [FC_Escalado · verificado](bloques-de-funcion/fc-escalado/)
   - [Guía conexión V20](ia-tia-portal/guias/conexion-profesional-v20.md)
 
 - IA + TIA Portal
@@ -24,5 +26,6 @@
 
 - Proyecto
   - [Contribuir](CONTRIBUTING.md)
+  - [Acta candidata v0.2.0](docs/aceptacion-v0.2.0-2026-11-16.md)
   - [Estilo](STYLE.md)
   - [Referencias awesome](docs/referencias-awesome.md)

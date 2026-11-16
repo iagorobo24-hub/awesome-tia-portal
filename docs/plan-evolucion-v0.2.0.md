@@ -1,6 +1,7 @@
 # Awesome TIA Portal — Plan maestro de evolución y evaluación
 
 - **Fecha de línea base:** 2026-11-12
+- **Actualización 2026-11-16:** este documento conserva la planificación y el diagnóstico inicial; para el estado comprobado más reciente consultar el [acta de aceptación candidata v0.2.0](aceptacion-v0.2.0-2026-11-16.md). Ya se reimportaron y compilaron en V20 los dos XML, pero la prueba PLCSIM nueva y la publicación continúan pendientes.
 - **Estado del documento:** PLANIFICADO, no es evidencia de ejecución.
 - **Repositorio local:** `awesome-tia-portal`, Portatiltek.
 - **Snapshot inspeccionado:** rama `feat/github-research-templates`, commit `60ca89f`; `main` y `origin/main` en `656213a`.
@@ -39,16 +40,18 @@ Convertir el repositorio público en una **biblioteca curada y técnicamente rep
 
 ## 4. Ejecución por fases
 
-Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de finalización. Se revisarán tras medir las primeras tareas. No abarcan transformar las 25 fichas en recursos probados.
+Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de finalización. Se revisarán tras medir las primeras tareas. No abarcan transformar las 24 fichas únicamente documentadas en recursos probados.
 
 ### D0 — Inventario, línea base y contrato de versión (4–7 h)
+
 - [ ] Volver a verificar Git (rama, HEAD, árbol, remotos, agentes concurrentes) y registrar snapshot.
-- [ ] Inventariar 27 recursos, archivos reales, dependencias, estados y pruebas con criterio único de verdad.
+- [x] Inventariar **26** recursos, archivos reales, dependencias, estados y pruebas con criterio único de verdad (inventario local 16/11, [acta](aceptacion-v0.2.0-2026-11-16.md)).
 - [ ] Definir requisitos verificables de `documented`, `source`, `compiled`, `exported`, `reimported`, `simulated`; distinguir seguridad de proceso y seguridad funcional.
 - [ ] Registrar métricas iniciales, deficiencias y fronteras de v0.2.0; no reestructurar el repositorio por rutina.
 **Cierre:** inventario comprobable y contrato de estados aprobados por evidencia; ninguna ambigüedad crítica oculta.
 
 ### D1 — Fiabilidad documental, CI y seguridad (12–22 h)
+
 - [ ] Investigar fallo Gitleaks: logs/causa, secretos reales vs falsos positivos; resolver sin debilitar controles y gestionar incidentes si procede.
 - [ ] Investigar fallo Lychee por URL concreta, rate limits, cambios de origen o configuración; establecer tratamiento honesto de excepciones.
 - [ ] Rectificar README, FAQ, rutas, badges, `docs/visibilidad.md`, `docs/hoja-de-ruta.md` y fichas contradictorias.
@@ -58,6 +61,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** documentación pública coherente, controles relevantes pasan o hay bloqueo real explícito; pruebas y razones registradas.
 
 ### D2 — Cierre técnico de dos recursos existentes (12–24 h)
+
 - [ ] Revisar contratos de `FC_Escalado` y `FB_AlarmLatch`, semánticas límite y sus fuentes exactas frente a evidencias.
 - [ ] Crear/usar fixture desechable TIA V20; **no descargar a PLC físico**.
 - [ ] Importar XML desde cero en proyecto limpio y compilar; comparar interfaces y versión.
@@ -67,6 +71,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** cada recurso tiene trazabilidad del archivo a importación, compilación y comportamiento; de lo contrario queda explícitamente pendiente.
 
 ### D3 — Experiencia de uso y empaquetado (6–12 h)
+
 - [ ] Portada orientada a "qué problema resuelve", recursos destacados probados, estado y descarga directa.
 - [ ] Mejorar rutas de aprendizaje para que no prometan bloques inexistentes.
 - [ ] Separar visiblemente "biblioteca PLC" de "guías IA/Openness", manteniendo las rutas y material vigente.
@@ -75,6 +80,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** un visitante nuevo identifica en pocos pasos qué puede utilizar ahora y qué está todavía en diseño.
 
 ### D4 — Release candidata v0.2.0 (6–12 h)
+
 - [ ] Revalidar enlaces locales, catálogo, formatos, estructura, seguridad, atribuciones y diffs.
 - [ ] Definir changelog verificable, matriz de compatibilidad y contenido distribuible.
 - [ ] Revisar los 11 enlaces de terceros por utilidad/licencia y eliminar descripciones no verificables.
@@ -83,6 +89,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** candidato con evidencia y sin fallos críticos no explicados; documentación y artefactos reproducibles.
 
 ### D5 — Auditoría de aceptación v0.2.0 (4–8 h)
+
 - [ ] Recontar recursos documentados, importables, compilados, simulados y compatibilidad realmente verificada.
 - [ ] Auditar fallos abiertos, experiencia de usuario y repetibilidad de cero a resultado.
 - [ ] Evaluar con rúbrica del apartado 7; presentar comparativa inicial vs candidata, límites y pendientes.
@@ -91,6 +98,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Subtotal previsto v0.2.0: 44–85 h.**
 
 ### D6 — Investigación y catálogo externo de calidad (8–16 h; evolución)
+
 - [ ] Revisar por muestreo el inventario de 961 repositorios y el análisis profundo de 70; recalcular coberturas y duplicados.
 - [ ] Reducir ruido del material JSON si corresponde, sin perder reproducibilidad ni atribuciones.
 - [ ] Puntuar los candidatos relevantes con criterios reproducibles y evidencia, registrando campos de puntuación, incertidumbre y motivos de descarte; no confundir metadata o README leído con revisión profunda certificada.
@@ -99,6 +107,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** índices externos mantenibles y verificación documentada, no cantidad indiscriminada.
 
 ### D7 — Biblioteca funcional ampliada (50–100 h; evolución inicial)
+
 - [ ] Antes de crear más fichas, cerrar los UDT/FB existentes de mayor utilidad: ruta analógica, motor/válvula y alarmas.
 - [ ] Desarrollar y revisar nuevas fichas `fb-estado-maquina`, `fb-secuenciador-pasos` y `fb-control-pid` con contratos correctos, fuentes y pruebas reales si se priorizan.
 - [ ] Mantener test negativo, límites, fallos, casos de integración con DB/UDT y evidencia de importación para cada recurso.
@@ -107,6 +116,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** cada nuevo recurso aporta código independiente y reproducible; publicar solo los efectivamente cerrados.
 
 ### D8 — Comunidad, distribución y sostenibilidad (12–24 h; evolución)
+
 - [ ] Crear contribuciones de baja barrera: corrección de traducciones, documentación, tests y enlaces validados.
 - [ ] Generar demos reales con ejemplos mínimos, capturas auténticas y resultados verificables.
 - [ ] Establecer inglés mínimo para el descubrimiento sin perder la documentación española.
@@ -115,13 +125,14 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 **Cierre:** mecanismos de adquisición y contribución ética operativos, métricas trazables sin manipulación.
 
 ### D9 — Informe final de valoración integral (4–8 h; al terminar el programa)
+
 - [ ] Rehacer la auditoría de cero sobre el commit final local y el estado público, si se publicó.
 - [ ] Evaluar cada criterio y cada recurso de interés con evidencias y puntuaciones justificadas.
 - [ ] Comparar línea base vs final, objetivos cumplidos, capacidad de mantenimiento y coste futuro.
 - [ ] Enumerar riesgos abiertos y próximos hitos sin declarar producción segura.
 **Cierre:** evaluación reproducible y comparativa, con datos medidos y ausencias explícitas.
 
-**Total programa ampliado estimado: 118–233 h** (v0.2.0 + evolución inicial D6–D9). No equivale al esfuerzo de completar las 25 fichas pendientes; esa ambición exige estimaciones específicas.
+**Total programa ampliado estimado: 118–233 h** (v0.2.0 + evolución inicial D6–D9). No equivale al esfuerzo de completar las 24 fichas únicamente documentadas; esa ambición exige estimaciones específicas.
 
 ## 5. Orden de trabajo y decisiones de alcance
 
@@ -138,6 +149,7 @@ Todas las estimaciones son **horas de esfuerzo**, no plazos ni promesas de final
 Para declarar una fase cerrada se requiere: **alcance comprobado + pruebas relevantes + diff revisado + ninguna inconsistencia crítica + pendientes identificados**. Clasificar hallazgos como `VERIFICADO`, `REPORTADO`, `INFERIDO`, `SUPUESTO` o `RECOMENDADO`.
 
 Métricas mínimas registrables:
+
 - Inventario: número de recursos por estado, fuente, XML, compilación, reimportación y simulación.
 - Fiabilidad: fallos críticos, antigüedad, enlaces internos/externos comprobados, secretos/CI, cobertura de validadores.
 - Técnica: comportamiento esperado y observado, versión de TIA, CPU/PLCSIM y resultados de pruebas de borde.

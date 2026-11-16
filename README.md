@@ -7,13 +7,15 @@
 [![Licencia: MIT](https://img.shields.io/github/license/iagorobo24-hub/awesome-tia-portal?color=blue)](./LICENSE)
 ![TIA Portal](https://img.shields.io/badge/TIA%20Portal-V20-009999)
 ![PLC](https://img.shields.io/badge/PLC-S7--1200%20%2F%20S7--1500-orange)
-![Estado](https://img.shields.io/badge/estado-documentado%2C%20XML%20pendiente-F5A623)
+![Estado](https://img.shields.io/badge/estado-2%20verified%20%7C%2024%20documented-F5A623)
 [![PRs](https://img.shields.io/badge/PRs-bienvenidas-brightgreen)](./CONTRIBUTING.md)
 [![Validar Recursos](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/check-resources.yml/badge.svg)](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/check-resources.yml)
 [![Estilo Markdown](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/estilo.yml/badge.svg)](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/estilo.yml)
 [![Enlaces Externos](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/enlaces-externos.yml/badge.svg)](https://github.com/iagorobo24-hub/awesome-tia-portal/actions/workflows/enlaces-externos.yml)
 
 **Biblioteca "awesome" de piezas reutilizables para Siemens TIA Portal V20:**
+
+*Curated, evidence-backed Siemens TIA Portal V20 PLC block library. Two tested SCL/XML resources; the remaining entries are documented designs, not ready-to-import blocks.*
 UDTs, bloques de función, OB, faceplates HMI y plantillas de proyecto que comparten una misma interfaz de datos.
 Solo piezas sueltas, no proyectos completos. Pensada para programadores de PLC que quieren estandarizar su código.
 
@@ -56,15 +58,15 @@ Un resumen honesto de lo que hay.
 
 | Pieza | Estado | Nota |
 |---|:---:|---|
-| 5 UDTs, 8 FB/FC, 3 OB, 5 HMI y 2 plantillas | 🟡 | Documentados (README con interfaz, uso y limitaciones). **Un recurso (`FB_AlarmLatch` 🔧) incluye además fuente SCL compilada en V20 con evidencia; sigue sin haber ningún `.xml` publicado**. |
-| Importación y compilación en TIA Portal V20 | 🚧 | No demostradas en general. Excepción: `FB_AlarmLatch` se compiló como fuente SCL en V20 (CPU S7-1500 de demostración, 0 errores y 0 advertencias). Importación desde `.xml` y prueba en PLCSIM, pendientes. Los README indican compatibilidad con V18/V19 como anotación de la autoría, sin verificar. |
+| 5 UDTs, 11 FB/FC, 3 OB, 5 HMI y 2 plantillas | 🟡 | **26 recursos:** 24 fichas documentadas sin código exportado y 2 (`FB_AlarmLatch`, `FC_Escalado`) con fuentes SCL y exportaciones XML, acompañadas de evidencias de compilación y simulación. La reimportación limpia de los dos XML ya se comprobó en V20 el 16/11/2026 (compilación 0/0). |
+| Importación y compilación en TIA Portal V20 | 🚧 | `FB_AlarmLatch` y `FC_Escalado` cuentan con informes de compilación V20 y ejecución PLCSIM en un proyecto de demostración. **La reimportación XML desde cero se ha repetido en TIA V20 el 16/11/2026: ambos bloques fueron reconocidos y compilaron 0/0** ([evidencia](./docs/evidencias/validacion-importacion-tia-v20-2026-11-16.json)); las demás fichas no tienen compilación demostrada. Compatibilidad V18/V19 no verificada. |
 | Validación de estructura (`scripts/validate-resources.sh`) | ✅ | Comprueba que cada recurso tiene `README.md` y avisa si falta el `.xml`. No analiza SCL, XML ni compatibilidad. |
-| Ejemplos SCL dentro de los README | 🟡 | Son ilustrativos: no se han compilado ni probado en un PLC ni en PLCSIM. |
+| Ejemplos SCL dentro de los README | 🟡 | Por regla general son ilustrativos; no confundirlos con los archivos SCL independientes y las pruebas acreditadas de `FB_AlarmLatch` y `FC_Escalado`. |
 | Fichas y guías de IA + TIA Portal | 🟡 | Texto de consulta. Cifras, estrellas, precios y compatibilidades de herramientas de terceros no están verificadas y pueden haber cambiado. |
 
 ✅ comprobado · 🟡 documentado, pendiente de validar · 🚧 por hacer.
 
-<img src="docs/img/estados.svg" alt="Ciclo de vida de un recurso: planificado, documentado y disponible; hoy 22 documentados y 0 disponibles" width="100%">
+<img src="docs/img/estados.svg" alt="Resumen de catálogo: 24 recursos documentados sin código y 2 con XML reimportado en V20 y pruebas previas en PLCSIM" width="100%">
 
 > El estado de cada recurso se mantiene en [`CATALOG.md`](./CATALOG.md): 🏆 verificado en ejecución, ✅ disponible (README + `.xml`), 📝 solo documentado, ⏳ planificado. El detalle de **qué hay realmente en cada carpeta** (fuente, compilación, ejecución y evidencia) está en la [matriz de trazabilidad](./MATRIZ-TRAZABILIDAD.md).
 
@@ -72,9 +74,7 @@ Un resumen honesto de lo que hay.
 
 La tabla completa, con versión y familia de PLC, está en el [catálogo](./CATALOG.md); lo que hay
 de verdad en cada carpeta, en la [matriz de trazabilidad](./MATRIZ-TRAZABILIDAD.md). Hoy hay
-**2 recursos verificados en ejecución** (`fb-alarm-latch` y `fc-escalado`, con fuente, compilación
-0/0 y casos de comportamiento observados en CPU virtual) y **22 fichas de diseño** sin código
-importable.
+**2 recursos con evidencias de ejecución en simulación** (`fb-alarm-latch` y `fc-escalado`, con fuentes, XML y resultados documentados de compilación V20 y PLCSIM) y **24 fichas de diseño** sin código importable. La importación de ambos XML desde un proyecto limpio se verificó el 16/11/2026; los casos PLCSIM son evidencia de la ejecución anterior (21/10/2026), no se repitieron en esta tanda.
 
 <details open>
 <summary><b>🏷 Tipos de datos (UDT)</b></summary>
@@ -105,7 +105,10 @@ Carpeta: [`bloques-de-funcion/`](./bloques-de-funcion/)
 | [`FB_Hourmeter`](./bloques-de-funcion/fb-hourmeter/) | Contador de horas con persistencia. |
 | [`FB_EdgeCounter`](./bloques-de-funcion/fb-edge-counter/) | Contador de flancos con reset. |
 | [`FB_PulseGen`](./bloques-de-funcion/fb-pulse-gen/) | Generador de pulsos parametrizable (Hz o periodo). |
-| [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) 🔧 | Enclavamiento de alarma con reconocimiento; fuente SCL compilada en V20 (0 errores, 0 advertencias, evidencia en su ficha), PLCSIM pendiente. |
+| [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) 🏆 | Enclavamiento de alarma con reconocimiento; SCL, XML y evidencias de compilación V20 y ejecución PLCSIM. Reimportación limpia completada en V20 el 16/11/2026; ejecución PLCSIM documentada el 21/10/2026. |
+| [`FB_EstadoMaquina`](./bloques-de-funcion/fb-estado-maquina/) | Diseño de máquina de estados, sin fuente SCL ni prueba en TIA. |
+| [`FB_SecuenciadorPasos`](./bloques-de-funcion/fb-secuenciador-pasos/) | Diseño de secuenciador, sin fuente SCL ni prueba en TIA. |
+| [`FB_ControlPID`](./bloques-de-funcion/fb-control-pid/) | Diseño de regulador PID; contrato de muestreo aún por definir, sin código probado. |
 
 </details>
 
@@ -199,16 +202,18 @@ Enlaces de la comunidad y del fabricante que complementan este repositorio. Se h
 
 ## Cómo usar un recurso
 
+Para reproducir los dos bloques con XML y evidencia de importación, sigue la [guía de importación V20 y simulación segura](./docs/guia-reproduccion-v20.md). Las pruebas y sus límites están en el [acta candidata v0.2.0](./docs/aceptacion-v0.2.0-2026-11-16.md).
+
 1. **Elige** el recurso en el [índice](#índice-de-recursos) y lee su `README.md`: interfaz, ejemplo y limitaciones.
 2. **Respeta las dependencias**: por ejemplo, `FB_Motor` necesita `UDT_Motor` importado antes.
 3. **Importa el `.xml`** cuando exista: en TIA Portal, clic derecho en *Bloques de programa* (o *Tipos de datos PLC*) y *Importar*.
 4. **Prueba en simulación** (PLCSIM o un equipo de pruebas) antes de acercarlo a una instalación real.
 
-> Hoy el paso 3 aún no es posible para ningún recurso, porque los `.xml` no están publicados. Mientras tanto, los README sirven como especificación de la interfaz y del comportamiento esperado.
+> `FB_AlarmLatch` y `FC_Escalado` ya incluyen XML exportado, y ambos **se reimportaron y compilaron desde cero en TIA V20 el 16/11/2026**. Los otros 24 recursos son fichas de diseño sin artefacto importable. No usar recursos de esta biblioteca en producción sin validación independiente.
 
 ¿No sabes por dónde empezar? Sigue una [ruta de aprendizaje](docs/rutas/) según tu nivel, consulta el [glosario ES↔EN](docs/glosario.md) cuando un término se te cruce y las [preguntas frecuentes](docs/faq.md) antes de abrir un issue. Para formarte fuera del repo: [vídeos y formación curada](docs/videos.md).
 >
-> 🔧 **Recurso con fuente real:** [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) incluye su `.scl`, compilado en V20 con evidencia y capturas del fixture; la prueba de comportamiento en PLCSIM está preparada y pendiente. Para conectar un agente de IA a TIA Portal, empieza por la [guía de conexión profesional V20](./ia-tia-portal/guias/conexion-profesional-v20.md).
+> **Recursos con fuentes y evidencias de simulación:** [`FB_AlarmLatch`](./bloques-de-funcion/fb-alarm-latch/) y [`FC_Escalado`](./bloques-de-funcion/fc-escalado/) incluyen SCL y XML, con registros de pruebas V20/PLCSIM. Para conectar un agente de IA a TIA Portal, empieza por la [guía de conexión profesional V20](./ia-tia-portal/guias/conexion-profesional-v20.md).
 
 ## Contribuir
 
@@ -224,7 +229,7 @@ Convención de carpetas: una carpeta en minúsculas con guiones por recurso (`ud
 
 ## Límites conocidos
 
-- **Sin artefactos importables todavía**: cero `.xml` en el repositorio. No hay evidencia de que los bloques se importen ni compilen en V20.
+- **Dos bloques con reimportación V20 reproducida**: existen 3 XML de los dos bloques con evidencia histórica de PLCSIM; `FB_AlarmLatch.xml` y `FC_Escalado.xml` se importaron y compilaron en un proyecto limpio el 16/11/2026, 0/0. No se extienden estas evidencias a los otros 24 diseños, otras versiones TIA ni a una máquina real.
 - Los **ejemplos SCL** de los README son ilustrativos y no se han ejecutado; revisa casos límite (parada, fallo, reset, rangos nulos) antes de copiarlos.
 - Algunas piezas tienen **dependencias o requisitos sin resolver**: `UDT_Alarm` y `Pantalla de Alarmas` necesitan un gestor de alarmas que no se incluye; `plantilla-maquina-simple` indica un panel Basic mientras otros faceplates declaran limitaciones en Basic.
 - Las **plantillas de proyecto** hablan de un archivo de proyecto comprimido, pero el repositorio excluye archivos de proyecto completos (`.gitignore`).

@@ -10,6 +10,8 @@ on:
       - 'hmi/**'
       - 'plantillas-de-proyecto/**'
       - 'CATALOG.md'
+      - 'README.md'
+      - 'MATRIZ-TRAZABILIDAD.md'
       - 'scripts/**'
       - '.github/workflows/check-resources.yml'
   pull_request:
@@ -21,6 +23,8 @@ on:
       - 'hmi/**'
       - 'plantillas-de-proyecto/**'
       - 'CATALOG.md'
+      - 'README.md'
+      - 'MATRIZ-TRAZABILIDAD.md'
       - 'scripts/**'
       - '.github/workflows/check-resources.yml'
   schedule:
@@ -53,6 +57,9 @@ jobs:
       - name: Verificar que CATALOG.md está sincronizado
         run: python3 scripts/generate_catalog.py --check
 
+      - name: Verificar cobertura del README y matriz de trazabilidad
+        run: python3 scripts/check-resource-index.py
+
       - name: Vigilar peso de binarios (max 5 MB por archivo)
         run: |
           oversized=$(find . -path ./.git -prune -o -type f -size +5M -print)
@@ -71,3 +78,5 @@ jobs:
           fetch-depth: 0
       # Fijado por SHA (v2): detector de secretos en el historial y el arbol
       - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7  # v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
