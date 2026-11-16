@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-16",
+  "scope": "Preparación offline reproducible en Portátiltek, sin descargas PLC",
+  "testHost": "Portátiltek",
+  "tiaPortal": "V20",
+  "plcsimAdvanced": "V7.0",
+  "cpu": "S7-1500 6ES7513-1AM03-0AB0, no Safety",
+  "cleanProject": {
+    "type": "Proyecto nuevo desechable y reimportación original de FB_AlarmLatch.xml y FC_Escalado.xml",
+    "reimportAndCompile": "PASS",
+    "errors": 0,
+    "warnings": 0,
+    "backupFilesChecked": 7,
+    "backupMismatches": 0,
+    "simulationDuringBlockCompilation": true,
+    "virtualPlcDuringBlockCompilation": true,
+    "simulationSupportReadback": {
+      "Main": true,
+      "FB_AlarmLatch": true,
+      "FC_Escalado": true
+    },
+    "evidence": "validacion-importacion-tia-v20-2026-11-16.json"
+  },
+  "regressionFixtures": [
+    {
+      "resource": "FC_Escalado",
+      "fixtureId": "AW20-FC-20261116/fixture-ready",
+      "projectName": "AW20_Import",
+      "projectSnapshotSha256": "d042d835dee94d760512d177877fdda6f23a263289c01bf4bdf15b5576717579",
+      "manifestValidated": true,
+      "backupValidated": true,
+      "harness": "OB1_Arnes-ejecutado.xml importado como Main en SCL",
+      "tagTable": "Agent_Escalado",
+      "tagCount": 6,
+      "tagInventoryComplete": true,
+      "softwareCompile": {
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0
+      },
+      "blockReadback": {
+        "names": [
+          "Main",
+          "FB_AlarmLatch",
+          "FC_Escalado"
+        ],
+        "isFailsafe": false,
+        "isKnowHowProtected": false,
+        "isConsistent": true,
+        "plcsimAdvancedSupport": true
+      },
+      "download": "NOT_RUN",
+      "runtimeSteps": "NOT_RUN",
+      "runtimeCases": "NOT_RUN",
+      "previousExecutionDate": "2026-10-21",
+      "previousStepsPassed": "33/33",
+      "previousCases": 9,
+      "sourceHashSha256HistoricalLF": "2995540FC80B0298A3174E2EE5D1ADC181A698FA9975DB63CD8F29F95E6909A7",
+      "currentSourceSha256AfterNormalizingLFMatchesHistorical": true,
+      "xmlArtifactEquivalenceToHistoricalExport": "NOT_DEMONSTRATED"
+    },
+    {
+      "resource": "FB_AlarmLatch",
+      "fixtureId": "AW20-FB-20261116/fixture-ready",
+      "projectName": "AW20_Import",
+      "projectSnapshotSha256": "e92ccff0347c65432602f3cd9292909374faf1c5186cd1a86b94f3cd7d484fd9",
+      "manifestValidated": true,
+      "backupValidated": true,
+      "harness": "OB1_Arnes-ejecutado.scl generado como Main en SCL; InstanceDB AlarmPump creado",
+      "tagTable": "Agent_Signals",
+      "tagCount": 9,
+      "tagInventoryComplete": true,
+      "softwareCompile": {
+        "state": "Success",
+        "errors": 0,
+        "warnings": 0
+      },
+      "blockReadback": {
+        "names": [
+          "Main",
+          "FB_AlarmLatch",
+          "FC_Escalado",
+          "AlarmPump"
+        ],
+        "isFailsafe": false,
+        "isKnowHowProtected": false,
+        "isConsistent": true,
+        "plcsimAdvancedSupportOnOBFBFC": true,
+        "plcsimAdvancedSupportOnInstanceDB": null
+      },
+      "download": "NOT_RUN",
+      "runtimeSteps": "NOT_RUN",
+      "runtimeCases": "NOT_RUN",
+      "previousExecutionDate": "2026-10-21",
+      "previousStepsPassed": "65/65",
+      "previousCases": 9,
+      "sourceHashSha256Historical": "139D94B56F2E402A716E97C7158F94C22F7394DBA6CB34F9AE7042A215A609FE",
+      "currentSourceSha256MatchesHistorical": true
+    }
+  ],
+  "plcsimEnvironment": {
+    "apiVersion": "7.0",
+    "apiInitializeAndRelease": "PASS",
+    "nativeTemporaryRegistrationAndCleanup": "PASS",
+    "otherRunningInstancesBeforeTest": 0
+  },
+  "blockingGates": [
+    "Falta evidencia visual reciente obtenida mediante Computer Use del dialogo TIA con identificacion inequívoca de CPU-1500 Simulation y aviso de destino simulado, exigida por R17 y Invoke-TiaSimulationAcceptance.ps1 antes de descargar",
+    "En la fixture de alarma, InstanceDB AlarmPump no expone atributo PLCSimAdvancedSupport; el runner R17 exige dicho atributo para todos los bloques y debe fallar cerrado hasta revisar y validar su contrato. No modificar runner de otro proyecto ni saltarse el gate.",
+    "No se ha ejecutado descarga, arranque RUN ni comprobacion de entradas y salidas sobre las nuevas fixtures"
+  ],
+  "publicationScope": "La evidencia anterior de 2026-10-21 describe ejecuciones reales pasadas; la compilación y arneses 2026-11-16 no sustituyen ensayos de ejecución.",
+  "physicalHardwareUsed": false,
+  "siemensProjectsFromCustomersModified": false
+}

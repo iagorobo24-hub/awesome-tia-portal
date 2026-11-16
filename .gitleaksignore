@@ -1,0 +1,10 @@
+# Exclusiones exactas de falsos positivos historicos; GitLeaks 8.24.3, Actions 43703222265 (2026-11-15).
+# Auditado el 2026-11-16. No deshabilitar generic-api-key ni ignorar rutas completas.
+# El primer caso es el valor de modo de acceso al simulador, no una credencial.
+223f1e50bcb7a8a496a7ce9244e569c5cc897b48:bloques-de-funcion/fb-alarm-latch/informe-ejecucion-2026-10-19.md:generic-api-key:226
+# Los cinco siguientes son la misma clave sintetica de ejemplo en plantillas MCP (13/05/2026).
+3b1678c72af10a579d9e55d1d7b0725c5a20357b:ia-tia-portal/plantillas/README.md:generic-api-key:239
+3b1678c72af10a579d9e55d1d7b0725c5a20357b:ia-tia-portal/plantillas/README.md:generic-api-key:252
+3b1678c72af10a579d9e55d1d7b0725c5a20357b:ia-tia-portal/plantillas/README.md:generic-api-key:271
+3b1678c72af10a579d9e55d1d7b0725c5a20357b:ia-tia-portal/plantillas/README.md:generic-api-key:282
+3b1678c72af10a579d9e55d1d7b0725c5a20357b:ia-tia-portal/plantillas/README.md:generic-api-key:292

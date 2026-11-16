@@ -1,0 +1,61 @@
+{
+    "schemaVersion":  1,
+    "date":  "2026-11-16",
+    "baseCommit":  "d5cefeaf69d0b4e5fd923b4a0da8e1319576e960",
+    "branch":  "feat/awesome-v0.2.0-closure",
+    "allOfflineChecksPass":  true,
+    "checks":  {
+                   "catalog":  {
+                                   "summary":  "Ô£à CATALOG.md sincronizado",
+                                   "exitCode":  0
+                               },
+                   "links":  {
+                                 "summary":  "Checked 474 local links; 0 broken",
+                                 "exitCode":  0
+                             },
+                   "xmlAndScl":  {
+                                     "summary":  "Ô£à Artefactos OK (3 .xml, 4 .scl revisados)",
+                                     "exitCode":  0
+                                 },
+                   "resourceIndex":  {
+                                         "summary":  "├ìndice: 26 recursos; documented=24, verified=2; 0 errores",
+                                         "exitCode":  0
+                                     },
+                   "structure":  {
+                                     "summary":  "Resumen: 2 con exportaci├│n, 0 con fuente, 24 solo documentados, 0 errores",
+                                     "exitCode":  0
+                                 },
+                   "markdownlint":  {
+                                        "summary":  "Summary: 0 issues in 0 files",
+                                        "exitCode":  0,
+                                        "version":  "0.23.2"
+                                    },
+                   "gitleaksHistory":  {
+                                           "exitCode":  0,
+                                           "scannedCommits":  88,
+                                           "version":  "8.24.3"
+                                       },
+                   "gitleaksWorkingTree":  {
+                                               "version":  "8.24.3",
+                                               "exitCode":  0
+                                           },
+                   "gitDiff":  {
+                                   "exitCode":  0
+                               },
+                   "over5MB":  {
+                                   "count":  0,
+                                   "exitCode":  0
+                               },
+                   "evidenceJson":  {
+                                        "valid":  2,
+                                        "exitCode":  0,
+                                        "invalid":  0
+                                    },
+                   "svgXml":  {
+                                  "exitCode":  0
+                              }
+               },
+    "remoteCiOnCandidate":  "NOT_RUN",
+    "plcsimReexecutionOnNewProject":  "NOT_RUN",
+    "publishActions":  "NOT_AUTHORIZED"
+}

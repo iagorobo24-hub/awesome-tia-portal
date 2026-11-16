@@ -8,15 +8,11 @@ columna `Estado` del [catálogo](../CATALOG.md) manda; el resto es contexto.
 
 ## ¿Puedo usar estos bloques en una máquina real?
 
-Solo los marcados ✅ `available`, y aun así **tras validarlos en tu
-instalación**. Nada de aquí está certificado ni sustituye una revisión
-de seguridad. Lee los [límites conocidos](../README.md#límites-conocidos).
+**Ningún recurso está certificado para utilizarse directamente en una máquina real.** Dos (`FB_AlarmLatch` y `FC_Escalado`) tienen evidencias de pruebas en simulación, pero aún requieren reimportación limpia y validación específica antes de usarlos en un proyecto real. Lee los [límites conocidos](../README.md#límites-conocidos).
 
 ## ¿Por dónde empiezo?
 
-Por las [rutas de aprendizaje](rutas/). Si vienes con prisa: el bloque
-[FB_AlarmLatch](../bloques-de-funcion/fb-alarm-latch/) es el único con
-fuente compilada y protocolo de prueba completo.
+Por las [rutas de aprendizaje](rutas/). Si necesitas ejemplos con código y evidencias de simulación, empieza por [FB_AlarmLatch](../bloques-de-funcion/fb-alarm-latch/) o [FC_Escalado](../bloques-de-funcion/fc-escalado/). Ambos se reimportaron desde cero en TIA V20 el 16/11/2026, con compilación 0/0 ([evidencia](evidencias/validacion-importacion-tia-v20-2026-11-16.json)).
 
 ## ¿Necesito licencia de TIA Portal para usar el repo?
 
@@ -45,8 +41,6 @@ si lo tienes probado, y regenera el catálogo. CI te dirá si falta algo.
 Sí. El repo es español primero; las contribuciones y traducciones en
 inglés son bienvenidas e irán conviviendo por recurso.
 
-## ¿Por qué no hay .xml todavía?
+## ¿Hay archivos XML importables?
 
-Porque publicar un exportado sin haberlo importado desde cero y probado
-sería vender humo. El primero en camino es `FB_AlarmLatch`
-(ver [exportacion-xml.md](../bloques-de-funcion/fb-alarm-latch/exportacion-xml.md)).
+Sí: existen **3 archivos XML** asociados a `FB_AlarmLatch`, `FC_Escalado` y su arnés de pruebas. Los XML de `FB_AlarmLatch` y `FC_Escalado` **se han reimportado y compilado desde cero** en TIA V20; el arnés OB1 del escalado es un XML auxiliar y no se ha validado por reimportación en esta tanda. Los demás recursos son fichas de diseño, no bloques exportados.

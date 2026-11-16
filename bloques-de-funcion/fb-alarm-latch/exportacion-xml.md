@@ -1,5 +1,7 @@
 # Exportación del .xml (FB_AlarmLatch)
 
+**Actualización verificada (16/11/2026):** la prueba F3 se ha ejecutado sobre `FB_AlarmLatch.xml` original en un proyecto V20 completamente nuevo; importación reconocida como FB2 SCL y compilación 0 errores / 0 avisos. [Evidencia reproducible](../../docs/evidencias/validacion-importacion-tia-v20-2026-11-16.json). El resto de este documento conserva el procedimiento; todavía no acredita ejecución de este proyecto nuevo en PLCSIM ni uso industrial.
+
 Procedimiento para convertir el recurso en el primer bloque importable
 del repositorio (estado ✅ `available`). Solo tiene sentido con la
 [prueba PLCSIM superada](protocolo-plcsim.md): primero comportamiento,

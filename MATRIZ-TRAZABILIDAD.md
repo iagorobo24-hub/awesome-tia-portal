@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — qué hay realmente en cada carpeta
 
-> Esta matriz existe para que nadie tenga que abrir 24 README para saber qué se puede
+> Esta matriz existe para que nadie tenga que abrir 26 README para saber qué se puede
 > importar. Cada fila dice **qué hay realmente** en la carpeta y **qué falta** para
 > poder usarla sin leer la ficha entera.
 >
@@ -15,8 +15,11 @@
 | Compilado | La fuente se compiló en TIA Portal V20 con **0 errores y 0 avisos** |
 | Ejecutado | Se descargó a una CPU **virtual** y se observaron casos de comportamiento |
 | Evidencia | Fichero de evidencia con los valores observados |
+| Reimportación | XML importado en proyecto V20 nuevo, readback y compilación comprobados; se acredita aparte del ensayo PLCSIM |
 
 ---
+
+**Reimportación independiente confirmada el 16/11/2026:** [`FB_AlarmLatch` y `FC_Escalado`](./docs/evidencias/validacion-importacion-tia-v20-2026-11-16.json) importados desde XML en un proyecto nuevo, compilación V20 0 errores / 0 avisos. Las columnas «Ejecutado» corresponden al ensayo histórico del 21/10/2026; la descarga y los casos de comportamiento **no se repitieron en el proyecto nuevo**.
 
 ## Bloques de función
 
@@ -30,6 +33,9 @@
 | [`fb-motor`](./bloques-de-funcion/fb-motor/) | FB | ❌ | ❌ | ❌ | — |
 | [`fb-pulse-gen`](./bloques-de-funcion/fb-pulse-gen/) | FB | ❌ | ❌ | ❌ | — |
 | [`fb-valve`](./bloques-de-funcion/fb-valve/) | FB | ❌ | ❌ | ❌ | — |
+| [`fb-estado-maquina`](./bloques-de-funcion/fb-estado-maquina/) | FB (diseño) | ❌ | ❌ | ❌ | — |
+| [`fb-secuenciador-pasos`](./bloques-de-funcion/fb-secuenciador-pasos/) | FB (diseño) | ❌ | ❌ | ❌ | — |
+| [`fb-control-pid`](./bloques-de-funcion/fb-control-pid/) | FB (diseño) | ❌ | ❌ | ❌ | — |
 
 ## Bloques de organización
 

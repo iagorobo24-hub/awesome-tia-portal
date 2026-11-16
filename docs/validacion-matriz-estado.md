@@ -6,8 +6,8 @@
 
 | Recurso | Tipo | Archivo SCL | Archivo XML | Estado README | Estado compilación | Estado ejecución | Compatibilidad CPU | Veredicto general |
 |---------|------|-------------|-------------|---------------|--------------------|------------------|--------------------|-------------------|
-| `fb-alarm-latch` | FB | ✅ FB_AlarmLatch.scl | ✅ FB_AlarmLatch.xml | verified | V20, 0 errores/0 avisos | PLCSIM 65/65 pasos, 9 casos | S7-1500 6ES7513-1AM03-0AB0 | VERIFICADO (parcial: pendiente reimportación desde cero) |
-| `fc-escalado` | FC | ✅ FC_Escalado.scl | ✅ FC_Escalado.xml | verified | V20, 0 errores/0 avisos | PLCSIM 33/33 pasos, 9 casos | S7-1200 / S7-1500 | VERIFICADO (parcial: pendiente reimportación desde cero) |
+| `fb-alarm-latch` | FB | ✅ FB_AlarmLatch.scl | ✅ FB_AlarmLatch.xml | verified | V20, 0 errores/0 avisos (16/11/2026) | PLCSIM 65/65 pasos, 9 casos (21/10/2026) | S7-1500 6ES7513-1AM03-0AB0 | VERIFICADO (XML reimportado y compilado, sin descarga nueva) |
+| `fc-escalado` | FC | ✅ FC_Escalado.scl | ✅ FC_Escalado.xml | verified | V20, 0 errores/0 avisos (16/11/2026) | PLCSIM 33/33 pasos, 9 casos (21/10/2026) | S7-1500 comprobada; S7-1200 no probada | VERIFICADO (XML reimportado y compilado, sin descarga nueva) |
 | `fb-estado-maquina` | FB | ❌ (ficha de diseño) | ❌ | documented | NOT RUN | NOT RUN | S7-1200 / S7-1500 (declarado) | NO COMPROBADO (sin código) |
 | `fb-secuenciador-pasos` | FB | ❌ (ficha de diseño) | ❌ | documented | NOT RUN | NOT RUN | S7-1200 / S7-1500 (declarado) | NO COMPROBADO (sin código) |
 | `fb-control-pid` | FB | ❌ (ficha de diseño) | ❌ | documented | NOT RUN | NOT RUN | S7-1200 / S7-1500 (declarado) | NO COMPROBADO (sin código) |
@@ -20,15 +20,15 @@
 |-------------|-----------|-----------|-------|
 | Fuente SCL disponible | PASS | `FB_AlarmLatch.scl` (3675 bytes) | Código SCL real, versión 0.1 |
 | Contrato funcional coherente | PASS | README con interfaz completa, estados esperados, casos de borde | Documentado por diseño |
-| Importación en TIA V20 | REPORTADO | README afirma importación exitosa 23/09/2026 | Pendiente reimportación desde cero en proyecto limpio |
-| Compilación | REPORTADO | 0 errores, 0 avisos, V20, CPU 1513 | Readback: isFailsafe=false, isKnowHowProtected=false, isConsistent=true |
+| Importación en TIA V20 | PASS LIVE | Proyecto V20 desechable nuevo (16/11/2026) | XML original reconocido, readback FB2 SCL |
+| Compilación | PASS LIVE | 0 errores, 0 avisos, V20, CPU 1513 (16/11/2026) | Readback: isFailsafe=false, isKnowHowProtected=false, isConsistent=true |
 | Exportación XML | PASS | `FB_AlarmLatch.xml` (22170 bytes) | Exportado a SimaticML |
-| Reimportación desde cero | PENDIENTE | README: "Pendiente: importación del XML desde cero" | No repetido en esta sesión |
+| Reimportación desde cero | PASS LIVE | [Evidencia 16/11/2026](evidencias/validacion-importacion-tia-v20-2026-11-16.json) | XML importado en proyecto nuevo, compilación 0/0; no se ejecutó PLCSIM ahora |
 | Ejecución PLCSIM | REPORTADO | 65/65 pasos, 9 casos, 21/10/2026 | Evidencia: `evidencia-plcsim-2026-10-21.json` |
 | Casos funcionales | REPORTADO | 9 transiciones de comportamiento | Documentado por diseño, no re-observado en esta sesión |
 | Compatibilidad CPU | REPORTADO | S7-1500 6ES7513-1AM03-0AB0 | Solo este modelo verificado |
 
-**Estado final:** VERIFICADO (parcial). Código, XML, compilación y ejecución PLCSIM reportados con evidencia. Pendiente: reimportación desde cero en proyecto limpio.
+**Estado actual (16/11/2026):** XML reimportado y compilado 0/0 sobre proyecto V20 nuevo ([evidencia](evidencias/validacion-importacion-tia-v20-2026-11-16.json)). La ejecución PLCSIM permanece acreditada por pruebas del 21/10/2026, no se ha repetido sobre la fixture recién creada.
 
 ### fc-escalado (FC_Escalado)
 
@@ -36,15 +36,15 @@
 |-------------|-----------|-----------|-------|
 | Fuente SCL disponible | PASS | `FC_Escalado.scl` (2127 bytes) | Código SCL real |
 | Contrato funcional coherente | PASS | README con interfaz, lógica interna, casos de borde | Documentado por diseño |
-| Importación en TIA V20 | REPORTADO | README afirma compilación 21/10/2026 | Pendiente reimportación desde cero en proyecto limpio |
-| Compilación | REPORTADO | 0 errores, 0 avisos, V20, CPU 1513 | Readback: isFailsafe=false, isKnowHowProtected=false, isConsistent=true |
+| Importación en TIA V20 | PASS LIVE | Proyecto V20 desechable nuevo (16/11/2026) | XML original reconocido, readback FC1 SCL |
+| Compilación | PASS LIVE | 0 errores, 0 avisos, V20, CPU 1513 (16/11/2026) | Readback: isFailsafe=false, isKnowHowProtected=false, isConsistent=true |
 | Exportación XML | PASS | `FC_Escalado.xml` (10832 bytes) + `OB1_Arnes-ejecutado.xml` | Exportado a SimaticML |
-| Reimportación desde cero | PENDIENTE | No repetido en esta sesión | Pendiente |
+| Reimportación desde cero | PASS LIVE | [Evidencia 16/11/2026](evidencias/validacion-importacion-tia-v20-2026-11-16.json) | XML importado en proyecto nuevo, compilación 0/0; no se ejecutó PLCSIM ahora |
 | Ejecución PLCSIM | REPORTADO | 33/33 pasos, 9 casos de escalado | Evidencia: `evidencia-plcsim-2026-10-21.json` |
 | Casos funcionales | REPORTADO | 9 casos con valores esperados vs observados | Todos coinciden (diferencia de precisión REAL documentada) |
 | Compatibilidad CPU | REPORTADO | S7-1500 6ES7513-1AM03-0AB0 (declarado V18-V19 compatible sin prueba) | V18/V19 declarados pero no probados |
 
-**Estado final:** VERIFICADO (parcial). Código, XML, compilación y ejecución PLCSIM reportados con evidencia. Pendiente: reimportación desde cero en proyecto limpio.
+**Estado actual (16/11/2026):** XML reimportado y compilado 0/0 sobre proyecto V20 nuevo ([evidencia](evidencias/validacion-importacion-tia-v20-2026-11-16.json)). La ejecución PLCSIM permanece acreditada por pruebas del 21/10/2026, no se ha repetido sobre la fixture recién creada.
 
 ### fb-estado-maquina (FB_EstadoMaquina)
 
@@ -98,8 +98,8 @@
 
 | Bloqueo | Recurso afectado | Causa probable | Acción correctiva | Estado |
 |---------|-----------------|----------------|-------------------|--------|
-| No se pudo adjuntar a TIA Portal desde programa .NET personal | fb-alarm-latch, fc-escalado | Sesión Openness headless sin adjuntar a proyecto abierto; posible problema de grupo de usuarios | Usar `Invoke-TiaDirectOpennessProbe.ps1` de T-IA (doctor + probe) para verificar capa Openness | Pendiente |
-| Reimportación XML desde cero | fb-alarm-latch, fc-escalado | No repetido en esta sesión | Usar `Invoke-TiaSclProposalApply.ps1` o importación manual en TIA V20 | Pendiente |
+| Adjuntar TIA para descargar a CPU virtual | fb-alarm-latch, fc-escalado | La ejecución histórica PLCSIM requirió `AttachToOpenProject`; el modo headless actual sí permite importar y compilar offline | No confundir compilación headless con descarga a CPU simulada | PENDIENTE DE REPETIR SOLO PLCSIM |
+| Reimportación XML desde cero | fb-alarm-latch, fc-escalado | Resuelto con `ImportBlock` Openness V20 | Bloques leídos y compilados 0/0 en proyecto nuevo | PASS LIVE 16/11/2026 |
 
 ## Problemas técnicos de diseño detectados
 
@@ -110,7 +110,7 @@
 ## Próximas acciones necesarias
 
 1. Ejecutar `Invoke-TiaDirectOpennessProbe.ps1` para verificar capa Openness V20.
-2. Intentar reimportación XML desde cero para fb-alarm-latch y fc-escalado.
+2. Reejecutar casos de borde PLCSIM sobre el proyecto con ambos XML reimportados; la reimportación y compilación ya pasaron.
 3. Revisar diseños de los 3 bloques nuevos antes de codificar (sección 6 del plan).
 4. Escribir código SCL para los 3 bloques nuevos si se priorizan.
 5. Actualizar READMEs para eliminar contradicciones (ej. fb-alarm-latch línea 69 vs líneas 27-32).
